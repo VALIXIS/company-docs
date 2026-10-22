@@ -32,35 +32,35 @@
     color: 0x00f2fe,
     wireframe: true,
     transparent: true,
-    opacity: 0.22
+    opacity: 0.30
   });
   const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
   scene.add(coreMesh);
 
-  // 2. Outer Concentric Halo
-  const outerGeometry = new THREE.TorusGeometry(32, 0.4, 16, 100);
+  // 2. Outer Concentric Halo (Vivid Violet)
+  const outerGeometry = new THREE.TorusGeometry(32, 0.5, 16, 100);
   const outerMaterial = new THREE.MeshBasicMaterial({
-    color: 0x6366f1,
+    color: 0x7c3aed,
     transparent: true,
-    opacity: 0.18
+    opacity: 0.26
   });
   const outerRing = new THREE.Mesh(outerGeometry, outerMaterial);
   outerRing.rotation.x = Math.PI / 3;
   scene.add(outerRing);
 
   // 3. Second Slanted Cyan Ring
-  const innerRingGeo = new THREE.TorusGeometry(26, 0.3, 16, 100);
+  const innerRingGeo = new THREE.TorusGeometry(26, 0.4, 16, 100);
   const innerRingMat = new THREE.MeshBasicMaterial({
-    color: 0x10b981,
+    color: 0x00f2fe,
     transparent: true,
-    opacity: 0.15
+    opacity: 0.24
   });
   const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
   innerRing.rotation.y = Math.PI / 4;
   scene.add(innerRing);
 
   // 4. Floating Neural Particles & Constellation
-  const particleCount = 130;
+  const particleCount = 140;
   const positions = new Float32Array(particleCount * 3);
   const velocities = [];
 
@@ -86,7 +86,7 @@
     new THREE.BufferAttribute(positions, 3)
   );
 
-  // Generate glowing particle sprite
+  // Generate glowing particle sprite with cyan-to-violet gradient
   function createParticleTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = 32;
@@ -94,7 +94,8 @@
     const ctx = canvas.getContext('2d');
     const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
     gradient.addColorStop(0, 'rgba(0, 242, 254, 1)');
-    gradient.addColorStop(0.3, 'rgba(99, 102, 241, 0.7)');
+    gradient.addColorStop(0.35, 'rgba(168, 85, 247, 0.85)');
+    gradient.addColorStop(0.7, 'rgba(99, 102, 241, 0.35)');
     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = gradient;
     ctx.beginPath();
@@ -104,10 +105,10 @@
   }
 
   const particleMaterial = new THREE.PointsMaterial({
-    size: 2.5,
+    size: 2.8,
     map: createParticleTexture(),
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.85,
     blending: THREE.AdditiveBlending,
     depthWrite: false
   });

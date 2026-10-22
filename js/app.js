@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
       benefit: 'Provides instant financial awareness with complete data privacy and zero bank login credentials required.',
       tech: 'Flutter, Jetpack Compose, Local Encryption'
     },
-    'subbu-cloud': {
-      title: 'Subbu Cloud',
+    'personal-cloud': {
+      title: 'Personal Cloud',
       tag: 'Private Cloud Storage',
       problem: 'Commercial cloud storage providers charge steep recurring subscription fees and restrict high-bitrate 4K streaming.',
       solution: 'A self-hosted private media server supporting 4K video playback, image galleries, and file backups accessible securely from any device.',
