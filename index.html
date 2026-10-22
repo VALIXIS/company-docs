@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIXIS — Dedicated Engineering Pod & Enterprise AI Solutions</title>
+  <meta name="description" content="Dedicated 7-member product engineering pod helping founders, digital agencies, and modern businesses ship production web platforms, Flutter mobile apps, and enterprise AI systems.">
+  <meta property="og:title" content="VALIXIS — Engineering & Product Portfolio">
+  <meta property="og:description" content="High-Performance Web Platforms, Cross-Platform Mobile Applications & Enterprise AI Solutions.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Three.js for 3D WebGL Constellation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- 3D Interactive WebGL Background Canvas -->
+  <div id="canvas3d-container">
+    <canvas id="canvas3d"></canvas>
+  </div>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-purple"></div>
+  <div class="ambient-glow glow-emerald"></div>
+
+  <div class="site-wrapper">
+    <!-- ==========================================================================
+         Navigation Bar
+         ========================================================================== -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="brand">
+          <div class="brand-icon">V</div>
+          <span class="brand-name">VALIXIS</span>
+        </a>
+
+        <div class="status-pill">
+          <span class="pulse-dot"></span>
+          <span>Pod Available for Q4/Q1 Sprints</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#simulator" class="nav-link">Live SaaS Demo</a></li>
+          <li><a href="#better-business" class="nav-link">Why VALIXIS</a></li>
+          <li><a href="#case-studies" class="nav-link">Case Studies (9)</a></li>
+          <li><a href="#pod-team" class="nav-link">The 7-Member Pod</a></li>
+          <li><a href="#estimator" class="nav-link">ROI Estimator</a></li>
+          <li><a href="#models" class="nav-link">Engagement</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/919603416707?text=Hi%20VALIXIS,%20I%20would%20like%20to%20discuss%20a%20software%20project%20for%20my%20business." target="_blank" class="btn btn-whatsapp">
+            <span>💬 WhatsApp</span>
+          </a>
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-tagline-badge">
+          <span class="spark">✦</span>
+          <span>HIGH-VELOCITY PRODUCT ENGINEERING POD &bull; HYDERABAD &amp; AP</span>
+        </div>
+
+        <h1 class="hero-title">
+          We Build Software That Makes Your Business <span class="gradient-text">10x Better.</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Instead of waiting 3 months to hire or paying hefty agency markups, our dedicated 7-member pod builds and ships production web platforms, Flutter mobile apps, and enterprise AI engines—with fixed milestones, sub-50ms speed, and 100% IP ownership.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#case-studies" class="btn btn-primary">
+            <span>🚀 Explore 9 Production Case Studies</span>
+          </a>
+          <a href="https://wa.me/919603416707?text=Hi%20VALIXIS%20team,%20I%20saw%20your%20portfolio%20and%20want%20to%20discuss%20building%20software%20for%20my%20company." target="_blank" class="btn btn-secondary">
+            <span>💬 Direct WhatsApp (+91 9603416707)</span>
+          </a>
+        </div>
+
+        <!-- Hero Stats Strip -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">9<span class="highlight">+</span></span>
+            <span class="stat-label">Production Systems Shipped</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">&lt;50<span class="highlight">ms</span></span>
+            <span class="stat-label">Edge Ingestion Latency</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">30–45<span class="highlight">d</span></span>
+            <span class="stat-label">Full Turnkey MVP Delivery</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100<span class="highlight">%</span></span>
+            <span class="stat-label">IP &amp; Source Code Ownership</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Interactive SaaS Simulator ("The VALIXIS Engine Live Preview")
+         ========================================================================== -->
+    <section class="section" id="simulator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Product Architecture</span>
+          <h2 class="section-title">Experience How Our Systems Power Your Business</h2>
+          <p class="section-desc">
+            Interact with live simulations of our core platforms: unified operations, sub-100ms omnichannel support, and real-time predictive telemetry.
+          </p>
+        </div>
+
+        <div class="simulator-container">
+          <div class="simulator-topbar">
+            <div class="mac-controls">
+              <span class="mac-dot dot-red"></span>
+              <span class="mac-dot dot-yellow"></span>
+              <span class="mac-dot dot-green"></span>
+            </div>
+
+            <div class="simulator-tabs">
+              <button class="sim-tab-btn active" data-view="viewBusinessOS">
+                <span>🏢 VALIXIS Business OS</span>
+              </button>
+              <button class="sim-tab-btn" data-view="viewDesk">
+                <span>🎧 VALIXIS Desk (AI Support)</span>
+              </button>
+              <button class="sim-tab-btn" data-view="viewPulse">
+                <span>📡 VALIXIS Pulse (Telemetry)</span>
+              </button>
+            </div>
+
+            <div class="sim-system-status">
+              <span class="pulse-dot"></span>
+              <span>SUPABASE RLS &bull; 60FPS EDGE</span>
+            </div>
+          </div>
+
+          <div class="simulator-body">
+            <!-- View 1: Business OS Kanban -->
+            <div class="sim-view active" id="viewBusinessOS">
+              <div class="kanban-grid">
+                <div class="kanban-col">
+                  <div class="col-header">
+                    <span>Inbound Deals</span>
+                    <span class="count-tag">3</span>
+                  </div>
+                  <div class="kanban-item">
+                    <div class="deal-header">
+                      <span class="deal-title">Global Logistics SaaS</span>
+                      <span class="deal-value">$24,000</span>
+                    </div>
+                    <div class="deal-meta">Fleet Tracking &bull; Next.js + Deno Edge</div>
+                    <span class="ai-score-pill">🤖 Gemini Fit Score: 98%</span>
+                  </div>
+                  <div class="kanban-item">
+                    <div class="deal-header">
+                      <span class="deal-title">Fintech API Gateway</span>
+                      <span class="deal-value">$18,500</span>
+                    </div>
+                    <div class="deal-meta">UPI &amp; Stripe Auto-Reconciliation</div>
+                    <span class="ai-score-pill">🤖 Gemini Fit Score: 92%</span>
+                  </div>
+                </div>
+
+                <div class="kanban-col">
+                  <div class="col-header">
+                    <span>Engineering Sprint</span>
+                    <span class="count-tag">2</span>
+                  </div>
+                  <div class="kanban-item" style="border-left: 3px solid var(--accent-cyan);">
+                    <div class="deal-header">
+                      <span class="deal-title">Apollo Telehealth Suite</span>
+                      <span class="deal-value">$32,000</span>
+                    </div>
+                    <div class="deal-meta">Flutter Mobile + HIPAA Cloud</div>
+                    <span class="ai-score-pill" style="color:#34d399; background:rgba(16,185,129,0.15); border-color:rgba(16,185,129,0.3);">
+                      ✓ Milestone 2/3 Shipped
+                    </span>
+                  </div>
+                  <div class="kanban-item">
+                    <div class="deal-header">
+                      <span class="deal-title">Omni-Channel Booking</span>
+                      <span class="deal-value">$12,000</span>
+                    </div>
+                    <div class="deal-meta">Campus Reservation Engine</div>
+                    <span class="ai-score-pill">✓ CI/CD Tests Passed</span>
+                  </div>
+                </div>
+
+                <div class="kanban-col">
+                  <div class="col-header">
+                    <span>Automated Invoicing</span>
+                    <span class="count-tag">Live</span>
+                  </div>
+                  <div class="kanban-item" style="border-left: 3px solid var(--accent-emerald);">
+                    <div class="deal-header">
+                      <span class="deal-title">INV-2026-089</span>
+                      <span class="deal-value" style="color:#34d399;">$14,200 Paid</span>
+                    </div>
+                    <div class="deal-meta">Stripe Webhook &bull; Vector PDF Synced</div>
+                    <span class="ai-score-pill" style="color:#60a5fa; background:rgba(59,130,246,0.15);">
+                      ✓ Multi-Currency UPI
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Simulator Action Bar -->
+              <div class="sim-action-row">
+                <div>
+                  <strong style="color:#fff; font-size:0.95rem;">Grounded Gemini 2.5 Business Copilot</strong>
+                  <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+                    Automatically synthesizes historical client tickets, contract milestones, and generates proposal drafts in &lt;100ms.
+                  </p>
+                </div>
+                <button class="btn btn-primary" id="btnRunAiProposal">
+                  <span>⚡ Test Grounded Proposal Generation</span>
+                </button>
+              </div>
+              <div id="aiProposalOutput"></div>
+            </div>
+
+            <!-- View 2: Desk Chat Simulator -->
+            <div class="sim-view" id="viewDesk">
+              <div class="chat-sim-layout">
+                <div class="chat-inbox">
+                  <div class="ticket-item active" data-ticket="t1">
+                    <div class="ticket-sender">Marcus Vance &bull; CTO</div>
+                    <div class="ticket-preview">How quickly can we migrate from Salesforce without downtime?</div>
+                  </div>
+                  <div class="ticket-item" data-ticket="t2">
+                    <div class="ticket-sender">Sarah Jenkins &bull; Support Lead</div>
+                    <div class="ticket-preview">Can support staff answer via WhatsApp Cloud API directly?</div>
+                  </div>
+                  <div class="ticket-item" data-ticket="t3">
+                    <div class="ticket-sender">Devon Brooks &bull; CFO</div>
+                    <div class="ticket-preview">Does the executive telemetry dashboard support real-time export?</div>
+                  </div>
+                </div>
+
+                <div class="chat-thread-view">
+                  <div class="thread-messages" id="chatMessagesContainer">
+                    <div class="msg-bubble msg-customer">
+                      <strong style="display:block; font-size:0.75rem; color:#94a3b8; margin-bottom:0.25rem;">Client Inquiry</strong>
+                      Hi team, how quickly can we migrate our 4,000 active customer records from Salesforce to VALIXIS Business OS without downtime?
+                    </div>
+                    <div class="msg-bubble msg-ai">
+                      <span class="ai-badge">🤖 VALIXIS Autonomous Tier-1 Co-Pilot (sub-100ms)</span>
+                      Hi Marcus! With our Supabase RLS automated migration scripts, we run an asynchronous batch ingestion with dual-write replication. Zero downtime required, and historical audit logs will be verified in under 90 minutes.
+                    </div>
+                  </div>
+
+                  <div class="chat-composer">
+                    <input type="text" class="chat-input" id="simChatInput" placeholder="Type a message or question to test the AI co-pilot...">
+                    <button class="btn btn-primary" id="btnSimSend"><span>Send</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- View 3: Pulse Telemetry Radar -->
+            <div class="sim-view" id="viewPulse">
+              <div class="pulse-telemetry-grid">
+                <div class="chart-card">
+                  <div class="chart-header">
+                    <div>
+                      <strong style="color:#fff; font-size:1.1rem; display:block;">ARR Trajectory &amp; Cohort Retention</strong>
+                      <span style="font-size:0.8rem; color:var(--text-muted); font-family:var(--font-mono);">Deno Edge Stream &bull; 60fps Rolling Canvas</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <span style="font-size:1.4rem; font-weight:800; color:var(--accent-emerald); font-family:var(--font-mono);">$342,000</span>
+                      <span style="font-size:0.75rem; color:var(--accent-emerald); display:block;">↑ +42% YoY Compound</span>
+                    </div>
+                  </div>
+
+                  <!-- Mock SVG Telemetry Graph -->
+                  <svg class="pulse-svg-chart" viewBox="0 0 500 150">
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#00f2fe" stop-opacity="0.0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,130 Q70,120 120,95 T240,75 T360,40 T500,15 L500,150 L0,150 Z" fill="url(#chartGradient)" />
+                    <path d="M0,130 Q70,120 120,95 T240,75 T360,40 T500,15" fill="none" stroke="#00f2fe" stroke-width="3" />
+                    <circle cx="500" cy="15" r="5" fill="#00f2fe" />
+                  </svg>
+                </div>
+
+                <div class="radar-stream">
+                  <strong style="font-size:0.85rem; color:var(--text-muted); text-transform:uppercase; font-family:var(--font-mono);">
+                    ⚡ Live Telemetry Radar
+                  </strong>
+                  <div class="radar-event">
+                    <span style="color:#34d399;">●</span>
+                    <span>[0.04s] Deno Edge: Stripe Webhook Reconciled</span>
+                  </div>
+                  <div class="radar-event">
+                    <span style="color:#00f2fe;">●</span>
+                    <span>[0.08s] JWT Token Refresh: Subdomain Provisioned</span>
+                  </div>
+                  <div class="radar-event alert">
+                    <span style="color:#f59e0b;">▲</span>
+                    <span>[0.12s] Churn Risk Radar: Account flagged (Inactivity)</span>
+                  </div>
+                  <div class="radar-event">
+                    <span style="color:#a855f7;">●</span>
+                    <span>[0.19s] Gemini 2.5: Auto-Dispatched Customer Survey</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         "How We Make Your Business Better" (SaaS Transformation Pillars)
+         ========================================================================== -->
+    <section class="section" id="better-business">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Business Transformation</span>
+          <h2 class="section-title">How Partnering With VALIXIS Makes Your Business 10x Better</h2>
+          <p class="section-desc">
+            We don't sell hours or unmaintained code. We build robust systems that accelerate your top-line revenue, eliminate recurring software waste, and delight your users.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-cyan">💼</div>
+            <h3 class="pillar-title">Eliminate Disconnected SaaS Subscriptions</h3>
+            <p class="pillar-desc">
+              Most businesses waste ₹1.5L to ₹4L+ every month on separate subscriptions for CRM, support tickets, project boards, and billing. We unify your operations into a tailored, proprietary Business OS you own forever.
+            </p>
+            <div class="pillar-metric-badge">
+              <span>📉 Save 60% in monthly software licensing costs</span>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-emerald">🤖</div>
+            <h3 class="pillar-title">Autonomous 24/7 AI Customer Resolution</h3>
+            <p class="pillar-desc">
+              Customer inquiries during off-hours usually turn into lost deals or frustrated clients. We embed Google Gemini 2.5 Flash agents into your customer portal to autonomously resolve 70% of common queries in under 100ms.
+            </p>
+            <div class="pillar-metric-badge">
+              <span>⚡ Sub-100ms response time with zero support headcount expansion</span>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-purple">🚀</div>
+            <h3 class="pillar-title">Ship in 30 Days, Not 6 Months</h3>
+            <p class="pillar-desc">
+              Traditional dev agencies drag projects across quarters while scope creeps and bills inflate. Our 7-member pod uses proven architectural templates, pre-built Supabase RLS modules, and Flutter/Next.js to ship your production MVP in 30–45 days.
+            </p>
+            <div class="pillar-metric-badge">
+              <span>⏱️ Launch 3x faster with fixed milestone deliverables</span>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box icon-blue">🛡️</div>
+            <h3 class="pillar-title">Zero Vendor Lock-in &amp; 100% IP Handover</h3>
+            <p class="pillar-desc">
+              You own all source code, database architectures, and intellectual property from Day 1. Every contract includes full technical documentation, automated CI/CD pipelines, and 14 days of dedicated post-launch bug warranty.
+            </p>
+            <div class="pillar-metric-badge">
+              <span>🔒 Multi-tenant PostgreSQL RLS &amp; full IP assignment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Featured Case Studies & Live Products (9 Systems)
+         ========================================================================== -->
+    <section class="section" id="case-studies">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Proof of Engineering</span>
+          <h2 class="section-title">9 Production Systems Engineered by VALIXIS</h2>
+          <p class="section-desc">
+            Explore our real-world software across enterprise operations, conversational AI, telemetry command centers, and consumer health.
+          </p>
+        </div>
+
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All Systems (9)</button>
+          <button class="filter-btn" data-filter="saas">Enterprise SaaS &amp; Cloud</button>
+          <button class="filter-btn" data-filter="ai">AI &amp; Predictive Analytics</button>
+          <button class="filter-btn" data-filter="mobile">Mobile &amp; Healthcare</button>
+        </div>
+
+        <div class="case-studies-grid">
+          <!-- Card 1 -->
+          <div class="case-card tilt-card" data-category="saas">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>01 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Enterprise SaaS</span>
+              </div>
+              <h3 class="case-card-title">🏢 VALIXIS Business OS</h3>
+              <p class="case-card-desc">
+                Centralized operational system of record unifying CRM deal pipelines, project milestones, automated vector PDF invoicing, and executive reporting.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">Replaces 4+ SaaS subscriptions; speeds proposal generation by 80%.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter Web</span>
+                <span class="tech-chip">Supabase RLS</span>
+                <span class="tech-chip">Gemini 2.5 Flash</span>
+                <span class="tech-chip">Deno Edge</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="1">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="case-card tilt-card" data-category="ai">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>02 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Conversational AI</span>
+              </div>
+              <h3 class="case-card-title">🎧 VALIXIS Desk</h3>
+              <p class="case-card-desc">
+                Enterprise omnichannel customer support engine with sub-100ms sync, agent collision radar, dynamic SLAs, and autonomous Gemini tier-1 resolution.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">70% of routine inquiries resolved autonomously; 0% collision duplication.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter Web</span>
+                <span class="tech-chip">Supabase Realtime</span>
+                <span class="tech-chip">WhatsApp Cloud API</span>
+                <span class="tech-chip">Gemini 2.5</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="2">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="case-card tilt-card" data-category="ai">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>03 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Telemetry &amp; BI</span>
+              </div>
+              <h3 class="case-card-title">📡 VALIXIS Pulse</h3>
+              <p class="case-card-desc">
+                Executive telemetry command tower providing 60fps real-time data streaming, predictive ARR trajectories, and automated churn risk radars.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">Identifies at-risk customer accounts 30 days before cancellation.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter Canvas 60fps</span>
+                <span class="tech-chip">Deno Edge (&lt;50ms)</span>
+                <span class="tech-chip">Gemini 2.5</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="3">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="case-card tilt-card" data-category="saas">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>04 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Cloud Infrastructure</span>
+              </div>
+              <h3 class="case-card-title">🌐 VALIXIS Cloud</h3>
+              <p class="case-card-desc">
+                Commercial gateway and identity hub with cross-app Single Sign-On (SSO), 60-second workspace provisioning, and automated Stripe recurring billing.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">Enables self-serve B2B SaaS onboarding with sub-minute setup.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Next.js 14 App Router</span>
+                <span class="tech-chip">TypeScript</span>
+                <span class="tech-chip">Tailwind CSS</span>
+                <span class="tech-chip">Stripe</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="4">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="case-card tilt-card" data-category="mobile">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>05 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Mobile &amp; Health</span>
+              </div>
+              <h3 class="case-card-title">🏋️ Fitora AI Health</h3>
+              <p class="case-card-desc">
+                Personalized fitness mobile application with adaptive workout routine generation, background biometric sync (Apple Health &amp; Health Connect), and audio coaching.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">4.8-star mobile rating with 68% 90-day active retention.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter 3.x</span>
+                <span class="tech-chip">Riverpod</span>
+                <span class="tech-chip">Firebase</span>
+                <span class="tech-chip">HealthKit</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="5">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="case-card tilt-card" data-category="mobile">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>06 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Healthcare Adherence</span>
+              </div>
+              <h3 class="case-card-title">💊 MedReminder Assistant</h3>
+              <p class="case-card-desc">
+                Privacy-first mobile medication adherence app engineered with high-priority device-waking alarms, OEM battery bypass guides, and emergency lock-screen ID.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">99.8% alarm firing reliability across aggressive Android vendors; $0 cloud cost.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter 3.x</span>
+                <span class="tech-chip">Hive NoSQL</span>
+                <span class="tech-chip">Android Intents</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="6">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="case-card tilt-card" data-category="saas">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>07 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Booking &amp; Facilities</span>
+              </div>
+              <h3 class="case-card-title">🏛️ Campus Reservation Portal</h3>
+              <p class="case-card-desc">
+                Venue and auditorium booking platform with interactive visual calendar vacancy, AV status breakdowns, and two-tiered administrative review dashboards.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">Reduced scheduling conflict rate to zero; automated approval routing.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter</span>
+                <span class="tech-chip">Supabase PostgreSQL</span>
+                <span class="tech-chip">TableCalendar</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="7">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="case-card tilt-card" data-category="ai">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>08 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Agritech &amp; Vision AI</span>
+              </div>
+              <h3 class="case-card-title">🌾 Agri-Advisory System</h3>
+              <p class="case-card-desc">
+                Agricultural decision support platform combining soil NPK chemistry evaluation, regional rainfall forecasts, and Gemini Vision crop disease diagnosis.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">Diagnoses plant pathology in 3 seconds; supports vernacular voice assistance.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Python FastAPI</span>
+                <span class="tech-chip">React 18 Vite</span>
+                <span class="tech-chip">Gemini Vision</span>
+                <span class="tech-chip">Scikit-Learn</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="8">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="case-card tilt-card" data-category="mobile">
+            <div class="card-top">
+              <div class="case-number-tag">
+                <span>09 // PRODUCTION SYSTEM</span>
+                <span class="case-domain-pill">Document Automation</span>
+              </div>
+              <h3 class="case-card-title">📄 AI PDF Suite</h3>
+              <p class="case-card-desc">
+                Mobile document automation suite converting unstructured notes into executive briefs with on-device PDF splitting, merging, and compression.
+              </p>
+              <div class="case-impact-box">
+                <span class="impact-label">Business Outcome</span>
+                <span class="impact-text">100% on-device privacy without mandatory cloud upload for legal/internal docs.</span>
+              </div>
+            </div>
+            <div class="card-bottom">
+              <div class="tech-chips">
+                <span class="tech-chip">Flutter 3.x</span>
+                <span class="tech-chip">Hugging Face API</span>
+                <span class="tech-chip">Hive Storage</span>
+              </div>
+              <div class="card-footer-action">
+                <a href="#" class="btn-card-link open-case-modal" data-case-id="9">View Deep Dive &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Interactive ROI & Project Estimator
+         ========================================================================== -->
+    <section class="section" id="estimator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Cost &amp; Velocity Transparency</span>
+          <h2 class="section-title">Calculate Your Development ROI &amp; Timeline</h2>
+          <p class="section-desc">
+            Compare the investment of deploying a battle-tested VALIXIS pod vs recruiting full-time in-house engineers.
+          </p>
+        </div>
+
+        <div class="estimator-wrapper">
+          <div class="estimator-form">
+            <div>
+              <label class="form-group-label">1. Choose Your Project Scope</label>
+              <div class="option-cards-row">
+                <div class="calc-option-card" data-model="portal">
+                  <span class="calc-opt-title">Turnkey Portal</span>
+                  <span class="calc-opt-sub">Booking, CRM, Direct Order</span>
+                </div>
+                <div class="calc-option-card active" data-model="mvp">
+                  <span class="calc-opt-title">Production MVP</span>
+                  <span class="calc-opt-sub">Full Web &amp; Mobile App</span>
+                </div>
+                <div class="calc-option-card" data-model="enterprise">
+                  <span class="calc-opt-title">Enterprise System</span>
+                  <span class="calc-opt-sub">Multi-tenant Cloud + AI</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="slider-labels">
+                <label class="form-group-label">2. Target Sprint Duration</label>
+                <span id="sliderValueDisplay" style="font-family:var(--font-mono); color:var(--accent-cyan); font-weight:700;">6 Weeks Sprint</span>
+              </div>
+              <input type="range" class="custom-range" id="sprintDurationSlider" min="4" max="10" value="6" step="1">
+            </div>
+
+            <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:12px; padding:1.25rem;">
+              <strong style="color:#fff; font-size:0.9rem; display:block; margin-bottom:0.25rem;">Included With Every Sprint:</strong>
+              <p style="font-size:0.825rem; color:var(--text-secondary); line-height:1.5;">
+                &bull; Full intellectual property assignment &amp; GitHub repository handover<br>
+                &bull; Architecture documentation &amp; CI/CD deployment pipelines<br>
+                &bull; 14-day dedicated post-launch bug warranty
+              </p>
+            </div>
+          </div>
+
+          <!-- Estimator Readout Summary Box -->
+          <div class="estimator-result-box">
+            <div>
+              <span style="font-size:0.8rem; font-family:var(--font-mono); color:var(--accent-cyan); text-transform:uppercase;">
+                ESTIMATED SPRINT SUMMARY
+              </span>
+              <div class="result-row" style="margin-top:1rem;">
+                <span class="result-label">Turnaround Time:</span>
+                <span class="result-value result-highlight" id="resTimeline">42 Days Production Launch</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Dedicated Pod Allocation:</span>
+                <span class="result-value" id="resPodAllocation" style="font-size:0.9rem;">5 Dedicated Specialists</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">VALIXIS Investment:</span>
+                <span class="result-value" id="resValixisCost" style="color:var(--text-primary); font-size:1.2rem;">~$13,200 USD</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">In-House Recruitment Cost:</span>
+                <span class="result-value" id="resInHouseCost" style="text-decoration:line-through; color:var(--text-muted);">~$39,000 USD</span>
+              </div>
+              <div class="result-row" style="border-bottom:none;">
+                <span class="result-label">Net Business Savings:</span>
+                <span class="result-value result-savings" id="resSavings">Save ~$25,800 (66% saved)</span>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem;">
+              <a href="https://wa.me/919603416707?text=Hi%20VALIXIS,%20I%20used%20your%20project%20estimator%20and%20would%20like%20to%20reserve%20a%20development%20sprint." target="_blank" class="btn btn-primary" style="width:100%;">
+                <span>Reserve Pod for Your Sprint &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Meet Your 7-Member Dedicated Pod
+         ========================================================================== -->
+    <section class="section" id="pod-team">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Accountability &amp; Structure</span>
+          <h2 class="section-title">Meet Your 7-Member Dedicated Engineering Pod</h2>
+          <p class="section-desc">
+            You don't get handed off to junior freelancers. You work directly with a specialized, tightly-coordinated unit focused on shipping your software.
+          </p>
+        </div>
+
+        <div class="pod-grid">
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">🏛️</div>
+            <h4 class="pod-role-title">Lead System Architect</h4>
+            <div class="pod-role-sub">Backend &amp; Security</div>
+            <p class="pod-role-desc">PostgreSQL RLS security policies, Deno Edge functions, database indexing, and multi-tenant schema isolation.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">📱</div>
+            <h4 class="pod-role-title">Senior Mobile Engineer</h4>
+            <div class="pod-role-sub">Flutter &amp; Native Bridge</div>
+            <p class="pod-role-desc">Cross-platform iOS and Android apps, Riverpod state management, offline-first Hive storage, and HealthKit integrations.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">💻</div>
+            <h4 class="pod-role-title">Full-Stack Web Engineer</h4>
+            <div class="pod-role-sub">Next.js 14 &amp; TypeScript</div>
+            <p class="pod-role-desc">High-performance App Router frontend, Tailwind design systems, Stripe webhooks, and sub-second page loads.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">🤖</div>
+            <h4 class="pod-role-title">AI &amp; Automation Engineer</h4>
+            <div class="pod-role-sub">Gemini 2.5 &amp; Applied ML</div>
+            <p class="pod-role-desc">Grounded LLM workflows, automated vision leaf/document diagnostics, webhook event triggers, and vector search.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">🎨</div>
+            <h4 class="pod-role-title">UI/UX &amp; Design Engineer</h4>
+            <div class="pod-role-sub">Figma &amp; Micro-Interactions</div>
+            <p class="pod-role-desc">Obsidian dark interfaces, intuitive user journeys, accessibility (a11y) standards, and high-conversion client funnels.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">🔍</div>
+            <h4 class="pod-role-title">QA &amp; Reliability Engineer</h4>
+            <div class="pod-role-sub">Testing &amp; CI/CD Telemetry</div>
+            <p class="pod-role-desc">End-to-end regression suites, load testing, edge API monitoring, and cross-browser visual verification.</p>
+          </div>
+
+          <div class="pod-card">
+            <div class="pod-avatar-placeholder">⚙️</div>
+            <h4 class="pod-role-title">DevOps &amp; Cloud Engineer</h4>
+            <div class="pod-role-sub">Infrastructure &amp; Payments</div>
+            <p class="pod-role-desc">Automated GitHub Actions, Razorpay/UPI gateway compliance, rate limiting, and domain routing.</p>
+          </div>
+
+          <!-- Location & Hub Card -->
+          <div class="pod-card pod-summary-card">
+            <div style="font-size:1.8rem; margin-bottom:0.75rem;">📍</div>
+            <h4 class="pod-role-title" style="color:#fff;">Hyderabad &amp; AP Hub</h4>
+            <div class="pod-role-sub" style="color:#34d399;">Hitec City / Madhapur &amp; Guntur</div>
+            <p class="pod-role-desc" style="color:#cbd5e1;">Available for physical face-to-face planning in Hyderabad &amp; timezone-aligned for global partners.</p>
+          </div>
+        </div>
+
+        <!-- Comparison Matrix Table -->
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>In-House Hiring</th>
+                <th>Inexperienced Freelancers</th>
+                <th class="col-valixis">VALIXIS Dedicated Pod</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Time to Start</strong></td>
+                <td>60–90 days recruiting</td>
+                <td>1–2 weeks (high flake risk)</td>
+                <td class="col-valixis">Ready on Day 1</td>
+              </tr>
+              <tr>
+                <td><strong>Cost Structure</strong></td>
+                <td>₹25L–₹40L+ / yr payroll + benefits</td>
+                <td>Unpredictable hourly billing</td>
+                <td class="col-valixis">Fixed milestones with clear ROI</td>
+              </tr>
+              <tr>
+                <td><strong>Engineering Depth</strong></td>
+                <td>Limited to 1–2 individual skills</td>
+                <td>Narrow specialization</td>
+                <td class="col-valixis">Complete 7-role pod (Arch, Web, Mobile, AI, QA)</td>
+              </tr>
+              <tr>
+                <td><strong>Turnaround Guarantee</strong></td>
+                <td>No contractual MVP guarantee</td>
+                <td>Frequent ghosting / delays</td>
+                <td class="col-valixis">MVP in 30–45 Days / Portals in 7–14 Days</td>
+              </tr>
+              <tr>
+                <td><strong>Warranty &amp; Code Handover</strong></td>
+                <td>Employee departure risk</td>
+                <td>Often unmaintained spaghetti code</td>
+                <td class="col-valixis">100% IP transfer + 14-day bug warranty</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Two Engagement Models
+         ========================================================================== -->
+    <section class="section" id="models">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Flexible Partnership</span>
+          <h2 class="section-title">Two Straightforward Ways to Work Together</h2>
+          <p class="section-desc">
+            Whether you are a funded startup building a new venture or an established business modernizing operations.
+          </p>
+        </div>
+
+        <div class="models-grid">
+          <!-- Model A -->
+          <div class="model-card featured">
+            <span class="model-badge">Most Popular for Startups</span>
+            <div>
+              <h3 class="model-title">Model A: Dedicated Dev Pod</h3>
+              <div class="model-for">For Startups, Founders &amp; Digital Agencies</div>
+              <div class="model-timeline">
+                <span>⏱️ MVP Delivery in 30 to 45 Days</span>
+              </div>
+              <ul class="model-features">
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Dedicated Pod:</strong> 4 to 5 engineers (Lead Architect + Full-Stack + Mobile + QA) allocated exclusively to your product.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>60% Cost Advantage:</strong> Eliminates the 3-month hiring cycle and expensive overhead.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Full IP &amp; Code Handover:</strong> 100% intellectual property transfer, clean documentation, and automated deployment scripts.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>14-Day Post-Launch Warranty:</strong> Zero-cost bug fixes and performance tuning after your production deployment.</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://wa.me/919603416707?text=Hi%20VALIXIS,%20I%20am%20interested%20in%20Model%20A%20(Dedicated%20Dev%20Pod)%20for%20my%20startup." target="_blank" class="btn btn-primary" style="width:100%;">
+                <span>Book a Dedicated Pod Sprint &rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Model B -->
+          <div class="model-card">
+            <div>
+              <h3 class="model-title">Model B: Turnkey Portal Build</h3>
+              <div class="model-for">For SMBs, Local Brands &amp; Enterprises</div>
+              <div class="model-timeline">
+                <span>⏱️ Live Under Your Domain in 7 to 14 Days</span>
+              </div>
+              <ul class="model-features">
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Turnkey Delivery:</strong> Custom direct-ordering web app, booking engine, or staff management portal.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Integrated Payments:</strong> Instant integration with Stripe, Razorpay, or UPI with instant automated receipts.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Staff Dashboard:</strong> Simple administrative console for managers with zero technical friction.</span>
+                </li>
+                <li class="model-feature-item">
+                  <span class="feature-check">✓</span>
+                  <span><strong>Walkthrough &amp; Onboarding:</strong> 1-on-1 team training video call and step-by-step operating guide.</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <a href="https://wa.me/919603416707?text=Hi%20VALIXIS,%20I%20am%20interested%20in%20Model%20B%20(Turnkey%20Portal%20Build)%20for%20my%20business." target="_blank" class="btn btn-secondary" style="width:100%;">
+                <span>Launch Your Turnkey Portal &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Direct Action Banner & Contact
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-banner">
+          <span class="section-tag">Let's Build Together</span>
+          <h2 class="section-title" style="margin-bottom:1rem;">Ready to Make Your Business Software 10x Better?</h2>
+          <p class="section-desc" style="max-width:650px; margin:0 auto;">
+            Book a 15-minute intro scoping call or message us directly on WhatsApp. We will evaluate your technical requirements and send a clear milestone roadmap in 24 hours.
+          </p>
+
+          <div class="contact-action-buttons">
+            <a href="https://wa.me/919603416707?text=Hi%20VALIXIS,%20I%20want%20to%20discuss%20building%20software%20for%20my%20business." target="_blank" class="btn btn-whatsapp" style="font-size:1.05rem; padding:0.85rem 1.85rem;">
+              <span>💬 Instant WhatsApp: +91 9603416707</span>
+            </a>
+            <a href="mailto:official.valixis@gmail.com?subject=Software%20Inquiry%20from%20Portfolio" class="btn btn-secondary" style="font-size:1.05rem; padding:0.85rem 1.85rem;">
+              <span>✉️ official.valixis@gmail.com</span>
+            </a>
+          </div>
+
+          <div class="location-badges-row">
+            <div class="loc-badge">
+              <span>🏢</span>
+              <span><strong>Hyderabad:</strong> Hitec City / Madhapur Tech Corridor</span>
+            </div>
+            <div class="loc-badge">
+              <span>📍</span>
+              <span><strong>Andhra Pradesh:</strong> Guntur Hub</span>
+            </div>
+            <div class="loc-badge">
+              <span>⚡</span>
+              <span><strong>Availability:</strong> Immediate Sprint Onboarding</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Footer
+         ========================================================================== -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-copy">
+          &copy; 2026 VALIXIS Engineering Pod. All rights reserved. Registered in India.
+        </div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/VALIXIS/company-docs" target="_blank" class="footer-link">GitHub Repository</a></li>
+          <li><a href="#hero" class="footer-link">Back to Top &uarr;</a></li>
+          <li><a href="https://wa.me/919603416707" target="_blank" class="footer-link">Direct WhatsApp</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ==========================================================================
+       Interactive Case Study Deep-Dive Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="caseStudyModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+      <div id="modalContentContainer"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
