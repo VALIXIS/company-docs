@@ -1,9 +1,9 @@
 # VALIXIS — High-Performance Engineering & Product Portfolio
 
 > **High-Performance Web Platforms, Cross-Platform Mobile Applications & Enterprise AI Solutions**  
-> 🏢 *7-Member Dedicated Engineering Pod | Full-Stack, Flutter, Next.js & AI Systems*  
-> 📍 *Hyderabad (Hitec City / Madhapur) & Andhra Pradesh, India*  
-> ✉️ *Contact:* [official.valixis@gmail.com](mailto:official.valixis@gmail.com) | 💬 *WhatsApp:* [+91 9603416707](https://wa.me/919603416707)
+> Dedicated Product Engineering Team | Full-Stack, Flutter, Next.js & AI Systems  
+> 📍 Hyderabad (Hitec City / Madhapur) & Andhra Pradesh, India  
+> ✉️ Contact: [official.valixis@gmail.com](mailto:official.valixis@gmail.com) | WhatsApp: [+91 9603416707](https://wa.me/919603416707)
 
 ---
 
@@ -21,7 +21,7 @@ The live interactive portfolio is hosted directly from this repository via GitHu
 - **"How We Make Your Business Better"**: Clear breakdown of SaaS cost consolidation, 24/7 AI resolution, fast 30-day MVP shipping, and zero vendor lock-in.
 - **9 Production Case Studies**: Interactive domain filtering across Enterprise SaaS, Conversational AI, Telemetry, and Mobile Healthcare with 3D tilt perspective.
 - **Dynamic ROI & Project Estimator**: Real-time comparison calculating turnarounds, in-house hiring costs vs VALIXIS pod investment, and net savings.
-- **7-Member Pod Breakdown**: Transparent role allocation (Lead Architect, Mobile Devs, Full-Stack Devs, AI Engineer, UI/UX, QA, DevOps).
+- **Dedicated Team Breakdown**: Transparent role allocation (Lead Architect, Mobile Devs, Full-Stack Devs, AI Engineer, UI/UX, QA, DevOps).
 
 ---
 
