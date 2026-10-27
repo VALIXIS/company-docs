@@ -24,8 +24,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Three.js for 3D Holographic WebGL Core -->
+  <!-- Three.js for 3D Holographic WebGL Core Fallback -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Spline 3D Interactive Web Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
 
   <style>
     /* ==========================================================================
@@ -462,6 +464,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    spline-viewer {
+      position: absolute;
+      inset: 0;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 2;
+      border-radius: 20px;
+      pointer-events: auto;
     }
 
     #hero-canvas {
@@ -1154,12 +1166,13 @@
           </div>
         </div>
 
-        <!-- Three.js 3D Viewport -->
+        <!-- Interactive 3D Cyber Core Viewport -->
         <div class="hero-3d-viewport">
           <canvas id="hero-canvas"></canvas>
-          <div class="canvas-hud-overlay">
+          <spline-viewer id="spline-hero" url="https://prod.spline.design/siDs0h-5DXEYt1Hf/scene.splinecode"></spline-viewer>
+          <div class="canvas-hud-overlay" style="z-index: 3;">
             <span class="hud-dot"></span>
-            <span>THREE.JS WEBGL CORE &bull; INTERACTIVE 3D</span>
+            <span>SPLINE 3D ENGINE &bull; INTERACTIVE CYBER CORE</span>
           </div>
         </div>
       </div>
@@ -1810,6 +1823,22 @@
         renderer.setSize(container.clientWidth, container.clientHeight);
       });
     })();
+
+    // 5. SPLINE 3D VIEWER WATERMARK CLEANER
+    window.addEventListener('DOMContentLoaded', () => {
+      const viewer = document.getElementById('spline-hero');
+      if (viewer) {
+        viewer.addEventListener('load', () => {
+          try {
+            const shadow = viewer.shadowRoot;
+            if (shadow) {
+              const logo = shadow.querySelector('#logo') || shadow.querySelector('a[href*="spline.design"]');
+              if (logo) logo.style.display = 'none';
+            }
+          } catch (e) {}
+        });
+      }
+    });
   </script>
 </body>
 </html>
