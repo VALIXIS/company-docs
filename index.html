@@ -1778,9 +1778,15 @@
         vGroup.rotation.x = Math.cos(elapsedTime * 0.6) * 0.12;
         vGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.09;
 
-        // Revolving outer neon circles (smooth dual-plane counter-rotation)
-        ring1.rotation.z = -elapsedTime * 0.30;
-        ring2.rotation.y = elapsedTime * 0.22;
+        // Revolving outer neon circles (dynamic 3D gyroscopic counter-orbits)
+        // Blue / Electric Cyan Ring 1: Actively revolving across Y and X planes
+        ring1.rotation.y = -Math.PI / 4 + elapsedTime * 0.32;
+        ring1.rotation.x = -Math.PI / 3 + Math.sin(elapsedTime * 0.5) * 0.22;
+        ring1.rotation.z = -elapsedTime * 0.15;
+
+        // Tech Purple Ring 2: Counter-orbiting across opposing 3D planes
+        ring2.rotation.y = Math.PI / 4 - elapsedTime * 0.26;
+        ring2.rotation.x = Math.PI / 6 + Math.cos(elapsedTime * 0.45) * 0.20;
         ring2.rotation.z = elapsedTime * 0.18;
 
         particles.rotation.y = elapsedTime * 0.04 + mouseX * 0.12;
