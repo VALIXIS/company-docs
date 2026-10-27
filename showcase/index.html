@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIXIS Studio · Premier Cafe Website Showcase & Direct Takeaway Portals</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #070B11;
+      --bg-surface: #0E1522;
+      --bg-surface-elevated: #162032;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --valixis-accent: #38BDF8;
+      --valixis-accent-glow: rgba(56, 189, 248, 0.35);
+      --accent-gold: #F59E0B;
+      --accent-emerald: #10B981;
+      --border-dark: #243044;
+      --current-glow: rgba(245, 158, 11, 0.25);
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Dynamic Aurora Glow that morphs with active cafe */
+    .showcase-aurora {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.8s ease;
+      background: 
+        radial-gradient(circle at 50% 10%, var(--current-glow) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
+      filter: blur(50px);
+    }
+
+    /* Top Toolbar */
+    .top-toolbar {
+      background: rgba(14, 21, 34, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .studio-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #FFF;
+    }
+
+    .valixis-gem {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0284C7, #38BDF8);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: #FFF;
+      box-shadow: 0 0 20px var(--valixis-accent-glow);
+    }
+
+    .studio-brand-text h2 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    .studio-brand-text span {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--valixis-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* Site Switcher Controls */
+    .site-nav-tabs {
+      display: flex;
+      background: rgba(7, 11, 17, 0.85);
+      padding: 5px;
+      border-radius: 35px;
+      border: 1px solid var(--border-dark);
+      gap: 6px;
+    }
+
+    .nav-tab-btn {
+      padding: 9px 22px;
+      border-radius: 26px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--bg-surface-elevated);
+      color: #FFF;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-dark);
+    }
+
+    .nav-tab-btn:hover:not(.active) {
+      color: #FFF;
+    }
+
+    .device-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .device-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-dark);
+      color: var(--text-muted);
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s;
+    }
+
+    .device-btn.active, .device-btn:hover {
+      background: var(--valixis-accent);
+      color: #070B11;
+      border-color: var(--valixis-accent);
+      box-shadow: 0 0 14px var(--valixis-accent-glow);
+    }
+
+    .open-external-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      color: #FFF;
+      padding: 9px 18px;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      transition: all 0.2s;
+    }
+
+    .open-external-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+    }
+
+    /* Live Preview Canvas */
+    .preview-canvas-wrap {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 24px 50px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .client-pitch-banner {
+      max-width: 1320px;
+      width: 100%;
+      background: rgba(22, 32, 50, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 16px 26px;
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .pitch-badges {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .pitch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    .pitch-badge span.check {
+      color: var(--accent-emerald);
+      font-weight: 800;
+    }
+
+    /* Viewport Frame with 3D Tilt */
+    .viewport-container {
+      perspective: 1400px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .viewport-frame {
+      background: #000;
+      border-radius: 18px;
+      border: 3px solid var(--border-dark);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.8);
+      width: 100%;
+      max-width: 1320px;
+      height: 840px;
+      overflow: hidden;
+      transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease;
+      transform-style: preserve-3d;
+    }
+
+    .viewport-frame.tablet {
+      max-width: 768px;
+    }
+
+    .viewport-frame.mobile {
+      max-width: 390px;
+      height: 810px;
+      border-radius: 44px;
+      border-width: 8px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Cards Overview at Bottom */
+    .showcase-cards-row {
+      max-width: 1320px;
+      width: 100%;
+      margin: 44px auto 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 26px;
+    }
+
+    .cafe-meta-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 26px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cafe-meta-card:hover {
+      border-color: var(--valixis-accent);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .cafe-meta-card.selected {
+      border-color: var(--valixis-accent);
+      background: linear-gradient(135deg, #131E30, #17263D);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .card-top h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .rating-pill {
+      background: #422006;
+      border: 1px solid #78350F;
+      color: var(--accent-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+
+    .card-loc {
+      font-size: 0.84rem;
+      color: var(--valixis-accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .card-stats {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-dark);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: #94A3B8;
+    }
+
+    /* Pitch Copy Shortcut Modal / Button */
+    .copy-pitch-btn {
+      background: transparent;
+      border: 1px solid var(--border-dark);
+      color: #E2E8F0;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-pitch-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--valixis-accent);
+      color: var(--valixis-accent);
+    }
+
+    /* Parallax Scroll Distinction & Guide Banner */
+    .parallax-guide-banner {
+      max-width: 1320px;
+      width: 100%;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      padding: 12px 22px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .guide-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .guide-tag {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--valixis-accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .guide-text {
+      font-size: 0.86rem;
+      color: #E2E8F0;
+      line-height: 1.4;
+    }
+
+    .guide-text strong {
+      color: #FFF;
+    }
+
+    .guide-launch-btn {
+      background: linear-gradient(135deg, #0284C7, #0369A1);
+      color: #FFF;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+
+    .guide-launch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+    }
+
+
+    /* Tactile Film Grain Overlay (Editorial Aesthetic) */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Dynamic Island for Mobile Frame */
+    .dynamic-island {
+      display: none;
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 50;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+    }
+
+    .viewport-frame.mobile .dynamic-island {
+      display: flex;
+    }
+
+    .island-camera {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid #222;
+      box-shadow: inset 0 0 4px #000;
+    }
+
+    .island-sensor {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0a0a14;
+    }
+
+    /* Auto-Tour Parallax Button */
+    .guide-tour-btn {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.25));
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: var(--accent-gold);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .guide-tour-btn:hover {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Sound Toggle */
+    .sound-toggle-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-dark);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .sound-toggle-btn.active {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.5);
+      color: var(--accent-emerald);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+    }
+
+    /* Pitch Studio Dialog Styles */
+    dialog#pitchModal {
+      margin: auto;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-surface);
+      color: var(--text-white);
+      border-radius: 18px;
+      padding: 28px;
+      max-width: 680px;
+      width: 90vw;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      opacity: 0;
+      transform: scale(0.95);
+      transition-property: opacity, transform, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#pitchModal[open] {
+      opacity: 1;
+      transform: scale(1);
+
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    dialog#pitchModal::backdrop {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+      transition-property: background-color, backdrop-filter, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-out;
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#pitchModal[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+
+      @starting-style {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+      }
+    }
+
+    .pitch-channel-tabs {
+      display: flex;
+      gap: 8px;
+      margin: 18px 0;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .channel-tab {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-dark);
+      color: var(--text-muted);
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .channel-tab.active {
+      background: var(--valixis-accent);
+      color: #070B11;
+      border-color: var(--valixis-accent);
+      box-shadow: 0 0 12px var(--valixis-accent-glow);
+    }
+
+    .pitch-preview-box {
+      background: #070B11;
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #E2E8F0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 140px;
+      margin-bottom: 20px;
+    }
+
+
+    /* Valixis Profit & Aggregator Fee Eliminator Simulator */
+    .roi-simulator-wrap {
+      max-width: 1320px;
+      width: 100%;
+      margin: 60px auto 40px;
+      background: linear-gradient(135deg, rgba(22, 32, 50, 0.95), rgba(14, 21, 34, 0.98));
+      border: 1.5px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+    }
+
+    .roi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .roi-title-box h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      color: #FFF;
+      line-height: 1.15;
+    }
+
+    .roi-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .roi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .roi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roi-controls {
+      background: rgba(7, 11, 17, 0.7);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .roi-slider-row {
+      margin-bottom: 24px;
+    }
+
+    .slider-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .slider-head strong {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      color: var(--valixis-accent);
+    }
+
+    input[type=range].roi-range {
+      width: 100%;
+      accent-color: var(--valixis-accent);
+      cursor: pointer;
+      height: 7px;
+    }
+
+    .roi-pct-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pct-btn {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-dark);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pct-btn.active {
+      background: var(--valixis-accent);
+      color: #070B11;
+      border-color: var(--valixis-accent);
+      font-weight: 800;
+    }
+
+    .roi-cards-display {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 520px) {
+      .roi-cards-display {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .roi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 22px;
+      position: relative;
+    }
+
+    .roi-card.danger {
+      border-color: rgba(239, 68, 68, 0.4);
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(14, 21, 34, 0.95));
+    }
+
+    .roi-card.success {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(14, 21, 34, 0.95));
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    }
+
+    .roi-card-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .roi-card h4 {
+      font-family: var(--font-mono);
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .roi-card.danger h4 { color: #F87171; }
+    .roi-card.success h4 { color: #34D399; }
+
+    .roi-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* QR Code & Phone Testing Modal */
+    dialog#qrModal {
+      margin: auto;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-surface);
+      color: var(--text-white);
+      border-radius: 18px;
+      padding: 28px;
+      max-width: 440px;
+      width: 90vw;
+      text-align: center;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      opacity: 0;
+      transform: scale(0.95);
+      transition-property: opacity, transform, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#qrModal[open] {
+      opacity: 1;
+      transform: scale(1);
+
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    dialog#qrModal::backdrop {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+      transition-property: background-color, backdrop-filter, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-out;
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#qrModal[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+
+      @starting-style {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+      }
+    }
+
+    .qr-matrix-box {
+      background: #FFF;
+      padding: 20px;
+      border-radius: 14px;
+      margin: 20px auto;
+      width: 220px;
+      height: 220px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 960px) {
+      .top-toolbar {
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px 16px;
+      }
+      .client-pitch-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tactile Film Grain Overlay -->
+  <div class="film-grain"></div>
+
+  <!-- Dynamic Ambient Mesh Aurora -->
+  <div class="showcase-aurora" id="showcaseAurora"></div>
+
+  <!-- Top Toolbar -->
+  <header class="top-toolbar">
+    <a href="#" class="studio-brand">
+      <div class="valixis-gem">V</div>
+      <div class="studio-brand-text">
+        <h2>VALIXIS Technologies</h2>
+        <span>High-Converting Cafe Web Systems</span>
+      </div>
+    </a>
+
+    <!-- Switcher -->
+    <div class="site-nav-tabs">
+      <button class="nav-tab-btn active" onclick="loadSite('novelhotel', this)">
+        <span>🏨 NOVEL Hotel & Rooftop</span>
+      </button>
+      <button class="nav-tab-btn" onclick="loadSite('roastery', this)">
+        <span>🏛️ Roastery Coffee House</span>
+      </button>
+      <button class="nav-tab-btn" onclick="loadSite('subko', this)">
+        <span>📦 Subko Coffee & Bakehouse</span>
+      </button>
+      <button class="nav-tab-btn" onclick="loadSite('bluetokai', this)">
+        <span>🦚 Blue Tokai Roasters</span>
+      </button>
+    </div>
+
+    <!-- Controls -->
+    <div class="device-controls">
+      <button class="device-btn active" onclick="setDevice('desktop', this)" title="Desktop View">🖥️</button>
+      <button class="device-btn" onclick="setDevice('tablet', this)" title="Tablet View">📱</button>
+      <button class="device-btn" onclick="setDevice('mobile', this)" title="Mobile View">📲</button>
+      <button class="sound-toggle-btn" id="soundToggleBtn" onclick="toggleAudio()" title="Sound Effects">🔊 Audio FX</button>
+      <button class="sound-toggle-btn" onclick="openQrModal()" title="Scan on Phone">📱 Scan QR</button>
+      <button class="copy-pitch-btn" onclick="openPitchStudio()">📋 Pitch Studio</button>
+      <a id="externalLink" href="novel-hotel/index.html" target="_blank" class="open-external-btn">
+        <span>Open Tab ↗</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Live Canvas -->
+  <main class="preview-canvas-wrap">
+    <div class="client-pitch-banner">
+      <div class="pitch-badges">
+        <div class="pitch-badge">
+          <span class="check">✓</span>
+          <span>1-Click UPI Direct Checkout (Zero Platform Commission)</span>
+        </div>
+        <div class="pitch-badge">
+          <span class="check">✓</span>
+          <span>3D Interactive Models & Motion Effects</span>
+        </div>
+        <div class="pitch-badge">
+          <span class="check">✓</span>
+          <span>Instagram Story Reels & Awwwards-Grade Gradients</span>
+        </div>
+      </div>
+      <div>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--valixis-accent); font-weight: 800;">
+          LIVE CLIENT DEMO ACTIVE
+        </span>
+      </div>
+    </div>
+
+    <!-- Parallax Scroll Distinction & Guide Banner -->
+    <div class="parallax-guide-banner">
+      <div class="guide-left">
+        <span class="guide-tag">⚡ 3D Parallax Scrolling Active</span>
+        <span class="guide-text">
+          <strong>Notice</strong>: The top auto-sliding headline strip is a continuous brand marquee. 
+          <strong>Parallax depth</strong> happens as you scroll down: watch the giant background watermarks, 3D tilted photo cards, and floating stamps glide across the screen at multiple distinct physical speeds!
+        </span>
+      </div>
+      <div class="guide-actions" style="display:flex; gap:10px; align-items:center;">
+        <button class="guide-tour-btn" onclick="tourParallax()">✨ Auto-Tour Parallax</button>
+        <a id="guideOpenTabBtn" href="roastery-coffee-house/index.html" target="_blank" class="guide-launch-btn">
+          🚀 Open Standalone in New Tab ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Viewport Container with 3D Frame -->
+    <div class="viewport-container">
+      <div class="viewport-frame" id="viewportFrame">
+        <div class="dynamic-island" id="dynamicIsland">
+          <span class="island-camera"></span>
+          <span class="island-sensor"></span>
+        </div>
+        <iframe id="previewIframe" src="novel-hotel/index.html"></iframe>
+      </div>
+    </div>
+
+    <!-- 3 Venues Cards Overview -->
+    <section class="showcase-cards-row">
+      <div class="cafe-meta-card selected" id="card-roastery" onclick="loadSite('roastery', document.querySelectorAll('.nav-tab-btn')[0])">
+        <div class="card-top">
+          <h3>Roastery Coffee House</h3>
+          <span class="rating-pill">4.5 ★ · 15K+ Reviews</span>
+        </div>
+        <div class="card-loc">Road 14, Banjara Hills, Hyderabad</div>
+        <p class="card-desc">
+          Colonial heritage bungalow villa with slow brew bar, 3D ambient particle canvas, courtyard table reservation modal, and 20% discount direct takeaway cart with live UPI.
+        </p>
+        <div class="card-stats">
+          <span>Phone: +91 72078 79056</span>
+          <span>Est. 2017 · 84+ SCA</span>
+        </div>
+      </div>
+
+      <div class="cafe-meta-card" id="card-subko" onclick="loadSite('subko', document.querySelectorAll('.nav-tab-btn')[1])">
+        <div class="card-top">
+          <h3>Subko Specialty Coffee</h3>
+          <span class="rating-pill">4.5 ★ · 4.5K+ Reviews</span>
+        </div>
+        <div class="card-loc">Ranwar Village, Bandra West, Mumbai</div>
+        <p class="card-desc">
+          Tri-script typography (`SUBKO` · `सबको` · `سبکو`), 3D archival whole-bean box model, Instagram stories highlights reel, and curbside pickup ordering with KOT generator.
+        </p>
+        <div class="card-stats">
+          <span>Phone: +91 91360 11989</span>
+          <span>Mary Lodge · Ranwar</span>
+        </div>
+      </div>
+
+      <div class="cafe-meta-card" id="card-bluetokai" onclick="loadSite('bluetokai', document.querySelectorAll('.nav-tab-btn')[2])">
+        <div class="card-top">
+          <h3>Blue Tokai Coffee Roasters</h3>
+          <span class="rating-pill">4.4 ★ · 2.8K+ Reviews</span>
+        </div>
+        <div class="card-loc">Pali Naka, Bandra West, Mumbai</div>
+        <p class="card-desc">
+          Peacock plume heritage branding, aurora wave gradients, interactive roast level slider (Light/Medium/Dark), live barista companion timer with chimes, and express Pali Naka takeaway.
+        </p>
+        <div class="card-stats">
+          <span>Phone: +91 98200 83337</span>
+          <span>Pali Naka Flagship</span>
+        </div>
+      </div>
+
+      <div class="cafe-meta-card" id="card-novelhotel" onclick="loadSite('novelhotel', document.querySelectorAll('.nav-tab-btn')[3])">
+        <div class="card-top">
+          <h3>NOVEL Hotel · Restaurant & Rooftop</h3>
+          <span class="rating-pill" style="background:rgba(212,175,55,0.2); color:#F5DE94; border:1px solid rgba(212,175,55,0.4);">4.7 ★ · 2.8K+ Reviews</span>
+        </div>
+        <div class="card-loc">Chandramouli Nagar, Lakshmipuram, Guntur</div>
+        <p class="card-desc">
+          Boutique luxury hotel, iconic open-terrace rooftop dining, legendary Chicken Potlam Biryani, 300-guest grand banquet calculator, and direct WhatsApp room bookings saving 20% OTA commissions.
+        </p>
+        <div class="card-stats">
+          <span>Phone: +91 92811 66835</span>
+          <span>#1 Rated in Guntur</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valixis Aggregator Fee Eliminator & ROI Simulator -->
+    <section class="roi-simulator-wrap">
+      <div class="roi-header">
+        <div class="roi-title-box">
+          <span class="roi-tag">💰 Commercial Revenue Engine</span>
+          <h3>Swiggy/Zomato Fee Eliminator & Profit Simulator</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 6px;">
+            Calculate how much annual net revenue Valixis restores to your cafe by moving regulars to your direct web portal.
+          </p>
+        </div>
+        <div>
+          <button class="open-external-btn" onclick="openPitchStudio()" style="border: none; cursor: pointer; padding: 12px 24px;">
+            🚀 Pitch This ROI to Cafe Founders
+          </button>
+        </div>
+      </div>
+
+      <div class="roi-grid">
+        <div class="roi-controls">
+          <div class="roi-slider-row">
+            <div class="slider-head">
+              <span>Monthly Delivery / Takeaway Volume:</span>
+              <strong id="turnoverDisplay">₹15,00,000</strong>
+            </div>
+            <input type="range" class="roi-range" id="turnoverSlider" min="200000" max="5000000" step="50000" value="1500000" oninput="updateRoiCalc()">
+            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono); margin-top:6px;">
+              <span>₹2 Lakhs</span>
+              <span>₹25 Lakhs</span>
+              <span>₹50 Lakhs</span>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;">
+              Aggregator Commission Cut Rate:
+            </label>
+            <div class="roi-pct-buttons">
+              <button class="pct-btn" onclick="setRoiPct(0.22, this)">22% Standard</button>
+              <button class="pct-btn active" onclick="setRoiPct(0.25, this)">25% Average</button>
+              <button class="pct-btn" onclick="setRoiPct(0.28, this)">28% Premium</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi-cards-display">
+          <div class="roi-card danger">
+            <span class="roi-card-tag">Monthly Aggregator Drain</span>
+            <h4 id="monthlyLossDisplay">-₹3,75,000</h4>
+            <p>Lost to third-party delivery apps every 30 days on commissions & listing fees.</p>
+          </div>
+
+          <div class="roi-card danger">
+            <span class="roi-card-tag">Annual Revenue Drain</span>
+            <h4 id="annualLossDisplay">-₹45,00,000</h4>
+            <p>Capital leaving the cafe's bank account every single year.</p>
+          </div>
+
+          <div class="roi-card success">
+            <span class="roi-card-tag">Profit Restored with Valixis</span>
+            <h4 id="monthlySavedDisplay">+₹3,37,500</h4>
+            <p>Direct UPI settlements credited instantly into the cafe's current account.</p>
+          </div>
+
+          <div class="roi-card success">
+            <span class="roi-card-tag">Annual Profit Retained</span>
+            <h4 id="annualSavedDisplay">+₹40,50,000</h4>
+            <p>100% owned customer database, phone numbers, and zero middleman dependency.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const sites = {
+      roastery: {
+        url: "roastery-coffee-house/index.html",
+        glow: "rgba(245, 158, 11, 0.28)",
+        pitch: "Hi Roastery Coffee House team, love your heritage space on Road 14! I run VALIXIS Technologies. We built a custom 1-click UPI direct takeaway ordering portal for your cafe that saves 20-25% delivery commission fees. Could I send a quick 60-second preview?"
+      },
+      subko: {
+        url: "subko-coffee/index.html",
+        glow: "rgba(161, 56, 32, 0.32)",
+        pitch: "Hi Subko team, huge fan of Mary Lodge and your craft bakehouse! I’m Subhash from VALIXIS. We built a bespoke direct bean box subscription builder & curbside takeaway portal for Subko saving delivery platform fees. Would love to share a 60-second interactive preview!"
+      },
+      bluetokai: {
+        url: "blue-tokai/index.html",
+        glow: "rgba(2, 195, 154, 0.3)",
+        pitch: "Hi Blue Tokai Bandra team, love your roast consistency at Pali Naka! I’m Subhash from VALIXIS. We built an express morning commute coffee pickup ordering web app with instant UPI checkout so regulars can skip the morning line. Open to checking out a 60-second demo?"
+      },
+      novelhotel: {
+        url: "novel-hotel/index.html",
+        glow: "rgba(212, 175, 55, 0.35)",
+        pitch: "Hi Novel Hotel team! I'm Subhash from Valixis. We noticed you have 2,880+ 5-star reviews on Google as Guntur's #1 hotel & biryani destination, but your website novelhotel.in is missing a direct booking engine. We built a bespoke direct reservation portal for your suites, rooftop tables, and 300-pax banquet that saves 18-22% OTA commissions. Open to checking out a 60-second demo?"
+      }
+    };
+
+    let currentSite = "novelhotel";
+
+    function loadSite(key, tabEl) {
+      currentSite = key;
+      const iframe = document.getElementById('previewIframe');
+      const extLink = document.getElementById('externalLink');
+      const guideBtn = document.getElementById('guideOpenTabBtn');
+      const aurora = document.getElementById('showcaseAurora');
+
+      iframe.src = sites[key].url;
+      extLink.href = sites[key].url;
+      if (guideBtn) guideBtn.href = sites[key].url;
+      aurora.style.setProperty('--current-glow', sites[key].glow);
+
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (tabEl) tabEl.classList.add('active');
+
+      document.querySelectorAll('.cafe-meta-card').forEach(c => c.classList.remove('selected'));
+      const card = document.getElementById(`card-${key}`);
+      if (card) card.classList.add('selected');
+    }
+
+    function setDevice(device, btnEl) {
+      const frame = document.getElementById('viewportFrame');
+      document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      frame.className = "viewport-frame";
+      if (device === 'tablet') {
+        frame.classList.add('tablet');
+      } else if (device === 'mobile') {
+        frame.classList.add('mobile');
+      }
+    }
+
+    function copyClientPitch() {
+      const text = sites[currentSite].pitch;
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`📋 Copied Pitch Hook for ${currentSite.toUpperCase()} to Clipboard!\n\n"${text}"\n\nReady to paste into WhatsApp, Instagram DM, or Threads!`);
+      });
+    }
+
+    // Web Audio Synthesizer (Micro-Haptic Feedback)
+    let audioCtx = null;
+    let soundEnabled = false;
+
+    function toggleAudio() {
+      soundEnabled = !soundEnabled;
+      const btn = document.getElementById('soundToggleBtn');
+      if (soundEnabled) {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        btn.innerHTML = '🔊 Sound ON';
+        btn.classList.add('active');
+        playClickSound(800, 0.04);
+      } else {
+        btn.innerHTML = '🔇 Sound OFF';
+        btn.classList.remove('active');
+      }
+    }
+
+    function playClickSound(freq = 600, duration = 0.04) {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    // Auto-Tour Parallax: Smoothly glides the iframe view down and up
+    function tourParallax() {
+      playClickSound(520, 0.05);
+      const iframe = document.getElementById('previewIframe');
+      if (!iframe || !iframe.contentWindow) return;
+      const win = iframe.contentWindow;
+      let start = null;
+      const initial = win.scrollY;
+      const target = 580;
+      const duration = 2400;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = Math.sin(progress * Math.PI);
+        win.scrollTo(0, initial + (target * ease));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    // Channel Templates
+    const pitchTemplates = {
+      roastery: {
+        name: "Roastery Coffee House",
+        whatsapp: "Hey Roastery team! ☕ Subhash here from Valixis Technologies. We love what you've built at the Banjara Hills heritage bungalow. We designed a custom 1-click UPI direct takeaway ordering portal for Roastery that saves you 20-25% aggregator commission fees on every order. Here's a 60-second interactive preview: https://valixis.tech/showcase/roastery-coffee-house/ — open to chatting?",
+        instagram: "Hey guys! Absolutely love the courtyard vibe at Road 14 Banjara Hills. I'm Subhash from Valixis. We built a bespoke interactive takeaway & table booking web system for Roastery that cuts out food aggregator fees entirely with direct UPI payments. Mind if I send a 30-sec video demo?",
+        threads: "Hey! I'm Subhash from Valixis. We build high-speed direct takeaway portals and 3D web systems for India's best specialty coffee roasters. Check out what we designed for Roastery Coffee House to eliminate 25% aggregator cuts. Shoot me a DM to collaborate! 🚀",
+        email: "Subject: Direct Takeaway & UPI Ordering System for Roastery Coffee House (Zero Aggregator Fees)\n\nHi Roastery Team,\n\nI'm Subhash, Founder at Valixis Technologies. We are huge fans of your single-origin roasts and the vintage bungalow experience at Banjara Hills.\n\nWith third-party delivery platforms taking 22-28% off every customer bill, we built a bespoke direct web ordering portal for Roastery with 1-click UPI checkout that pays directly to your bank account with zero commission cuts.\n\nWe also integrated an interactive slow brew calculator and heritage table reservation flow.\n\nWould you be open to a quick 5-minute preview this week?\n\nBest,\nSubhash\nValixis Technologies"
+      },
+      subko: {
+        name: "Subko Specialty Coffee",
+        whatsapp: "Hey Subko team! 🥐 Subhash here from Valixis. Huge fan of Mary Lodge and your 72-hour sourdough bakes! We designed a bespoke Bean Box subscription builder & curbside takeaway app with direct UPI payments to bypass delivery aggregator commissions. Interactive preview here: https://valixis.tech/showcase/subko-coffee/ — open to a quick chat?",
+        instagram: "Hey Subko crew! Huge admirers of your Ranwar Village craft roastery and cacao mill. I'm Subhash from Valixis. We designed an archival bean box customizer and zero-commission curbside takeaway app for Subko. Would love to share a 30-sec demo if you're open!",
+        threads: "Hey! I'm Subhash from Valixis. We specialize in custom web apps and direct ordering systems for craft food & specialty coffee brands. Check out our bespoke build for Subko's Mary Lodge roastery. Let's chat! 🚀",
+        email: "Subject: Direct Bean Box Subscription & Curbside Web Portal for Subko Coffee\n\nHi Subko Team,\n\nI'm Subhash from Valixis Technologies. We're great admirers of your subcontinent-first ethos and the craftsmanship at Mary Lodge, Ranwar Village.\n\nWe noticed many loyal regulars order through third-party aggregators that take 20%+ cuts. We designed a custom direct subscription builder and curbside pickup web portal for Subko with 1-click UPI payments.\n\nWould love to show you a quick 60-second walkthrough if you have a moment this week.\n\nWarm regards,\nSubhash\nValixis Technologies"
+      },
+      bluetokai: {
+        name: "Blue Tokai Coffee Roasters",
+        whatsapp: "Hey Blue Tokai team! 🦚 Subhash here from Valixis. Love your Pali Naka cafe in Bandra! We built an express morning commute coffee pickup ordering web app with instant UPI checkout so your regulars can skip the morning line without you losing 25% to delivery apps. Check the live demo: https://valixis.tech/showcase/blue-tokai/ — let's connect!",
+        instagram: "Hey Blue Tokai! Loving the roast profiles at Pali Naka. I'm Subhash from Valixis. We built an express commute coffee ordering portal for Blue Tokai regulars with live barista brew timers and direct UPI checkout. Would love to share a quick preview!",
+        threads: "Hey! I'm Subhash from Valixis. We engineer ultra-fast web ordering portals and interactive digital systems for top specialty coffee roasters. Check out our high-converting web app built for Blue Tokai's morning commute. Shoot me a DM! 🚀",
+        email: "Subject: Express Morning Commute Ordering Portal for Blue Tokai Pali Naka\n\nHi Blue Tokai Team,\n\nI'm Subhash, Founder of Valixis Technologies. We love your estate coffees and the energy at your Pali Naka roastery.\n\nTo help commuters grab their morning brew without queue delays or paying third-party aggregator markups, we designed an express web pickup portal with instant UPI payment and interactive brew companion timers.\n\nCould I share a 60-second interactive preview with your digital team?\n\nBest,\nSubhash\nValixis Technologies"
+      },
+      novelhotel: {
+        name: "NOVEL Hotel & Rooftop Guntur",
+        whatsapp: "Hey Novel Hotel team! 🏨 Subhash here from Valixis. Huge fan of your rooftop dining and iconic Chicken Potlam Biryani in Chandramouli Nagar! We noticed you have 2,880+ 5-star reviews on Google, but lose 18-22% commissions on MakeMyTrip/Goibibo. We designed a bespoke direct suite reservation & rooftop table booking portal for Novel Hotel with zero OTA commissions: https://valixis.tech/showcase/novel-hotel/ — would love to show you a quick 60-sec preview!",
+        instagram: "Hey Novel Hotel crew! Loving your rooftop open terrace and Guntur's legendary Potlam Biryani. I'm Subhash from Valixis. We built a direct hotel booking and banquet inquiry portal for Novel Hotel that routes reservations straight to WhatsApp and cuts out OTA commissions. Would love to share a 30-sec demo if you're open!",
+        threads: "Hey! I'm Subhash from Valixis. We build high-converting direct booking portals and revenue systems for boutique luxury hotels and iconic rooftop restaurants. Check out what we built for NOVEL Hotel in Guntur to eliminate 20% OTA aggregator cuts. Shoot me a DM! 🚀",
+        email: "Subject: Direct Room & Rooftop Booking Portal for NOVEL Hotel Guntur (Zero OTA Commissions)\n\nHi Novel Hotel Management Team,\n\nI'm Subhash, Founder at Valixis Technologies. We are huge admirers of your boutique hospitality and legendary rooftop dining in Chandramouli Nagar.\n\nWith 2,883 Google reviews (4.7 ★), you are easily Guntur's top-rated hotel. However, every guest booking via MakeMyTrip or Goibibo costs you 18%–22% in commission markups.\n\nWe built a bespoke direct reservation portal for Novel Hotel featuring:\n1. 1-Click Direct Suite & Room Reservation via WhatsApp (saving ~₹800/booking)\n2. Rooftop Open Terrace Table Booking with live music & screen indicators\n3. 300-Pax Banquet Hall Budget & Date Lock Calculator\n\nCould I share a 60-second interactive preview with your General Manager this week?\n\nBest regards,\nSubhash\nValixis Technologies"
+      }
+    };
+
+    let activePitchChannel = 'whatsapp';
+
+    function openPitchStudio() {
+      playClickSound(700, 0.03);
+      const modal = document.getElementById('pitchModal');
+      document.getElementById('modalCafeTarget').innerText = pitchTemplates[currentSite].name;
+      updatePitchPreview();
+      modal.showModal();
+    }
+
+    function closePitchStudio() {
+      playClickSound(400, 0.03);
+      document.getElementById('pitchModal').close();
+    }
+
+    function selectPitchChannel(ch, btnEl) {
+      playClickSound(650, 0.02);
+      activePitchChannel = ch;
+      document.querySelectorAll('.channel-tab').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      updatePitchPreview();
+    }
+
+    function updatePitchPreview() {
+      const box = document.getElementById('pitchPreviewBox');
+      const text = pitchTemplates[currentSite][activePitchChannel];
+      box.innerText = text;
+    }
+
+    function copyActivePitch() {
+      const text = pitchTemplates[currentSite][activePitchChannel];
+      navigator.clipboard.writeText(text).then(() => {
+        playClickSound(950, 0.05);
+        const toast = document.getElementById('pitchToast');
+        toast.style.opacity = '1';
+        setTimeout(() => toast.style.opacity = '0', 2500);
+      });
+    }
+
+    // Modern Web Guidance Dialog Fallback
+    const pModal = document.getElementById('pitchModal');
+    if (pModal && !('closedBy' in HTMLDialogElement.prototype)) {
+      pModal.addEventListener('click', (event) => {
+        if (event.target !== pModal) return;
+        const rect = pModal.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) pModal.close();
+      });
+    }
+
+
+    // Commercial ROI Calculator Logic
+    let currentCommissionRate = 0.25;
+
+    function setRoiPct(rate, btnEl) {
+      playClickSound(620, 0.03);
+      currentCommissionRate = rate;
+      document.querySelectorAll('.pct-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      updateRoiCalc();
+    }
+
+    function updateRoiCalc() {
+      const turnover = parseInt(document.getElementById('turnoverSlider').value, 10);
+      const monthlyLoss = Math.round(turnover * currentCommissionRate);
+      const annualLoss = monthlyLoss * 12;
+      const monthlySaved = Math.round(monthlyLoss * 0.90); // 90% direct migration assumption
+      const annualSaved = monthlySaved * 12;
+
+      document.getElementById('turnoverDisplay').innerText = `₹${turnover.toLocaleString('en-IN')}`;
+      document.getElementById('monthlyLossDisplay').innerText = `-₹${monthlyLoss.toLocaleString('en-IN')}`;
+      document.getElementById('annualLossDisplay').innerText = `-₹${annualLoss.toLocaleString('en-IN')}`;
+      document.getElementById('monthlySavedDisplay').innerText = `+₹${monthlySaved.toLocaleString('en-IN')}`;
+      document.getElementById('annualSavedDisplay').innerText = `+₹${annualSaved.toLocaleString('en-IN')}`;
+    }
+
+    // QR Modal logic
+    function openQrModal() {
+      playClickSound(750, 0.03);
+      const modal = document.getElementById('qrModal');
+      document.getElementById('qrTargetUrl').innerText = `https://valixis.tech/showcase/${sites[currentSite].url}`;
+      modal.showModal();
+    }
+
+    function closeQrModal() {
+      playClickSound(400, 0.03);
+      document.getElementById('qrModal').close();
+    }
+
+    // Light dismiss for QR modal
+    const qModal = document.getElementById('qrModal');
+    if (qModal && !('closedBy' in HTMLDialogElement.prototype)) {
+      qModal.addEventListener('click', (event) => {
+        if (event.target !== qModal) return;
+        const rect = qModal.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) qModal.close();
+      });
+    }
+
+    // Initialize ROI Calculator
+    updateRoiCalc();
+
+  </script>
+
+  <!-- Pitch Studio Modal per Modern Web Guidance -->
+  <dialog id="pitchModal" closedby="any" aria-labelledby="pitchModalTitle">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <h3 id="pitchModalTitle" style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: #FFF;">
+        VALIXIS Client Outreach Studio
+      </h3>
+      <button onclick="closePitchStudio()" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 4px 8px;">&times;</button>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-muted);">
+      Tailored outreach copy for <strong id="modalCafeTarget" style="color: var(--valixis-accent);">Roastery Coffee House</strong>. 1-click formatted for your outreach channel:
+    </p>
+
+    <div class="pitch-channel-tabs">
+      <button class="channel-tab active" onclick="selectPitchChannel('whatsapp', this)">💬 WhatsApp</button>
+      <button class="channel-tab" onclick="selectPitchChannel('instagram', this)">📸 Instagram DM</button>
+      <button class="channel-tab" onclick="selectPitchChannel('threads', this)">🧵 Threads / X</button>
+      <button class="channel-tab" onclick="selectPitchChannel('email', this)">✉️ Cold Email</button>
+    </div>
+
+    <div class="pitch-preview-box" id="pitchPreviewBox">Loading hook...</div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span id="pitchToast" style="font-size: 0.82rem; font-weight: 700; color: var(--accent-emerald); opacity: 0; transition: opacity 0.3s;">
+        ✓ Copied to Clipboard!
+      </span>
+      <button onclick="copyActivePitch()" class="open-external-btn" style="border: none; cursor: pointer; padding: 10px 22px;">
+        📋 Copy Hook to Clipboard
+      </button>
+    </div>
+  </dialog>
+
+
+  <!-- QR Modal for Live Mobile Testing -->
+  <dialog id="qrModal" closedby="any" aria-labelledby="qrModalTitle">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <h3 id="qrModalTitle" style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: #FFF;">
+        Live Mobile Device Testing
+      </h3>
+      <button onclick="closeQrModal()" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; padding: 4px 8px;">&times;</button>
+    </div>
+    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+      Point your iPhone or Android camera at this QR code to test the live standalone website on your actual mobile screen:
+    </p>
+
+    <div class="qr-matrix-box">
+      <svg viewBox="0 0 100 100" width="180" height="180" fill="#0A192F">
+        <rect x="5" y="5" width="25" height="25"/>
+        <rect x="9" y="9" width="17" height="17" fill="#FFF"/>
+        <rect x="13" y="13" width="9" height="9"/>
+        <rect x="70" y="5" width="25" height="25"/>
+        <rect x="74" y="9" width="17" height="17" fill="#FFF"/>
+        <rect x="78" y="13" width="9" height="9"/>
+        <rect x="5" y="70" width="25" height="25"/>
+        <rect x="9" y="74" width="17" height="17" fill="#FFF"/>
+        <rect x="13" y="78" width="9" height="9"/>
+        <rect x="36" y="12" width="14" height="14"/>
+        <rect x="14" y="38" width="18" height="18"/>
+        <rect x="38" y="38" width="24" height="24"/>
+        <rect x="70" y="38" width="18" height="12"/>
+        <rect x="72" y="58" width="20" height="20"/>
+        <rect x="42" y="70" width="14" height="18"/>
+      </svg>
+    </div>
+
+    <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--valixis-accent); font-weight: 700;" id="qrTargetUrl">
+      https://valixis.tech/showcase/
+    </p>
+  </dialog>
+
+</body>
+</html>
