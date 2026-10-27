@@ -244,28 +244,15 @@
       text-decoration: none;
     }
 
-    .brand-logo-img {
-      height: 42px;
+    .brand-lockup-img {
+      height: 38px;
       width: auto;
-      filter: drop-shadow(0 0 14px var(--valixis-cyan-glow));
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: drop-shadow(0 0 14px rgba(0, 217, 255, 0.3));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
     }
-    .brand-header:hover .brand-logo-img {
-      transform: scale(1.06) rotate(-3deg);
-    }
-
-    .brand-title {
-      font-family: var(--font-display);
-      font-size: 1.65rem;
-      font-weight: 900;
-      color: #FFF;
-      letter-spacing: 0.14em;
-    }
-
-    .brand-title span.x-accent {
-      background: var(--brand-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .brand-header:hover .brand-lockup-img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 22px rgba(0, 217, 255, 0.55));
     }
 
     .nav-links {
@@ -1104,9 +1091,8 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
-      <a href="#hero" class="brand-header">
-        <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Logo" class="brand-logo-img">
-        <span class="brand-title">VALI<span class="x-accent">X</span>IS</span>
+      <a href="#hero" class="brand-header" title="VALIXIS Technologies">
+        <img src="assets/valixis-horizontal-lockup.png" alt="VALIXIS" class="brand-lockup-img">
       </a>
 
       <ul class="nav-links">
@@ -1576,9 +1562,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
-        <div class="brand-header">
-          <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Logo" class="brand-logo-img">
-          <span class="brand-title">VALI<span class="x-accent">X</span>IS</span>
+        <div class="brand-header" title="VALIXIS Technologies">
+          <img src="assets/valixis-horizontal-lockup.png" alt="VALIXIS" class="brand-lockup-img" style="height: 40px;">
         </div>
 
         <div class="footer-tagline">
