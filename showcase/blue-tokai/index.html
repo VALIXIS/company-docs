@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Tokai Coffee Roasters · Craft Specialty Roastery · Pali Naka, Bandra West</title>
+  <meta name="description" content="Freshly roasted 100% Indian specialty Arabica coffee. Skip the morning queue with direct express pickup from our Pali Naka cafe in Bandra West, Mumbai.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #06101E;
+      --bg-surface: #0A192F;
+      --bg-card: rgba(13, 29, 53, 0.75);
+      --color-prussian: #0A192F;
+      --color-prussian-light: #162E4A;
+      --color-peacock: #00D2BA;
+      --color-peacock-dark: #00A896;
+      --color-peacock-glow: rgba(0, 210, 186, 0.4);
+      --color-text: #F1F5F9;
+      --color-text-muted: #94A3B8;
+      --color-border: rgba(0, 210, 186, 0.2);
+      --font-display: 'Outfit', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 18px;
+      --radius-lg: 32px;
+      --radius-pill: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-page);
+      color: var(--color-text);
+      font-family: var(--font-body);
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* Scroll progress bar */
+    #btScrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00A896, #00D2BA, #38BDF8);
+      width: 0%;
+      z-index: 1000;
+      box-shadow: 0 0 16px var(--color-peacock-glow);
+    }
+
+    /* Vibrant Glowing Mesh Background Orbs */
+    .aurora-mesh-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.45;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .aurora-orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #00A896 0%, rgba(0, 168, 150, 0) 70%);
+      top: -150px;
+      left: -100px;
+    }
+
+    .aurora-orb-2 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, #0284C7 0%, rgba(2, 132, 199, 0) 70%);
+      top: 30%;
+      right: -150px;
+      animation-duration: 22s;
+    }
+
+    .aurora-orb-3 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #00D2BA 0%, rgba(0, 210, 186, 0) 70%);
+      bottom: -100px;
+      left: 20%;
+      animation-duration: 25s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, 80px) scale(1.15); }
+    }
+
+    /* Giant Parallax Watermark Text */
+    .parallax-watermark {
+      position: absolute;
+      top: 140px;
+      left: 0;
+      width: 250%;
+      font-family: var(--font-display);
+      font-size: clamp(5.5rem, 14vw, 13rem);
+      font-weight: 900;
+      color: rgba(0, 210, 186, 0.07);
+      -webkit-text-stroke: 1.5px rgba(56, 189, 248, 0.32);
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      letter-spacing: -0.02em;
+      will-change: transform;
+      text-shadow: 0 0 35px rgba(0, 210, 186, 0.25);
+    }
+
+    /* 3D Parallax Depth Monitor HUD */
+    .bt-parallax-hud {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(6, 16, 30, 0.94);
+      border: 1.5px solid var(--color-peacock);
+      box-shadow: 0 0 20px rgba(0, 210, 186, 0.35);
+      border-radius: 8px;
+      padding: 10px 16px;
+      z-index: 999;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #E2E8F0;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .hud-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+
+    .hud-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #00D2BA;
+      box-shadow: 0 0 10px #00D2BA;
+      animation: btHudPulse 2s infinite;
+    }
+
+    @keyframes btHudPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .hud-coords {
+      display: flex;
+      gap: 12px;
+      color: #94A3B8;
+      font-size: 0.7rem;
+    }
+
+    .hud-coords span.val {
+      color: var(--color-peacock);
+      font-weight: 700;
+    }
+
+
+    /* Tactile Film Grain Overlay (Editorial Aesthetic) */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.034;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Scroll Entry Reveal Effects */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive Sensory Roast Dial Panel */
+    .sensory-roast-meter {
+      background: rgba(13, 29, 53, 0.75);
+      border: 1px solid rgba(0, 210, 186, 0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0 36px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 860px) {
+      .sensory-roast-meter {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .sensory-col {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sensory-label {
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-peacock);
+      font-weight: 700;
+    }
+
+    .sensory-bar-track {
+      background: rgba(255, 255, 255, 0.08);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sensory-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00D2BA, #38BDF8);
+      border-radius: 4px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sensory-desc {
+      font-size: 0.78rem;
+      color: #94A3B8;
+    }
+
+
+    /* Blue Tokai Pali Naka Live Barista KDS Ticket */
+    dialog#btKdsDialog {
+      margin: auto;
+      border: 1.5px solid var(--color-peacock);
+      background: #06101E;
+      color: #E2E8F0;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 500px;
+      width: 90vw;
+      box-shadow: 0 35px 95px rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      opacity: 0;
+      transform: scale(0.95);
+      transition-property: opacity, transform, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#btKdsDialog[open] {
+      opacity: 1;
+      transform: scale(1);
+
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    dialog#btKdsDialog::backdrop {
+      background-color: rgba(6, 16, 30, 0);
+      backdrop-filter: blur(0px);
+      transition-property: background-color, backdrop-filter, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-out;
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#btKdsDialog[open]::backdrop {
+      background-color: rgba(6, 16, 30, 0.78);
+      backdrop-filter: blur(8px);
+
+      @starting-style {
+        background-color: rgba(6, 16, 30, 0);
+        backdrop-filter: blur(0px);
+      }
+    }
+
+    .commute-pass-section {
+      max-width: 1320px;
+      margin: 40px auto;
+      padding: 0 28px;
+    }
+
+    .commute-pass-box {
+      background: linear-gradient(135deg, rgba(13, 29, 53, 0.9), rgba(6, 16, 30, 0.98));
+      border: 1.5px solid rgba(0, 210, 186, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: 36px;
+      align-items: center;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (max-width: 860px) {
+      .commute-pass-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .commute-stamps-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .commute-slot {
+      aspect-ratio: 1;
+      border: 2px dashed rgba(0, 210, 186, 0.4);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      background: rgba(10, 25, 47, 0.6);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .commute-slot.stamped {
+      background: linear-gradient(135deg, #00D2BA, #0284C7);
+      color: #06101E;
+      border-style: solid;
+      border-color: #00D2BA;
+      box-shadow: 0 0 15px rgba(0, 210, 186, 0.5);
+      transform: scale(1.06);
+    }
+
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    .estate-marquee-wrap:hover .estate-marquee-track {
+      animation-play-state: paused;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .bt-parallax-hud {
+        display: none !important;
+      }
+    }
+
+    /* Top Commute Banner */
+    .commute-banner {
+      background: rgba(6, 16, 30, 0.95);
+      backdrop-filter: blur(10px);
+      color: #FFF;
+      padding: 10px 24px;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 92;
+      border-bottom: 1px solid rgba(0, 210, 186, 0.25);
+    }
+
+    .commute-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-peacock {
+      background: linear-gradient(135deg, #00D2BA, #0284C7);
+      color: #06101E;
+      padding: 3px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      box-shadow: 0 0 15px var(--color-peacock-glow);
+    }
+
+    /* Header Navigation */
+    header.bt-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(6, 16, 30, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 210, 186, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo-combo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #FFF;
+    }
+
+    .peacock-plume-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0A192F, #172A45);
+      display: grid;
+      place-items: center;
+      color: var(--color-peacock);
+      flex-shrink: 0;
+      border: 2px solid var(--color-peacock);
+      box-shadow: 0 0 20px var(--color-peacock-glow);
+      transition: transform 0.4s ease;
+    }
+
+    .brand-logo-combo:hover .peacock-plume-icon {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    .peacock-plume-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-peacock);
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #CBD5E1;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-peacock);
+      box-shadow: 0 0 8px var(--color-peacock);
+      transition: width 0.25s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-peacock);
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-bt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-bt-primary {
+      background: linear-gradient(135deg, #00D2BA, #0284C7);
+      color: #06101E;
+      box-shadow: 0 4px 20px var(--color-peacock-glow);
+    }
+
+    .btn-bt-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 30px var(--color-peacock-glow);
+    }
+
+    .btn-bt-outline {
+      background: rgba(13, 29, 53, 0.6);
+      border: 1.5px solid var(--color-border);
+      color: #FFF;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-bt-outline:hover {
+      background: var(--color-prussian-light);
+      border-color: var(--color-peacock);
+      transform: translateY(-2px);
+    }
+
+    .cart-indicator {
+      background: rgba(13, 29, 53, 0.8);
+      border: 1.5px solid var(--color-border);
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .cart-indicator:hover {
+      border-color: var(--color-peacock);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px var(--color-peacock-glow);
+    }
+
+    .cart-indicator span.count {
+      background: var(--color-peacock);
+      color: #06101E;
+      font-size: 0.75rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-weight: 800;
+    }
+
+    /* Estate Marquee */
+    .estate-marquee-wrap {
+      background: rgba(10, 25, 47, 0.95);
+      border-bottom: 1px solid rgba(0, 210, 186, 0.2);
+      color: #E2E8F0;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 12px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .estate-marquee-track {
+      display: inline-flex;
+      animation: btMarquee 35s linear infinite;
+      gap: 40px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .estate-marquee-track span.peacock-dot {
+      color: var(--color-peacock);
+      text-shadow: 0 0 8px var(--color-peacock);
+    }
+
+    @keyframes btMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Hero Section with Parallax Engine */
+    .hero-bt {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 20px;
+      background: rgba(0, 210, 186, 0.12);
+      border: 1px solid rgba(0, 210, 186, 0.35);
+      border-radius: var(--radius-pill);
+      color: var(--color-peacock);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(0, 210, 186, 0.2);
+    }
+
+    .hero-meta-badge span.pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-peacock);
+      box-shadow: 0 0 10px var(--color-peacock);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #FFF;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span.peacock-word {
+      background: linear-gradient(135deg, #00D2BA 0%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(0, 210, 186, 0.3);
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--color-text-muted);
+      max-width: 530px;
+      margin-bottom: 38px;
+      line-height: 1.7;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      gap: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+    }
+
+    .hero-stat h3 {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .hero-stat p {
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-peacock);
+      margin-top: 4px;
+    }
+
+    /* 3D Visual & Parallax Wrapper */
+    .hero-visual-pane {
+      perspective: 1200px;
+      position: relative;
+    }
+
+    /* Floating Parallax Ornaments */
+    .parallax-floating-bean {
+      position: absolute;
+      top: -30px;
+      right: -20px;
+      background: rgba(13, 29, 53, 0.85);
+      border: 1.5px solid var(--color-peacock);
+      backdrop-filter: blur(14px);
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--color-peacock);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 20;
+      will-change: transform;
+    }
+
+    .hero-display-card-3d {
+      background: linear-gradient(135deg, rgba(23, 42, 69, 0.8), rgba(10, 25, 47, 0.95));
+      border: 2px solid rgba(0, 210, 186, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 210, 186, 0.15);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    /* Image Parallax Container */
+    .parallax-img-viewport {
+      overflow: hidden;
+      border-radius: calc(var(--radius-lg) - 8px);
+      height: 490px;
+      position: relative;
+    }
+
+    .hero-display-card-3d img {
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+
+    /* Floating Badge with Deep Parallax Offset */
+    .floating-card-badge {
+      position: absolute;
+      bottom: -24px;
+      left: 30px;
+      background: rgba(13, 29, 53, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid var(--color-peacock);
+      border-radius: var(--radius-md);
+      padding: 22px 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 210, 186, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transform: translateZ(50px);
+      z-index: 15;
+      will-change: transform;
+    }
+
+    .badge-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 210, 186, 0.15);
+      border: 1.5px solid var(--color-peacock);
+      display: grid;
+      place-items: center;
+      color: var(--color-peacock);
+      font-size: 1.5rem;
+    }
+
+    .badge-text strong {
+      display: block;
+      font-size: 1rem;
+      color: #FFF;
+    }
+
+    .badge-text span {
+      font-size: 0.8rem;
+      color: var(--color-peacock);
+    }
+
+    /* Section Styling */
+    .section-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 100px 28px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 60px;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-peacock);
+      display: block;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(0, 210, 186, 0.4);
+    }
+
+    .main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #FFF;
+      margin-bottom: 18px;
+    }
+
+    .main-sub {
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Interactive Roast Filter */
+    .roast-slider-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .roast-tab {
+      padding: 12px 28px;
+      background: rgba(13, 29, 53, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      color: #CBD5E1;
+    }
+
+    .roast-tab.active, .roast-tab:hover {
+      background: linear-gradient(135deg, #00D2BA, #0284C7);
+      color: #06101E;
+      border-color: transparent;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px var(--color-peacock-glow);
+    }
+
+    .beans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .bean-card {
+      background: rgba(13, 29, 53, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .bean-card:hover {
+      box-shadow: 0 25px 50px rgba(0, 210, 186, 0.2);
+      transform: translateY(-8px);
+      border-color: var(--color-peacock);
+    }
+
+    .bean-card-img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .bean-card:hover .bean-card-img {
+      transform: scale(1.06);
+    }
+
+    .bean-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .bean-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .roast-indicator {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(0, 210, 186, 0.15);
+      border: 1px solid rgba(0, 210, 186, 0.3);
+      color: var(--color-peacock);
+    }
+
+    .estate-alt {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .bean-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #FFF;
+    }
+
+    .bean-flavors {
+      font-size: 0.88rem;
+      color: var(--color-peacock);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .bean-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .bean-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .bean-price {
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    /* Brew Companion & Live Interactive Timer */
+    .brew-guide-section {
+      background: radial-gradient(circle at 75% 25%, #172E4A 0%, #0A192F 60%, #06101E 100%);
+      color: #FFF;
+      border-radius: var(--radius-lg);
+      padding: 90px 52px;
+      margin: 40px auto;
+      max-width: 1320px;
+      border: 1.5px solid rgba(0, 210, 186, 0.3);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brew-guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timer-console {
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(0, 210, 186, 0.4);
+      border-radius: var(--radius-md);
+      padding: 44px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 210, 186, 0.15);
+    }
+
+    .timer-display {
+      font-family: var(--font-mono);
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: var(--color-peacock);
+      margin: 16px 0;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 30px var(--color-peacock-glow);
+    }
+
+    .timer-status-text {
+      font-size: 1rem;
+      color: #94A3B8;
+      margin-bottom: 28px;
+    }
+
+    .timer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* Pali Naka Express Commute Ordering */
+    .express-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .express-item-card {
+      background: rgba(13, 29, 53, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s;
+    }
+
+    .express-item-card:hover {
+      box-shadow: 0 15px 35px rgba(0, 210, 186, 0.2);
+      border-color: var(--color-peacock);
+      transform: translateY(-5px);
+    }
+
+    .express-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .express-item-header h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .express-item-price {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--color-peacock);
+    }
+
+    .express-item-card p {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    /* Location Spotlight */
+    .location-strip {
+      background: rgba(13, 29, 53, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .location-info h3 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 16px;
+    }
+
+    .location-info p {
+      color: var(--color-text-muted);
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    /* Footer */
+    footer.bt-footer {
+      background: #040912;
+      color: #FFF;
+      padding: 90px 28px 40px;
+      border-top: 4px solid var(--color-peacock);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-wrapper {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .footer-desc {
+      color: #94A3B8;
+      font-size: 0.94rem;
+      max-width: 360px;
+      line-height: 1.65;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-peacock);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .footer-col a {
+      color: #CBD5E1;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-peacock);
+    }
+
+    .footer-sub-bar {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: #64748B;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Cart Drawer */
+    .cart-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 16, 30, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .express-cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(450px, 100%);
+      height: 100vh;
+      background: #0A192F;
+      border-left: 2px solid var(--color-peacock);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .express-cart-panel.active {
+      transform: translateX(0);
+    }
+
+    .cart-panel-head {
+      padding: 24px;
+      background: rgba(13, 29, 53, 0.95);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-panel-head h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .cart-items-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-checkout-footer {
+      padding: 24px;
+      border-top: 1px solid var(--color-border);
+      background: #081324;
+    }
+
+    /* Dialog styling */
+    dialog {
+      border: 1.5px solid var(--color-peacock);
+      border-radius: var(--radius-lg);
+      background: #0A192F;
+      color: #FFF;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 210, 186, 0.2);
+      max-width: 520px;
+      width: calc(100% - 32px);
+      margin: auto;
+      padding: 0;
+      outline: none;
+      overflow: hidden;
+    }
+
+    dialog::backdrop {
+      background: rgba(6, 16, 30, 0.8);
+      backdrop-filter: blur(8px);
+    }
+
+    .dialog-head-row {
+      padding: 22px 26px;
+      background: rgba(13, 29, 53, 0.95);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dialog-head-row h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .dialog-body-pad {
+      padding: 28px;
+    }
+
+    .bt-qr-box {
+      width: 170px;
+      height: 170px;
+      margin: 16px auto;
+      background: #FFF;
+      border: 2px solid var(--color-peacock);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      box-shadow: 0 0 25px var(--color-peacock-glow);
+    }
+
+    .bt-qr-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .hero-bt {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+      }
+      .brew-guide-grid, .location-strip {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+      }
+      .footer-wrapper {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tactile Film Grain Overlay -->
+  <div class="film-grain"></div>
+
+  <!-- Scroll Progress -->
+  <div id="btScrollProgress"></div>
+
+  <!-- Vibrant Glowing Aurora Mesh -->
+  <div class="aurora-mesh-container">
+    <div class="aurora-orb aurora-orb-1"></div>
+    <div class="aurora-orb aurora-orb-2"></div>
+    <div class="aurora-orb aurora-orb-3"></div>
+  </div>
+
+  <!-- Giant Parallax Watermark Text -->
+  <div class="parallax-watermark" id="parallaxWatermark">
+    PALI NAKA · BANDRA WEST · BLUE TOKAI COFFEE ROASTERS
+  </div>
+
+  <!-- Top Commute Banner -->
+  <div class="commute-banner">
+    <div class="commute-banner-left">
+      <span class="badge-peacock">Bandra Morning Rush</span>
+      <span>Pali Naka Express Pickup: Order on your phone, walk up & skip the queue.</span>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.76rem;">
+      <span>📍 Pali Naka, Bandra West · 7:00 AM – 11:00 PM</span>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="bt-header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo-combo">
+        <div class="peacock-plume-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Blue Tokai</h1>
+          <span>Coffee Roasters · Bandra</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#roasts">Roast Levels</a></li>
+        <li><a href="#brew-guide">Brew Companion</a></li>
+        <li><a href="#express">Express Takeaway</a></li>
+        <li><a href="#location">Pali Naka Cafe</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-bt btn-bt-primary" onclick="openExpressCart()">Express Pickup</button>
+        <div class="cart-indicator" onclick="openExpressCart()">
+          <span>Cart</span>
+          <span class="count" id="btCartCount">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Estate Ticker Marquee -->
+  <div class="estate-marquee-wrap">
+    <div class="estate-marquee-track">
+      <span>Attikan Estate 1,650 MASL</span>
+      <span class="peacock-dot">✦</span>
+      <span>Seethargundu Biodynamic Reserve</span>
+      <span class="peacock-dot">✦</span>
+      <span>Kalledeverapura Honey Process</span>
+      <span class="peacock-dot">✦</span>
+      <span>Vienna Dark Roast Cocoa</span>
+      <span class="peacock-dot">✦</span>
+      <span>Pali Naka Morning Commute Express Counter</span>
+      <span class="peacock-dot">✦</span>
+      <span>Attikan Estate 1,650 MASL</span>
+      <span class="peacock-dot">✦</span>
+      <span>Seethargundu Biodynamic Reserve</span>
+      <span class="peacock-dot">✦</span>
+      <span>Kalledeverapura Honey Process</span>
+      <span class="peacock-dot">✦</span>
+      <span>Vienna Dark Roast Cocoa</span>
+      <span class="peacock-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- Hero Section with Active Parallax -->
+  <main>
+    <section class="hero-bt">
+      <div class="hero-info" id="parallaxHeroInfo">
+        <div class="hero-meta-badge">
+          <span class="pulse-dot"></span>
+          <span>100% Specialty Arabica · India</span>
+        </div>
+        <h1 class="hero-title">
+          Skip the Bandra Line. Taste <span class="peacock-word">India’s Finest Roasts</span>.
+        </h1>
+        <p class="hero-desc">
+          Sourced directly from India's premier coffee estates in Chikmagalur, Shevaroys, and Biligirirangana Hills. Roasted fresh every week and served at our Pali Naka cafe in Bandra West.
+        </p>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="#express" class="btn-bt btn-bt-primary">Order Morning Takeaway</a>
+          <a href="#roasts" class="btn-bt btn-bt-outline">Explore Roast Profiles</a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hero-stat">
+            <h3>4.4 ★</h3>
+            <p>2,800+ Google Reviews</p>
+          </div>
+          <div class="hero-stat">
+            <h3>100%</h3>
+            <p>Estate Traceable</p>
+          </div>
+          <div class="hero-stat">
+            <h3>3-Min</h3>
+            <p>Express Barista Hand-off</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-pane">
+        <!-- Floating Parallax Badge -->
+        <div class="parallax-floating-bean" id="parallaxPill">
+          ☕ ELEVATION: 1,650M
+        </div>
+
+        <div class="hero-display-card-3d" id="btHeroCard3D">
+          <div class="parallax-img-viewport">
+            <img id="parallaxHeroImg" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Blue Tokai Coffee Roasters specialty espresso bar">
+          </div>
+        </div>
+
+        <div class="floating-card-badge" id="parallaxBadge">
+          <div class="badge-icon-box">☕</div>
+          <div class="badge-text">
+            <strong>Pali Naka Flagship</strong>
+            <span>Express Counter Active · Skip Queue</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Roast Level Explorer -->
+    <section id="roasts" class="section-container">
+      <div class="section-title-wrap">
+        <span class="eyebrow">Estate Crop Transparency</span>
+        <h2 class="main-title">Dial In Your Roast Profile</h2>
+        <p class="main-sub">From bright floral fruit acidity to deep comforting dark chocolate notes.</p>
+      </div>
+
+      <div class="roast-slider-bar">
+        <button class="roast-tab active" onclick="filterRoasts('all', this)">All Roasts</button>
+        <button class="roast-tab" onclick="filterRoasts('Light', this)">Light Roast (Floral / Fruity)</button>
+        <button class="roast-tab" onclick="filterRoasts('Medium', this)">Medium Roast (Balanced / Sweet)</button>
+        <button class="roast-tab" onclick="filterRoasts('Dark', this)">Dark Roast (Bold / Cocoa)</button>
+      </div>
+
+      <!-- Interactive Sensory Profile Radar -->
+      <div class="sensory-roast-meter" id="sensoryRoastMeter">
+        <div class="sensory-col">
+          <span class="sensory-label">Fruit Acidity</span>
+          <div class="sensory-bar-track"><div class="sensory-bar-fill" id="meterAcidity" style="width: 75%;"></div></div>
+          <span class="sensory-desc" id="descAcidity">Crisp Meyer Lemon & Jasmine</span>
+        </div>
+        <div class="sensory-col">
+          <span class="sensory-label">Body & Mouthfeel</span>
+          <div class="sensory-bar-track"><div class="sensory-bar-fill" id="meterBody" style="width: 50%;"></div></div>
+          <span class="sensory-desc" id="descBody">Silky Tea-Like Clarity</span>
+        </div>
+        <div class="sensory-col">
+          <span class="sensory-label">Sweetness Balance</span>
+          <div class="sensory-bar-track"><div class="sensory-bar-fill" id="meterSweetness" style="width: 80%;"></div></div>
+          <span class="sensory-desc" id="descSweetness">Wild Honey & Stone Fruit</span>
+        </div>
+        <div class="sensory-col">
+          <span class="sensory-label">Roast Development</span>
+          <div class="sensory-bar-track"><div class="sensory-bar-fill" id="meterRoast" style="width: 40%;"></div></div>
+          <span class="sensory-desc" id="descRoast">Agtron #68 (Light Specialty)</span>
+        </div>
+      </div>
+
+      <div class="beans-grid" id="beansContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Interactive Brew Guide & Live Companion Timer -->
+    <section id="brew-guide" class="brew-guide-section">
+      <div class="brew-guide-grid">
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--color-peacock); letter-spacing: 0.14em; font-weight: 800;">Barista Precision</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.2rem); font-weight: 900; margin: 12px 0 20px; line-height: 1.1;">
+            Live Pour-Over Companion Timer
+          </h2>
+          <p style="color: #94A3B8; font-size: 1.08rem; line-height: 1.68; margin-bottom: 30px;">
+            Brewing specialty coffee requires precision time and ratio control. Use our interactive timer calibrated to exact Blue Tokai barista brewing recipes.
+          </p>
+
+          <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button class="btn-bt btn-bt-outline" style="color: #FFF; border-color: rgba(0, 210, 186, 0.4);" onclick="selectMethod('v60', 180, 'V60 Pour Over')">V60 (3:00m)</button>
+            <button class="btn-bt btn-bt-outline" style="color: #FFF; border-color: rgba(0, 210, 186, 0.4);" onclick="selectMethod('aeropress', 120, 'AeroPress Inverted')">AeroPress (2:00m)</button>
+            <button class="btn-bt btn-bt-outline" style="color: #FFF; border-color: rgba(0, 210, 186, 0.4);" onclick="selectMethod('frenchpress', 240, 'French Press')">French Press (4:00m)</button>
+          </div>
+        </div>
+
+        <div class="timer-console">
+          <span id="currentMethodName" style="font-family: var(--font-mono); font-size: 0.88rem; color: var(--color-peacock); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800;">V60 Pour Over</span>
+          <div class="timer-display" id="timerClock">03:00</div>
+          <div class="timer-status-text" id="timerStepDesc">Step 1: Bloom with 50g water for 45 seconds</div>
+
+          <div class="timer-buttons">
+            <button class="btn-bt btn-bt-primary" id="timerStartBtn" onclick="toggleTimer()">Start Timer</button>
+            <button class="btn-bt btn-bt-outline" style="color: #FFF; border-color: rgba(0, 210, 186, 0.4);" onclick="resetTimer()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Express Commute Takeaway -->
+    <section id="express" class="section-container">
+      <div class="section-title-wrap">
+        <span class="eyebrow">Skip the Morning Counter Rush</span>
+        <h2 class="main-title">Pali Naka Express Takeaway</h2>
+        <p class="main-sub">Order your favorite cup on your way to the cafe. Direct UPI payment with zero platform fees.</p>
+      </div>
+
+      <div class="express-menu-grid">
+        <div class="express-item-card">
+          <div>
+            <div class="express-item-header">
+              <h4>Iced Latte (Attikan Estate)</h4>
+              <span class="express-item-price">₹260</span>
+            </div>
+            <p>Double espresso pulled from Attikan medium roast over cold farm milk and hand-cracked ice.</p>
+          </div>
+          <button class="btn-bt btn-bt-outline" style="width: 100%;" onclick="addExpressToCart('Iced Latte Attikan Estate', 260)">+ Add to Express Pickup</button>
+        </div>
+
+        <div class="express-item-card">
+          <div>
+            <div class="express-item-header">
+              <h4>Classic Cold Brew on Tap</h4>
+              <span class="express-item-price">₹240</span>
+            </div>
+            <p>Steeped cold for 16 hours. Bold chocolate notes, ultra-smooth with low acidity.</p>
+          </div>
+          <button class="btn-bt btn-bt-outline" style="width: 100%;" onclick="addExpressToCart('Classic Cold Brew on Tap', 240)">+ Add to Express Pickup</button>
+        </div>
+
+        <div class="express-item-card">
+          <div>
+            <div class="express-item-header">
+              <h4>Almond Butter Croissant</h4>
+              <span class="express-item-price">₹280</span>
+            </div>
+            <p>Baked in partnership with Suchali's Artisan Bakehouse with toasted almond frangipane.</p>
+          </div>
+          <button class="btn-bt btn-bt-outline" style="width: 100%;" onclick="addExpressToCart('Almond Butter Croissant', 280)">+ Add to Express Pickup</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Blue Tokai Commute Rewards Digital Pass (Retention Engine) -->
+    <section class="commute-pass-section reveal-on-scroll">
+      <div class="commute-pass-box">
+        <div>
+          <span style="font-size: 0.76rem; font-weight: 800; font-family: var(--font-mono); text-transform: uppercase; color: var(--color-peacock); letter-spacing: 0.12em; display: block; margin-bottom: 8px;">Pali Naka Morning Pass</span>
+          <h3 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 14px; color: #FFF;">
+            Bandra Commuter Digital Pass
+          </h3>
+          <p style="color: #94A3B8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Order your morning pickup directly on your phone and skip the queue. Every 5 estate coffees unlocks your 6th cappuccino, cold brew, or single-origin pour-over free!
+          </p>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <button class="btn-bt btn-bt-primary" onclick="addCommuteStamp()">🦚 Stamp Morning Coffee (+1)</button>
+            <span id="commuteCountText" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--color-peacock);">
+              3 of 6 Stamped
+            </span>
+          </div>
+        </div>
+
+        <div style="background: rgba(10, 25, 47, 0.85); border: 1.5px solid rgba(0, 210, 186, 0.35); border-radius: var(--radius-md); padding: 24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px;">
+            <strong style="font-family: var(--font-display); font-size: 1.1rem; color: #FFF;">BLUE TOKAI PASS</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--color-peacock);">PALI NAKA VIP #BT-709</span>
+          </div>
+
+          <div class="commute-stamps-grid" id="commuteRow">
+            <div class="commute-slot stamped">☕</div>
+            <div class="commute-slot stamped">☕</div>
+            <div class="commute-slot stamped">☕</div>
+            <div class="commute-slot">☕</div>
+            <div class="commute-slot">☕</div>
+            <div class="commute-slot">🎁</div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-family:var(--font-mono); font-weight:700; color:#94A3B8;">
+            <span>Reward: Free Flat White or Cold Brew</span>
+            <span style="color:var(--color-peacock);">Direct Orders Only</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Corporate Espresso Bar Catering Estimator -->
+    <section class="section-container reveal-on-scroll">
+      <div class="section-title-wrap">
+        <span class="eyebrow">Corporate Pop-Ups & Events</span>
+        <h2 class="main-title">Specialty Espresso Bar Hire for Offices & Galas</h2>
+        <p class="main-sub">Bring Blue Tokai's specialty roaster setup, certified baristas, and La Marzocco espresso machines to your corporate office or private gathering.</p>
+      </div>
+
+      <div style="background: rgba(13, 29, 53, 0.75); border: 1px solid rgba(0, 210, 186, 0.3); border-radius: var(--radius-md); padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: center;">
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; color: #CBD5E1;">
+            Expected Attendees: <strong id="btGuestDisplay" style="color: var(--color-peacock); font-family: var(--font-mono); font-size: 1.3rem;">60 Guests</strong>
+          </label>
+          <input type="range" min="20" max="400" step="10" value="60" id="btGuestSlider" oninput="updateBtCateringCalc()" style="width: 100%; accent-color: var(--color-peacock);">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; color: #CBD5E1;">Barista Setup Tier:</label>
+          <select id="btCateringTierSelect" onchange="updateBtCateringCalc()" style="width: 100%; padding: 11px; background: #0A192F; color: #FFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 700;">
+            <option value="espresso" selected>Double-Group Espresso Bar (Hot & Iced Classics)</option>
+            <option value="pourOver">Single Origin Manual Brew Bar (Attikan & Baarbara)</option>
+            <option value="fullSetup">Complete Festival Pop-Up (Espresso + Nitro + Croissant Cart)</option>
+          </select>
+        </div>
+
+        <div style="background: rgba(6, 16, 30, 0.9); border: 1px solid rgba(0, 210, 186, 0.4); border-radius: 10px; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 0.72rem; font-family: var(--font-mono); text-transform: uppercase; font-weight: 800; color: var(--color-peacock); display: block;">Estimated Fee</span>
+            <strong id="btCateringQuoteDisplay" style="font-family: var(--font-mono); font-size: 1.5rem; color: #FFF;">₹24,000</strong>
+          </div>
+          <button class="btn-bt btn-bt-primary" onclick="requestBtCatering()" style="padding: 10px 18px; font-size: 0.8rem;">
+            Inquire via WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Pali Naka Cafe Location Spotlight -->
+    <section id="location" class="section-container" style="padding-top: 20px;">
+      <div class="location-strip">
+        <div class="location-info">
+          <span class="eyebrow">Neighborhood Landmark</span>
+          <h3>Pali Naka, Bandra West</h3>
+          <p>
+            Located right in the bustling heart of Bandra West, our Pali Naka cafe is where Mumbai's specialty coffee community meets every single morning.
+          </p>
+          <p style="font-weight: 700; color: #FFF;">
+            📍 Shop No. 1, Mayflower, 33rd Road, Pali Naka, Bandra West, Mumbai 400050<br>
+            ⏰ Hours: 7:00 AM – 11:00 PM (Monday – Sunday)
+          </p>
+        </div>
+        <div>
+          <button class="btn-bt btn-bt-primary" style="width: 100%; margin-bottom: 14px;" onclick="openExpressCart()">
+            Order Morning Pickup Now
+          </button>
+          <a href="https://instagram.com/bluetokaicoffee" target="_blank" rel="noopener" class="btn-bt btn-bt-outline" style="width: 100%; text-align: center; display: block;">
+            Follow @bluetokaicoffee
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bt-footer">
+    <div class="footer-wrapper">
+      <div>
+        <h4 class="footer-brand-title">BLUE TOKAI COFFEE ROASTERS</h4>
+        <p class="footer-desc">Pioneering 100% Indian specialty coffee roastery with direct farm partnerships across the Western and Eastern Ghats.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Locations</h5>
+        <ul>
+          <li><a href="#">Pali Naka, Bandra West</a></li>
+          <li><a href="#">Khar West Flagship</a></li>
+          <li><a href="#">Versova Beach Cafe</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Direct Orders</h5>
+        <ul>
+          <li><a href="#express">Express Pickup</a></li>
+          <li><a href="#roasts">Roasted Beans</a></li>
+          <li><a href="tel:+919820083337">+91 98200 83337</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://instagram.com/bluetokaicoffee" target="_blank" rel="noopener">@bluetokaicoffee</a></li>
+          <li><a href="#">Brewing Academy</a></li>
+          <li><a href="#">Estate Profiles</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-sub-bar">
+      <span>© 2026 Blue Tokai Coffee Roasters. All rights reserved.</span>
+      <span>Engineered by <strong>VALIXIS Technologies</strong> · 1-Click Takeaway Portal</span>
+    </div>
+  </footer>
+
+  <!-- Express Cart Drawer -->
+  <div class="cart-drawer-backdrop" id="btCartBackdrop" onclick="closeExpressCart()"></div>
+  <aside class="express-cart-panel" id="btCartPanel">
+    <div class="cart-panel-head">
+      <h3>Express Pickup Bag</h3>
+      <button onclick="closeExpressCart()" style="background:none; border:none; color:#FFF; font-size:1.6rem; cursor:pointer;">&times;</button>
+    </div>
+    <div class="cart-items-scroll" id="btCartItemsList">
+      <div style="text-align: center; color: var(--color-text-muted); padding: 40px 0;">
+        Your express bag is empty.
+      </div>
+    </div>
+    <div class="cart-checkout-footer">
+      <div style="display: flex; justify-content: space-between; font-weight: 800; font-size: 1.2rem; margin-bottom: 16px; color: #FFF;">
+        <span>Total Payable:</span>
+        <span id="btCartTotal" style="color: var(--color-peacock);">₹0</span>
+      </div>
+      <button class="btn-bt btn-bt-primary" style="width: 100%;" onclick="openBtUpiDialog()">
+        1-Click UPI Express Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- UPI Checkout Dialog -->
+  <dialog id="btUpiDialog" closedby="any" aria-labelledby="btUpiHead">
+    <div class="dialog-head-row">
+      <h3 id="btUpiHead">Pali Naka Direct UPI Pay</h3>
+      <button onclick="closeBtUpiDialog()" style="background:none; border:none; color:#FFF; font-size:1.5rem; cursor:pointer;">&times;</button>
+    </div>
+    <div class="dialog-body-pad">
+      <div style="text-align: center;">
+        <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 700;">Direct to Blue Tokai Pali Naka Barista Station</span>
+        <h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-peacock); margin: 8px 0;" id="btModalAmount">₹0</h2>
+      </div>
+
+      <div class="bt-qr-box">
+        <svg viewBox="0 0 100 100" fill="#0A192F">
+          <rect x="5" y="5" width="25" height="25"/>
+          <rect x="9" y="9" width="17" height="17" fill="#FFF"/>
+          <rect x="13" y="13" width="9" height="9"/>
+          <rect x="70" y="5" width="25" height="25"/>
+          <rect x="74" y="9" width="17" height="17" fill="#FFF"/>
+          <rect x="78" y="13" width="9" height="9"/>
+          <rect x="5" y="70" width="25" height="25"/>
+          <rect x="9" y="74" width="17" height="17" fill="#FFF"/>
+          <rect x="13" y="78" width="9" height="9"/>
+          <rect x="36" y="14" width="22" height="12"/>
+          <rect x="12" y="38" width="16" height="18"/>
+          <rect x="38" y="38" width="24" height="24"/>
+          <rect x="70" y="40" width="18" height="10"/>
+          <rect x="72" y="60" width="20" height="20"/>
+          <rect x="42" y="72" width="14" height="18"/>
+        </svg>
+      </div>
+
+      <p style="text-align: center; font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; margin-bottom: 18px;">
+        UPI ID: <span style="color: var(--color-peacock);">bluetokaibandra@yesbank</span>
+      </p>
+
+      <div style="margin-bottom: 16px;">
+        <label style="display:block; font-size:0.8rem; font-weight:800; text-transform:uppercase; margin-bottom:6px; color:#CBD5E1;">Pickup Name</label>
+        <input type="text" id="btPickupName" placeholder="Subhash" style="width:100%; padding:12px; background:#0D1D35; color:#FFF; border:1.5px solid var(--color-border); border-radius:var(--radius-sm); font-family:var(--font-body); font-size:0.95rem; font-weight:600;">
+      </div>
+
+      <button class="btn-bt btn-bt-primary" style="width: 100%;" onclick="confirmBtExpressOrder()">
+        Confirm Payment & Dispatch to Barista KOT
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Live Pali Naka Barista Station KDS Ticket Modal -->
+  <dialog id="btKdsDialog" closedby="any" aria-labelledby="btKdsTitle">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: #00D2BA; box-shadow: 0 0 10px #00D2BA;"></span>
+        <strong id="btKdsTitle" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-peacock); letter-spacing: 0.08em; text-transform: uppercase;">
+          LIVE PALI NAKA KDS #01
+        </strong>
+      </div>
+      <button onclick="closeBtKdsModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #FFF;">&times;</button>
+    </div>
+
+    <div style="background: #0D1D35; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 22px; margin: 18px 0; font-family: var(--font-mono);">
+      <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px;">
+        <div>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin: 0; color: #FFF;">BLUE TOKAI COFFEE</h4>
+          <span style="font-size: 0.72rem; color: var(--color-peacock);">Pali Naka Flagship, Bandra West</span>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 0.7rem; color: #94A3B8; display: block;">Token</span>
+          <strong id="btTokenDisplay" style="font-size: 1.3rem; color: var(--color-peacock);">#BT-205</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 0.75rem; font-weight: 800;">
+        <span style="color: #00D2BA;">✓ UPI VERIFIED</span>
+        <span style="color: #38BDF8;">EXPRESS COUNTER (7 MINS)</span>
+      </div>
+
+      <div id="btKdsItemList" style="border-top: 1px dashed rgba(255,255,255,0.15); border-bottom: 1px dashed rgba(255,255,255,0.15); padding: 10px 0; margin: 10px 0; font-size: 0.85rem; color: #E2E8F0;">
+        1 × Iced Cappuccino (Attikan Estate)
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 0.88rem; font-weight: 800; margin-top: 10px; color: #FFF;">
+        <span>Settlement Total</span>
+        <span id="btKdsTotalDisplay">₹260</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+      <a id="btWaOrderBtn" href="#" target="_blank" class="btn-bt btn-bt-primary" style="flex: 1; text-align: center; text-decoration: none; padding: 12px; font-size: 0.85rem; background: #25D366; border-color: #25D366; color: #000; font-weight: 800;">
+        📲 Open Live Order on WhatsApp
+      </a>
+      <button class="btn-bt btn-bt-outline" onclick="closeBtKdsModal()" style="padding: 12px 18px; font-size: 0.85rem; color: #FFF;">
+        Done
+      </button>
+    </div>
+  </dialog>
+
+  <!-- 3D Parallax Depth Monitor HUD -->
+  <div class="bt-parallax-hud" id="btHud">
+    <div class="hud-title"><span class="hud-dot"></span> 3D Parallax Depth Active <button onclick="document.getElementById('btHud').style.display='none'" style="background:none;border:none;color:#94A3B8;cursor:pointer;font-size:11px;margin-left:auto;">✕</button></div>
+    <div class="hud-coords">
+      <div>Scroll: <span class="val" id="btHudScroll">0px</span></div>
+      <div>Watermark X: <span class="val" id="btHudWatermark">0px</span></div>
+      <div>Badge Lift: <span class="val" id="btHudBadge">0px</span></div>
+    </div>
+  </div>
+
+  <!-- Script with Unmistakable Parallax Engine & 3D Tilt -->
+  <script>
+    // Parallax Scroll Engine (60 FPS requestAnimationFrame)
+    const watermark = document.getElementById('parallaxWatermark');
+    const heroImg = document.getElementById('parallaxHeroImg');
+    const heroCard = document.getElementById('btHeroCard3D');
+    const floatingBadge = document.getElementById('parallaxBadge');
+    const floatingPill = document.getElementById('parallaxPill');
+    const progressBar = document.getElementById('btScrollProgress');
+
+    let latestScrollY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      latestScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateParallax(latestScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    function updateParallax(y) {
+      // 1. Reading Progress
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (y / docHeight) * 100;
+      if (progressBar) progressBar.style.width = progress + '%';
+
+      // 2. Giant Watermark horizontal and depth slide
+      if (watermark) {
+        const xOffset = y * -0.55;
+        const yOffset = y * 0.14;
+        watermark.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+        const hudWatermark = document.getElementById('btHudWatermark');
+        if (hudWatermark) hudWatermark.innerText = `${Math.round(xOffset)}px`;
+      }
+
+      // 3. Hero Image Parallax inside frame
+      if (heroImg) {
+        heroImg.style.transform = `translate3d(0, ${y * -0.24}px, 0) scale(1.18)`;
+      }
+
+      // 4. Floating Badge Parallax (moves faster upwards giving true 3D camera depth)
+      if (floatingBadge) {
+        const badgeY = y * -0.42;
+        floatingBadge.style.transform = `translate3d(0, ${badgeY}px, 50px)`;
+        const hudBadge = document.getElementById('btHudBadge');
+        if (hudBadge) hudBadge.innerText = `${Math.round(badgeY)}px`;
+      }
+
+      // 5. Floating Pill Ornament
+      if (floatingPill) {
+        floatingPill.style.transform = `translate3d(0, ${y * 0.28}px, 0) rotate(${y * 0.05}deg)`;
+      }
+
+      const hudScroll = document.getElementById('btHudScroll');
+      if (hudScroll) hudScroll.innerText = `${Math.round(y)}px`;
+    }
+
+    // Interactive 3D Cursor Tilt with Glare
+    if (heroCard) {
+      heroCard.addEventListener('mousemove', (e) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -16;
+        const rotateY = ((x - centerX) / centerX) * 16;
+
+        heroCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+      });
+
+      heroCard.addEventListener('mouseleave', () => {
+        heroCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    }
+
+    // Beans Data
+    const beansData = [
+      {
+        id: 1,
+        name: "Attikan Estate",
+        roast: "Medium",
+        elevation: "1,650 MASL · Biligirirangana Hills",
+        flavors: "Dark Chocolate · Roasted Almond · Fig",
+        desc: "Our most popular single origin. Balanced sweetness with dense body and mild acidity.",
+        price: 490,
+        img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 2,
+        name: "Seethargundu Estate",
+        roast: "Light",
+        elevation: "1,200 MASL · Nelliyampathy, Kerala",
+        flavors: "Peach · Lime Zest · Wild Honey",
+        desc: "Certified biodynamic. Vibrant stone fruit acidity with delicate floral jasmine bouquet.",
+        price: 540,
+        img: "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 3,
+        name: "Vienna Roast",
+        roast: "Dark",
+        elevation: "Multi-Estate Blend · Western Ghats",
+        flavors: "Smoky Cacao · Toasted Walnut · Molasses",
+        desc: "Heavy body, rich crema, bold and intense. Designed for moka pot and espresso drinkers.",
+        price: 470,
+        img: "https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    function renderBeans(items) {
+      const container = document.getElementById('beansContainer');
+      container.innerHTML = items.map(b => `
+        <div class="bean-card">
+          <div style="overflow: hidden;">
+            <img src="${b.img}" alt="${b.name}" class="bean-card-img" loading="lazy">
+          </div>
+          <div class="bean-body">
+            <div>
+              <div class="bean-top-meta">
+                <span class="roast-indicator">${b.roast} Roast</span>
+                <span class="estate-alt">${b.elevation}</span>
+              </div>
+              <h3 class="bean-title">${b.name}</h3>
+              <div class="bean-flavors">${b.flavors}</div>
+              <p class="bean-desc">${b.desc}</p>
+            </div>
+            <div class="bean-card-bottom">
+              <span class="bean-price">₹${b.price}</span>
+              <button class="btn-bt btn-bt-primary" style="padding: 8px 18px; font-size: 0.82rem;" onclick="addExpressToCart('${b.name} (250g)', ${b.price})">
+                + Add Bean Bag
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterRoasts(type, el) {
+      document.querySelectorAll('.roast-tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      if (type === 'all') {
+        renderBeans(beansData);
+      } else {
+        renderBeans(beansData.filter(b => b.roast === type));
+      }
+    }
+
+    // Timer Logic
+    let timerDuration = 180;
+    let timerRemaining = 180;
+    let timerInterval = null;
+    let timerRunning = false;
+
+    function selectMethod(method, seconds, name) {
+      resetTimer();
+      timerDuration = seconds;
+      timerRemaining = seconds;
+      document.getElementById('currentMethodName').innerText = name;
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerRemaining / 60);
+      const secs = timerRemaining % 60;
+      document.getElementById('timerClock').innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timerStartBtn');
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        btn.innerText = "Resume";
+      } else {
+        timerRunning = true;
+        btn.innerText = "Pause";
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            btn.innerText = "Start Timer";
+            alert("🔔 Brew Complete! Pour into preheated ceramic cup and enjoy!");
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      timerRemaining = timerDuration;
+      document.getElementById('timerStartBtn').innerText = "Start Timer";
+      updateTimerDisplay();
+    }
+
+    // Express Bag State
+    let expressCart = [];
+
+    function addExpressToCart(title, price) {
+      const existing = expressCart.find(i => i.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        expressCart.push({ title, price, qty: 1 });
+      }
+      updateExpressUI();
+      openExpressCart();
+    }
+
+    function updateExpressUI() {
+      const countEl = document.getElementById('btCartCount');
+      const listEl = document.getElementById('btCartItemsList');
+      const totalEl = document.getElementById('btCartTotal');
+
+      const count = expressCart.reduce((sum, i) => sum + i.qty, 0);
+      countEl.innerText = count;
+
+      if (expressCart.length === 0) {
+        listEl.innerHTML = `<div style="text-align: center; color: var(--color-text-muted); padding: 40px 0;">Your express bag is empty.</div>`;
+        totalEl.innerText = "₹0";
+        return;
+      }
+
+      listEl.innerHTML = expressCart.map((item, idx) => `
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div>
+            <strong style="display:block; font-size:0.95rem; color:#FFF;">${item.title}</strong>
+            <span style="font-size:0.84rem; color:var(--color-peacock); font-family:var(--font-mono); font-weight:700;">₹${item.price} × ${item.qty}</span>
+          </div>
+          <div>
+            <button onclick="changeBtQty(${idx}, -1)" style="padding:2px 8px; cursor:pointer; background:#162E4A; border:1px solid var(--color-peacock); color:#FFF; border-radius:4px;">−</button>
+            <span style="margin:0 8px; font-weight:800; color:#FFF;">${item.qty}</span>
+            <button onclick="changeBtQty(${idx}, 1)" style="padding:2px 8px; cursor:pointer; background:#162E4A; border:1px solid var(--color-peacock); color:#FFF; border-radius:4px;">+</button>
+          </div>
+        </div>
+      `).join('');
+
+      const total = expressCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      totalEl.innerText = `₹${total}`;
+    }
+
+    function changeBtQty(idx, delta) {
+      expressCart[idx].qty += delta;
+      if (expressCart[idx].qty <= 0) expressCart.splice(idx, 1);
+      updateExpressUI();
+    }
+
+    function openExpressCart() {
+      document.getElementById('btCartPanel').classList.add('active');
+      document.getElementById('btCartBackdrop').classList.add('active');
+    }
+
+    function closeExpressCart() {
+      document.getElementById('btCartPanel').classList.remove('active');
+      document.getElementById('btCartBackdrop').classList.remove('active');
+    }
+
+    function openBtUpiDialog() {
+      if (expressCart.length === 0) {
+        alert("Please add items to your express bag first.");
+        return;
+      }
+      closeExpressCart();
+      const total = expressCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      document.getElementById('btModalAmount').innerText = `₹${total}`;
+      document.getElementById('btUpiDialog').showModal();
+    }
+
+    function closeBtUpiDialog() {
+      document.getElementById('btUpiDialog').close();
+    }
+
+    function confirmBtExpressOrder() {
+      const name = (document.getElementById('btPickupName') ? document.getElementById('btPickupName').value.trim() : '') || "Guest";
+      const token = `#BT-${Math.floor(100 + Math.random() * 900)}`;
+      const total = document.getElementById('btModalAmount') ? document.getElementById('btModalAmount').innerText : '₹260';
+
+      closeBtUpiDialog();
+      
+      const tokenEl = document.getElementById('btTokenDisplay');
+      if (tokenEl) tokenEl.innerText = token;
+      
+      const totalEl = document.getElementById('btKdsTotalDisplay');
+      if (totalEl) totalEl.innerText = total;
+
+      const itemsSummary = expressCart.length > 0 ? expressCart.map(i => `${i.qty}× ${i.title}`).join(', ') : "1 × Iced Cappuccino (Attikan Estate)";
+      const listEl = document.getElementById('btKdsItemList');
+      if (listEl) listEl.innerText = itemsSummary;
+
+      const waMsg = encodeURIComponent(`🦚 Blue Tokai Pali Naka Express Order Verified!\nToken: ${token}\nCustomer: ${name}\nItems: ${itemsSummary}\nTotal: ${total}\nPickup: Pali Naka Express Counter in 7-9 mins.`);
+      const waBtn = document.getElementById('btWaOrderBtn');
+      if (waBtn) waBtn.href = `https://api.whatsapp.com/send?phone=919820083337&text=${waMsg}`;
+
+      const dlg = document.getElementById('btKdsDialog');
+      if (dlg) dlg.showModal();
+      
+      expressCart = [];
+      updateBtCartUI();
+    }
+
+    function closeBtKdsModal() {
+      const dlg = document.getElementById('btKdsDialog');
+      if (dlg) dlg.close();
+    }
+
+    // Commute Rewards Logic
+    let btCommuteStampCount = 3;
+
+    function addCommuteStamp() {
+      if (btCommuteStampCount < 6) {
+        btCommuteStampCount += 1;
+        updateCommuteUI();
+        if (btCommuteStampCount === 6) {
+          alert("🦚 Bandra Commute Pass Complete! Unlocked a free handcrafted specialty brew at Pali Naka!");
+        }
+      } else {
+        btCommuteStampCount = 1;
+        updateCommuteUI();
+      }
+    }
+
+    function updateCommuteUI() {
+      const slots = document.querySelectorAll('#commuteRow .commute-slot');
+      slots.forEach((s, idx) => {
+        if (idx < btCommuteStampCount) {
+          s.classList.add('stamped');
+        } else {
+          s.classList.remove('stamped');
+        }
+      });
+      const txt = document.getElementById('commuteCountText');
+      if (txt) txt.innerText = `${btCommuteStampCount} of 6 Stamped`;
+    }
+
+    // Catering Logic
+    function updateBtCateringCalc() {
+      const slider = document.getElementById('btGuestSlider');
+      if (!slider) return;
+      const count = parseInt(slider.value, 10);
+      const tierSelect = document.getElementById('btCateringTierSelect');
+      const tier = tierSelect ? tierSelect.value : 'espresso';
+      const rates = { espresso: 400, pourOver: 480, fullSetup: 750 };
+      const total = count * (rates[tier] || 400);
+      
+      const gDisplay = document.getElementById('btGuestDisplay');
+      if (gDisplay) gDisplay.innerText = `${count} Guests`;
+      
+      const qDisplay = document.getElementById('btCateringQuoteDisplay');
+      if (qDisplay) qDisplay.innerText = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function requestBtCatering() {
+      const slider = document.getElementById('btGuestSlider');
+      const count = slider ? slider.value : '60';
+      const tierSelect = document.getElementById('btCateringTierSelect');
+      const tier = tierSelect ? tierSelect.options[tierSelect.selectedIndex].text : 'Espresso Bar';
+      const text = encodeURIComponent(`Hi Blue Tokai Bandra team, I'd like to book espresso bar event catering for ${count} guests (${tier}). Could we check date availability?`);
+      window.open(`https://api.whatsapp.com/send?phone=919820083337&text=${text}`, '_blank');
+    }
+
+    // Light dismiss for Blue Tokai KDS dialog
+    const bKdsDlg = document.getElementById('btKdsDialog');
+    if (bKdsDlg && !('closedBy' in HTMLDialogElement.prototype)) {
+      bKdsDlg.addEventListener('click', (event) => {
+        if (event.target !== bKdsDlg) return;
+        const rect = bKdsDlg.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) bKdsDlg.close();
+      });
+    }
+
+    // Modern Web Guidance Dialog Fallback
+    const btDlg = document.getElementById('btUpiDialog');
+    if (btDlg && !('closedBy' in HTMLDialogElement.prototype)) {
+      btDlg.addEventListener('click', (event) => {
+        if (event.target !== btDlg) return;
+        const rect = btDlg.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) btDlg.close();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderBeans(beansData);
+    });
+
+    // Web Audio Synthesizer Chime for Barista Brew Timer
+    function playBrewChime(freq = 880) {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.14, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.85);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.85);
+      } catch (e) {}
+    }
+
+    // Sensory Profile Config
+    const sensoryData = {
+      all: { acidity: 70, aDesc: "Balanced Estate Range", body: 65, bDesc: "Medium Silky to Full", sweet: 75, sDesc: "Caramel & Floral", roast: 55, rDesc: "Full Agtron Spectrum" },
+      Light: { acidity: 90, aDesc: "High Floral, Bergamot & Citrus", body: 40, bDesc: "Delicate Tea-Like Clarity", sweet: 85, sDesc: "Wild Blossom Honey", roast: 30, rDesc: "Agtron #72 (Ultra-Light)" },
+      Medium: { acidity: 60, aDesc: "Mellow Green Apple Acidity", body: 75, bDesc: "Velvety Rounded Body", sweet: 90, sDesc: "Toffee, Brown Sugar & Cocoa", roast: 60, rDesc: "Agtron #55 (City Roast)" },
+      Dark: { acidity: 25, aDesc: "Low Acidity, High Crema", body: 95, bDesc: "Heavy Syrupy Mouthfeel", sweet: 60, sDesc: "Dark Chocolate & Roasted Nuts", roast: 90, rDesc: "Agtron #38 (French Roast)" }
+    };
+
+    function updateSensoryRadar(roastKey) {
+      const d = sensoryData[roastKey] || sensoryData.all;
+      const elA = document.getElementById('meterAcidity');
+      const elB = document.getElementById('meterBody');
+      const elS = document.getElementById('meterSweetness');
+      const elR = document.getElementById('meterRoast');
+
+      if (elA) elA.style.width = d.acidity + '%';
+      if (elB) elB.style.width = d.body + '%';
+      if (elS) elS.style.width = d.sweet + '%';
+      if (elR) elR.style.width = d.roast + '%';
+
+      if (document.getElementById('descAcidity')) document.getElementById('descAcidity').innerText = d.aDesc;
+      if (document.getElementById('descBody')) document.getElementById('descBody').innerText = d.bDesc;
+      if (document.getElementById('descSweetness')) document.getElementById('descSweetness').innerText = d.sDesc;
+      if (document.getElementById('descRoast')) document.getElementById('descRoast').innerText = d.rDesc;
+    }
+
+    // Wrap original filterRoasts to also update sensory radar
+    const origFilter = filterRoasts;
+    filterRoasts = function(roast, btn) {
+      origFilter(roast, btn);
+      updateSensoryRadar(roast);
+      playBrewChime(640);
+    };
+
+    // Scroll Entry Reveal Observer
+    const btRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.section-container, .brew-guide-section, .bean-card, .express-item').forEach(el => {
+      el.classList.add('reveal-on-scroll');
+      btRevealObserver.observe(el);
+    });
+
+  </script>
+
+  
+
+</body>
+</html>
