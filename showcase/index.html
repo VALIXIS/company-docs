@@ -919,10 +919,7 @@
 
     <!-- Switcher -->
     <div class="site-nav-tabs">
-      <button class="nav-tab-btn active" onclick="loadSite('novelhotel', this)">
-        <span>🏨 NOVEL Hotel & Rooftop</span>
-      </button>
-      <button class="nav-tab-btn" onclick="loadSite('roastery', this)">
+      <button class="nav-tab-btn active" onclick="loadSite('roastery', this)">
         <span>🏛️ Roastery Coffee House</span>
       </button>
       <button class="nav-tab-btn" onclick="loadSite('subko', this)">
@@ -930,6 +927,9 @@
       </button>
       <button class="nav-tab-btn" onclick="loadSite('bluetokai', this)">
         <span>🦚 Blue Tokai Roasters</span>
+      </button>
+      <button class="nav-tab-btn" onclick="loadSite('novelhotel', this)">
+        <span>🏨 NOVEL Hotel & Rooftop</span>
       </button>
     </div>
 
@@ -941,7 +941,7 @@
       <button class="sound-toggle-btn" id="soundToggleBtn" onclick="toggleAudio()" title="Sound Effects">🔊 Audio FX</button>
       <button class="sound-toggle-btn" onclick="openQrModal()" title="Scan on Phone">📱 Scan QR</button>
       <button class="copy-pitch-btn" onclick="openPitchStudio()">📋 Pitch Studio</button>
-      <a id="externalLink" href="novel-hotel/index.html" target="_blank" class="open-external-btn">
+      <a id="externalLink" href="roastery-coffee-house/index.html" target="_blank" class="open-external-btn">
         <span>Open Tab ↗</span>
       </a>
     </div>
@@ -995,7 +995,7 @@
           <span class="island-camera"></span>
           <span class="island-sensor"></span>
         </div>
-        <iframe id="previewIframe" src="novel-hotel/index.html"></iframe>
+        <iframe id="previewIframe" src="roastery-coffee-house/index.html"></iframe>
       </div>
     </div>
 
@@ -1159,7 +1159,7 @@
       }
     };
 
-    let currentSite = "novelhotel";
+    let currentSite = "roastery";
 
     function loadSite(key, tabEl) {
       currentSite = key;
@@ -1263,28 +1263,28 @@
     const pitchTemplates = {
       roastery: {
         name: "Roastery Coffee House",
-        whatsapp: "Hey Roastery team! ☕ Subhash here from Valixis Technologies. We love what you've built at the Banjara Hills heritage bungalow. We designed a custom 1-click UPI direct takeaway ordering portal for Roastery that saves you 20-25% aggregator commission fees on every order. Here's a 60-second interactive preview: https://valixis.tech/showcase/roastery-coffee-house/ — open to chatting?",
+        whatsapp: "Hey Roastery team! ☕ Subhash here from Valixis Technologies. We love what you've built at the Banjara Hills heritage bungalow. We designed a custom 1-click UPI direct takeaway ordering portal for Roastery that saves you 20-25% aggregator commission fees on every order. Here's a 60-second interactive preview: https://valixis.github.io/client-sites/roastery-coffee-house/ — open to chatting?",
         instagram: "Hey guys! Absolutely love the courtyard vibe at Road 14 Banjara Hills. I'm Subhash from Valixis. We built a bespoke interactive takeaway & table booking web system for Roastery that cuts out food aggregator fees entirely with direct UPI payments. Mind if I send a 30-sec video demo?",
         threads: "Hey! I'm Subhash from Valixis. We build high-speed direct takeaway portals and 3D web systems for India's best specialty coffee roasters. Check out what we designed for Roastery Coffee House to eliminate 25% aggregator cuts. Shoot me a DM to collaborate! 🚀",
         email: "Subject: Direct Takeaway & UPI Ordering System for Roastery Coffee House (Zero Aggregator Fees)\n\nHi Roastery Team,\n\nI'm Subhash, Founder at Valixis Technologies. We are huge fans of your single-origin roasts and the vintage bungalow experience at Banjara Hills.\n\nWith third-party delivery platforms taking 22-28% off every customer bill, we built a bespoke direct web ordering portal for Roastery with 1-click UPI checkout that pays directly to your bank account with zero commission cuts.\n\nWe also integrated an interactive slow brew calculator and heritage table reservation flow.\n\nWould you be open to a quick 5-minute preview this week?\n\nBest,\nSubhash\nValixis Technologies"
       },
       subko: {
         name: "Subko Specialty Coffee",
-        whatsapp: "Hey Subko team! 🥐 Subhash here from Valixis. Huge fan of Mary Lodge and your 72-hour sourdough bakes! We designed a bespoke Bean Box subscription builder & curbside takeaway app with direct UPI payments to bypass delivery aggregator commissions. Interactive preview here: https://valixis.tech/showcase/subko-coffee/ — open to a quick chat?",
+        whatsapp: "Hey Subko team! 🥐 Subhash here from Valixis. Huge fan of Mary Lodge and your 72-hour sourdough bakes! We designed a bespoke Bean Box subscription builder & curbside takeaway app with direct UPI payments to bypass delivery aggregator commissions. Interactive preview here: https://valixis.github.io/client-sites/subko-coffee/ — open to a quick chat?",
         instagram: "Hey Subko crew! Huge admirers of your Ranwar Village craft roastery and cacao mill. I'm Subhash from Valixis. We designed an archival bean box customizer and zero-commission curbside takeaway app for Subko. Would love to share a 30-sec demo if you're open!",
         threads: "Hey! I'm Subhash from Valixis. We specialize in custom web apps and direct ordering systems for craft food & specialty coffee brands. Check out our bespoke build for Subko's Mary Lodge roastery. Let's chat! 🚀",
         email: "Subject: Direct Bean Box Subscription & Curbside Web Portal for Subko Coffee\n\nHi Subko Team,\n\nI'm Subhash from Valixis Technologies. We're great admirers of your subcontinent-first ethos and the craftsmanship at Mary Lodge, Ranwar Village.\n\nWe noticed many loyal regulars order through third-party aggregators that take 20%+ cuts. We designed a custom direct subscription builder and curbside pickup web portal for Subko with 1-click UPI payments.\n\nWould love to show you a quick 60-second walkthrough if you have a moment this week.\n\nWarm regards,\nSubhash\nValixis Technologies"
       },
       bluetokai: {
         name: "Blue Tokai Coffee Roasters",
-        whatsapp: "Hey Blue Tokai team! 🦚 Subhash here from Valixis. Love your Pali Naka cafe in Bandra! We built an express morning commute coffee pickup ordering web app with instant UPI checkout so your regulars can skip the morning line without you losing 25% to delivery apps. Check the live demo: https://valixis.tech/showcase/blue-tokai/ — let's connect!",
+        whatsapp: "Hey Blue Tokai team! 🦚 Subhash here from Valixis. Love your Pali Naka cafe in Bandra! We built an express morning commute coffee pickup ordering web app with instant UPI checkout so your regulars can skip the morning line without you losing 25% to delivery apps. Check the live demo: https://valixis.github.io/client-sites/blue-tokai/ — let's connect!",
         instagram: "Hey Blue Tokai! Loving the roast profiles at Pali Naka. I'm Subhash from Valixis. We built an express commute coffee ordering portal for Blue Tokai regulars with live barista brew timers and direct UPI checkout. Would love to share a quick preview!",
         threads: "Hey! I'm Subhash from Valixis. We engineer ultra-fast web ordering portals and interactive digital systems for top specialty coffee roasters. Check out our high-converting web app built for Blue Tokai's morning commute. Shoot me a DM! 🚀",
         email: "Subject: Express Morning Commute Ordering Portal for Blue Tokai Pali Naka\n\nHi Blue Tokai Team,\n\nI'm Subhash, Founder of Valixis Technologies. We love your estate coffees and the energy at your Pali Naka roastery.\n\nTo help commuters grab their morning brew without queue delays or paying third-party aggregator markups, we designed an express web pickup portal with instant UPI payment and interactive brew companion timers.\n\nCould I share a 60-second interactive preview with your digital team?\n\nBest,\nSubhash\nValixis Technologies"
       },
       novelhotel: {
         name: "NOVEL Hotel & Rooftop Guntur",
-        whatsapp: "Hey Novel Hotel team! 🏨 Subhash here from Valixis. Huge fan of your rooftop dining and iconic Chicken Potlam Biryani in Chandramouli Nagar! We noticed you have 2,880+ 5-star reviews on Google, but lose 18-22% commissions on MakeMyTrip/Goibibo. We designed a bespoke direct suite reservation & rooftop table booking portal for Novel Hotel with zero OTA commissions: https://valixis.tech/showcase/novel-hotel/ — would love to show you a quick 60-sec preview!",
+        whatsapp: "Hey Novel Hotel team! 🏨 Subhash here from Valixis. Huge fan of your rooftop dining and iconic Chicken Potlam Biryani in Chandramouli Nagar! We noticed you have 2,880+ 5-star reviews on Google, but lose 18-22% commissions on MakeMyTrip/Goibibo. We designed a bespoke direct suite reservation & rooftop table booking portal for Novel Hotel with zero OTA commissions: https://valixis.github.io/client-sites/novel-hotel/ — would love to show you a quick 60-sec preview!",
         instagram: "Hey Novel Hotel crew! Loving your rooftop open terrace and Guntur's legendary Potlam Biryani. I'm Subhash from Valixis. We built a direct hotel booking and banquet inquiry portal for Novel Hotel that routes reservations straight to WhatsApp and cuts out OTA commissions. Would love to share a 30-sec demo if you're open!",
         threads: "Hey! I'm Subhash from Valixis. We build high-converting direct booking portals and revenue systems for boutique luxury hotels and iconic rooftop restaurants. Check out what we built for NOVEL Hotel in Guntur to eliminate 20% OTA aggregator cuts. Shoot me a DM! 🚀",
         email: "Subject: Direct Room & Rooftop Booking Portal for NOVEL Hotel Guntur (Zero OTA Commissions)\n\nHi Novel Hotel Management Team,\n\nI'm Subhash, Founder at Valixis Technologies. We are huge admirers of your boutique hospitality and legendary rooftop dining in Chandramouli Nagar.\n\nWith 2,883 Google reviews (4.7 ★), you are easily Guntur's top-rated hotel. However, every guest booking via MakeMyTrip or Goibibo costs you 18%–22% in commission markups.\n\nWe built a bespoke direct reservation portal for Novel Hotel featuring:\n1. 1-Click Direct Suite & Room Reservation via WhatsApp (saving ~₹800/booking)\n2. Rooftop Open Terrace Table Booking with live music & screen indicators\n3. 300-Pax Banquet Hall Budget & Date Lock Calculator\n\nCould I share a 60-second interactive preview with your General Manager this week?\n\nBest regards,\nSubhash\nValixis Technologies"
@@ -1376,7 +1376,7 @@
     function openQrModal() {
       playClickSound(750, 0.03);
       const modal = document.getElementById('qrModal');
-      document.getElementById('qrTargetUrl').innerText = `https://valixis.tech/showcase/${sites[currentSite].url}`;
+      document.getElementById('qrTargetUrl').innerText = `https://valixis.github.io/client-sites/${sites[currentSite].url}`;
       modal.showModal();
     }
 
@@ -1471,7 +1471,7 @@
     </div>
 
     <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--valixis-accent); font-weight: 700;" id="qrTargetUrl">
-      https://valixis.tech/showcase/
+      https://valixis.github.io/client-sites/
     </p>
   </dialog>
 
