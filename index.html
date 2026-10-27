@@ -1705,60 +1705,48 @@
         vGroup.add(vMeshBack);
       });
 
-      // B. Sleek Outer Revolving Neon Rings (Scaled up to surround the large emblem)
-      // Ring 1: Neon Magenta (#FF2ED6)
-      const ringGeo1 = new THREE.TorusGeometry(2.65, 0.042, 16, 140);
+      // B. Sleek Outer Revolving Neon Rings (Cyan & Tech Purple Orbital Geometry - Inner Pink Ring Removed)
+      // Ring 1: Electric Cyan (#00D9FF)
+      const ringGeo1 = new THREE.TorusGeometry(3.15, 0.036, 16, 140);
       const ringMat1 = new THREE.MeshBasicMaterial({
-        color: 0xFF2ED6,
-        transparent: true,
-        opacity: 0.88
-      });
-      const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
-      ring1.rotation.x = Math.PI / 3;
-      ring1.rotation.y = Math.PI / 4;
-      masterGroup.add(ring1);
-
-      // Ring 2: Electric Cyan (#00D9FF)
-      const ringGeo2 = new THREE.TorusGeometry(3.15, 0.036, 16, 140);
-      const ringMat2 = new THREE.MeshBasicMaterial({
         color: 0x00D9FF,
         transparent: true,
-        opacity: 0.88
+        opacity: 0.90
       });
-      const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
-      ring2.rotation.x = -Math.PI / 3;
-      ring2.rotation.y = -Math.PI / 4;
-      masterGroup.add(ring2);
+      const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+      ring1.rotation.x = -Math.PI / 3;
+      ring1.rotation.y = -Math.PI / 4;
+      masterGroup.add(ring1);
 
-      // Ring 3: Deep Tech Purple (#7C3AED)
-      const ringGeo3 = new THREE.TorusGeometry(3.65, 0.028, 16, 140);
-      const ringMat3 = new THREE.MeshBasicMaterial({
+      // Ring 2: Deep Tech Purple (#7C3AED)
+      const ringGeo2 = new THREE.TorusGeometry(3.70, 0.028, 16, 140);
+      const ringMat2 = new THREE.MeshBasicMaterial({
         color: 0x7C3AED,
         transparent: true,
-        opacity: 0.72
+        opacity: 0.75
       });
-      const ring3 = new THREE.Mesh(ringGeo3, ringMat3);
-      ring3.rotation.x = Math.PI / 6;
-      ring3.rotation.z = Math.PI / 3;
-      masterGroup.add(ring3);
+      const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+      ring2.rotation.x = Math.PI / 6;
+      ring2.rotation.z = Math.PI / 3;
+      masterGroup.add(ring2);
 
-      // C. Floating Stardust Particles
-      const particleCount = 650;
+      // C. Expansive Floating Stardust Particle Field (Large cosmic spread across background)
+      const particleCount = 1400;
       const particleGeo = new THREE.BufferGeometry();
       const posArray = new Float32Array(particleCount * 3);
 
       for (let i = 0; i < particleCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 16;
-        posArray[i + 1] = (Math.random() - 0.5) * 16;
-        posArray[i + 2] = (Math.random() - 0.5) * 16;
+        posArray[i] = (Math.random() - 0.5) * 38;      // wide horizontal expanse
+        posArray[i + 1] = (Math.random() - 0.5) * 28;  // tall vertical expanse
+        posArray[i + 2] = (Math.random() - 0.5) * 24;  // deep 3D volume
       }
       particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
       const particleMat = new THREE.PointsMaterial({
-        size: 0.032,
+        size: 0.035,
         color: 0x00D9FF,
         transparent: true,
-        opacity: 0.65
+        opacity: 0.70
       });
       const particles = new THREE.Points(particleGeo, particleMat);
       scene.add(particles);
@@ -1786,11 +1774,10 @@
         vGroup.rotation.x = Math.cos(elapsedTime * 0.6) * 0.12;
         vGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.09;
 
-        // Revolving outer neon circles (counter-rotations on different planes)
-        ring1.rotation.z = elapsedTime * 0.28;
-        ring2.rotation.z = -elapsedTime * 0.32;
-        ring3.rotation.y = elapsedTime * 0.22;
-        ring3.rotation.z = elapsedTime * 0.18;
+        // Revolving outer neon circles (smooth dual-plane counter-rotation)
+        ring1.rotation.z = -elapsedTime * 0.30;
+        ring2.rotation.y = elapsedTime * 0.22;
+        ring2.rotation.z = elapsedTime * 0.18;
 
         particles.rotation.y = elapsedTime * 0.04 + mouseX * 0.12;
         particles.rotation.x = mouseY * 0.12;
