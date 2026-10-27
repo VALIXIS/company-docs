@@ -24,9 +24,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Three.js for 3D Holographic WebGL Core -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
   <style>
     /* ==========================================================================
        VALIXIS AWWWARDS-TIER BRAND DESIGN SYSTEM
@@ -314,7 +311,7 @@
     }
 
     /* ==========================================================================
-       HERO SECTION WITH REAL-TIME THREE.JS WEBGL CORE
+       HERO SECTION WITH BRAND DISPLAY
        ========================================================================== */
     .hero {
       padding: 80px 0 70px;
@@ -441,46 +438,135 @@
       transform: translateY(-2px);
     }
 
-    /* Three.js 3D Viewport Container */
-    .hero-3d-viewport {
+    /* Authentic VALIXIS Brand Showcase (CSS Ambient Hologram) */
+    .hero-brand-showcase {
       position: relative;
       width: 100%;
-      height: 520px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    #hero-canvas {
+    .brand-showcase-card {
+      position: relative;
       width: 100%;
-      height: 100%;
-      display: block;
-      outline: none;
+      max-width: 480px;
+      height: 480px;
+      border-radius: 28px;
+      background: radial-gradient(circle at 50% 40%, rgba(26, 35, 52, 0.6) 0%, rgba(13, 17, 23, 0.95) 75%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
     }
 
-    .canvas-hud-overlay {
+    .brand-ambient-glow {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      background: rgba(13, 17, 23, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 6px 14px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.22) 0%, rgba(124, 58, 237, 0.2) 45%, transparent 70%);
+      filter: blur(40px);
+      animation: pulseGlow 5s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.92); opacity: 0.65; }
+      100% { transform: scale(1.12); opacity: 0.95; }
+    }
+
+    .emblem-container {
+      position: relative;
+      z-index: 2;
+      animation: levitateEmblem 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes levitateEmblem {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    .hero-emblem-img {
+      width: 240px;
+      height: auto;
+      filter: drop-shadow(0 0 35px rgba(0, 217, 255, 0.55)) drop-shadow(0 0 65px rgba(124, 58, 237, 0.35));
+    }
+
+    .hero-telemetry-badge {
+      position: absolute;
       display: flex;
       align-items: center;
       gap: 8px;
-      pointer-events: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      backdrop-filter: blur(10px);
+      z-index: 3;
     }
-    .hud-dot {
-      width: 6px;
-      height: 6px;
+    .hero-telemetry-badge.top-left {
+      top: 24px;
+      left: 24px;
+    }
+    .hero-telemetry-badge.bottom-right {
+      bottom: 84px;
+      right: 24px;
+    }
+
+    .hud-status-dot {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+    }
+    .hud-status-dot.blue {
       background: var(--valixis-cyan);
-      box-shadow: 0 0 8px var(--valixis-cyan);
+      box-shadow: 0 0 10px var(--valixis-cyan);
+    }
+
+    .showcase-metric-bar {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      z-index: 3;
+    }
+
+    .metric-pill {
+      flex: 1;
+      background: rgba(20, 26, 36, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 8px 10px;
+      text-align: center;
+      font-family: var(--font-mono);
+    }
+    .metric-pill .pill-label {
+      display: block;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .metric-pill .pill-val {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--valixis-cyan);
+      margin-top: 2px;
     }
 
     /* Corporate Ticker Bar */
@@ -1063,7 +1149,7 @@
       .hero-split-grid { grid-template-columns: 1fr; text-align: center; }
       .hero-subtitle { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
-      .hero-3d-viewport { height: 400px; }
+      .hero-brand-showcase { margin-top: 20px; }
       .product-flagship { grid-template-columns: 1fr; }
       .tab-content-panel.active { grid-template-columns: 1fr; }
       .mvv-layout { grid-template-columns: 1fr; }
@@ -1110,7 +1196,7 @@
     </div>
   </header>
 
-  <!-- Hero Section with Live Three.js WebGL Core -->
+  <!-- Hero Section with Authentic Brand Display -->
   <section class="hero" id="hero">
     <div class="container">
       <div class="hero-split-grid">
@@ -1140,12 +1226,35 @@
           </div>
         </div>
 
-        <!-- Three.js 3D Viewport -->
-        <div class="hero-3d-viewport">
-          <canvas id="hero-canvas"></canvas>
-          <div class="canvas-hud-overlay">
-            <span class="hud-dot"></span>
-            <span>THREE.JS WEBGL CORE &bull; INTERACTIVE 3D</span>
+        <!-- Authentic VALIXIS Brand Showcase -->
+        <div class="hero-brand-showcase">
+          <div class="brand-showcase-card">
+            <div class="brand-ambient-glow"></div>
+            <div class="emblem-container">
+              <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Emblem" class="hero-emblem-img">
+            </div>
+            <div class="hero-telemetry-badge top-left">
+              <span class="hud-status-dot"></span>
+              <span>CORE ARCHITECTURE: ONLINE</span>
+            </div>
+            <div class="hero-telemetry-badge bottom-right">
+              <span class="hud-status-dot blue"></span>
+              <span>ENTERPRISE &amp; GAMING</span>
+            </div>
+            <div class="showcase-metric-bar">
+              <div class="metric-pill">
+                <span class="pill-label">PILLARS</span>
+                <span class="pill-val">4 ACTIVE</span>
+              </div>
+              <div class="metric-pill">
+                <span class="pill-label">SECURITY</span>
+                <span class="pill-val">POSTGRES RLS</span>
+              </div>
+              <div class="metric-pill">
+                <span class="pill-label">UPTIME</span>
+                <span class="pill-val">99.99%</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1235,78 +1344,12 @@
               <li class="spec-item"><span class="spec-bullet"></span> Low-latency multiplayer networking architecture</li>
             </ul>
           </div>
-          <div class="tab-interactive-display" style="position: relative; overflow: hidden; padding: 0; min-height: 280px; background: rgba(10, 14, 20, 0.85); border-radius: 12px; border: 1px solid rgba(255, 46, 214, 0.25);">
-            <canvas id="gaming-canvas" style="width: 100%; height: 215px; display: block;"></canvas>
-            <div style="padding: 10px 16px; border-top: 1px solid rgba(255, 46, 214, 0.15); font-family: var(--font-mono); font-size: 0.72rem; display: flex; justify-content: space-between; align-items: center; background: rgba(13, 17, 23, 0.9);">
-              <span style="color: var(--valixis-magenta);">🎮 HOLOGRAPHIC GAME ENGINE</span>
-              <span style="color: #10B981;">120 FPS &bull; SHADER CORE</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tech Tab -->
-        <div class="tab-content-panel" id="tab-tech">
-          <div>
-            <h3 class="tab-info-title" style="color: var(--valixis-cyan);">Zero-Compromise Enterprise Systems</h3>
-            <p class="tab-info-desc">
-              Enterprise architecture engineered for high concurrency and strict security. Powered by PostgreSQL with Row Level Security, CI/CD automated build pipelines, and Flutter Web.
-            </p>
-            <ul class="spec-list">
-              <li class="spec-item"><span class="spec-bullet"></span> Strict Row Level Security policies at database kernel</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Automated GitHub Actions CI/CD with verification suites</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Sub-second global replication and edge distribution</li>
-            </ul>
-          </div>
-          <div class="tab-interactive-display" style="position: relative; overflow: hidden; padding: 0; min-height: 280px; background: rgba(10, 14, 20, 0.85); border-radius: 12px; border: 1px solid rgba(0, 217, 255, 0.25);">
-            <canvas id="tech-canvas" style="width: 100%; height: 215px; display: block;"></canvas>
-            <div style="padding: 10px 16px; border-top: 1px solid rgba(0, 217, 255, 0.15); font-family: var(--font-mono); font-size: 0.72rem; display: flex; justify-content: space-between; align-items: center; background: rgba(13, 17, 23, 0.9);">
-              <span style="color: var(--valixis-cyan);">⚡ QUANTUM PROCESSOR DIE</span>
-              <span style="color: #10B981;">POSTGRESQL RLS ENFORCED</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- AI Tab -->
-        <div class="tab-content-panel" id="tab-ai">
-          <div>
-            <h3 class="tab-info-title" style="color: var(--valixis-purple);">Autonomous Intelligence &amp; Multi-Agent Swarms</h3>
-            <p class="tab-info-desc">
-              Pioneering goal-directed AI workflows. Our background daemons operate 24/7 executing task prioritization, DNS verifications, telemetry monitoring, and structured natural language pipelines.
-            </p>
-            <ul class="spec-list">
-              <li class="spec-item"><span class="spec-bullet"></span> Background daemon architecture with zero human intervention</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Autonomous lead qualification &amp; deliverability pre-flight</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Real-time multi-channel telemetry &amp; Telegram alerting</li>
-            </ul>
-          </div>
-          <div class="tab-interactive-display" style="position: relative; overflow: hidden; padding: 0; min-height: 280px; background: rgba(10, 14, 20, 0.85); border-radius: 12px; border: 1px solid rgba(124, 58, 237, 0.25);">
-            <canvas id="ai-canvas" style="width: 100%; height: 215px; display: block;"></canvas>
-            <div style="padding: 10px 16px; border-top: 1px solid rgba(124, 58, 237, 0.15); font-family: var(--font-mono); font-size: 0.72rem; display: flex; justify-content: space-between; align-items: center; background: rgba(13, 17, 23, 0.9);">
-              <span style="color: var(--valixis-purple);">🧠 AUTONOMOUS NEURAL SWARM</span>
-              <span style="color: #10B981;">MULTI-AGENT REASONING</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Future Ready Tab -->
-        <div class="tab-content-panel" id="tab-future">
-          <div>
-            <h3 class="tab-info-title" style="color: var(--valixis-blue);">Sovereign, Long-Horizon Infrastructure</h3>
-            <p class="tab-info-desc">
-              Software built to stand the test of time. We architect systems with zero lock-in, open protocols, sovereign data ownership, and decoupled components that can scale indefinitely.
-            </p>
-            <ul class="spec-list">
-              <li class="spec-item"><span class="spec-bullet"></span> Sovereign data architectures with complete client IP ownership</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Modular microservices designed for seamless horizontal growth</li>
-              <li class="spec-item"><span class="spec-bullet"></span> Encrypted local-first backup nodes with automated synchronization</li>
-            </ul>
-          </div>
-          <div class="tab-interactive-display" style="position: relative; overflow: hidden; padding: 0; min-height: 280px; background: rgba(10, 14, 20, 0.85); border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.25);">
-            <canvas id="future-canvas" style="width: 100%; height: 215px; display: block;"></canvas>
-            <div style="padding: 10px 16px; border-top: 1px solid rgba(59, 130, 246, 0.15); font-family: var(--font-mono); font-size: 0.72rem; display: flex; justify-content: space-between; align-items: center; background: rgba(13, 17, 23, 0.9);">
-              <span style="color: var(--valixis-blue);">🚀 QUANTUM HYPERCUBE</span>
-              <span style="color: #10B981;">SOVEREIGN ARCHITECTURE</span>
-            </div>
+          <div class="tab-interactive-display">
+            <div style="color: var(--text-dim); margin-bottom: 12px;">// LONG-HORIZON READINESS PROTOCOL</div>
+            <div style="color: var(--valixis-blue);">&gt; DATA_SOVEREIGNTY: 100% OWNERSHIP PRESERVED</div>
+            <div style="color: var(--valixis-cyan);">&gt; TAILSCALE_MESH: PEER-TO-PEER ENCRYPTED</div>
+            <div style="color: var(--text-muted);">&gt; BACKUP_SYNC: HYBRID CLOUD &amp; HARDWARE NODES</div>
+            <div style="color: #10B981; margin-top: 12px;">&gt; ARCHITECTURE_STATUS: RESILIENT TO DRIFT</div>
           </div>
         </div>
       </div>
@@ -1584,7 +1627,7 @@
 
   <!-- ==========================================================================
        AWWWARDS-LEVEL INTERACTIVE JAVASCRIPT
-       1. Three.js Holographic 3D WebGL Core
+       1. Interactive Brand System
        2. Dynamic Mouse-Follow Spotlight on Cards
        3. 3D Card Tilt with Inertia
        4. Custom Cyber Cursor Physics
@@ -1661,536 +1704,6 @@
       }
     }
 
-    // 4. THREE.JS 3D HOLOGRAPHIC CYBER CORE WITH SCROLL DISASSEMBLY & DYNAMIC STARFIELD
-    (function initThreeCore() {
-      const container = document.querySelector('.hero-3d-viewport');
-      const canvas = document.getElementById('hero-canvas');
-      if (!canvas || !container || typeof THREE === 'undefined') return;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-      camera.position.z = 7.5;
-
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      // Master Core Group
-      const coreGroup = new THREE.Group();
-      scene.add(coreGroup);
-
-      // A. Outer Wireframe Icosahedron (Cyan Glow)
-      const outerGeo = new THREE.IcosahedronGeometry(2.3, 1);
-      const outerMat = new THREE.MeshBasicMaterial({
-        color: 0x00D9FF,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.38
-      });
-      const outerMesh = new THREE.Mesh(outerGeo, outerMat);
-      coreGroup.add(outerMesh);
-
-      // B. Middle Dual Neon Orbital Rings
-      const ringGeo = new THREE.TorusGeometry(2.7, 0.035, 16, 100);
-      const ringMat1 = new THREE.MeshBasicMaterial({ color: 0xFF2ED6, transparent: true, opacity: 0.75 });
-      const ringMesh1 = new THREE.Mesh(ringGeo, ringMat1);
-      ringMesh1.rotation.x = Math.PI / 3;
-      ringMesh1.rotation.y = Math.PI / 4;
-      coreGroup.add(ringMesh1);
-
-      const ringMat2 = new THREE.MeshBasicMaterial({ color: 0x7C3AED, transparent: true, opacity: 0.75 });
-      const ringMesh2 = new THREE.Mesh(ringGeo, ringMat2);
-      ringMesh2.rotation.x = -Math.PI / 3;
-      ringMesh2.rotation.y = -Math.PI / 4;
-      coreGroup.add(ringMesh2);
-
-      // C. Central Faceted Octahedron Core
-      const innerGeo = new THREE.OctahedronGeometry(1.2, 0);
-      const innerMat = new THREE.MeshStandardMaterial({
-        color: 0x7C3AED,
-        roughness: 0.2,
-        metalness: 0.85,
-        wireframe: false,
-        emissive: 0x2A0845,
-        emissiveIntensity: 0.55
-      });
-      const innerMesh = new THREE.Mesh(innerGeo, innerMat);
-      coreGroup.add(innerMesh);
-
-      // D. SCROLL-DRIVEN DISASSEMBLY SATELLITE PILLARS
-      // 4 Satellite modules representing VALIXIS Four Pillars: Gaming, Tech, AI, Future Ready
-      const satPillars = [
-        { name: 'Gaming', color: 0xFF2ED6, geo: new THREE.IcosahedronGeometry(0.38, 1) },
-        { name: 'Tech', color: 0x00D9FF, geo: new THREE.BoxGeometry(0.55, 0.55, 0.55) },
-        { name: 'AI', color: 0x7C3AED, geo: new THREE.OctahedronGeometry(0.42, 0) },
-        { name: 'Future', color: 0x3B82F6, geo: new THREE.DodecahedronGeometry(0.42, 0) }
-      ];
-
-      const satMeshes = satPillars.map((p, idx) => {
-        const mat = new THREE.MeshStandardMaterial({
-          color: p.color,
-          roughness: 0.15,
-          metalness: 0.8,
-          emissive: p.color,
-          emissiveIntensity: 0.45,
-          wireframe: false
-        });
-        const mesh = new THREE.Mesh(p.geo, mat);
-        
-        // Add faint wireframe aura
-        const auraMat = new THREE.MeshBasicMaterial({ color: p.color, wireframe: true, transparent: true, opacity: 0.4 });
-        const aura = new THREE.Mesh(p.geo.clone(), auraMat);
-        aura.scale.set(1.4, 1.4, 1.4);
-        mesh.add(aura);
-
-        coreGroup.add(mesh);
-        return { mesh, angle: (idx / 4) * Math.PI * 2, baseRadius: 0.5 };
-      });
-
-      // E. Dynamic Reactive 1,200 Starfield Particles
-      const particleCount = 1200;
-      const particleGeo = new THREE.BufferGeometry();
-      const posArray = new Float32Array(particleCount * 3);
-
-      for (let i = 0; i < particleCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 16;
-        posArray[i + 1] = (Math.random() - 0.5) * 16;
-        posArray[i + 2] = (Math.random() - 0.5) * 16;
-      }
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-      const particleMat = new THREE.PointsMaterial({
-        size: 0.038,
-        color: 0x00D9FF,
-        transparent: true,
-        opacity: 0.72
-      });
-      const particles = new THREE.Points(particleGeo, particleMat);
-      scene.add(particles);
-
-      // F. Dynamic Lights
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
-      scene.add(ambientLight);
-
-      const cyanLight = new THREE.PointLight(0x00D9FF, 3.2, 18);
-      cyanLight.position.set(4, 5, 4);
-      scene.add(cyanLight);
-
-      const magentaLight = new THREE.PointLight(0xFF2ED6, 3.2, 18);
-      magentaLight.position.set(-4, -5, -2);
-      scene.add(magentaLight);
-
-      // G. Interactive Mouse Velocity & Scroll Disassembly Tracking
-      let targetRotX = 0;
-      let targetRotY = 0;
-      let mouseX = 0, mouseY = 0;
-      let lastMouseX = 0, lastMouseY = 0;
-      let mouseVelX = 0, mouseVelY = 0;
-      let scrollProgress = 0;
-
-      window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth) - 0.5;
-        mouseY = (e.clientY / window.innerHeight) - 0.5;
-        targetRotY = mouseX * 0.95;
-        targetRotX = mouseY * 0.95;
-
-        // Velocity tracking for interactive particle turbulence
-        mouseVelX += (e.clientX - lastMouseX) * 0.0003;
-        mouseVelY += (e.clientY - lastMouseY) * 0.0003;
-        lastMouseX = e.clientX;
-        lastMouseY = e.clientY;
-      });
-
-      window.addEventListener('scroll', () => {
-        // As user scrolls from Hero down toward Divisions (0 to 700px), progress goes 0 -> 1
-        const maxScroll = 700;
-        scrollProgress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-      });
-
-      // Render Loop
-      let clock = new THREE.Clock();
-      let currentDisassembly = 0;
-
-      function animate() {
-        requestAnimationFrame(animate);
-        const elapsedTime = clock.getElapsedTime();
-
-        // Counter-rotations
-        outerMesh.rotation.y = elapsedTime * 0.22;
-        outerMesh.rotation.x = elapsedTime * 0.15;
-
-        innerMesh.rotation.y = -elapsedTime * 0.35;
-        innerMesh.rotation.z = elapsedTime * 0.22;
-
-        ringMesh1.rotation.z = elapsedTime * 0.25;
-        ringMesh2.rotation.z = -elapsedTime * 0.28;
-
-        // Scroll Disassembly Interpolation
-        currentDisassembly += (scrollProgress - currentDisassembly) * 0.08;
-
-        // When disassembled on scroll, outer cage expands, rings tilt outward
-        outerMesh.scale.setScalar(1.0 + currentDisassembly * 0.55);
-        ringMesh1.scale.setScalar(1.0 + currentDisassembly * 0.35);
-        ringMesh2.scale.setScalar(1.0 + currentDisassembly * 0.35);
-
-        // Satellites orbit and separate outwards into 4 pillar positions on scroll
-        const satRadius = 0.6 + currentDisassembly * 3.4;
-        satMeshes.forEach((sat, i) => {
-          const orbitAngle = sat.angle + elapsedTime * (0.35 + i * 0.08);
-          sat.mesh.position.x = Math.cos(orbitAngle) * satRadius;
-          sat.mesh.position.y = Math.sin(orbitAngle * 2) * (0.4 + currentDisassembly * 0.8);
-          sat.mesh.position.z = Math.sin(orbitAngle) * satRadius;
-          sat.mesh.rotation.x += 0.02;
-          sat.mesh.rotation.y += 0.03;
-        });
-
-        // Dynamic particle field with mouse velocity turbulence
-        mouseVelX *= 0.94;
-        mouseVelY *= 0.94;
-        particles.rotation.y = elapsedTime * 0.05 + mouseX * 0.2 + mouseVelX * 3.0;
-        particles.rotation.x = mouseY * 0.2 + mouseVelY * 3.0;
-
-        // Smooth spring inertia follow
-        coreGroup.rotation.y += (targetRotY - coreGroup.rotation.y) * 0.07;
-        coreGroup.rotation.x += (targetRotX - coreGroup.rotation.x) * 0.07;
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.addEventListener('resize', () => {
-        if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
-    })();
-
-    // 5. INTERACTIVE 3D DIVISION VIEWPORTS (Gaming, Tech, AI, Future Ready)
-    (function initDivisionViewports() {
-      if (typeof THREE === 'undefined') return;
-
-      // Helper to create a standardized responsive mini-scene
-      function createMiniViewport(canvasId, buildSceneFn) {
-        const canvas = document.getElementById(canvasId);
-        if (!canvas) return;
-        const parent = canvas.parentElement;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(40, parent.clientWidth / 215, 0.1, 100);
-        camera.position.z = 4.8;
-
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-        renderer.setSize(parent.clientWidth, 215);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        const group = new THREE.Group();
-        scene.add(group);
-
-        const amb = new THREE.AmbientLight(0xffffff, 0.85);
-        scene.add(amb);
-
-        const pointL = new THREE.PointLight(0x00D9FF, 2.5, 10);
-        pointL.position.set(3, 3, 3);
-        scene.add(pointL);
-
-        const pointR = new THREE.PointLight(0xFF2ED6, 2.5, 10);
-        pointR.position.set(-3, -3, 2);
-        scene.add(pointR);
-
-        // Build specific 3D model
-        const animatedObjects = buildSceneFn(group);
-
-        // Mouse hover tilt
-        let mouseX = 0, mouseY = 0;
-        parent.addEventListener('mousemove', (e) => {
-          const rect = parent.getBoundingClientRect();
-          mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.8;
-          mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.8;
-        });
-        parent.addEventListener('mouseleave', () => {
-          mouseX = 0; mouseY = 0;
-        });
-
-        let clock = new THREE.Clock();
-        function loop() {
-          requestAnimationFrame(loop);
-          // Only render if parent or panel is visible to optimize performance
-          if (parent.offsetParent !== null) {
-            const time = clock.getElapsedTime();
-            if (animatedObjects && animatedObjects.update) {
-              animatedObjects.update(time);
-            }
-            group.rotation.y += (mouseX - group.rotation.y) * 0.08;
-            group.rotation.x += (mouseY - group.rotation.x) * 0.08;
-            renderer.render(scene, camera);
-          }
-        }
-        loop();
-
-        function resize() {
-          if (!parent) return;
-          camera.aspect = parent.clientWidth / 215;
-          camera.updateProjectionMatrix();
-          renderer.setSize(parent.clientWidth, 215);
-        }
-        window.addEventListener('resize', resize);
-        window.addEventListener('tabSwitched', () => setTimeout(resize, 60));
-      }
-
-      // Model 1: GAMING DIVISION — Holographic Game Controller
-      createMiniViewport('gaming-canvas', (group) => {
-        // Ergonomic controller body handles
-        const bodyGeo = new THREE.TorusGeometry(1.4, 0.38, 16, 60, Math.PI * 1.15);
-        const bodyMat = new THREE.MeshStandardMaterial({
-          color: 0x111622,
-          roughness: 0.3,
-          metalness: 0.9,
-          wireframe: false
-        });
-        const body = new THREE.Mesh(bodyGeo, bodyMat);
-        body.rotation.z = -Math.PI * 0.08;
-        body.rotation.x = Math.PI * 0.2;
-        group.add(body);
-
-        // Glowing Wireframe Outline (Neon Magenta)
-        const outlineMat = new THREE.MeshBasicMaterial({ color: 0xFF2ED6, wireframe: true, transparent: true, opacity: 0.5 });
-        const outline = new THREE.Mesh(bodyGeo.clone(), outlineMat);
-        outline.rotation.copy(body.rotation);
-        outline.scale.set(1.02, 1.02, 1.02);
-        group.add(outline);
-
-        // Dual Glowing Thumbsticks (Left: Cyan, Right: Magenta)
-        const stickGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.15, 24);
-        const stickL = new THREE.Mesh(stickGeo, new THREE.MeshStandardMaterial({ color: 0x00D9FF, emissive: 0x00D9FF, emissiveIntensity: 0.6 }));
-        stickL.position.set(-0.8, 0.15, 0.4);
-        stickL.rotation.x = Math.PI / 4;
-        group.add(stickL);
-
-        const stickR = new THREE.Mesh(stickGeo, new THREE.MeshStandardMaterial({ color: 0xFF2ED6, emissive: 0xFF2ED6, emissiveIntensity: 0.6 }));
-        stickR.position.set(0.8, -0.05, 0.4);
-        stickR.rotation.x = Math.PI / 4;
-        group.add(stickR);
-
-        // D-Pad Cross
-        const dpadH = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.14, 0.08), new THREE.MeshBasicMaterial({ color: 0x00D9FF }));
-        dpadH.position.set(-0.8, -0.25, 0.38);
-        group.add(dpadH);
-        const dpadV = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.5, 0.08), new THREE.MeshBasicMaterial({ color: 0x00D9FF }));
-        dpadV.position.copy(dpadH.position);
-        group.add(dpadV);
-
-        // 4 Action Buttons
-        const btnPositions = [
-          { x: 0.8, y: 0.35, c: 0x00D9FF },
-          { x: 1.0, y: 0.2, c: 0xFF2ED6 },
-          { x: 0.6, y: 0.2, c: 0x7C3AED },
-          { x: 0.8, y: 0.05, c: 0x3B82F6 }
-        ];
-        btnPositions.forEach(b => {
-          const btn = new THREE.Mesh(new THREE.SphereGeometry(0.08, 12, 12), new THREE.MeshBasicMaterial({ color: b.c }));
-          btn.position.set(b.x, b.y, 0.38);
-          group.add(btn);
-        });
-
-        // Orbiting neon ring
-        const ring = new THREE.Mesh(
-          new THREE.TorusGeometry(1.9, 0.015, 8, 48),
-          new THREE.MeshBasicMaterial({ color: 0xFF2ED6, transparent: true, opacity: 0.6 })
-        );
-        group.add(ring);
-
-        return {
-          update: (time) => {
-            group.rotation.y = Math.sin(time * 0.7) * 0.28;
-            group.rotation.z = Math.cos(time * 0.5) * 0.12;
-            ring.rotation.x = time * 0.4;
-            ring.rotation.y = time * 0.6;
-          }
-        };
-      });
-
-      // Model 2: ENTERPRISE TECH — Sovereign Quantum Microchip Processor
-      createMiniViewport('tech-canvas', (group) => {
-        // CPU Die base
-        const chipGeo = new THREE.BoxGeometry(2.0, 2.0, 0.18);
-        const chipMat = new THREE.MeshStandardMaterial({
-          color: 0x0a101d,
-          roughness: 0.2,
-          metalness: 0.9
-        });
-        const chip = new THREE.Mesh(chipGeo, chipMat);
-        group.add(chip);
-
-        // Heat Spreader Core
-        const core = new THREE.Mesh(
-          new THREE.BoxGeometry(1.1, 1.1, 0.22),
-          new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.25, metalness: 0.85, emissive: 0x4a3c10, emissiveIntensity: 0.3 })
-        );
-        group.add(core);
-
-        // Glowing Cyan Circuit Traces
-        const gridGeo = new THREE.PlaneGeometry(1.8, 1.8, 6, 6);
-        const gridMat = new THREE.MeshBasicMaterial({ color: 0x00D9FF, wireframe: true, transparent: true, opacity: 0.7 });
-        const grid = new THREE.Mesh(gridGeo, gridMat);
-        grid.position.z = 0.11;
-        group.add(grid);
-
-        // Gold Pins on Perimeter
-        const pinGeo = new THREE.BoxGeometry(0.06, 0.18, 0.08);
-        const pinMat = new THREE.MeshBasicMaterial({ color: 0x00D9FF });
-        for (let i = -0.8; i <= 0.8; i += 0.2) {
-          const pinTop = new THREE.Mesh(pinGeo, pinMat);
-          pinTop.position.set(i, 1.05, 0);
-          group.add(pinTop);
-          const pinBot = new THREE.Mesh(pinGeo, pinMat);
-          pinBot.position.set(i, -1.05, 0);
-          group.add(pinBot);
-        }
-
-        // Orbiting Data Packets
-        const packetGeo = new THREE.BoxGeometry(0.12, 0.12, 0.12);
-        const packets = [0x00D9FF, 0x7C3AED, 0x3B82F6].map(color => {
-          const p = new THREE.Mesh(packetGeo, new THREE.MeshBasicMaterial({ color: color }));
-          group.add(p);
-          return p;
-        });
-
-        group.rotation.x = Math.PI * 0.28;
-
-        return {
-          update: (time) => {
-            group.rotation.z = time * 0.18;
-            packets.forEach((p, idx) => {
-              const a = time * 1.5 + (idx * Math.PI * 2 / 3);
-              p.position.set(Math.cos(a) * 1.5, Math.sin(a) * 1.5, Math.sin(time * 3 + idx) * 0.3);
-              p.rotation.x += 0.05;
-            });
-          }
-        };
-      });
-
-      // Model 3: AI & SWARMS — Autonomous Neural Swarm Nucleus
-      createMiniViewport('ai-canvas', (group) => {
-        // Central Neural Sphere
-        const nucleus = new THREE.Mesh(
-          new THREE.SphereGeometry(0.7, 24, 24),
-          new THREE.MeshStandardMaterial({
-            color: 0x7C3AED,
-            emissive: 0x7C3AED,
-            emissiveIntensity: 0.6,
-            roughness: 0.15,
-            wireframe: false
-          })
-        );
-        group.add(nucleus);
-
-        // Wireframe Synaptic Shell
-        const shell = new THREE.Mesh(
-          new THREE.IcosahedronGeometry(0.95, 1),
-          new THREE.MeshBasicMaterial({ color: 0x00D9FF, wireframe: true, transparent: true, opacity: 0.45 })
-        );
-        group.add(shell);
-
-        // 3 Concentric Neural Rings
-        const rings = [1.35, 1.65, 1.95].map((r, i) => {
-          const ring = new THREE.Mesh(
-            new THREE.TorusGeometry(r, 0.02, 12, 48),
-            new THREE.MeshBasicMaterial({ color: i === 1 ? 0xFF2ED6 : 0x7C3AED, transparent: true, opacity: 0.65 })
-          );
-          group.add(ring);
-          return ring;
-        });
-
-        // 12 Floating Agent Synapses
-        const nodes = [];
-        for (let i = 0; i < 12; i++) {
-          const node = new THREE.Mesh(
-            new THREE.SphereGeometry(0.065, 8, 8),
-            new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0x00D9FF : 0xFF2ED6 })
-          );
-          group.add(node);
-          nodes.push({ mesh: node, angle: (i / 12) * Math.PI * 2, radius: 1.35 + (i % 3) * 0.3 });
-        }
-
-        return {
-          update: (time) => {
-            const breath = 1.0 + Math.sin(time * 2.5) * 0.08;
-            nucleus.scale.set(breath, breath, breath);
-            shell.rotation.y = time * 0.3;
-            shell.rotation.x = time * 0.2;
-
-            rings[0].rotation.x = time * 0.6;
-            rings[0].rotation.y = time * 0.4;
-            rings[1].rotation.y = -time * 0.5;
-            rings[1].rotation.z = time * 0.3;
-            rings[2].rotation.z = time * 0.7;
-
-            nodes.forEach(n => {
-              const a = n.angle + time * 0.8;
-              n.mesh.position.set(Math.cos(a) * n.radius, Math.sin(a * 1.5) * 0.4, Math.sin(a) * n.radius);
-            });
-          }
-        };
-      });
-
-      // Model 4: FUTURE READY — Quantum Hypercube (Tesseract)
-      createMiniViewport('future-canvas', (group) => {
-        // Outer Wireframe Cube (Blue)
-        const outerGeo = new THREE.BoxGeometry(1.8, 1.8, 1.8);
-        const outerCube = new THREE.Mesh(
-          outerGeo,
-          new THREE.MeshBasicMaterial({ color: 0x3B82F6, wireframe: true, transparent: true, opacity: 0.65 })
-        );
-        group.add(outerCube);
-
-        // Inner Rotating Wireframe Cube (Cyan)
-        const innerGeo = new THREE.BoxGeometry(0.9, 0.9, 0.9);
-        const innerCube = new THREE.Mesh(
-          innerGeo,
-          new THREE.MeshBasicMaterial({ color: 0x00D9FF, wireframe: true, transparent: true, opacity: 0.9 })
-        );
-        group.add(innerCube);
-
-        // Hypercube Connecting Struts (Lines connecting vertices)
-        const vOuter = [
-          [-0.9, -0.9, -0.9], [0.9, -0.9, -0.9], [0.9, 0.9, -0.9], [-0.9, 0.9, -0.9],
-          [-0.9, -0.9, 0.9], [0.9, -0.9, 0.9], [0.9, 0.9, 0.9], [-0.9, 0.9, 0.9]
-        ];
-        const vInner = [
-          [-0.45, -0.45, -0.45], [0.45, -0.45, -0.45], [0.45, 0.45, -0.45], [-0.45, 0.45, -0.45],
-          [-0.45, -0.45, 0.45], [0.45, -0.45, 0.45], [0.45, 0.45, 0.45], [-0.45, 0.45, 0.45]
-        ];
-
-        const lineMat = new THREE.LineBasicMaterial({ color: 0x00D9FF, transparent: true, opacity: 0.4 });
-        for (let i = 0; i < 8; i++) {
-          const lineGeo = new THREE.BufferGeometry().setFromPoints([
-            new THREE.Vector3(...vOuter[i]),
-            new THREE.Vector3(...vInner[i])
-          ]);
-          const line = new THREE.Line(lineGeo, lineMat);
-          group.add(line);
-        }
-
-        // Center Pulsing Singularity
-        const singularity = new THREE.Mesh(
-          new THREE.OctahedronGeometry(0.25, 0),
-          new THREE.MeshStandardMaterial({ color: 0x00D9FF, emissive: 0x00D9FF, emissiveIntensity: 0.8 })
-        );
-        group.add(singularity);
-
-        return {
-          update: (time) => {
-            outerCube.rotation.x = time * 0.25;
-            outerCube.rotation.y = time * 0.35;
-            innerCube.rotation.x = -time * 0.5;
-            innerCube.rotation.y = -time * 0.6;
-            group.rotation.z = Math.sin(time * 0.4) * 0.15;
-            singularity.rotation.y += 0.05;
-          }
-        };
-      });
-    })();
-  </script>
+    </script>
 </body>
 </html>
