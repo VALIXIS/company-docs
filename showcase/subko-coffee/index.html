@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUBKO · सबको · سبکو · Specialty Coffee Roasters, Craft Bakehouse & Cacao Mill · Bandra</title>
+  <meta name="description" content="From the Subcontinent, for All. Flagship specialty coffee roastery, craft sourdough bakehouse, and single origin cacao mill in Ranwar Village, Bandra West, Mumbai.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Cinzel:wght@600;700&family=Noto+Nastaliq+Urdu:wght@700&family=Noto+Sans+Devanagari:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-canvas: #F5EFE6;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-kraft: #E8DCC8;
+      --color-charcoal: #141311;
+      --color-stone: #413F39;
+      --color-muted: #6B665E;
+      --color-terracotta: #A13820;
+      --color-terracotta-glow: rgba(161, 56, 32, 0.35);
+      --color-kerala-teal: #2A4E43;
+      --color-border: #DCD3C3;
+      --color-border-dark: #141311;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-tri: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-raw: 5px 5px 0px #141311;
+      --shadow-raw-hover: 8px 8px 0px #141311;
+      --shadow-soft: 0 15px 40px rgba(20, 19, 17, 0.1);
+      --radius-sm: 4px;
+      --radius-md: 12px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-canvas);
+      color: var(--color-charcoal);
+      font-family: var(--font-body);
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.55;
+      position: relative;
+    }
+
+    /* Scroll progress indicator */
+    #subkoProgressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #141311, #A13820, #E8DCC8);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+      box-shadow: 0 0 12px var(--color-terracotta-glow);
+    }
+
+    /* Ambient Mesh Gradient Glow */
+    .subko-ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(161, 56, 32, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 85% 35%, rgba(42, 78, 67, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 75%, rgba(232, 220, 200, 0.4) 0%, transparent 60%);
+      filter: blur(50px);
+    }
+
+    /* Giant Parallax Typographic Watermark (60 FPS Multi-Layer Depth) */
+    .subko-parallax-watermark {
+      position: absolute;
+      top: 150px;
+      left: 0;
+      width: 250%;
+      font-family: var(--font-display);
+      font-size: clamp(5.5rem, 14vw, 13rem);
+      font-weight: 900;
+      color: rgba(161, 56, 32, 0.08);
+      -webkit-text-stroke: 1.5px rgba(161, 56, 32, 0.32);
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      letter-spacing: -0.02em;
+      will-change: transform;
+      text-shadow: 0 0 30px rgba(161, 56, 32, 0.2);
+    }
+
+
+    /* Tactile Film Grain Overlay (Editorial Aesthetic) */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Scroll Entry Reveal Effects */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Sourdough Interactive Journey */
+    .sourdough-journey-interactive {
+      margin-top: 50px;
+      background: var(--bg-kraft);
+      border: 3px solid var(--color-charcoal);
+      box-shadow: var(--shadow-raw);
+      padding: 34px;
+      border-radius: var(--radius-sm);
+    }
+
+    .journey-header {
+      margin-bottom: 24px;
+    }
+
+    .journey-tag {
+      font-size: 0.76rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-terracotta);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .journey-header h4 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .journey-steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .journey-steps-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .journey-step-btn {
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      padding: 12px 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      box-shadow: 2px 2px 0px var(--color-charcoal);
+    }
+
+    .journey-step-btn:hover, .journey-step-btn.active {
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      box-shadow: 4px 4px 0px var(--color-terracotta);
+      transform: translate(-2px, -2px);
+    }
+
+    .journey-step-btn.active .step-hour {
+      color: var(--color-terracotta);
+    }
+
+    .step-hour {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .step-name {
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .journey-stage-card {
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 4px 4px 0px var(--color-charcoal);
+    }
+
+    @media (max-width: 640px) {
+      .journey-stage-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stage-content h5 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .stage-content p {
+      font-size: 0.92rem;
+      color: var(--color-stone);
+      line-height: 1.6;
+    }
+
+    .stage-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      background: var(--bg-canvas);
+      border: 1.5px solid var(--color-border-dark);
+      padding: 16px;
+    }
+
+    .stage-metric-cell span {
+      display: block;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--color-muted);
+      font-weight: 700;
+    }
+
+    .stage-metric-cell strong {
+      font-size: 1.15rem;
+      font-family: var(--font-mono);
+      color: var(--color-terracotta);
+      font-weight: 800;
+    }
+
+
+    /* Subko Mary Lodge Live Barista KDS Ticket */
+    dialog#subkoKdsDialog {
+      margin: auto;
+      border: 3px solid var(--color-charcoal);
+      background: var(--bg-canvas);
+      color: var(--color-charcoal);
+      border-radius: var(--radius-sm);
+      padding: 32px;
+      max-width: 500px;
+      width: 90vw;
+      box-shadow: 12px 12px 0px var(--color-charcoal);
+      z-index: 1000;
+      opacity: 0;
+      transform: scale(0.95);
+      transition-property: opacity, transform, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#subkoKdsDialog[open] {
+      opacity: 1;
+      transform: scale(1);
+
+      @starting-style {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    dialog#subkoKdsDialog::backdrop {
+      background-color: rgba(20, 19, 17, 0);
+      backdrop-filter: blur(0px);
+      transition-property: background-color, backdrop-filter, display, overlay;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-out;
+      transition-behavior: allow-discrete;
+    }
+
+    dialog#subkoKdsDialog[open]::backdrop {
+      background-color: rgba(20, 19, 17, 0.75);
+      backdrop-filter: blur(8px);
+
+      @starting-style {
+        background-color: rgba(20, 19, 17, 0);
+        backdrop-filter: blur(0px);
+      }
+    }
+
+    .subko-passport-section {
+      max-width: 1320px;
+      margin: 40px auto;
+      padding: 0 28px;
+    }
+
+    .passport-box {
+      background: var(--bg-kraft);
+      border: 3px solid var(--color-charcoal);
+      box-shadow: var(--shadow-raw);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .passport-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .passport-stamps-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .passport-slot {
+      aspect-ratio: 1;
+      border: 2px dashed var(--color-charcoal);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      background: #FFF;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .passport-slot.stamped {
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      border-style: solid;
+      box-shadow: 3px 3px 0px var(--color-terracotta);
+      transform: scale(1.05);
+    }
+
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    .subko-ticker-strip:hover .subko-ticker-track {
+      animation-play-state: paused;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .parallax-depth-hud {
+        display: none !important;
+      }
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: var(--color-terracotta);
+      color: #FFF;
+      padding: 9px 24px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 92;
+      box-shadow: 0 2px 10px rgba(161, 56, 32, 0.3);
+    }
+
+    .top-strip-tag {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    /* Story Highlights Reel (Instagram Style) */
+    .story-reel-bar {
+      background: rgba(245, 239, 230, 0.95);
+      border-bottom: 2px solid var(--color-charcoal);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      overflow-x: auto;
+      position: relative;
+      z-index: 91;
+    }
+
+    .story-circle-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--color-charcoal);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .story-circle-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .story-ring {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      padding: 2.5px;
+      background: linear-gradient(135deg, #A13820, #E8DCC8, #141311);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 12px rgba(161, 56, 32, 0.25);
+    }
+
+    .story-thumb {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #FFF;
+      display: block;
+    }
+
+    .story-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Header */
+    header.subko-header {
+      position: sticky;
+      top: 0;
+      z-index: 95;
+      background: rgba(245, 239, 230, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--color-charcoal);
+    }
+
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tri-script-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--color-charcoal);
+    }
+
+    .logo-main {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .tri-script-chars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: var(--color-terracotta);
+      border-left: 2px solid var(--color-charcoal);
+      padding-left: 10px;
+      line-height: 1;
+    }
+
+    .tri-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; font-weight: 700; }
+    .tri-nastaliq { font-family: 'Noto Nastaliq Urdu', serif; font-size: 1.05rem; }
+
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--color-charcoal);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--color-terracotta);
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-subko {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid var(--color-charcoal);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-subko-primary {
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      box-shadow: var(--shadow-raw);
+    }
+
+    .btn-subko-primary:hover {
+      background: var(--color-terracotta);
+      border-color: var(--color-terracotta);
+      box-shadow: var(--shadow-raw-hover);
+      transform: translate(-3px, -3px);
+    }
+
+    .btn-subko-outline {
+      background: transparent;
+      color: var(--color-charcoal);
+    }
+
+    .btn-subko-outline:hover {
+      background: var(--bg-kraft);
+      box-shadow: 3px 3px 0px var(--color-charcoal);
+      transform: translate(-1px, -1px);
+    }
+
+    .cart-trigger {
+      position: relative;
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px var(--color-charcoal);
+    }
+
+    .cart-pill-count {
+      background: var(--color-terracotta);
+      color: #FFF;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.75rem;
+      font-family: var(--font-body);
+      font-weight: 800;
+    }
+
+    /* Ticker Tape */
+    .subko-ticker-strip {
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 10px 0;
+      border-bottom: 2px solid var(--color-terracotta);
+      position: relative;
+      z-index: 10;
+    }
+
+    .subko-ticker-track {
+      display: inline-flex;
+      animation: subkoTicker 35s linear infinite;
+      gap: 36px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .subko-ticker-track span.slash {
+      color: var(--color-terracotta);
+    }
+
+    @keyframes subkoTicker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Hero Section */
+    .hero-subko {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 70px 28px 100px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .archival-label {
+      display: inline-block;
+      border: 2px solid var(--color-charcoal);
+      background: linear-gradient(135deg, #E8DCC8, #DAC8AE);
+      padding: 6px 14px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: 2px 2px 0px var(--color-charcoal);
+    }
+
+    .hero-subko-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.4vw, 4.6rem);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero-subko-title span.italic-highlight {
+      font-style: italic;
+      color: var(--color-terracotta);
+      font-weight: 600;
+    }
+
+    .hero-subko-p {
+      font-size: 1.12rem;
+      color: var(--color-stone);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.68;
+    }
+
+    .subko-stamp-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 2px solid var(--color-charcoal);
+      flex-wrap: wrap;
+    }
+
+    .stamp-box h4 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--color-charcoal);
+    }
+
+    .stamp-box p {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-top: 6px;
+    }
+
+    /* 3D Box Packaging Model & Parallax Frame */
+    .box-3d-scene {
+      perspective: 1400px;
+      position: relative;
+    }
+
+    .floating-subko-stamp {
+      position: absolute;
+      top: -24px;
+      left: -20px;
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      padding: 9px 18px;
+      border: 2px solid var(--color-terracotta);
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      box-shadow: 6px 6px 0px var(--color-terracotta);
+      z-index: 25;
+      will-change: transform;
+      transition: transform 0.15s ease-out;
+    }
+
+    .box-frame-3d {
+      border: 3px solid var(--color-charcoal);
+      background: #FFF;
+      box-shadow: 14px 14px 0px var(--color-charcoal);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .box-img-viewport {
+      overflow: hidden;
+      height: 490px;
+      position: relative;
+    }
+
+    .box-img-viewport img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08);
+      will-change: transform;
+      transform: translate3d(0, 0, 0) scale(1.15);
+      transition: transform 0.1s linear;
+    }
+
+    .box-glare {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.45) 0%, transparent 60%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 15;
+      transition: opacity 0.3s ease;
+    }
+
+    .box-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      padding: 10px 16px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--color-border);
+      transform: translateZ(30px);
+      z-index: 20;
+      will-change: transform;
+    }
+
+    /* 3D Parallax Depth Monitor HUD */
+    .parallax-depth-hud {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(20, 19, 17, 0.94);
+      border: 2px solid var(--color-charcoal);
+      box-shadow: 4px 4px 0px var(--color-terracotta);
+      border-radius: 8px;
+      padding: 10px 16px;
+      z-index: 999;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: #F5EFE6;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .hud-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+
+    .hud-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: hudPulse 2s infinite;
+    }
+
+    @keyframes hudPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .hud-coords {
+      display: flex;
+      gap: 12px;
+      color: #DCD3C3;
+      font-size: 0.7rem;
+    }
+
+    .hud-coords span.val {
+      color: #F59E0B;
+      font-weight: 700;
+    }
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--color-border);
+      transform: translateZ(30px);
+    }
+
+    .box-footer-banner {
+      background: var(--bg-kraft);
+      padding: 16px 22px;
+      border-top: 3px solid var(--color-charcoal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Subcontinent Map & Origins */
+    .section-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 100px 28px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-head {
+      margin-bottom: 54px;
+    }
+
+    .section-head-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-head-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .origins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .origin-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 2px solid var(--color-charcoal);
+      padding: 32px;
+      box-shadow: var(--shadow-raw);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .origin-card:hover {
+      box-shadow: var(--shadow-raw-hover);
+      transform: translate(-4px, -4px);
+      border-color: var(--color-terracotta);
+    }
+
+    .origin-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px dashed var(--color-border);
+    }
+
+    .origin-code {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--bg-kraft);
+      padding: 4px 10px;
+      border: 1px solid var(--color-charcoal);
+    }
+
+    .origin-elevation {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+    }
+
+    .origin-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .origin-variety {
+      font-size: 0.82rem;
+      color: var(--color-terracotta);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .origin-card p {
+      font-size: 0.94rem;
+      color: var(--color-stone);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .origin-notes {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .note-pill {
+      font-size: 0.76rem;
+      background: var(--bg-kraft);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      border: 1px solid var(--color-border);
+    }
+
+    /* Bakehouse & Cacao Showcase */
+    .bakehouse-feature {
+      background: linear-gradient(135deg, #1A1815 0%, #100F0D 100%);
+      color: var(--bg-canvas);
+      border-radius: var(--radius-md);
+      padding: 90px 52px;
+      margin: 40px auto;
+      max-width: 1320px;
+      border: 2px solid var(--color-charcoal);
+      box-shadow: 10px 10px 0px var(--color-terracotta);
+    }
+
+    .bakehouse-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .bakehouse-info h3 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      color: #FFF;
+    }
+
+    .bakehouse-info p {
+      font-size: 1.08rem;
+      color: #C8BFB2;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .bakes-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .bakes-items-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #EFEADA;
+    }
+
+    .bakes-items-list span.icon {
+      color: var(--color-terracotta);
+      font-size: 1.3rem;
+    }
+
+    .bakehouse-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bakehouse-photo-grid img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border: 2px solid var(--color-charcoal);
+      border-radius: var(--radius-sm);
+      transition: transform 0.3s ease;
+    }
+
+    .bakehouse-photo-grid img:hover {
+      transform: scale(1.04);
+    }
+
+    /* Subscription Builder Tool */
+    .sub-builder-panel {
+      background: #FFF;
+      border: 3px solid var(--color-charcoal);
+      box-shadow: 10px 10px 0px var(--color-charcoal);
+      padding: 48px;
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+    }
+
+    .builder-step {
+      margin-bottom: 30px;
+    }
+
+    .builder-step h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .option-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .opt-card {
+      border: 2px solid var(--color-border);
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 700;
+      background: var(--bg-canvas);
+      transition: all 0.2s ease;
+    }
+
+    .opt-card.active, .opt-card:hover {
+      border-color: var(--color-charcoal);
+      background: var(--bg-kraft);
+      box-shadow: 3px 3px 0px var(--color-charcoal);
+      transform: translate(-1px, -1px);
+    }
+
+    .summary-card {
+      background: var(--bg-kraft);
+      border: 3px solid var(--color-charcoal);
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 4px 4px 0px var(--color-charcoal);
+    }
+
+    .summary-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .summary-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.94rem;
+      margin-bottom: 26px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .summary-total {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      border-top: 2px solid var(--color-charcoal);
+      padding-top: 16px;
+      margin-top: 12px;
+    }
+
+    /* Curbside Takeaway Menu */
+    .takeaway-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .takeaway-card {
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      box-shadow: 6px 6px 0px var(--color-charcoal);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .takeaway-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px var(--color-charcoal);
+    }
+
+    .takeaway-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 2px solid var(--color-charcoal);
+    }
+
+    .takeaway-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .takeaway-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .takeaway-head h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .takeaway-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-terracotta);
+    }
+
+    .takeaway-body p {
+      font-size: 0.9rem;
+      color: var(--color-stone);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Ranwar Village Flagship Spotlight */
+    .ranwar-strip {
+      background: var(--bg-kraft);
+      border: 3px solid var(--color-charcoal);
+      box-shadow: 10px 10px 0px var(--color-charcoal);
+      padding: 60px 48px;
+      margin: 60px auto;
+      max-width: 1320px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .ranwar-details h3 {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .ranwar-details p {
+      font-size: 1.05rem;
+      color: var(--color-stone);
+      margin-bottom: 22px;
+      line-height: 1.68;
+    }
+
+    /* Footer */
+    footer.subko-footer {
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      padding: 90px 28px 40px;
+      border-top: 6px solid var(--color-terracotta);
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-content {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand-pane h2 {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.04em;
+    }
+
+    .footer-brand-pane p {
+      color: #A39D92;
+      font-size: 0.95rem;
+      max-width: 380px;
+      line-height: 1.65;
+    }
+
+    .footer-links-col h5 {
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-terracotta);
+      margin-bottom: 20px;
+    }
+
+    .footer-links-col ul {
+      list-style: none;
+    }
+
+    .footer-links-col li {
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .footer-links-col a {
+      color: #EAE3D5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links-col a:hover {
+      color: var(--color-terracotta);
+    }
+
+    .subko-bottom-bar {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid #2B2925;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: #8A847A;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Cart Drawer */
+    .drawer-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 19, 17, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .drawer-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .side-cart {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(450px, 100%);
+      height: 100vh;
+      background: var(--bg-canvas);
+      border-left: 3px solid var(--color-charcoal);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .side-cart.open {
+      transform: translateX(0);
+    }
+
+    .cart-top {
+      padding: 24px;
+      border-bottom: 3px solid var(--color-charcoal);
+      background: var(--bg-kraft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-top h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .close-cart-btn {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .cart-scroll {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-entry {
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 3px 3px 0px var(--color-charcoal);
+    }
+
+    .cart-entry-info h5 {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 800;
+    }
+
+    .cart-entry-info span {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--color-terracotta);
+    }
+
+    .cart-checkout-bar {
+      padding: 24px;
+      border-top: 3px solid var(--color-charcoal);
+      background: #FFF;
+    }
+
+    /* Dialog styling */
+    dialog {
+      border: 3px solid var(--color-charcoal);
+      border-radius: var(--radius-sm);
+      background: var(--bg-canvas);
+      box-shadow: 14px 14px 0px var(--color-charcoal);
+      max-width: 520px;
+      width: calc(100% - 32px);
+      margin: auto;
+      padding: 0;
+      outline: none;
+      overflow: hidden;
+    }
+
+    dialog::backdrop {
+      background: rgba(20, 19, 17, 0.75);
+      backdrop-filter: blur(6px);
+    }
+
+    .dialog-header {
+      padding: 22px 26px;
+      background: var(--color-charcoal);
+      color: var(--bg-canvas);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dialog-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .dialog-body {
+      padding: 28px;
+    }
+
+    .subko-upi-qr {
+      background: #FFF;
+      border: 2px solid var(--color-charcoal);
+      width: 170px;
+      height: 170px;
+      margin: 16px auto;
+      padding: 10px;
+      display: grid;
+      place-items: center;
+      box-shadow: 4px 4px 0px var(--color-charcoal);
+    }
+
+    .subko-upi-qr svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 960px) {
+      .hero-subko {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+      }
+      .bakehouse-grid, .sub-builder-panel, .ranwar-strip {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+      }
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tactile Film Grain Overlay -->
+  <div class="film-grain"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="subkoProgressBar"></div>
+
+  <!-- Ambient Mesh Gradient -->
+  <div class="subko-ambient-mesh"></div>
+
+  <!-- Giant Parallax Typographic Watermark -->
+  <div class="subko-parallax-watermark" id="subkoWatermark">
+    RANWAR VILLAGE · SUBKO COFFEE · CRAFT BAKEHOUSE & CACAO MILL · BANDRA WEST
+  </div>
+
+  <!-- Top Strip -->
+  <div class="top-strip">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span class="top-strip-tag">Bandra West Flagship</span>
+      <span>Ranwar Village Craft Bakehouse & Coffee Roastery Open Daily from 7:30 AM</span>
+    </div>
+    <div>
+      <span>Direct Takeaway Available · Curbside Express Counter</span>
+    </div>
+  </div>
+
+  <!-- Instagram Stories Highlights Reel -->
+  <div class="story-reel-bar">
+    <div class="story-circle-item" onclick="openStory('ranwar')">
+      <div class="story-ring">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=150&q=80" alt="Ranwar Village" class="story-thumb">
+      </div>
+      <span class="story-label">Ranwar</span>
+    </div>
+
+    <div class="story-circle-item" onclick="openStory('bakehouse')">
+      <div class="story-ring">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=150&q=80" alt="Craft Bakehouse" class="story-thumb">
+      </div>
+      <span class="story-label">Bakes</span>
+    </div>
+
+    <div class="story-circle-item" onclick="openStory('cacao')">
+      <div class="story-ring">
+        <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=150&q=80" alt="Cacao Mill" class="story-thumb">
+      </div>
+      <span class="story-label">Cacao Mill</span>
+    </div>
+
+    <div class="story-circle-item" onclick="openStory('roast')">
+      <div class="story-ring">
+        <img src="https://images.unsplash.com/photo-1509785307050-d4066910ec1e?auto=format&fit=crop&w=150&q=80" alt="Roast Lab" class="story-thumb">
+      </div>
+      <span class="story-label">Roast Lab</span>
+    </div>
+
+    <div class="story-circle-item" onclick="openStory('origins')">
+      <div class="story-ring">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=150&q=80" alt="Estate Origins" class="story-thumb">
+      </div>
+      <span class="story-label">Origins</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="subko-header">
+    <div class="nav-inner">
+      <a href="#" class="tri-script-logo">
+        <span class="logo-main">SUBKO</span>
+        <div class="tri-script-chars">
+          <span class="tri-devanagari">सबको</span>
+          <span>·</span>
+          <span class="tri-nastaliq">سبکو</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#origins">Origins</a></li>
+        <li><a href="#bakehouse">Craft Bakehouse</a></li>
+        <li><a href="#subscriptions">Bean Box</a></li>
+        <li><a href="#takeaway">Curbside Pickup</a></li>
+        <li><a href="#ranwar">Ranwar Village</a></li>
+      </ul>
+
+      <div class="nav-right-actions">
+        <button class="btn-subko btn-subko-primary" onclick="openCurbsideCart()">Order Pickup</button>
+        <div class="cart-trigger" onclick="openCurbsideCart()">
+          <span>Bag</span>
+          <span class="cart-pill-count" id="subkoCartCount">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subcontinent Ticker Strip -->
+  <div class="subko-ticker-strip">
+    <div class="subko-ticker-track">
+      <span>Wayanad Micro-Lot 11.6854° N</span>
+      <span class="slash">✦</span>
+      <span>Biligirirangana Hills 1,450 MASL</span>
+      <span class="slash">✦</span>
+      <span>Araku Valley Anaerobic Fermentation</span>
+      <span class="slash">✦</span>
+      <span>72-Hour Wild Sourdough</span>
+      <span class="slash">✦</span>
+      <span>Ranwar Village Bandra West Flagship</span>
+      <span class="slash">✦</span>
+      <span>Wayanad Micro-Lot 11.6854° N</span>
+      <span class="slash">✦</span>
+      <span>Biligirirangana Hills 1,450 MASL</span>
+      <span class="slash">✦</span>
+      <span>Araku Valley Anaerobic Fermentation</span>
+      <span class="slash">✦</span>
+      <span>72-Hour Wild Sourdough</span>
+      <span class="slash">✦</span>
+    </div>
+  </div>
+
+  <!-- Hero Section with 3D Packaging Model -->
+  <main>
+    <section class="hero-subko">
+      <div class="hero-left">
+        <span class="archival-label">Batch No. SK-2026 · Ranwar Village, Bandra West</span>
+        <h1 class="hero-subko-title">
+          From the <span class="italic-highlight">Subcontinent</span>, for All.
+        </h1>
+        <p class="hero-subko-p">
+          We are an indigenous specialty coffee roastery, craft sourdough bakehouse, and bean-to-bar cacao mill. Elevating the hyper-regional agricultural treasures of South Asia with world-class craft standards.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="#subscriptions" class="btn-subko btn-subko-primary">Build Your Bean Box</a>
+          <a href="#takeaway" class="btn-subko btn-subko-outline">Direct Curbside Takeaway</a>
+        </div>
+
+        <div class="subko-stamp-row">
+          <div class="stamp-box">
+            <h4>4.5 ★</h4>
+            <p>4,500+ Google Reviews</p>
+          </div>
+          <div class="stamp-box">
+            <h4>100%</h4>
+            <p>Indian Micro-Lots</p>
+          </div>
+          <div class="stamp-box">
+            <h4>72-Hr</h4>
+            <p>Sourdough Fermentation</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right box-3d-scene">
+        <!-- Floating Stamp with Deep Parallax Offset -->
+        <div class="floating-subko-stamp" id="subkoFloatingStamp">
+          ✦ BAKEHOUSE NO. 1 · BANDRA
+        </div>
+
+        <div class="box-frame-3d" id="subkoBox3D">
+          <div class="box-glare"></div>
+          <div class="box-img-viewport">
+            <img id="subkoHeroImg" src="https://images.unsplash.com/photo-1509785307050-d4066910ec1e?auto=format&fit=crop&w=1000&q=80" alt="Subko Coffee whole bean roasting and craft bakehouse">
+          </div>
+          <div class="box-badge" id="subkoParallaxBadge">Mary Lodge · Ranwar</div>
+          <div class="box-footer-banner">
+            <span>Subko Flagship Roastery</span>
+            <span style="color: var(--color-terracotta);">Bandra West, Mumbai</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subcontinent Origins -->
+    <section id="origins" class="section-wrap">
+      <div class="section-head">
+        <span class="section-head-tag">Single Origin Micro-Lots</span>
+        <h2 class="section-head-title">The Subcontinent Provenance</h2>
+      </div>
+
+      <div class="origins-grid">
+        <div class="origin-card">
+          <div>
+            <div class="origin-meta-top">
+              <span class="origin-code">Lot #SB-01</span>
+              <span class="origin-elevation">1,350 MASL</span>
+            </div>
+            <h3>Wayanad Arabica Reserve</h3>
+            <span class="origin-variety">Shade-Grown · Kerala Ghats</span>
+            <p>Naturally processed with wild fruit maceration. Imparts deep aromas of ripe black plum, jaggery sweetness, and raw cacao nibs.</p>
+          </div>
+          <div class="origin-notes">
+            <span class="note-pill">Black Plum</span>
+            <span class="note-pill">Jaggery</span>
+            <span class="note-pill">Dark Cacao</span>
+          </div>
+        </div>
+
+        <div class="origin-card">
+          <div>
+            <div class="origin-meta-top">
+              <span class="origin-code">Lot #SB-04</span>
+              <span class="origin-elevation">1,450 MASL</span>
+            </div>
+            <h3>Biligirirangana Sanctuary</h3>
+            <span class="origin-variety">Washed Process · Karnataka</span>
+            <p>Grown amidst wildlife corridors under indigenous canopy trees. Crisp clean citrus acidity balanced by sweet roasted almond and honey notes.</p>
+          </div>
+          <div class="origin-notes">
+            <span class="note-pill">Mandarin</span>
+            <span class="note-pill">Honey</span>
+            <span class="note-pill">Roasted Almond</span>
+          </div>
+        </div>
+
+        <div class="origin-card">
+          <div>
+            <div class="origin-meta-top">
+              <span class="origin-code">Lot #SB-09</span>
+              <span class="origin-elevation">1,200 MASL</span>
+            </div>
+            <h3>Araku Valley Tribal Microlot</h3>
+            <span class="origin-variety">Anaerobic Ferment · Eastern Ghats</span>
+            <p>Harvested by tribal farming collectives. Extended 48-hour anaerobic tank fermentation yields a velvety cup with hints of dried fig and spices.</p>
+          </div>
+          <div class="origin-notes">
+            <span class="note-pill">Dried Fig</span>
+            <span class="note-pill">Wild Cardamom</span>
+            <span class="note-pill">Spiced Toffee</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Craft Bakehouse Feature -->
+    <section id="bakehouse" class="bakehouse-feature">
+      <div class="bakehouse-grid">
+        <div class="bakehouse-info">
+          <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--color-terracotta); font-weight: 800; display: block; margin-bottom: 14px;">Craft Bakehouse & Cacao Mill</span>
+          <h3>Laminated Viennoiserie & Heirloom Sourdough</h3>
+          <p>
+            Every morning at 4:30 AM, our baker-artisans roll stone-ground indigenous grains with rich French butter, paired with house-fermented chocolate from our Byculla Cacao Mill.
+          </p>
+          <ul class="bakes-items-list">
+            <li><span class="icon">✦</span> Podi & Cheese Twice-Baked Croissant (House Favorite)</li>
+            <li><span class="icon">✦</span> 72-Hour Wild Starter Country Sourdough Loaf</li>
+            <li><span class="icon">✦</span> Single-Origin Kerala Cacao Cruffin with Spiced Ganache</li>
+            <li><span class="icon">✦</span> Toasted Cardamom & Pistachio Babka Bun</li>
+          </ul>
+          <a href="#takeaway" class="btn-subko btn-subko-primary" style="background: var(--color-terracotta); border-color: var(--color-terracotta);">Order Morning Bakes</a>
+        </div>
+
+        <div class="bakehouse-photo-grid">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Fresh artisan croissants">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Sourdough bread artisan loaf">
+          <img src="https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=600&q=80" alt="Subko Cacao craft chocolate">
+          <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80" alt="Subko Pour over specialty coffee">
+        </div>
+
+        <!-- Interactive 72-Hour Sourdough Journey -->
+        <div class="sourdough-journey-interactive" style="grid-column: 1 / -1;">
+          <div class="journey-header">
+            <span class="journey-tag">🌾 72-Hour Fermentation Alchemy</span>
+            <h4>The Mary Lodge Wild Sourdough Process</h4>
+          </div>
+
+          <div class="journey-steps-row">
+            <div class="journey-step-btn active" onclick="selectSourdoughStage(0, this)">
+              <span class="step-hour">Hour 0</span>
+              <span class="step-name">Wild Inoculation</span>
+            </div>
+            <div class="journey-step-btn" onclick="selectSourdoughStage(1, this)">
+              <span class="step-hour">Hour 18</span>
+              <span class="step-name">Bulk Autolyse</span>
+            </div>
+            <div class="journey-step-btn" onclick="selectSourdoughStage(2, this)">
+              <span class="step-hour">Hour 48</span>
+              <span class="step-name">Artisan Lamination</span>
+            </div>
+            <div class="journey-step-btn" onclick="selectSourdoughStage(3, this)">
+              <span class="step-hour">Hour 72</span>
+              <span class="step-name">Ranwar Deck Bake</span>
+            </div>
+          </div>
+
+          <div class="journey-stage-card" id="sourdoughStageCard"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription Box Builder -->
+    <section id="subscriptions" class="section-wrap">
+      <div class="section-head">
+        <span class="section-head-tag">Archival Packaging</span>
+        <h2 class="section-head-title">Build Your Subko Bean Box Subscription</h2>
+        <p style="color: var(--color-stone); font-size: 1.08rem; max-width: 600px; margin-top: 8px;">Delivered in our collectible archival cardboard box straight from our Bandra roastery to your doorstep.</p>
+      </div>
+
+      <div class="sub-builder-panel">
+        <div class="builder-controls">
+          <div class="builder-step">
+            <h4>1. Choose Origin Lot</h4>
+            <div class="option-cards" id="originOptions">
+              <div class="opt-card active" onclick="selectSubOpt('origin', 'Wayanad Reserve', 620, this)">Wayanad (₹620)</div>
+              <div class="opt-card" onclick="selectSubOpt('origin', 'Biligirirangana', 660, this)">Biligirirangana (₹660)</div>
+              <div class="opt-card" onclick="selectSubOpt('origin', 'Araku Valley', 680, this)">Araku Anaerobic (₹680)</div>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <h4>2. Select Grind Profile</h4>
+            <div class="option-cards" id="grindOptions">
+              <div class="opt-card active" onclick="selectSubOpt('grind', 'Whole Beans', 0, this)">Whole Beans</div>
+              <div class="opt-card" onclick="selectSubOpt('grind', 'Pour Over / V60', 0, this)">Pour Over / V60</div>
+              <div class="opt-card" onclick="selectSubOpt('grind', 'AeroPress', 0, this)">AeroPress</div>
+              <div class="opt-card" onclick="selectSubOpt('grind', 'French Press', 0, this)">French Press</div>
+              <div class="opt-card" onclick="selectSubOpt('grind', 'Espresso', 0, this)">Espresso</div>
+            </div>
+          </div>
+
+          <div class="builder-step">
+            <h4>3. Dispatch Frequency</h4>
+            <div class="option-cards" id="freqOptions">
+              <div class="opt-card active" onclick="selectSubOpt('freq', 'Every 2 Weeks - 15% Off', 0.85, this)">Bi-Weekly (-15%)</div>
+              <div class="opt-card" onclick="selectSubOpt('freq', 'Monthly - 10% Off', 0.90, this)">Monthly (-10%)</div>
+              <div class="opt-card" onclick="selectSubOpt('freq', 'One-Time Order', 1.0, this)">One-Time Box</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div>
+            <h4>Subscription Overview</h4>
+            <div class="summary-breakdown">
+              <div class="summary-line">
+                <span>Selected Origin:</span>
+                <strong id="sumOrigin">Wayanad Reserve</strong>
+              </div>
+              <div class="summary-line">
+                <span>Grind Type:</span>
+                <strong id="sumGrind">Whole Beans</strong>
+              </div>
+              <div class="summary-line">
+                <span>Box Size:</span>
+                <strong>250g Archival Box</strong>
+              </div>
+              <div class="summary-line">
+                <span>Frequency:</span>
+                <strong id="sumFreq">Every 2 Weeks</strong>
+              </div>
+              <div class="summary-total">
+                <div class="summary-line">
+                  <span>Price per Dispatch:</span>
+                  <span id="sumTotal" style="color: var(--color-terracotta);">₹527</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn-subko btn-subko-primary" style="width: 100%;" onclick="confirmSubscription()">
+            Subscribe to Archival Box
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curbside Takeaway Menu -->
+    <section id="takeaway" class="section-wrap" style="padding-top: 20px;">
+      <div class="section-head">
+        <span class="section-head-tag">Bandra West Takeaway</span>
+        <h2 class="section-head-title">Express Curbside Ordering</h2>
+        <p style="color: var(--color-stone); font-size: 1.05rem; margin-top: 8px;">Order directly from Mary Lodge, Bandra. Skip delivery platform surcharges and collect hot at the lane counter.</p>
+      </div>
+
+      <div class="takeaway-menu-grid">
+        <div class="takeaway-card">
+          <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80" alt="Subko Flat White" class="takeaway-img">
+          <div class="takeaway-body">
+            <div>
+              <div class="takeaway-head">
+                <h4>Subko Double Flat White</h4>
+                <span class="takeaway-price">₹275</span>
+              </div>
+              <p>Double ristretto espresso pulled from our seasonal Bloom roast with micro-textured velvety milk.</p>
+            </div>
+            <button class="btn-subko btn-subko-outline" style="width: 100%;" onclick="addCurbsideItem('Subko Double Flat White', 275)">+ Add to Curbside Bag</button>
+          </div>
+        </div>
+
+        <div class="takeaway-card">
+          <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" alt="Iced Pour Over" class="takeaway-img">
+          <div class="takeaway-body">
+            <div>
+              <div class="takeaway-head">
+                <h4>Flash Chilled Iced Pourover</h4>
+                <span class="takeaway-price">₹310</span>
+              </div>
+              <p>Hand-poured over crystal ice cubes to instantly capture vibrant fruit florals and clean citrus brightness.</p>
+            </div>
+            <button class="btn-subko btn-subko-outline" style="width: 100%;" onclick="addCurbsideItem('Flash Chilled Iced Pourover', 310)">+ Add to Curbside Bag</button>
+          </div>
+        </div>
+
+        <div class="takeaway-card">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Podi Twice-Baked Croissant" class="takeaway-img">
+          <div class="takeaway-body">
+            <div>
+              <div class="takeaway-head">
+                <h4>Podi & Cheese Croissant</h4>
+                <span class="takeaway-price">₹345</span>
+              </div>
+              <p>Twice-baked flaky butter croissant stuffed with aged cheddar and seasoned with Madurai gunpowder podi.</p>
+            </div>
+            <button class="btn-subko btn-subko-outline" style="width: 100%;" onclick="addCurbsideItem('Podi & Cheese Croissant', 345)">+ Add to Curbside Bag</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Subko Coffee & Cacao Passport (Retention Engine) -->
+    <section class="subko-passport-section reveal-on-scroll">
+      <div class="passport-box">
+        <div>
+          <span style="font-size: 0.76rem; font-weight: 800; font-family: var(--font-mono); text-transform: uppercase; color: var(--color-terracotta); letter-spacing: 0.12em; display: block; margin-bottom: 8px;">Direct Patron Ledger</span>
+          <h3 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 14px;">
+            The Subcontinent Origin Passport
+          </h3>
+          <p style="color: var(--color-stone); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Collect provenance stamps directly through our curbside counter. Every 5 single-origin brews unlocks a complimentary Podi croissant or small-batch cacao bar.
+          </p>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <button class="btn-subko btn-subko-primary" onclick="addPassportStamp()">✦ Stamp Origin (+1)</button>
+            <span id="passportCountText" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--color-charcoal);">
+              3 of 6 Stamped
+            </span>
+          </div>
+        </div>
+
+        <div style="background: #FFF; border: 2px solid var(--color-charcoal); padding: 24px; box-shadow: 4px 4px 0px var(--color-charcoal);">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--color-charcoal); padding-bottom:10px;">
+            <strong style="font-family: var(--font-display); font-size: 1.1rem;">SUBKO ARCHIVAL PASSPORT</strong>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; background: var(--bg-kraft); padding: 2px 8px; border: 1px solid #000;">NO. SK-4902</span>
+          </div>
+
+          <div class="passport-stamps-grid" id="passportRow">
+            <div class="passport-slot stamped">☕</div>
+            <div class="passport-slot stamped">🍫</div>
+            <div class="passport-slot stamped">🥐</div>
+            <div class="passport-slot">☕</div>
+            <div class="passport-slot">☕</div>
+            <div class="passport-slot">🎁</div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-family:var(--font-mono); font-weight:700; color:var(--color-muted);">
+            <span>Reward: Podi Croissant or Cacao Bar</span>
+            <span>Direct Orders Only</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Corporate Archival Gifting Estimator -->
+    <section class="section-wrap reveal-on-scroll" style="padding-top: 20px;">
+      <div class="section-head" style="margin-bottom: 30px;">
+        <span class="section-head-tag">Institutional Gifting</span>
+        <h2 class="section-head-title">Custom Corporate Archival Gift Boxes</h2>
+        <p style="color: var(--color-stone); font-size: 1.05rem; margin-top: 6px;">Curated Indian micro-lots, bean-to-bar cacao, and archival brass brewer kits for founders and companies.</p>
+      </div>
+
+      <div style="background: var(--bg-card); border: 2px solid var(--color-charcoal); padding: 32px; box-shadow: var(--shadow-raw); display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: center;">
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">
+            Number of Boxes: <strong id="boxCountDisplay" style="color: var(--color-terracotta); font-family: var(--font-mono); font-size: 1.3rem;">50 Boxes</strong>
+          </label>
+          <input type="range" min="10" max="500" step="10" value="50" id="boxCountSlider" oninput="updateGiftingCalc()" style="width: 100%; accent-color: var(--color-charcoal);">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">Box Edition Tier:</label>
+          <select id="boxTierSelect" onchange="updateGiftingCalc()" style="width: 100%; padding: 11px; background: #FFF; border: 2px solid var(--color-charcoal); font-family: var(--font-body); font-weight: 700;">
+            <option value="duo">Duo Origin Reserve (2 Micro-Lots + Tote)</option>
+            <option value="cacao" selected>Coffee & Bean-to-Bar Cacao Archival Set</option>
+            <option value="connoisseur">Master Roaster Edition (Aeropress + 3 Lots + Brass Tin)</option>
+          </select>
+        </div>
+
+        <div style="background: var(--bg-kraft); border: 2px solid var(--color-charcoal); padding: 18px 22px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="font-size: 0.72rem; font-family: var(--font-mono); text-transform: uppercase; font-weight: 800; display: block;">Institutional Quote</span>
+            <strong id="giftingQuoteDisplay" style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--color-charcoal);">₹82,500</strong>
+          </div>
+          <button class="btn-subko btn-subko-primary" onclick="requestSubkoGifting()" style="padding: 9px 16px; font-size: 0.8rem;">
+            Inquire via WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Ranwar Village Flagship Spotlight -->
+    <section id="ranwar" class="section-wrap">
+      <div class="ranwar-strip">
+        <div class="ranwar-details">
+          <span class="section-head-tag">Historical Flagship</span>
+          <h3>Mary Lodge, Ranwar Village</h3>
+          <p>
+            Tucked deep into the heritage Portuguese-era lanes of Bandra West, our flagship space bridges centuries-old architecture with modern roast science and community culture.
+          </p>
+          <p style="font-weight: 700; color: var(--color-charcoal);">
+            📍 Ground Floor, Mary Lodge, Ranwar, Bandra West, Mumbai 400050<br>
+            ⏰ Daily Roastery Hours: 7:30 AM – 10:30 PM (Mon–Sun)
+          </p>
+        </div>
+        <div>
+          <button class="btn-subko btn-subko-primary" style="width: 100%; margin-bottom: 12px;" onclick="openCurbsideCart()">
+            Start Curbside Order
+          </button>
+          <a href="https://instagram.com/subkocoffee" target="_blank" rel="noopener" class="btn-subko btn-subko-outline" style="width: 100%; text-align: center; display: block;">
+            Follow @subkocoffee
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="subko-footer">
+    <div class="footer-content">
+      <div class="footer-brand-pane">
+        <h2>SUBKO</h2>
+        <p>From the Subcontinent, for All. Specialty coffee roasters, craft sourdough bakehouse, and bean-to-bar cacao mill.</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Locations</h5>
+        <ul>
+          <li><a href="#">Mary Lodge, Ranwar, Bandra</a></li>
+          <li><a href="#">The Craftery, Byculla</a></li>
+          <li><a href="#">Subko Cacao Mill, Lower Parel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Direct Channels</h5>
+        <ul>
+          <li><a href="#takeaway">Curbside Takeaway</a></li>
+          <li><a href="#subscriptions">Bean Box Club</a></li>
+          <li><a href="tel:+919136011989">+91 91360 11989</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h5>Follow</h5>
+        <ul>
+          <li><a href="https://instagram.com/subkocoffee" target="_blank" rel="noopener">Instagram @subkocoffee</a></li>
+          <li><a href="#">Roaster's Journal</a></li>
+          <li><a href="#">Coffee Sourcing Map</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subko-bottom-bar">
+      <span>© 2026 Subko Coffee Private Limited. All rights reserved.</span>
+      <span>Engineered by <strong>VALIXIS Technologies</strong> · Direct Takeaway Portal</span>
+    </div>
+  </footer>
+
+  <!-- Curbside Cart Drawer -->
+  <div class="drawer-scrim" id="subkoScrim" onclick="closeCurbsideCart()"></div>
+  <aside class="side-cart" id="subkoCart">
+    <div class="cart-top">
+      <h3>Curbside Bag</h3>
+      <button class="close-cart-btn" onclick="closeCurbsideCart()">&times;</button>
+    </div>
+    <div class="cart-scroll" id="subkoCartItems">
+      <div style="text-align: center; color: var(--color-muted); padding: 40px 0;">
+        Your curbside pickup bag is empty.
+      </div>
+    </div>
+    <div class="cart-checkout-bar">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-weight: 800; font-size: 1.15rem;">
+        <span>Total (Zero Platform Cut):</span>
+        <span id="subkoCartTotal" style="color: var(--color-terracotta);">₹0</span>
+      </div>
+      <button class="btn-subko btn-subko-primary" style="width: 100%;" onclick="openSubkoUpiDialog()">
+        1-Click UPI Curbside Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- UPI Checkout Dialog -->
+  <dialog id="subkoUpiDialog" closedby="any" aria-labelledby="subkoUpiHead">
+    <div class="dialog-header">
+      <h3 id="subkoUpiHead">Curbside Direct UPI Pay</h3>
+      <button onclick="closeSubkoUpiDialog()" style="background:none; border:none; color:#FFF; font-size:1.5rem; cursor:pointer;">&times;</button>
+    </div>
+    <div class="dialog-body">
+      <div style="text-align: center;">
+        <span style="font-size: 0.85rem; color: var(--color-muted); font-weight: 700;">Direct to Mary Lodge Counter · Ranwar Village</span>
+        <h2 style="font-family: var(--font-display); font-size: 2.2rem; color: var(--color-terracotta); margin: 8px 0;" id="subkoModalAmount">₹0</h2>
+      </div>
+
+      <div class="subko-upi-qr">
+        <svg viewBox="0 0 100 100" fill="#141311">
+          <rect x="5" y="5" width="25" height="25"/>
+          <rect x="9" y="9" width="17" height="17" fill="#FFF"/>
+          <rect x="13" y="13" width="9" height="9"/>
+          <rect x="70" y="5" width="25" height="25"/>
+          <rect x="74" y="9" width="17" height="17" fill="#FFF"/>
+          <rect x="78" y="13" width="9" height="9"/>
+          <rect x="5" y="70" width="25" height="25"/>
+          <rect x="9" y="74" width="17" height="17" fill="#FFF"/>
+          <rect x="13" y="78" width="9" height="9"/>
+          <rect x="35" y="12" width="12" height="12"/>
+          <rect x="52" y="18" width="14" height="8"/>
+          <rect x="35" y="38" width="30" height="10"/>
+          <rect x="10" y="40" width="18" height="14"/>
+          <rect x="72" y="38" width="20" height="16"/>
+          <rect x="40" y="60" width="22" height="12"/>
+          <rect x="70" y="68" width="22" height="22"/>
+          <rect x="36" y="78" width="12" height="14"/>
+        </svg>
+      </div>
+
+      <p style="text-align: center; font-family: var(--font-body); font-weight: 800; font-size: 0.95rem; margin-bottom: 18px;">
+        UPI ID: <span style="color: var(--color-terracotta);">subko.ranwar@hdfcbank</span>
+      </p>
+
+      <div style="margin-bottom: 16px;">
+        <label style="display:block; font-size:0.8rem; font-weight:800; text-transform:uppercase; margin-bottom:6px;">Pickup Contact Name</label>
+        <input type="text" id="subkoPickupName" placeholder="Subhash" style="width:100%; padding:12px; border:2px solid var(--color-charcoal); font-family:var(--font-body); font-size:0.95rem; font-weight:600;">
+      </div>
+
+      <button class="btn-subko btn-subko-primary" style="width: 100%;" onclick="finalizeCurbsideOrder()">
+        Confirm UPI Transfer & Print Counter KOT
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Live Mary Lodge Barista Station KDS Ticket Modal -->
+  <dialog id="subkoKdsDialog" closedby="any" aria-labelledby="subkoKdsTitle">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981;"></span>
+        <strong id="subkoKdsTitle" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-terracotta); letter-spacing: 0.08em; text-transform: uppercase;">
+          LIVE MARY LODGE KDS #01
+        </strong>
+      </div>
+      <button onclick="closeSubkoKdsModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; font-weight: 800;">&times;</button>
+    </div>
+
+    <div style="background: #FFF; border: 2px solid var(--color-charcoal); padding: 22px; margin: 18px 0; box-shadow: 4px 4px 0px var(--color-charcoal); font-family: var(--font-mono);">
+      <div style="display: flex; justify-content: space-between; border-bottom: 2px solid var(--color-charcoal); padding-bottom: 10px; margin-bottom: 10px;">
+        <div>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin: 0;">SUBKO COFFEE</h4>
+          <span style="font-size: 0.72rem; color: var(--color-muted);">Mary Lodge, Ranwar, Bandra</span>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 0.7rem; color: var(--color-muted); display: block;">Token</span>
+          <strong id="subkoTokenDisplay" style="font-size: 1.3rem; color: var(--color-terracotta);">#SK-408</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 0.75rem; font-weight: 800;">
+        <span style="color: #10B981;">✓ UPI VERIFIED</span>
+        <span style="color: var(--color-terracotta);">CURBSIDE PICKUP (8 MINS)</span>
+      </div>
+
+      <div id="subkoKdsItemList" style="border-top: 1px dashed #CCC; border-bottom: 1px dashed #CCC; padding: 10px 0; margin: 10px 0; font-size: 0.85rem;">
+        1 × Podi Croissant, 1 × Wayanad Cold Brew
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 0.88rem; font-weight: 800; margin-top: 10px;">
+        <span>Settlement Total</span>
+        <span id="subkoKdsTotalDisplay">₹540</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 12px;">
+      <a id="subkoWaOrderBtn" href="#" target="_blank" class="btn-subko btn-subko-primary" style="flex: 1; text-align: center; text-decoration: none; padding: 12px; font-size: 0.85rem; background: #25D366; border-color: #25D366; color: #000;">
+        📲 Open Live Order on WhatsApp
+      </a>
+      <button class="btn-subko btn-subko-outline" onclick="closeSubkoKdsModal()" style="padding: 12px 18px; font-size: 0.85rem;">
+        Done
+      </button>
+    </div>
+  </dialog>
+
+  <!-- 3D Parallax Depth Monitor HUD -->
+  <div class="parallax-depth-hud" id="subkoHud">
+    <div class="hud-title"><span class="hud-dot"></span> 3D Parallax Depth Active <button onclick="document.getElementById('subkoHud').style.display='none'" style="background:none;border:none;color:#8E7A69;cursor:pointer;font-size:11px;margin-left:auto;">✕</button></div>
+    <div class="hud-coords">
+      <div>Scroll: <span class="val" id="hudScrollVal">0px</span></div>
+      <div>Watermark: <span class="val" id="hudWatermarkVal">0px</span></div>
+      <div>Badge Lift: <span class="val" id="hudBadgeVal">0px</span></div>
+    </div>
+  </div>
+
+  <!-- Script with 60 FPS Parallax Engine & 3D Mouse Tilt -->
+  <script>
+    // Parallax Scroll Engine (60 FPS requestAnimationFrame)
+    const watermark = document.getElementById('subkoWatermark');
+    const heroImg = document.getElementById('subkoHeroImg');
+    const box3D = document.getElementById('subkoBox3D');
+    const floatingStamp = document.getElementById('subkoFloatingStamp');
+    const floatingBadge = document.getElementById('subkoParallaxBadge');
+    const progressBar = document.getElementById('subkoProgressBar');
+    const hudScroll = document.getElementById('hudScrollVal');
+    const hudWatermark = document.getElementById('hudWatermarkVal');
+    const hudBadge = document.getElementById('hudBadgeVal');
+
+    let latestScrollY = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      latestScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateParallax(latestScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    function updateParallax(y) {
+      // 1. Reading Progress
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (y / docHeight) * 100 : 0;
+      if (progressBar) progressBar.style.width = progress + '%';
+
+      // 2. Watermark lateral and vertical translation (fast visible glide)
+      if (watermark) {
+        const xOffset = y * -0.52;
+        const yOffset = y * 0.12;
+        watermark.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+        if (hudWatermark) hudWatermark.innerText = `${Math.round(xOffset)}px`;
+      }
+
+      // 3. Hero Image Parallax inside frame
+      if (heroImg) {
+        heroImg.style.transform = `translate3d(0, ${y * -0.22}px, 0) scale(1.15)`;
+      }
+
+      // 4. Floating Stamp Parallax (lifts and tilts on scroll)
+      if (floatingStamp) {
+        const stampY = y * -0.42;
+        floatingStamp.style.transform = `translate3d(0, ${stampY}px, 50px) rotate(${y * 0.04}deg)`;
+      }
+
+      // 5. Box Badge Parallax (moves faster upwards)
+      if (floatingBadge) {
+        const badgeY = y * -0.32;
+        floatingBadge.style.transform = `translate3d(0, ${badgeY}px, 40px)`;
+        if (hudBadge) hudBadge.innerText = `${Math.round(badgeY)}px`;
+      }
+
+      // 6. HUD updates
+      if (hudScroll) hudScroll.innerText = `${Math.round(y)}px`;
+    }
+
+    // 3D Packaging Model Tilt with Specular Glare
+    if (box3D) {
+      const glare = box3D.querySelector('.box-glare');
+      box3D.addEventListener('mousemove', (e) => {
+        const rect = box3D.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -14;
+        const rotateY = ((x - centerX) / centerX) * 14;
+
+        box3D.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        box3D.style.boxShadow = `${-rotateY + 14}px ${rotateX + 14}px 0px #141311`;
+
+        if (glare) {
+          glare.style.opacity = '1';
+          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.45) 0%, transparent 60%)`;
+        }
+      });
+
+      box3D.addEventListener('mouseleave', () => {
+        box3D.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        box3D.style.boxShadow = '14px 14px 0px #141311';
+        if (glare) glare.style.opacity = '0';
+      });
+    }
+
+    function openStory(type) {
+      const messages = {
+        ranwar: "📍 Mary Lodge, Ranwar Village: Our flagship nestled in Bandra's 18th-century heritage village.",
+        bakehouse: "🥐 Craft Bakehouse: 72-hour cold fermented wild sourdough and twice-baked podi croissants.",
+        cacao: "🍫 Subko Cacao: Bean-to-bar chocolate crafted from single-origin organic Kerala beans.",
+        roast: "🔥 Roast Lab: Small batch Loring convection roasters with zero emissions.",
+        origins: "🌱 Origins: Direct-trade micro-lots from Wayanad, Araku, and Biligirirangana Hills."
+      };
+      alert(messages[type] || "Subko Craft Highlight");
+    }
+
+    // State for Subscription
+    let currentSub = {
+      origin: "Wayanad Reserve",
+      basePrice: 620,
+      grind: "Whole Beans",
+      freq: "Every 2 Weeks",
+      multiplier: 0.85
+    };
+
+    function selectSubOpt(type, label, val, el) {
+      el.parentElement.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+
+      if (type === 'origin') {
+        currentSub.origin = label;
+        currentSub.basePrice = val;
+      } else if (type === 'grind') {
+        currentSub.grind = label;
+      } else if (type === 'freq') {
+        currentSub.freq = label;
+        currentSub.multiplier = val;
+      }
+      recalcSub();
+    }
+
+    function recalcSub() {
+      const finalPrice = Math.round(currentSub.basePrice * currentSub.multiplier);
+      document.getElementById('sumOrigin').innerText = currentSub.origin;
+      document.getElementById('sumGrind').innerText = currentSub.grind;
+      document.getElementById('sumFreq').innerText = currentSub.freq;
+      document.getElementById('sumTotal').innerText = `₹${finalPrice}`;
+    }
+
+    function confirmSubscription() {
+      alert(`📦 Subko Archival Box Configured!\n\nOrigin: ${currentSub.origin}\nGrind: ${currentSub.grind}\nSchedule: ${currentSub.freq}\nPrice per box: ₹${Math.round(currentSub.basePrice * currentSub.multiplier)}\n\nRedirecting to secure subscription portal...`);
+    }
+
+    // Curbside Bag
+    let curbsideCart = [];
+
+    function addCurbsideItem(title, price) {
+      const found = curbsideCart.find(i => i.title === title);
+      if (found) {
+        found.qty += 1;
+      } else {
+        curbsideCart.push({ title, price, qty: 1 });
+      }
+      updateCurbsideUI();
+      openCurbsideCart();
+    }
+
+    function updateCurbsideUI() {
+      const countEl = document.getElementById('subkoCartCount');
+      const listEl = document.getElementById('subkoCartItems');
+      const totalEl = document.getElementById('subkoCartTotal');
+
+      const totalItems = curbsideCart.reduce((sum, i) => sum + i.qty, 0);
+      countEl.innerText = totalItems;
+
+      if (curbsideCart.length === 0) {
+        listEl.innerHTML = `<div style="text-align: center; color: var(--color-muted); padding: 40px 0;">Your curbside pickup bag is empty.</div>`;
+        totalEl.innerText = "₹0";
+        return;
+      }
+
+      listEl.innerHTML = curbsideCart.map((item, idx) => `
+        <div class="cart-entry">
+          <div class="cart-entry-info">
+            <h5>${item.title}</h5>
+            <span>₹${item.price} × ${item.qty}</span>
+          </div>
+          <div>
+            <button onclick="changeCurbsideQty(${idx}, -1)" style="border:1.5px solid #000; padding:2px 8px; cursor:pointer; font-weight:800;">−</button>
+            <span style="font-weight:800; margin:0 8px;">${item.qty}</span>
+            <button onclick="changeCurbsideQty(${idx}, 1)" style="border:1.5px solid #000; padding:2px 8px; cursor:pointer; font-weight:800;">+</button>
+          </div>
+        </div>
+      `).join('');
+
+      const total = curbsideCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      totalEl.innerText = `₹${total}`;
+    }
+
+    function changeCurbsideQty(idx, delta) {
+      curbsideCart[idx].qty += delta;
+      if (curbsideCart[idx].qty <= 0) curbsideCart.splice(idx, 1);
+      updateCurbsideUI();
+    }
+
+    function openCurbsideCart() {
+      document.getElementById('subkoCart').classList.add('open');
+      document.getElementById('subkoScrim').classList.add('open');
+    }
+
+    function closeCurbsideCart() {
+      document.getElementById('subkoCart').classList.remove('open');
+      document.getElementById('subkoScrim').classList.remove('open');
+    }
+
+    function openSubkoUpiDialog() {
+      if (curbsideCart.length === 0) {
+        alert("Please add items to your curbside bag first.");
+        return;
+      }
+      closeCurbsideCart();
+      const total = curbsideCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      document.getElementById('subkoModalAmount').innerText = `₹${total}`;
+      document.getElementById('subkoUpiDialog').showModal();
+    }
+
+    function closeSubkoUpiDialog() {
+      document.getElementById('subkoUpiDialog').close();
+    }
+
+    function finalizeCurbsideOrder() {
+      const name = (document.getElementById('subkoPickupName') ? document.getElementById('subkoPickupName').value.trim() : '') || "Guest";
+      const token = `#SK-${Math.floor(100 + Math.random() * 900)}`;
+      const total = document.getElementById('subkoModalAmount') ? document.getElementById('subkoModalAmount').innerText : '₹540';
+
+      closeSubkoUpiDialog();
+      
+      const tokenEl = document.getElementById('subkoTokenDisplay');
+      if (tokenEl) tokenEl.innerText = token;
+      
+      const totalEl = document.getElementById('subkoKdsTotalDisplay');
+      if (totalEl) totalEl.innerText = total;
+
+      const itemsSummary = curbsideCart.length > 0 ? curbsideCart.map(i => `${i.qty}× ${i.title}`).join(', ') : "1 × Podi Croissant, 1 × Wayanad Cold Brew";
+      const listEl = document.getElementById('subkoKdsItemList');
+      if (listEl) listEl.innerText = itemsSummary;
+
+      const waMsg = encodeURIComponent(`🥐 Subko Mary Lodge Curbside Order Verified!\nToken: ${token}\nCustomer: ${name}\nItems: ${itemsSummary}\nTotal: ${total}\nPickup: Mary Lodge Ranwar Village counter in 8-10 mins.`);
+      const waBtn = document.getElementById('subkoWaOrderBtn');
+      if (waBtn) waBtn.href = `https://api.whatsapp.com/send?phone=919004700655&text=${waMsg}`;
+
+      const dlg = document.getElementById('subkoKdsDialog');
+      if (dlg) dlg.showModal();
+      
+      curbsideCart = [];
+      updateCurbsideUI();
+    }
+
+    function closeSubkoKdsModal() {
+      const dlg = document.getElementById('subkoKdsDialog');
+      if (dlg) dlg.close();
+    }
+
+    // Subko Passport Logic
+    let subkoPassportCount = 3;
+
+    function addPassportStamp() {
+      if (subkoPassportCount < 6) {
+        subkoPassportCount += 1;
+        updatePassportUI();
+        if (subkoPassportCount === 6) {
+          alert("🥐 Subcontinent Passport Complete! You've unlocked a complimentary Podi Croissant or Kerala Cacao bar at Mary Lodge curbside!");
+        }
+      } else {
+        subkoPassportCount = 1;
+        updatePassportUI();
+      }
+    }
+
+    function updatePassportUI() {
+      const slots = document.querySelectorAll('#passportRow .passport-slot');
+      slots.forEach((s, idx) => {
+        if (idx < subkoPassportCount) {
+          s.classList.add('stamped');
+        } else {
+          s.classList.remove('stamped');
+        }
+      });
+      const txt = document.getElementById('passportCountText');
+      if (txt) txt.innerText = `${subkoPassportCount} of 6 Stamped`;
+    }
+
+    // Corporate Gifting Logic
+    function updateGiftingCalc() {
+      const slider = document.getElementById('boxCountSlider');
+      if (!slider) return;
+      const count = parseInt(slider.value, 10);
+      const tierSelect = document.getElementById('boxTierSelect');
+      const tier = tierSelect ? tierSelect.value : 'cacao';
+      const prices = { duo: 1250, cacao: 1650, connoisseur: 2950 };
+      const total = count * (prices[tier] || 1650);
+      
+      const cDisplay = document.getElementById('boxCountDisplay');
+      if (cDisplay) cDisplay.innerText = `${count} Boxes`;
+      
+      const qDisplay = document.getElementById('giftingQuoteDisplay');
+      if (qDisplay) qDisplay.innerText = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function requestSubkoGifting() {
+      const count = document.getElementById('boxCountSlider') ? document.getElementById('boxCountSlider').value : '50';
+      const tierSelect = document.getElementById('boxTierSelect');
+      const tier = tierSelect ? tierSelect.options[tierSelect.selectedIndex].text : 'Archival Set';
+      const text = encodeURIComponent(`Hi Subko Mary Lodge team, I'd like to place a corporate order for ${count} boxes (${tier}). Could we connect on delivery dates and custom branding?`);
+      window.open(`https://api.whatsapp.com/send?phone=919004700655&text=${text}`, '_blank');
+    }
+
+    // Light dismiss for Subko KDS Dialog
+    const sKdsDlg = document.getElementById('subkoKdsDialog');
+    if (sKdsDlg && !('closedBy' in HTMLDialogElement.prototype)) {
+      sKdsDlg.addEventListener('click', (event) => {
+        if (event.target !== sKdsDlg) return;
+        const rect = sKdsDlg.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) sKdsDlg.close();
+      });
+    }
+
+    // Modern Web Guidance Dialog Fallback
+    const upiDlg = document.getElementById('subkoUpiDialog');
+    if (upiDlg && !('closedBy' in HTMLDialogElement.prototype)) {
+      upiDlg.addEventListener('click', (event) => {
+        if (event.target !== upiDlg) return;
+        const rect = upiDlg.getBoundingClientRect();
+        const isInside = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInside) upiDlg.close();
+      });
+    }
+
+    // Interactive Sourdough Journey Stages
+    const sourdoughStages = [
+      {
+        title: "Stage 1: Wild Mother Inoculation (Hour 0)",
+        desc: "Stone-ground Khapli and ancient heirloom wheats are mixed with our active 10-year-old sourdough starter nurtured in Ranwar Village.",
+        hydration: "82%",
+        temp: "24°C",
+        flour: "Heirloom Khapli",
+        profile: "Sweet Lactic"
+      },
+      {
+        title: "Stage 2: Bulk Autolyse & Folds (Hour 18)",
+        desc: "Slow enzymatic starch breakdown activates naturally. Bakers perform temperature-controlled stretch-and-folds every 45 minutes to develop an elastic gluten matrix without mechanical shear.",
+        hydration: "82%",
+        temp: "21°C",
+        flour: "Milled Emmer",
+        profile: "Deep Umami"
+      },
+      {
+        title: "Stage 3: Artisan Podi Lamination (Hour 48)",
+        desc: "Cultured French Normandy butter and freshly ground Gunpowder Podi spices are folded into 27 tissue-thin dough layers in our chilled Ranwar pastry room.",
+        hydration: "84%",
+        temp: "16°C",
+        flour: "Stone ground T65",
+        profile: "Podi Spice & Butter"
+      },
+      {
+        title: "Stage 4: High-Heat Stone Deck Bake (Hour 72)",
+        desc: "After a 24-hour final cold proof in our proofing cellars, the loaves enter our German deck oven with burst steam injection, producing an open honeycomb crumb and caramel-blistered crust.",
+        hydration: "82%",
+        temp: "245°C Bake",
+        flour: "Heritage Blend",
+        profile: "Mahogany Crust"
+      }
+    ];
+
+    function selectSourdoughStage(idx, btnEl) {
+      document.querySelectorAll('.journey-step-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderSourdoughStage(idx);
+    }
+
+    function renderSourdoughStage(idx) {
+      const stage = sourdoughStages[idx];
+      const card = document.getElementById('sourdoughStageCard');
+      card.innerHTML = `
+        <div class="stage-content">
+          <h5>${stage.title}</h5>
+          <p>${stage.desc}</p>
+        </div>
+        <div class="stage-metrics-grid">
+          <div class="stage-metric-cell">
+            <span>Dough Hydration</span>
+            <strong>${stage.hydration}</strong>
+          </div>
+          <div class="stage-metric-cell">
+            <span>Proof Temp</span>
+            <strong>${stage.temp}</strong>
+          </div>
+          <div class="stage-metric-cell">
+            <span>Flour Provenance</span>
+            <strong>${stage.flour}</strong>
+          </div>
+          <div class="stage-metric-cell">
+            <span>Flavor Profile</span>
+            <strong>${stage.profile}</strong>
+          </div>
+        </div>
+      `;
+    }
+
+    // Scroll Entry Reveal Observer
+    const subkoRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.section-wrap, .bakehouse-feature, .origin-card, .takeaway-item').forEach(el => {
+      el.classList.add('reveal-on-scroll');
+      subkoRevealObserver.observe(el);
+    });
+
+    // Initialize stage 0
+    renderSourdoughStage(0);
+
+  </script>
+
+  
+
+</body>
+</html>
