@@ -24,6 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Three.js for 3D Valixis Logo Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <style>
     /* ==========================================================================
        VALIXIS AWWWARDS-TIER BRAND DESIGN SYSTEM
@@ -438,135 +441,46 @@
       transform: translateY(-2px);
     }
 
-    /* Authentic VALIXIS Brand Showcase (CSS Ambient Hologram) */
-    .hero-brand-showcase {
+    /* 3D Viewport for Valixis V Logo & Revolving Neon Rings (No Mesh) */
+    .hero-3d-viewport {
       position: relative;
       width: 100%;
+      height: 520px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .brand-showcase-card {
-      position: relative;
+    #hero-canvas {
       width: 100%;
-      max-width: 480px;
-      height: 480px;
-      border-radius: 28px;
-      background: radial-gradient(circle at 50% 40%, rgba(26, 35, 52, 0.6) 0%, rgba(13, 17, 23, 0.95) 75%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      backdrop-filter: blur(20px);
+      height: 100%;
+      display: block;
+      outline: none;
     }
 
-    .brand-ambient-glow {
+    .canvas-hud-overlay {
       position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 217, 255, 0.22) 0%, rgba(124, 58, 237, 0.2) 45%, transparent 70%);
-      filter: blur(40px);
-      animation: pulseGlow 5s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(0.92); opacity: 0.65; }
-      100% { transform: scale(1.12); opacity: 0.95; }
-    }
-
-    .emblem-container {
-      position: relative;
-      z-index: 2;
-      animation: levitateEmblem 6s ease-in-out infinite alternate;
-    }
-
-    @keyframes levitateEmblem {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(1deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-
-    .hero-emblem-img {
-      width: 240px;
-      height: auto;
-      filter: drop-shadow(0 0 35px rgba(0, 217, 255, 0.55)) drop-shadow(0 0 65px rgba(124, 58, 237, 0.35));
-    }
-
-    .hero-telemetry-badge {
-      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      background: rgba(13, 17, 23, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--text-dim);
-      backdrop-filter: blur(10px);
-      z-index: 3;
+      pointer-events: none;
     }
-    .hero-telemetry-badge.top-left {
-      top: 24px;
-      left: 24px;
-    }
-    .hero-telemetry-badge.bottom-right {
-      bottom: 84px;
-      right: 24px;
-    }
-
-    .hud-status-dot {
-      width: 7px;
-      height: 7px;
+    .hud-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 10px #10B981;
-    }
-    .hud-status-dot.blue {
       background: var(--valixis-cyan);
-      box-shadow: 0 0 10px var(--valixis-cyan);
-    }
-
-    .showcase-metric-bar {
-      position: absolute;
-      bottom: 18px;
-      left: 18px;
-      right: 18px;
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      z-index: 3;
-    }
-
-    .metric-pill {
-      flex: 1;
-      background: rgba(20, 26, 36, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 8px 10px;
-      text-align: center;
-      font-family: var(--font-mono);
-    }
-    .metric-pill .pill-label {
-      display: block;
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-    }
-    .metric-pill .pill-val {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--valixis-cyan);
-      margin-top: 2px;
+      box-shadow: 0 0 8px var(--valixis-cyan);
     }
 
     /* Corporate Ticker Bar */
@@ -1226,36 +1140,14 @@
           </div>
         </div>
 
-        <!-- Authentic VALIXIS Brand Showcase -->
-        <div class="hero-brand-showcase">
-          <div class="brand-showcase-card">
-            <div class="brand-ambient-glow"></div>
-            <div class="emblem-container">
-              <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Emblem" class="hero-emblem-img">
-            </div>
-            <div class="hero-telemetry-badge top-left">
-              <span class="hud-status-dot"></span>
-              <span>CORE ARCHITECTURE: ONLINE</span>
-            </div>
-            <div class="hero-telemetry-badge bottom-right">
-              <span class="hud-status-dot blue"></span>
-              <span>ENTERPRISE &amp; GAMING</span>
-            </div>
-            <div class="showcase-metric-bar">
-              <div class="metric-pill">
-                <span class="pill-label">PILLARS</span>
-                <span class="pill-val">4 ACTIVE</span>
-              </div>
-              <div class="metric-pill">
-                <span class="pill-label">SECURITY</span>
-                <span class="pill-val">POSTGRES RLS</span>
-              </div>
-              <div class="metric-pill">
-                <span class="pill-label">UPTIME</span>
-                <span class="pill-val">99.99%</span>
-              </div>
-            </div>
+        <!-- Three.js 3D Valixis V Emblem & Revolving Rings (No Mesh) -->
+        <div class="hero-3d-viewport">
+          <canvas id="hero-canvas"></canvas>
+          <div class="canvas-hud-overlay">
+            <span class="hud-dot"></span>
+            <span>VALIXIS 3D EMBLEM &bull; INTERACTIVE</span>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -1704,6 +1596,184 @@
       }
     }
 
-    </script>
+    
+    // 4. THREE.JS 3D VALIXIS V EMBLEM WITH REVOLVING NEON RINGS (NO MESH CAGE)
+    (function initValixis3DLogo() {
+      const container = document.querySelector('.hero-3d-viewport');
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas || !container || typeof THREE === 'undefined') return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.z = 7.0;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Master Center Group
+      const masterGroup = new THREE.Group();
+      scene.add(masterGroup);
+
+      // A. Center 3D VALIXIS V Logo (Double-sided with depth)
+      const vGroup = new THREE.Group();
+      masterGroup.add(vGroup);
+
+      const textureLoader = new THREE.TextureLoader();
+      textureLoader.load('assets/valixis-logo-transparent.png', (texture) => {
+        texture.generateMipmaps = true;
+        texture.minFilter = THREE.LinearMipmapLinearFilter;
+
+        // Front face
+        const vMatFront = new THREE.MeshStandardMaterial({
+          map: texture,
+          transparent: true,
+          roughness: 0.2,
+          metalness: 0.8,
+          side: THREE.FrontSide
+        });
+        const vGeo = new THREE.PlaneGeometry(3.6, 2.76);
+        const vMeshFront = new THREE.Mesh(vGeo, vMatFront);
+        vMeshFront.position.z = 0.04;
+        vGroup.add(vMeshFront);
+
+        // Back face (so as it turns, it is double-sided)
+        const vMatBack = vMatFront.clone();
+        const vMeshBack = new THREE.Mesh(vGeo, vMatBack);
+        vMeshBack.rotation.y = Math.PI;
+        vMeshBack.position.z = -0.04;
+        vGroup.add(vMeshBack);
+
+        // Subtle ambient glow plate between the two faces
+        const glowGeo = new THREE.PlaneGeometry(3.8, 2.9);
+        const glowMat = new THREE.MeshBasicMaterial({
+          map: texture,
+          transparent: true,
+          opacity: 0.35,
+          color: 0x00D9FF
+        });
+        const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+        vGroup.add(glowMesh);
+      });
+
+      // B. Sleek Outer Revolving Neon Rings (NO MESH CAGE!)
+      // Ring 1: Neon Magenta (#FF2ED6)
+      const ringGeo1 = new THREE.TorusGeometry(2.35, 0.038, 16, 120);
+      const ringMat1 = new THREE.MeshBasicMaterial({
+        color: 0xFF2ED6,
+        transparent: true,
+        opacity: 0.85
+      });
+      const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
+      ring1.rotation.x = Math.PI / 3;
+      ring1.rotation.y = Math.PI / 4;
+      masterGroup.add(ring1);
+
+      // Ring 2: Electric Cyan (#00D9FF)
+      const ringGeo2 = new THREE.TorusGeometry(2.75, 0.032, 16, 120);
+      const ringMat2 = new THREE.MeshBasicMaterial({
+        color: 0x00D9FF,
+        transparent: true,
+        opacity: 0.85
+      });
+      const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
+      ring2.rotation.x = -Math.PI / 3;
+      ring2.rotation.y = -Math.PI / 4;
+      masterGroup.add(ring2);
+
+      // Ring 3: Deep Tech Purple (#7C3AED)
+      const ringGeo3 = new THREE.TorusGeometry(3.1, 0.025, 16, 120);
+      const ringMat3 = new THREE.MeshBasicMaterial({
+        color: 0x7C3AED,
+        transparent: true,
+        opacity: 0.65
+      });
+      const ring3 = new THREE.Mesh(ringGeo3, ringMat3);
+      ring3.rotation.x = Math.PI / 6;
+      ring3.rotation.z = Math.PI / 3;
+      masterGroup.add(ring3);
+
+      // C. Floating Stardust Particles
+      const particleCount = 700;
+      const particleGeo = new THREE.BufferGeometry();
+      const posArray = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount * 3; i += 3) {
+        posArray[i] = (Math.random() - 0.5) * 14;
+        posArray[i + 1] = (Math.random() - 0.5) * 14;
+        posArray[i + 2] = (Math.random() - 0.5) * 14;
+      }
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+      const particleMat = new THREE.PointsMaterial({
+        size: 0.032,
+        color: 0x00D9FF,
+        transparent: true,
+        opacity: 0.65
+      });
+      const particles = new THREE.Points(particleGeo, particleMat);
+      scene.add(particles);
+
+      // D. Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      scene.add(ambientLight);
+
+      const cyanPoint = new THREE.PointLight(0x00D9FF, 2.5, 15);
+      cyanPoint.position.set(4, 4, 3);
+      scene.add(cyanPoint);
+
+      const magentaPoint = new THREE.PointLight(0xFF2ED6, 2.5, 15);
+      magentaPoint.position.set(-4, -4, 2);
+      scene.add(magentaPoint);
+
+      // E. Interactive Mouse Parallax Lerp
+      let targetRotX = 0;
+      let targetRotY = 0;
+      let mouseX = 0, mouseY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) - 0.5;
+        mouseY = (e.clientY / window.innerHeight) - 0.5;
+        targetRotY = mouseX * 0.9;
+        targetRotX = mouseY * 0.9;
+      });
+
+      // Render Loop
+      let clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // 3D V Logo organic breathing & gentle floating turn
+        vGroup.rotation.y = Math.sin(elapsedTime * 0.8) * 0.35;
+        vGroup.rotation.x = Math.cos(elapsedTime * 0.6) * 0.12;
+        vGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.08;
+
+        // Revolving outer neon circles (counter-rotations on different planes)
+        ring1.rotation.z = elapsedTime * 0.28;
+        ring2.rotation.z = -elapsedTime * 0.32;
+        ring3.rotation.y = elapsedTime * 0.22;
+        ring3.rotation.z = elapsedTime * 0.18;
+
+        particles.rotation.y = elapsedTime * 0.04 + mouseX * 0.15;
+        particles.rotation.x = mouseY * 0.15;
+
+        // Smooth spring inertia follow
+        masterGroup.rotation.y += (targetRotY - masterGroup.rotation.y) * 0.06;
+        masterGroup.rotation.x += (targetRotX - masterGroup.rotation.x) * 0.06;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        if (!container) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    })();
+
+  </script>
 </body>
 </html>
