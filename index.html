@@ -3,999 +3,1327 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VALIXIS — We Build Custom Software, Apps & AI for Modern Businesses</title>
-  <meta name="description" content="Dedicated product engineering team in Hyderabad & AP. We build custom websites, mobile apps, and business tools in 2 to 6 weeks. Founded by Subhash Annam.">
-  <meta property="og:title" content="VALIXIS — Engineering & Product Portfolio">
-  <meta property="og:description" content="We build custom mobile apps, websites, and smart business tools with fixed timelines and zero hassle.">
+  <title>VALIXIS — Building Intelligent Solutions for a Better Tomorrow</title>
+  <meta name="description" content="VALIXIS is a next-generation technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.">
+  <meta name="keywords" content="VALIXIS, Artificial Intelligence, Gaming, Software Engineering, VALIXIS Portal, Subhash Annam">
+  <meta name="author" content="VALIXIS Technologies">
+
+  <!-- Open Graph / Social Cards -->
+  <meta property="og:title" content="VALIXIS — Building Intelligent Solutions for a Better Tomorrow">
+  <meta property="og:description" content="A next-generation technology company pioneering at the intersection of Gaming, Enterprise Software, AI Innovation, and Future-Ready Platforms.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valixis.tech">
+  <meta property="og:image" content="assets/valixis-logo-full.jpg">
 
-  <!-- Favicon using official transparent logo -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/valixis-logo-transparent.png">
+  <link rel="apple-touch-icon" href="assets/valixis-logo-transparent.png">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Orbitron (Primary Display) & Inter (Secondary Body) & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ==========================================================================
+       VALIXIS OFFICIAL BRAND DESIGN SYSTEM
+       Colors & Typography per Corporate Brand Guidelines Report
+       ========================================================================== */
+    :root {
+      /* Official Palette */
+      --valixis-cyan: #00D9FF;
+      --valixis-cyan-glow: rgba(0, 217, 255, 0.35);
+      --valixis-blue: #3B82F6;
+      --valixis-purple: #7C3AED;
+      --valixis-purple-glow: rgba(124, 58, 237, 0.35);
+      --valixis-magenta: #FF2ED6;
+      --valixis-magenta-glow: rgba(255, 46, 214, 0.35);
 
-  <!-- Three.js for 3D Interactive Canvas -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+      /* Dark Background System */
+      --bg-dark: #0D1117;
+      --bg-darker: #070A0F;
+      --bg-card: #141A24;
+      --bg-card-hover: #1A2230;
+      --bg-surface: #1B2232;
+      --border-color: #242D3D;
+      --border-glow: rgba(0, 217, 255, 0.25);
+
+      /* Text System */
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+
+      /* Signature Brand Gradients */
+      --brand-gradient: linear-gradient(135deg, #00D9FF 0%, #3B82F6 35%, #7C3AED 70%, #FF2ED6 100%);
+      --brand-gradient-alt: linear-gradient(135deg, #00D9FF 0%, #7C3AED 50%, #FF2ED6 100%);
+      --card-gradient: linear-gradient(180deg, rgba(20, 26, 36, 0.95) 0%, rgba(13, 17, 23, 0.98) 100%);
+
+      /* Typography */
+      --font-display: 'Orbitron', -apple-system, sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Transitions & Shadows */
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      --box-glow: 0 0 25px rgba(0, 217, 255, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      font-size: 16px;
+    }
+
+    /* Ambient Futuristic Lighting Orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+    .orb-cyan {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, var(--valixis-cyan) 0%, rgba(0, 217, 255, 0) 70%);
+      top: -150px;
+      left: -100px;
+    }
+    .orb-purple {
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, var(--valixis-purple) 0%, rgba(124, 58, 237, 0) 70%);
+      top: 30%;
+      right: -200px;
+    }
+    .orb-magenta {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--valixis-magenta) 0%, rgba(255, 46, 214, 0) 70%);
+      bottom: 10%;
+      left: -150px;
+    }
+
+    /* Subtle Circuit Background Grid */
+    .circuit-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY STYLES
+       ========================================================================== */
+    h1, h2, h3, h4, .brand-font {
+      font-family: var(--font-display);
+      letter-spacing: 0.04em;
+    }
+
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .brand-gradient-text-alt {
+      background: var(--brand-gradient-alt);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       NAVBAR
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 40px;
+      width: auto;
+      filter: drop-shadow(0 0 12px var(--valixis-cyan-glow));
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFF;
+      letter-spacing: 0.12em;
+    }
+
+    .brand-title span.x-accent {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--valixis-cyan);
+    }
+
+    .showcase-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      color: var(--valixis-cyan);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .showcase-pill-badge:hover {
+      background: rgba(0, 217, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.2) 100%);
+      border: 1px solid var(--valixis-cyan);
+      color: #FFF;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+
+    .nav-cta-btn:hover {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.25) 0%, rgba(124, 58, 237, 0.35) 100%);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 18px;
+      border-radius: 30px;
+      background: rgba(20, 26, 36, 0.85);
+      border: 1px solid var(--border-glow);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--valixis-cyan);
+      margin-bottom: 28px;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--valixis-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--valixis-cyan);
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 38px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .btn-primary-gradient {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border-radius: 10px;
+      background: var(--brand-gradient);
+      color: #FFF;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.35);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary-gradient:hover {
+      box-shadow: 0 0 45px rgba(255, 46, 214, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: 10px;
+      background: rgba(20, 26, 36, 0.7);
+      border: 1px solid var(--border-color);
+      color: #FFF;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-outline-glass:hover {
+      border-color: var(--valixis-cyan);
+      background: rgba(26, 34, 48, 0.9);
+      transform: translateY(-2px);
+    }
+
+    /* Live Corporate Metrics Bar */
+    .hero-metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      padding: 24px;
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+      margin-top: 20px;
+    }
+
+    .metric-item {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON STYLES
+       ========================================================================== */
+    .section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 56px;
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--valixis-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      display: block;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       PILLARS GRID (4 THEMES: GAMING, TECH, AI, FUTURE READY)
+       ========================================================================== */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .pillar-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 28px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--brand-gradient);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 217, 255, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 217, 255, 0.1);
+    }
+
+    .pillar-card:hover::before {
+      opacity: 1;
+    }
+
+    .pillar-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: rgba(26, 34, 48, 0.8);
+      border: 1px solid var(--border-color);
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      font-size: 1.5rem;
+    }
+
+    .pillar-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .pillar-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       PRODUCTS & ECOSYSTEM GRID
+       ========================================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 34px;
+      transition: var(--transition-smooth);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      border-color: rgba(124, 58, 237, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .product-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 46, 214, 0.12);
+      border: 1px solid rgba(255, 46, 214, 0.3);
+      color: var(--valixis-magenta);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .product-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #FFF;
+    }
+
+    .product-desc {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .product-tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tech-chip {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 3px 9px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-dim);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Highlighted Flagship Product Card: VALIXIS Portal */
+    .product-flagship {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.98) 0%, rgba(13, 17, 23, 0.98) 100%);
+      border: 1px solid var(--valixis-cyan);
+      box-shadow: 0 0 35px rgba(0, 217, 255, 0.15);
+    }
+
+    .flagship-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .flagship-right {
+      background: rgba(10, 14, 22, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+    }
+
+    .code-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    .code-num { color: var(--text-dim); min-width: 20px; }
+    .code-cyan { color: var(--valixis-cyan); font-weight: 600; }
+    .code-purple { color: var(--valixis-purple); }
+    .code-magenta { color: var(--valixis-magenta); }
+
+    /* ==========================================================================
+       MISSION, VISION & VALUES SECTION
+       ========================================================================== */
+    .mvv-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .mv-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .mv-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+      display: block;
+      font-weight: 700;
+    }
+
+    .badge-mission { color: var(--valixis-cyan); }
+    .badge-vision { color: var(--valixis-magenta); }
+
+    .mv-quote {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      line-height: 1.5;
+      color: #FFF;
+      font-weight: 700;
+    }
+
+    .values-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .val-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px 18px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+
+    .val-card:hover {
+      border-color: var(--valixis-cyan);
+      transform: translateY(-4px);
+    }
+
+    .val-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .val-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       LEADERSHIP SECTION
+       ========================================================================== */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .leader-card {
+      background: var(--card-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .leader-card:hover {
+      border-color: var(--valixis-cyan);
+      box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .leader-avatar-box {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--valixis-cyan) 0%, var(--valixis-purple) 100%);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 20px;
+      padding: 3px;
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--bg-card);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .leader-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .leader-role {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--valixis-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .leader-bio {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       CONTACT & INQUIRIES
+       ========================================================================== */
+    .contact-box {
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.95) 0%, rgba(13, 17, 23, 0.95) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 20%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .contact-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    .contact-channels {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: rgba(26, 34, 48, 0.8);
+      border: 1px solid var(--border-color);
+      color: #FFF;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-pill:hover {
+      border-color: var(--valixis-cyan);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-darker);
+      padding: 50px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-metrics-bar { grid-template-columns: repeat(2, 1fr); }
+      .product-flagship { grid-template-columns: 1fr; }
+      .mvv-layout { grid-template-columns: 1fr; }
+      .values-row { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero-metrics-bar { grid-template-columns: 1fr; }
+      .values-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- 3D Interactive Canvas Layer -->
-  <div id="canvas3d-container">
-    <canvas id="canvas3d"></canvas>
-  </div>
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-orb orb-cyan"></div>
+  <div class="ambient-orb orb-purple"></div>
+  <div class="ambient-orb orb-magenta"></div>
 
-  <!-- Ambient Light Orbs with Rich Color Spectrum -->
-  <div class="ambient-glow glow-cyan"></div>
-  <div class="ambient-glow glow-purple"></div>
-  <div class="ambient-glow glow-emerald-extra"></div>
+  <!-- Background Grid -->
+  <div class="circuit-grid"></div>
 
-  <div class="site-wrapper">
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="#hero" class="brand-header">
+        <img src="assets/valixis-logo-transparent.png" alt="VALIXIS V Logo" class="brand-logo-img">
+        <span class="brand-title">VALI<span class="x-accent">X</span>IS</span>
+      </a>
 
-    <!-- ==========================================================================
-         Navigation Bar (Sleek, Balanced, Official Logo)
-         ========================================================================== -->
-    <header class="navbar">
-      <div class="nav-container">
-        <div class="brand-group">
-          <a href="#hero" class="brand">
-            <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Logo" class="brand-logo-img">
-            <span class="brand-name">VALIXIS</span>
-          </a>
+      <ul class="nav-links">
+        <li><a href="#divisions" class="nav-link">Divisions</a></li>
+        <li><a href="#products" class="nav-link">Ecosystem</a></li>
+        <li><a href="#mission" class="nav-link">Mission &amp; Values</a></li>
+        <li><a href="#leadership" class="nav-link">Leadership</a></li>
+        <li><a href="#contact" class="nav-link">Inquiries</a></li>
+        <li><a href="/showcase/" class="showcase-pill-badge" target="_blank"><span>☕ Client Portals</span> &rarr;</a></li>
+      </ul>
 
-          <div class="nav-status-indicator">
-            <span class="pulse-dot"></span>
-            <span>Available for Projects</span>
+      <a href="#contact" class="nav-cta-btn">
+        <span>Get in Touch</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>VALIXIS Technologies &bull; Next-Gen Enterprise &amp; Gaming Ecosystem</span>
+      </div>
+
+      <h1 class="hero-title">
+        Building <span class="brand-gradient-text">Intelligent Solutions</span><br>
+        for a <span class="brand-gradient-text-alt">Better Tomorrow</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A next-generation technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#products" class="btn-primary-gradient">
+          <span>Explore Ecosystem</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#divisions" class="btn-outline-glass">
+          <span>Core Divisions</span>
+        </a>
+      </div>
+
+      <!-- Live Corporate Metrics Bar -->
+      <div class="hero-metrics-bar">
+        <div class="metric-item">
+          <div class="metric-value brand-gradient-text">4</div>
+          <div class="metric-label">Strategic Pillars</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" style="color: var(--valixis-cyan);">Enterprise</div>
+          <div class="metric-label">Portal &amp; Cloud Infra</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" style="color: var(--valixis-purple);">AI Native</div>
+          <div class="metric-label">Autonomous Systems</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value" style="color: var(--valixis-magenta);">Gaming</div>
+          <div class="metric-label">Interactive Entertainment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Four Core Strategic Pillars -->
+  <section class="section" id="divisions">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Strategic Direction</span>
+        <h2 class="section-title">The Four Pillars of VALIXIS</h2>
+        <p class="section-desc">
+          Engineered to sit at the intersection of technological breakthroughs, intelligent systems, and human-centric design.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box" style="border-color: rgba(255, 46, 214, 0.4); color: var(--valixis-magenta);">🎮</div>
+          <h3 class="pillar-name" style="color: var(--valixis-magenta);">GAMING</h3>
+          <p class="pillar-desc">
+            Pioneering next-generation interactive experiences and immersive digital worlds. Combining high-fidelity mechanics, fluid physics, and intelligent gameplay agents.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box" style="border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">⚡</div>
+          <h3 class="pillar-name" style="color: var(--valixis-cyan);">TECHNOLOGY</h3>
+          <p class="pillar-desc">
+            Mission-critical software engineering, cloud infrastructure, and distributed enterprise platforms engineered for ultra-high availability, low latency, and zero debt.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box" style="border-color: rgba(124, 58, 237, 0.4); color: var(--valixis-purple);">🧠</div>
+          <h3 class="pillar-name" style="color: var(--valixis-purple);">AI &amp; INNOVATION</h3>
+          <p class="pillar-desc">
+            Autonomous multi-agent swarms, neural workflow orchestration, and generative intelligence crafted into practical, human-centric enterprise solutions.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box" style="border-color: rgba(59, 130, 246, 0.4); color: var(--valixis-blue);">🚀</div>
+          <h3 class="pillar-name" style="color: var(--valixis-blue);">FUTURE READY</h3>
+          <p class="pillar-desc">
+            Architected for long-horizon scalability. Building software systems designed to withstand paradigm shifts, maintain data sovereignty, and expand seamlessly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products & Ecosystem -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Proprietary Technology</span>
+        <h2 class="section-title">The VALIXIS Software Ecosystem</h2>
+        <p class="section-desc">
+          From central company operating systems to distributed intelligence and consumer health platforms.
+        </p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Flagship: VALIXIS Portal -->
+        <div class="product-card product-flagship">
+          <div class="flagship-left">
+            <div class="product-header">
+              <span class="product-tag" style="background: rgba(0, 217, 255, 0.12); border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">Flagship System</span>
+            </div>
+            <h3 class="product-title" style="font-size: 1.85rem;">VALIXIS Portal</h3>
+            <p class="product-desc">
+              The internal operational backbone of VALIXIS. Bridges corporate task management with GitHub development pipelines. Features role-based access, Row Level Security (RLS), pull request submission synchronization, and automated CI/CD verification.
+            </p>
+            <div class="product-tech-chips">
+              <span class="tech-chip">Flutter Web</span>
+              <span class="tech-chip">Supabase / PostgreSQL</span>
+              <span class="tech-chip">Row Level Security</span>
+              <span class="tech-chip">GitHub Actions CI/CD</span>
+            </div>
+          </div>
+          <div class="flagship-right">
+            <div class="code-line"><span class="code-num">01</span><span class="code-cyan">SYSTEM</span><span>: VALIXIS_PORTAL_CORE</span></div>
+            <div class="code-line"><span class="code-num">02</span><span class="code-purple">SECURITY</span><span>: PRODUCTION_RLS_ENFORCED</span></div>
+            <div class="code-line"><span class="code-num">03</span><span class="code-cyan">WORKFLOW</span><span>: TASK &rarr; PR &rarr; SUBMISSION</span></div>
+            <div class="code-line"><span class="code-num">04</span><span class="code-magenta">PIPELINE</span><span>: GITHUB_ACTIONS_AUTOMATED</span></div>
+            <div class="code-line"><span class="code-num">05</span><span class="code-cyan">STATUS</span><span>: OPERATIONAL / ACTIVE</span></div>
           </div>
         </div>
 
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#who-is-this-for" class="nav-link">Who We Help</a></li>
-          <li><a href="/showcase/" class="nav-link" style="color: #38bdf8; font-weight: 700;">Showcase ✨</a></li>
-          <li><a href="#real-products" class="nav-link">Our Products (12)</a></li>
-          <li><a href="#how-it-works" class="nav-link">Process</a></li>
-          <li><a href="#pricing" class="nav-link">Timeline &amp; Cost</a></li>
-          <li><a href="#founders" class="nav-link">About</a></li>
-        </ul>
+        <!-- VALIXIS Cloud -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag">Infrastructure</span>
+          </div>
+          <h3 class="product-title">VALIXIS Cloud</h3>
+          <p class="product-desc">
+            Sovereign cloud infrastructure and distributed storage built for maximum data privacy, end-to-end encryption, and low-latency synchronization across local and remote nodes.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Distributed Storage</span>
+            <span class="tech-chip">Edge Encryption</span>
+            <span class="tech-chip">Private Nodes</span>
+          </div>
+        </div>
 
-        <div class="nav-actions">
-          <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20have%20a%20software%20project%20in%20mind%20and%20would%20like%20to%20discuss%20it%20with%20you." target="_blank" class="btn btn-whatsapp-pill">
-            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-            </svg>
-            <span>Chat on WhatsApp</span>
-          </a>
-          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          </button>
+        <!-- VALIXIS Flow -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag">Automation</span>
+          </div>
+          <h3 class="product-title">VALIXIS Flow</h3>
+          <p class="product-desc">
+            High-velocity workflow orchestration and autonomous agent automation engine. Executes background task queues, lead intelligence, and multi-tier event pipelines.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Workflow Engine</span>
+            <span class="tech-chip">Agent Swarms</span>
+            <span class="tech-chip">Event Telemetry</span>
+          </div>
+        </div>
+
+        <!-- VALIXIS Desk-AI -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag">Intelligence</span>
+          </div>
+          <h3 class="product-title">VALIXIS Desk-AI</h3>
+          <p class="product-desc">
+            Native desktop cognitive workspace integrating localized intelligence, automated system monitoring, and frictionless engineering productivity tooling.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Local AI</span>
+            <span class="tech-chip">System Daemon</span>
+            <span class="tech-chip">Context Engine</span>
+          </div>
+        </div>
+
+        <!-- VALIXIS Pulse -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag">Observability</span>
+          </div>
+          <h3 class="product-title">VALIXIS Pulse</h3>
+          <p class="product-desc">
+            Real-time observability and live telemetry dashboard tracking server load, automated service health, dispatch hit ratios, and network uptime across the VALIXIS mesh.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Live Telemetry</span>
+            <span class="tech-chip">Health Monitors</span>
+            <span class="tech-chip">Mesh Network</span>
+          </div>
+        </div>
+
+        <!-- Fitora -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.3); color: #10B981;">Consumer AI</span>
+          </div>
+          <h3 class="product-title">Fitora</h3>
+          <p class="product-desc">
+            Next-generation intelligent fitness, workout analysis, and bio-tracking mobile platform. Combines computer vision with adaptive workout routines to optimize personal health.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Flutter</span>
+            <span class="tech-chip">Vision Models</span>
+            <span class="tech-chip">Adaptive Workouts</span>
+          </div>
+        </div>
+
+        <!-- VALIXIS Gaming Studio -->
+        <div class="product-card">
+          <div class="product-header">
+            <span class="product-tag" style="background: rgba(255, 46, 214, 0.12); border-color: rgba(255, 46, 214, 0.3); color: var(--valixis-magenta);">Interactive</span>
+          </div>
+          <h3 class="product-title">VALIXIS Gaming Studio</h3>
+          <p class="product-desc">
+            In-house game development lab engineering high-engagement game concepts, interactive mechanics, and procedural environments powered by our proprietary physics and AI pipelines.
+          </p>
+          <div class="product-tech-chips">
+            <span class="tech-chip">Game Engines</span>
+            <span class="tech-chip">Procedural Worlds</span>
+            <span class="tech-chip">Real-Time Physics</span>
+          </div>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- ==========================================================================
-         Hero Section
-         ========================================================================== -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-pill-tag">
-          <span>Dedicated Product Engineering Team &bull; Hyderabad &amp; AP</span>
+  <!-- Mission, Vision & Values -->
+  <section class="section" id="mission">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Philosophy</span>
+        <h2 class="section-title">Mission, Vision &amp; Values</h2>
+        <p class="section-desc">
+          Our foundation is grounded in engineering rigor, positive societal impact, and bold technological ambition.
+        </p>
+      </div>
+
+      <div class="mvv-layout">
+        <div class="mv-card" style="border-left: 4px solid var(--valixis-cyan);">
+          <span class="mv-badge badge-mission">Our Mission</span>
+          <p class="mv-quote">
+            "To build intelligent solutions that create real impact and shape a better tomorrow."
+          </p>
         </div>
 
-        <h1 class="hero-title">
-          We build custom mobile apps, websites, and <span class="gradient-text">smart business tools.</span>
-        </h1>
+        <div class="mv-card" style="border-left: 4px solid var(--valixis-magenta);">
+          <span class="mv-badge badge-vision">Our Vision</span>
+          <p class="mv-quote">
+            "To be a global leader in technology and gaming, known for innovation, quality, and positive impact."
+          </p>
+        </div>
+      </div>
 
-        <p class="hero-subtitle">
-          Skip the 3-month hiring wait and high agency bills. Our dedicated team in Hyderabad &amp; AP designs, builds, and launches your software in <strong>2 to 6 weeks</strong>—giving your business a clear competitive edge.
+      <!-- 5 Core Values: INNOVATE, DEVELOP, EMPOWER, PLAY, EXCEL -->
+      <div class="values-row">
+        <div class="val-card">
+          <div class="val-title brand-gradient-text">INNOVATE</div>
+          <p class="val-desc">Push boundaries, explore uncharted paradigms, and deliver lasting real-world impact.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-title" style="color: var(--valixis-cyan);">DEVELOP</div>
+          <p class="val-desc">Build with precision, clean architecture, and industry-leading engineering practices.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-title" style="color: var(--valixis-purple);">EMPOWER</div>
+          <p class="val-desc">Put transformative technological capabilities directly into the hands of people and businesses.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-title" style="color: var(--valixis-magenta);">PLAY</div>
+          <p class="val-desc">Combine the joy and immersion of gaming with state-of-the-art interactive technology.</p>
+        </div>
+        <div class="val-card">
+          <div class="val-title brand-gradient-text-alt">EXCEL</div>
+          <p class="val-desc">Maintain uncompromising quality, rigorous automated testing, and continuous evolution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="section" id="leadership">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Executive Leadership</span>
+        <h2 class="section-title">Founded on First Principles</h2>
+        <p class="section-desc">
+          Led by engineers and product builders committed to long-term architectural excellence.
+        </p>
+      </div>
+
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-avatar-box">
+            <div class="avatar-inner">S</div>
+          </div>
+          <h3 class="leader-name">Subhash Annam</h3>
+          <div class="leader-role">Founder &amp; Chief Executive Officer</div>
+          <p class="leader-bio">
+            Systems architect, full-stack engineer, and product visionary directing VALIXIS's technology roadmap, internal portal infrastructure, autonomous AI agents, and corporate strategy.
+          </p>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-avatar-box" style="background: linear-gradient(135deg, var(--valixis-purple) 0%, var(--valixis-magenta) 100%);">
+            <div class="avatar-inner">J</div>
+          </div>
+          <h3 class="leader-name">Jyothsna</h3>
+          <div class="leader-role">Co-Founder</div>
+          <p class="leader-bio">
+            Directing operational execution, company foundation, product delivery, and organizational infrastructure to scale VALIXIS into an international technology leader.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Contact & Inquiries -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <span class="section-tag">Global Communications</span>
+        <h2 class="contact-title">Connect with VALIXIS</h2>
+        <p class="contact-desc">
+          Whether you represent an enterprise partner, an investor, or an organization looking to deploy our intelligent platforms—we welcome direct conversation.
         </p>
 
-        <div class="hero-cta-group">
-          <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20would%20like%20to%20discuss%20building%20software%20for%20my%20business." target="_blank" class="btn btn-whatsapp-pill" style="font-size:1rem; padding:0.85rem 1.85rem;">
-            <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-            </svg>
-            <span>WhatsApp Us: +91 9603416707</span>
+        <div class="contact-channels">
+          <a href="mailto:subhash@valixis.tech" class="contact-pill" style="border-color: var(--valixis-cyan);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>subhash@valixis.tech</span>
           </a>
-          <a href="/showcase/" class="btn btn-secondary" style="font-size:1rem; padding:0.85rem 1.85rem; border-color: rgba(56, 189, 248, 0.45); color: #38bdf8;">
-            <span>☕ Client Showcase &rarr;</span>
+
+          <a href="https://wa.me/919603416707?text=Hello%20Subhash,%20I%20am%20reaching%20out%20regarding%20VALIXIS." target="_blank" class="contact-pill" style="border-color: var(--valixis-magenta);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
+            <span>WhatsApp: +91 9603416707</span>
           </a>
-          <a href="#real-products" class="btn btn-secondary" style="font-size:1rem; padding:0.85rem 1.85rem;">
-            <span>See What We've Built</span>
-          </a>
-        </div>
 
-        <!-- Trust Badges with Vibrant Gradients -->
-        <div class="hero-trust-bar">
-          <div class="trust-item">
-            <span class="trust-number num-grad-cyan">15+</span>
-            <span class="trust-label">Real applications and software systems shipped</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-number num-grad-emerald">7–45 Days</span>
-            <span class="trust-label">Fast delivery with clear weekly milestone updates</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-number num-grad-purple">100%</span>
-            <span class="trust-label">You own all source code and intellectual property</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-number num-grad-amber">Hyderabad &amp; AP</span>
-            <span class="trust-label">Meet us in person in Hitec City or connect online</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         "Who We Help" (Two Clear Tracks: Local Businesses vs Startups & Agencies)
-         ========================================================================== -->
-    <section class="section" id="who-is-this-for">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">How We Help You</span>
-          <h2 class="section-title">Whatever your business, we make running it easier</h2>
-          <p class="section-desc">
-            We don't talk in confusing tech jargon. We build software that either gets you more revenue or cuts down on daily busywork.
-          </p>
-        </div>
-
-        <div class="audience-grid">
-          <!-- Track 1: Local Businesses -->
-          <div class="audience-card for-local">
-            <div>
-              <span class="audience-badge">For Cafes, Bakeries, Clinics &amp; Salons</span>
-              <h3 class="audience-title">Direct Orders &amp; 24/7 Automated Bookings</h3>
-              <div class="audience-pain">
-                <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                <span><strong>The Challenge:</strong> Losing 25% of food sales to delivery apps, or losing clinic appointments because reception phones are engaged.</span>
-              </div>
-              <ul class="audience-bullets">
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Direct QR &amp; Online Menu:</strong> Customers order directly on their phone and pay via UPI straight into your bank. You pay 0% commission.</span>
-                </li>
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>24/7 WhatsApp Appointment Booking:</strong> Patients or clients choose open time slots anytime—even while your reception is closed.</span>
-                </li>
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Simple Staff Dashboard:</strong> Easy-to-use iPad or laptop dashboard for your front desk with zero learning curve.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="audience-card-footer">
-              <span class="timeline-callout">
-                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Ready &amp; Live in 7 to 14 Days</span>
-              </span>
-              <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20run%20a%20local%20business/clinic%20and%20want%20to%20know%20about%20direct%20ordering%20and%20WhatsApp%20booking." target="_blank" class="btn btn-whatsapp-pill">
-                <svg class="svg-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-                </svg>
-                <span>Discuss on WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Track 2: Startups & Digital Agencies -->
-          <div class="audience-card for-startups">
-            <div>
-              <span class="audience-badge">For Startups, Founders &amp; Digital Agencies</span>
-              <h3 class="audience-title">Dedicated Engineering Team for Web &amp; Mobile Apps</h3>
-              <div class="audience-pain">
-                <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                <span><strong>The Challenge:</strong> Waiting 3 months and spending lakhs recruiting developers, or dealing with unreliable freelancers who vanish mid-project.</span>
-              </div>
-              <ul class="audience-bullets">
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Complete In-House Team:</strong> Lead Architect, Mobile Developers, Full-Stack Engineers, AI Specialist, and QA ready on Day 1.</span>
-                </li>
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Production MVP in 30–45 Days:</strong> We ship high-performance Flutter mobile apps (iOS &amp; Android) and modern Next.js web platforms.</span>
-                </li>
-                <li class="audience-bullet">
-                  <svg class="svg-icon bullet-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>White-Label for Agencies:</strong> We build client web apps and portals behind the scenes while your agency retains 100% of client margin.</span>
-                </li>
-              </ul>
-            </div>
-            <div class="audience-card-footer">
-              <span class="timeline-callout">
-                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Full MVP Launch in 30 to 45 Days</span>
-              </span>
-              <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20run%20a%20startup/agency%20and%20need%20a%20dedicated%20dev%20team%20for%20an%20upcoming%20product." target="_blank" class="btn btn-primary">
-                <span>Discuss with Subhash</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Interactive Live Showcase (Clickable Phone & Dashboard Simulator)
-         ========================================================================== -->
-    <section class="section" id="interactive-demo">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Interactive Experience</span>
-          <h2 class="section-title">Click and see how simple our software is to use</h2>
-          <p class="section-desc">
-            Try a real simulation of our direct mobile ordering system and company dashboard below.
-          </p>
-        </div>
-
-        <div class="showcase-container">
-          <div class="showcase-header">
-            <div class="showcase-tabs">
-              <button class="showcase-tab active" data-view="demoDirectOrder">
-                Direct Ordering &amp; WhatsApp Booking Demo
-              </button>
-              <button class="showcase-tab" data-view="demoBusinessOS">
-                VALIXIS Business OS (Company Dashboard)
-              </button>
-            </div>
-            <div style="font-size:0.8rem; color:var(--accent-emerald-light); font-weight:600; display:flex; align-items:center; gap:0.4rem;">
-              <span class="pulse-dot"></span>
-              <span>Interactive Working Simulation</span>
-            </div>
-          </div>
-
-          <div class="showcase-body">
-            <!-- View 1: Direct Ordering Demo -->
-            <div class="preview-view active" id="demoDirectOrder">
-              <div class="interactive-phone-layout">
-                <!-- Phone Mockup -->
-                <div class="phone-mockup">
-                  <div class="phone-notch"></div>
-                  <div style="text-align:center; margin-bottom:1rem;">
-                    <strong style="color:#fff; font-size:1.1rem; display:block;">Roastery &amp; Cafe</strong>
-                    <span style="font-size:0.75rem; color:var(--accent-emerald-light);">Direct Table &amp; Takeaway Menu</span>
-                  </div>
-
-                  <div class="menu-item-row">
-                    <div>
-                      <strong style="font-size:0.85rem; color:#fff; display:block;">Artisan Cold Brew</strong>
-                      <span style="font-size:0.75rem; color:var(--text-muted);">Specialty roast &bull; INR 220</span>
-                    </div>
-                    <button class="btn-add-item" data-price="220">+ Add</button>
-                  </div>
-
-                  <div class="menu-item-row">
-                    <div>
-                      <strong style="font-size:0.85rem; color:#fff; display:block;">Avocado Toast Brioche</strong>
-                      <span style="font-size:0.75rem; color:var(--text-muted);">Fresh sourdough &bull; INR 340</span>
-                    </div>
-                    <button class="btn-add-item" data-price="340">+ Add</button>
-                  </div>
-
-                  <div class="menu-item-row">
-                    <div>
-                      <strong style="font-size:0.85rem; color:#fff; display:block;">Belgian Truffle Pastry</strong>
-                      <span style="font-size:0.75rem; color:var(--text-muted);">Single origin &bull; INR 190</span>
-                    </div>
-                    <button class="btn-add-item" data-price="190">+ Add</button>
-                  </div>
-
-                  <div class="upi-pay-card">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:0.75rem;">
-                      <span style="font-size:0.85rem; color:#cbd5e1;">Order Total:</span>
-                      <strong style="font-size:1rem; color:#fff;" id="orderTotalDisplay">INR 0</strong>
-                    </div>
-                    <button class="btn btn-primary" id="btnSimulateUpi" style="width:100%; font-size:0.85rem; padding:0.6rem;">
-                      <span>Pay via UPI (GooglePay / PhonePe)</span>
-                    </button>
-                  </div>
-
-                  <div id="phoneOrderSuccess" style="display:none; background:rgba(16,185,129,0.15); border:1px solid var(--border-emerald); border-radius:12px; padding:0.85rem; margin-top:1rem;"></div>
-                </div>
-
-                <!-- Explanatory Box -->
-                <div class="explain-box">
-                  <div class="explain-item">
-                    <h4 class="explain-title">1. Instant UPI Payments Direct to You</h4>
-                    <p class="explain-desc">
-                      Your customer scans a QR code on their table or opens your Instagram bio link. They pay via GPay, PhonePe, or Paytm, and money deposits instantly into your bank.
-                    </p>
-                  </div>
-                  <div class="explain-item">
-                    <h4 class="explain-title">2. Automated WhatsApp Confirmation</h4>
-                    <p class="explain-desc">
-                      As soon as payment clears, your customer receives an automated WhatsApp alert with their token number and estimated prep time. Zero staff phone calls needed.
-                    </p>
-                  </div>
-                  <div class="explain-item">
-                    <h4 class="explain-title">3. Keep 100% of Your Profits</h4>
-                    <p class="explain-desc">
-                      If your cafe or bakery does INR 4,00,000/month in takeaways, traditional delivery apps take up to INR 1,00,000 in commissions. With your own direct web app, that revenue stays in your pocket every month.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- View 2: Business OS Dashboard Demo -->
-            <div class="preview-view" id="demoBusinessOS">
-              <div style="background:rgba(20,26,42,0.6); border:1px solid var(--border-light); border-radius:16px; padding:1.75rem;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
-                  <div>
-                    <h3 style="color:#fff; font-size:1.3rem;">VALIXIS Business OS — Executive Overview</h3>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">All your client leads, projects, and invoices in one single dashboard.</p>
-                  </div>
-                  <span style="background:rgba(16,185,129,0.15); color:#34d399; font-size:0.8rem; font-weight:700; padding:0.35rem 0.85rem; border-radius:9999px;">
-                    Active Revenue: INR 14,20,000 this month
-                  </span>
-                </div>
-
-                <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1.25rem;">
-                  <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-light); border-radius:12px; padding:1.25rem;">
-                    <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">New Inquiries</span>
-                    <h4 style="font-size:1.6rem; color:#fff; margin:0.35rem 0;">8 Leads</h4>
-                    <p style="font-size:0.8rem; color:var(--accent-cyan-light);">Automated proposals sent</p>
-                  </div>
-                  <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-light); border-radius:12px; padding:1.25rem;">
-                    <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Ongoing Projects</span>
-                    <h4 style="font-size:1.6rem; color:#fff; margin:0.35rem 0;">4 Sprints</h4>
-                    <p style="font-size:0.8rem; color:#34d399;">All on track for launch this week</p>
-                  </div>
-                  <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-light); border-radius:12px; padding:1.25rem;">
-                    <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Invoices Settled</span>
-                    <h4 style="font-size:1.6rem; color:#fff; margin:0.35rem 0;">100%</h4>
-                    <p style="font-size:0.8rem; color:#a5b4fc;">Automated PDF receipts synced</p>
-                  </div>
-                </div>
-
-                <div style="margin-top:1.5rem; text-align:center; padding:1rem; background:rgba(6,182,212,0.08); border-radius:12px;">
-                  <span style="font-size:0.9rem; color:#fff;">We can customize this exact dashboard for your agency, clinic, or consulting firm in under 14 days.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Featured Products & Case Studies (From C:\Users\nagas\Documents\PROJECTS)
-         ========================================================================== -->
-    <section class="section" id="real-products">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Proof of Capability</span>
-          <h2 class="section-title">12 Real Products We Have Built &amp; Deployed</h2>
-          <p class="section-desc">
-            Explore our working software across business platforms, mobile apps, and smart automated tools.
-          </p>
-        </div>
-
-        <!-- Filter Navigation -->
-        <div class="category-filter-nav">
-          <button class="cat-btn active" data-filter="all">All Products (12)</button>
-          <button class="cat-btn" data-filter="business">Business Portals &amp; Operations</button>
-          <button class="cat-btn" data-filter="mobile">Mobile Apps (iOS &amp; Android)</button>
-          <button class="cat-btn" data-filter="ai">Smart AI &amp; Utility Tools</button>
-        </div>
-
-        <div class="projects-grid">
-          <!-- 1. VALIXIS Business OS -->
-          <div class="project-card" data-category="business">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Business Operations</span>
-                <span class="status-badge-live">Live System</span>
-              </div>
-              <h3 class="project-title">VALIXIS Business OS</h3>
-              <p class="project-summary">
-                All-in-one company management dashboard unifying customer leads, project boards, and 1-click vector PDF invoicing.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Replaces 4 expensive software subscriptions and saves 15 hours a week in paperwork.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Web Dashboard</span>
-                <span class="tech-pill">Lead CRM</span>
-                <span class="tech-pill">Auto Invoicing</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="valixis-os">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. Direct QR & Online Ordering Portal -->
-          <div class="project-card" data-category="business">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Local Business</span>
-                <span class="status-badge-live">High ROI</span>
-              </div>
-              <h3 class="project-title">Direct QR &amp; Booking Portal</h3>
-              <p class="project-summary">
-                Direct ordering web app for cafes, bakeries, and clinics with 1-click UPI payments and automatic WhatsApp alerts.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Saves 25% on delivery commissions and lets patients book slots 24/7.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">UPI Payments</span>
-                <span class="tech-pill">WhatsApp Alerts</span>
-                <span class="tech-pill">Live in 7–14 Days</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="direct-order">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. VALIXIS Desk -->
-          <div class="project-card" data-category="business">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Customer Service</span>
-                <span class="status-badge-live">AI Powered</span>
-              </div>
-              <h3 class="project-title">VALIXIS Desk</h3>
-              <p class="project-summary">
-                Shared customer inbox connecting web chat and WhatsApp, automatically answering common questions in under 1 second.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Answers customer inquiries 24/7 without needing extra support staff.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">WhatsApp Chat</span>
-                <span class="tech-pill">Auto Answers</span>
-                <span class="tech-pill">Support Inbox</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="valixis-desk">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. Fitora -->
-          <div class="project-card" data-category="mobile">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Health &amp; Fitness</span>
-                <span class="status-badge-live">iOS &amp; Android</span>
-              </div>
-              <h3 class="project-title">Fitora &amp; FitSync</h3>
-              <p class="project-summary">
-                Personalized mobile fitness app with adaptive daily workout routines, background smartwatch sync, and audio rep coaching.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Proven 4.8-star mobile performance, high user retention, and smooth biometric sync.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Flutter Mobile</span>
-                <span class="tech-pill">Apple Health</span>
-                <span class="tech-pill">Audio Coaching</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="fitora">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. MedReminder -->
-          <div class="project-card" data-category="mobile">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Healthcare App</span>
-                <span class="status-badge-live">99.8% Reliability</span>
-              </div>
-              <h3 class="project-title">MedReminder Assistant</h3>
-              <p class="project-summary">
-                Medication adherence app with loud, device-waking alarms that never fail, adherence progress reports, and an emergency medical ID card.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Alarms fire reliably even on battery-saving Android phones with 100% offline privacy.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Critical Alarms</span>
-                <span class="tech-pill">Offline Storage</span>
-                <span class="tech-pill">Emergency ID</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="med-reminder">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. Campus & Venue Booking -->
-          <div class="project-card" data-category="business">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Venue Booking</span>
-                <span class="status-badge-live">Interactive</span>
-              </div>
-              <h3 class="project-title">Campus &amp; Venue Booking</h3>
-              <p class="project-summary">
-                Hall and auditorium reservation portal with visual vacancy calendar, sound/projector statuses, and admin approval workflows.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Eliminates double-booking errors completely and speeds up approval from days to minutes.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Visual Calendar</span>
-                <span class="tech-pill">Admin Approval</span>
-                <span class="tech-pill">Multi-Venue</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="events-app">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7. AI PDF Maker -->
-          <div class="project-card" data-category="ai">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Document Utility</span>
-                <span class="status-badge-live">Production Ready</span>
-              </div>
-              <h3 class="project-title">AI PDF Maker &amp; Suite</h3>
-              <p class="project-summary">
-                Mobile document processor that converts unstructured notes into publication-ready, styled PDF briefs with on-device merging and compression.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Generates clean executive PDF briefs in seconds with complete on-device data privacy.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Text to PDF</span>
-                <span class="tech-pill">Offline Compress</span>
-                <span class="tech-pill">Fast Mobile</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="ai-pdf">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 8. Resume Brain -->
-          <div class="project-card" data-category="ai">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Career &amp; AI</span>
-                <span class="status-badge-live">ATS Optimizer</span>
-              </div>
-              <h3 class="project-title">Resume Brain</h3>
-              <p class="project-summary">
-                AI resume builder that analyzes job descriptions and tailors resume bullet points to pass recruiter screening and export high-res PDFs.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Substantially improves interview callbacks by matching resumes to job requirements.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">AI Text Enhancer</span>
-                <span class="tech-pill">ATS Scoring</span>
-                <span class="tech-pill">PDF Generator</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="resume-brain">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 9. Smart Crop Advisory -->
-          <div class="project-card" data-category="ai">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Agritech &amp; Vision</span>
-                <span class="status-badge-live">SIH Project</span>
-              </div>
-              <h3 class="project-title">Smart Crop Advisory</h3>
-              <p class="project-summary">
-                Agricultural decision support platform diagnosing plant leaf diseases from a mobile photo in 3 seconds, plus soil fertilizer advice in regional languages.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Protects crop yields with instant disease diagnoses and vernacular voice support.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Camera Vision</span>
-                <span class="tech-pill">Soil Analysis</span>
-                <span class="tech-pill">Multilingual</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="smart-crop">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 10. PocketLedger -->
-          <div class="project-card" data-category="mobile">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Finance Utility</span>
-                <span class="status-badge-live">Privacy-First</span>
-              </div>
-              <h3 class="project-title">PocketLedger &amp; Balance App</h3>
-              <p class="project-summary">
-                Personal cash-flow tracker and Android balance widget that parses real-time bank SMS notifications locally without sending financial data to the cloud.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Instant bank balance on your home screen with 100% privacy and zero bank logins needed.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Android Widget</span>
-                <span class="tech-pill">Local SMS Parse</span>
-                <span class="tech-pill">Charts &amp; Alerts</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="pocket-ledger">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 11. Personal Cloud -->
-          <div class="project-card" data-category="business">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Private Cloud</span>
-                <span class="status-badge-live">Self-Hosted</span>
-              </div>
-              <h3 class="project-title">Personal Cloud</h3>
-              <p class="project-summary">
-                Self-hosted family and business private media server with smooth 4K video streaming, photo albums, and document vaults accessible anywhere.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Unlimited storage for your family or team without paying monthly cloud subscription fees.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">4K Streaming</span>
-                <span class="tech-pill">Zero Monthly Fee</span>
-                <span class="tech-pill">Secure Tunnel</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="personal-cloud">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 12. Planly -->
-          <div class="project-card" data-category="mobile">
-            <div class="card-top">
-              <div class="project-meta-row">
-                <span class="project-category-tag">Productivity</span>
-                <span class="status-badge-live">Minimalist</span>
-              </div>
-              <h3 class="project-title">Planly Task Planner</h3>
-              <p class="project-summary">
-                Distraction-free mobile daily task planner with a single-task Focus Mode, visual calendar deadlines, and evening reflection notes.
-              </p>
-              <div class="project-takeaway-box">
-                <span class="takeaway-label">How It Helps You</span>
-                <span class="takeaway-text">Stops procrastination by keeping your attention on one priority at a time.</span>
-              </div>
-            </div>
-            <div class="card-bottom">
-              <div class="tech-pills">
-                <span class="tech-pill">Focus Mode</span>
-                <span class="tech-pill">Simple Calendar</span>
-                <span class="tech-pill">Offline Cache</span>
-              </div>
-              <div class="project-card-action">
-                <a href="#" class="btn-inspect open-project-modal" data-id="planly">
-                  <span>Read Breakdown</span>
-                  <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         "How It Works" (Simple 3 Steps)
-         ========================================================================== -->
-    <section class="section" id="how-it-works">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Direct Process</span>
-          <h2 class="section-title">How We Work Together (3 Simple Steps)</h2>
-          <p class="section-desc">
-            No endless meetings, no corporate bureaucracy. We keep communication simple, direct, and fast.
-          </p>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">01</div>
-            <h3 class="step-title">15-Minute Intro Call or WhatsApp Chat</h3>
-            <p class="step-desc">
-              Tell us what you want to build or what part of your business is currently slow. We review your requirements and send you a clear, fixed timeline in 24 hours.
-            </p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">02</div>
-            <h3 class="step-title">We Build in Quick Weekly Sprints</h3>
-            <p class="step-desc">
-              You get a private preview link on your own phone or laptop every Friday. You test real features as they are built, with zero surprises at the end.
-            </p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">03</div>
-            <h3 class="step-title">Launch, Handover &amp; 14-Day Free Warranty</h3>
-            <p class="step-desc">
-              We deploy your software to your own custom domain or app store. You own 100% of the code, plus we provide 14 days of dedicated post-launch bug fixes for free.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Pricing & Engagement Plans
-         ========================================================================== -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Clear Timelines &amp; Pricing</span>
-          <h2 class="section-title">Two Straightforward Partnership Plans</h2>
-          <p class="section-desc">
-            Whether you want a quick portal launched for your local business or a complete new software product built from scratch.
-          </p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- Plan A: Fast Launch -->
-          <div class="pricing-card">
-            <div>
-              <h3 class="pricing-title">Quick Launch Portal Build</h3>
-              <div class="pricing-for">For Cafes, Bakeries, Clinics, Salons &amp; Local SMBs</div>
-              <div class="pricing-timeline-tag">
-                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Live Under Your Domain in 7 to 14 Days</span>
-              </div>
-              <ul class="pricing-features">
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Custom Direct Web App:</strong> Mobile-friendly QR ordering, appointment booking, or staff portal.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Direct UPI / Stripe Integration:</strong> Payments go straight into your account with 0% aggregator fees.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>WhatsApp Automated Alerts:</strong> Instant booking alerts and order tokens sent to your customers.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Staff Walkthrough:</strong> Personal video call training so your team knows how to use it effortlessly.</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20am%20interested%20in%20the%20Quick%20Launch%20Portal%20(7-14%20days)%20for%20my%20business." target="_blank" class="btn btn-secondary" style="width:100%;">
-                <span>Get Started in 7–14 Days &rarr;</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Plan B: Dedicated Dev Pod -->
-          <div class="pricing-card highlight">
-            <div>
-              <h3 class="pricing-title">Dedicated Engineering Team</h3>
-              <div class="pricing-for">For Funded Startups, Founders &amp; Digital Agencies</div>
-              <div class="pricing-timeline-tag" style="background:rgba(6,182,212,0.15); border:1px solid var(--accent-cyan);">
-                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Full Production MVP in 30 to 45 Days</span>
-              </div>
-              <ul class="pricing-features">
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>Full In-House Team:</strong> Lead Architect, Mobile Engineers, Full-Stack Devs, AI Specialist &amp; QA.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>60% Cost Advantage:</strong> Eliminates the costly hiring cycle and ongoing payroll overhead.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>100% IP &amp; Code Handover:</strong> You own every single line of code and GitHub repository from Day 1.</span>
-                </li>
-                <li class="pricing-feature">
-                  <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span><strong>14-Day Free Bug Warranty:</strong> Dedicated post-launch bug fixes and performance tuning included.</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20want%20to%20reserve%20a%20Dedicated%20Dev%20Team%20sprint%20for%20our%20product%20MVP." target="_blank" class="btn btn-primary" style="width:100%;">
-                <span>Reserve a Dedicated Team Sprint &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         About Subhash & Team
-         ========================================================================== -->
-    <section class="section" id="founders">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Leadership &amp; Accountability</span>
-          <h2 class="section-title">Meet Who You Are Working With</h2>
-          <p class="section-desc">
-            You deal directly with the engineers building your product—not account managers or junior interns.
-          </p>
-        </div>
-
-        <div class="founder-spotlight-box">
-          <div class="founder-avatar-box">
-            <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Emblem" class="founder-avatar-img">
-          </div>
-          <div>
-            <h4 class="founder-name">Subhash Annam</h4>
-            <div class="founder-role">Founder &amp; Lead Systems Architect</div>
-            <p class="founder-bio">
-              Leads system architecture, database security, cloud APIs, and cross-platform Flutter mobile applications for VALIXIS. Focuses on speed, rock-solid reliability, and clean code that helps modern businesses grow with zero friction.
-            </p>
-          </div>
-        </div>
-
-        <div class="location-hub-strip">
-          <div>
-            <strong style="color:#fff; font-size:1.1rem; display:block;">Physical Hub in Hyderabad &amp; Andhra Pradesh</strong>
-            <span style="font-size:0.9rem; color:var(--text-body);">Available for in-person meetings in Hyderabad (Hitec City / Madhapur) and Guntur, AP.</span>
-          </div>
-          <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20am%20located%20in%20Hyderabad/AP%20and%20would%20love%20to%20connect%20in%20person%20or%20online." target="_blank" class="btn btn-whatsapp-pill">
-            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-            </svg>
-            <span>Schedule a Quick Meetup</span>
+          <a href="/showcase/" class="contact-pill" target="_blank">
+            <span>Explore Client Showcase &rarr;</span>
           </a>
         </div>
       </div>
-    </section>
-
-    <!-- ==========================================================================
-         Direct Contact Callout
-         ========================================================================== -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-callout">
-          <span class="section-tag">Let's Build Together</span>
-          <h2 class="section-title" style="margin-bottom:1rem;">Ready to make your business software 10x better?</h2>
-          <p class="section-desc" style="max-width:600px; margin:0 auto;">
-            Send us a message on WhatsApp or email us your ideas. We will reply within a few hours with clear recommendations and zero sales pressure.
-          </p>
-
-          <div class="contact-action-row">
-            <a href="https://wa.me/919603416707?text=Hi%20Subhash,%20I%20want%20to%20build%20software%20for%20my%20business." target="_blank" class="btn btn-whatsapp-pill" style="font-size:1rem; padding:0.9rem 2rem;">
-              <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-              </svg>
-              <span>Direct WhatsApp: +91 9603416707</span>
-            </a>
-            <a href="mailto:official.valixis@gmail.com?subject=Software%20Inquiry%20from%20Portfolio" class="btn btn-secondary" style="font-size:1rem; padding:0.9rem 2rem;">
-              <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>official.valixis@gmail.com</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         Footer
-         ========================================================================== -->
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>
-          &copy; 2026 VALIXIS Technologies. Built in Hyderabad &amp; Andhra Pradesh, India.
-        </div>
-        <div style="display:flex; gap:1.5rem; align-items:center;">
-          <a href="https://github.com/VALIXIS/company-docs" target="_blank" style="color:var(--text-muted); text-decoration:none;">GitHub Docs</a>
-          <a href="#hero" style="color:var(--text-muted); text-decoration:none;">Back to Top</a>
-          <a href="https://wa.me/919603416707" target="_blank" style="color:var(--accent-emerald-light); text-decoration:none; display:flex; align-items:center; gap:0.35rem;">
-            <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/>
-            </svg>
-            <span>+91 9603416707</span>
-          </a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- ==========================================================================
-       Project Details Modal
-       ========================================================================== -->
-  <div class="modal-overlay" id="projectModal">
-    <div class="modal-box">
-      <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
-      <div id="modalContent"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Scripts -->
-  <script src="js/three-scene.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand-header">
+          <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Logo" class="brand-logo-img">
+          <span class="brand-title">VALI<span class="x-accent">X</span>IS</span>
+        </div>
+
+        <div class="footer-tagline">
+          BUILDING <span class="brand-gradient-text">INTELLIGENT SOLUTIONS</span> FOR A <span class="brand-gradient-text-alt">BETTER TOMORROW</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 VALIXIS Technologies. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <span>Hyderabad &amp; Andhra Pradesh, India</span>
+          <span>&bull;</span>
+          <a href="mailto:subhash@valixis.tech" style="color: var(--text-dim); text-decoration: none;">subhash@valixis.tech</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
