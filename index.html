@@ -326,9 +326,9 @@
 
     .hero-split-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 30px;
+      gap: 32px;
       width: 100%;
     }
 
@@ -445,7 +445,8 @@
     .hero-3d-viewport {
       position: relative;
       width: 100%;
-      height: 560px;
+      height: 640px;
+      min-height: 580px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1568,7 +1569,7 @@
     }
 
     
-    // 4. THREE.JS 3D VALIXIS V EMBLEM WITH REVOLVING NEON RINGS (NO MESH CAGE - AUTHENTIC BRAND COLORS)
+    // 4. THREE.JS 3D VALIXIS V EMBLEM WITH REVOLVING NEON RINGS (ULTRA-HD, LARGE SCALE & RAZOR-SHARP CLARITY)
     (function initValixis3DLogo() {
       const container = document.querySelector('.hero-3d-viewport');
       const canvas = document.getElementById('hero-canvas');
@@ -1577,16 +1578,17 @@
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+      // Ultra-HD pixel ratio for razor-sharp vector edges on Retina/4K displays
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2.5));
 
       function updateViewport() {
         const width = container.clientWidth;
         const height = container.clientHeight;
         const aspect = width / height;
         camera.aspect = aspect;
-        // Dynamically adjust camera distance so outer rings are 100% visible on any screen width
-        const baseZ = 9.2;
+        // Large-scale framing: baseZ 10.4 keeps the large 4.2 V emblem & 3.65 rings prominent and 100% visible
+        const baseZ = 10.4;
         camera.position.z = aspect < 1.0 ? baseZ / Math.min(aspect, 1.0) : baseZ;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height);
@@ -1597,23 +1599,29 @@
       const masterGroup = new THREE.Group();
       scene.add(masterGroup);
 
-      // A. Center 3D VALIXIS V Logo (Double-sided in 100% authentic vibrant brand colors)
+      // A. Center 3D VALIXIS V Logo (Large Scale, Razor-Sharp Vector Clarity)
       const vGroup = new THREE.Group();
       masterGroup.add(vGroup);
 
       const textureLoader = new THREE.TextureLoader();
-      textureLoader.load('assets/valixis-logo-transparent.png', (texture) => {
+      textureLoader.load('assets/valixis-logo-transparent.png?v=2', (texture) => {
         texture.generateMipmaps = true;
         texture.minFilter = THREE.LinearMipmapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        // Maximum anisotropic filtering (16x) eliminates blur at all rotation angles
+        if (renderer.capabilities && renderer.capabilities.getMaxAnisotropy) {
+          texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        }
 
-        // Front face: MeshBasicMaterial guarantees pure, unattenuated brand colors (#00D9FF & #FF2ED6/#7C3AED)
+        // Front face: pure unattenuated authentic brand colors with pristine sharpness
         const vMatFront = new THREE.MeshBasicMaterial({
           map: texture,
           transparent: true,
           side: THREE.FrontSide,
           depthWrite: false
         });
-        const vGeo = new THREE.PlaneGeometry(3.0, 2.3);
+        // Sized up to 4.2 x 3.2 (nearly 2x visual presence of previous 3.0 plane)
+        const vGeo = new THREE.PlaneGeometry(4.2, 3.2);
         const vMeshFront = new THREE.Mesh(vGeo, vMatFront);
         vMeshFront.position.z = 0.04;
         vGroup.add(vMeshFront);
@@ -1629,28 +1637,15 @@
         vMeshBack.rotation.y = Math.PI;
         vMeshBack.position.z = -0.04;
         vGroup.add(vMeshBack);
-
-        // Subtle ambient neon luminescence glow plate behind
-        const glowGeo = new THREE.PlaneGeometry(3.18, 2.44);
-        const glowMat = new THREE.MeshBasicMaterial({
-          map: texture,
-          transparent: true,
-          opacity: 0.35,
-          blending: THREE.AdditiveBlending,
-          depthWrite: false
-        });
-        const glowMesh = new THREE.Mesh(glowGeo, glowMat);
-        glowMesh.position.z = 0;
-        vGroup.add(glowMesh);
       });
 
-      // B. Sleek Outer Revolving Neon Rings (NO MESH CAGE - 100% Fully Visible)
+      // B. Sleek Outer Revolving Neon Rings (Scaled up to surround the large emblem)
       // Ring 1: Neon Magenta (#FF2ED6)
-      const ringGeo1 = new THREE.TorusGeometry(2.10, 0.035, 16, 120);
+      const ringGeo1 = new THREE.TorusGeometry(2.65, 0.042, 16, 140);
       const ringMat1 = new THREE.MeshBasicMaterial({
         color: 0xFF2ED6,
         transparent: true,
-        opacity: 0.85
+        opacity: 0.88
       });
       const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
       ring1.rotation.x = Math.PI / 3;
@@ -1658,11 +1653,11 @@
       masterGroup.add(ring1);
 
       // Ring 2: Electric Cyan (#00D9FF)
-      const ringGeo2 = new THREE.TorusGeometry(2.45, 0.030, 16, 120);
+      const ringGeo2 = new THREE.TorusGeometry(3.15, 0.036, 16, 140);
       const ringMat2 = new THREE.MeshBasicMaterial({
         color: 0x00D9FF,
         transparent: true,
-        opacity: 0.85
+        opacity: 0.88
       });
       const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
       ring2.rotation.x = -Math.PI / 3;
@@ -1670,11 +1665,11 @@
       masterGroup.add(ring2);
 
       // Ring 3: Deep Tech Purple (#7C3AED)
-      const ringGeo3 = new THREE.TorusGeometry(2.80, 0.025, 16, 120);
+      const ringGeo3 = new THREE.TorusGeometry(3.65, 0.028, 16, 140);
       const ringMat3 = new THREE.MeshBasicMaterial({
         color: 0x7C3AED,
         transparent: true,
-        opacity: 0.70
+        opacity: 0.72
       });
       const ring3 = new THREE.Mesh(ringGeo3, ringMat3);
       ring3.rotation.x = Math.PI / 6;
@@ -1682,22 +1677,22 @@
       masterGroup.add(ring3);
 
       // C. Floating Stardust Particles
-      const particleCount = 600;
+      const particleCount = 650;
       const particleGeo = new THREE.BufferGeometry();
       const posArray = new Float32Array(particleCount * 3);
 
       for (let i = 0; i < particleCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 14;
-        posArray[i + 1] = (Math.random() - 0.5) * 14;
-        posArray[i + 2] = (Math.random() - 0.5) * 14;
+        posArray[i] = (Math.random() - 0.5) * 16;
+        posArray[i + 1] = (Math.random() - 0.5) * 16;
+        posArray[i + 2] = (Math.random() - 0.5) * 16;
       }
       particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
       const particleMat = new THREE.PointsMaterial({
-        size: 0.03,
+        size: 0.032,
         color: 0x00D9FF,
         transparent: true,
-        opacity: 0.6
+        opacity: 0.65
       });
       const particles = new THREE.Points(particleGeo, particleMat);
       scene.add(particles);
@@ -1710,8 +1705,8 @@
       window.addEventListener('mousemove', (e) => {
         mouseX = (e.clientX / window.innerWidth) - 0.5;
         mouseY = (e.clientY / window.innerHeight) - 0.5;
-        targetRotY = mouseX * 0.45;
-        targetRotX = mouseY * 0.35;
+        targetRotY = mouseX * 0.40;
+        targetRotX = mouseY * 0.30;
       });
 
       // Render Loop
@@ -1723,7 +1718,7 @@
         // 3D V Logo organic breathing & gentle floating turn
         vGroup.rotation.y = Math.sin(elapsedTime * 0.8) * 0.35;
         vGroup.rotation.x = Math.cos(elapsedTime * 0.6) * 0.12;
-        vGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.08;
+        vGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.09;
 
         // Revolving outer neon circles (counter-rotations on different planes)
         ring1.rotation.z = elapsedTime * 0.28;
@@ -1731,8 +1726,8 @@
         ring3.rotation.y = elapsedTime * 0.22;
         ring3.rotation.z = elapsedTime * 0.18;
 
-        particles.rotation.y = elapsedTime * 0.04 + mouseX * 0.15;
-        particles.rotation.x = mouseY * 0.15;
+        particles.rotation.y = elapsedTime * 0.04 + mouseX * 0.12;
+        particles.rotation.x = mouseY * 0.12;
 
         // Smooth spring inertia follow
         masterGroup.rotation.y += (targetRotY - masterGroup.rotation.y) * 0.06;
