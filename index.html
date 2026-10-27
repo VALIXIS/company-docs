@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VALIXIS — Building Intelligent Solutions for a Better Tomorrow</title>
-  <meta name="description" content="VALIXIS is a next-generation technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.">
-  <meta name="keywords" content="VALIXIS, Artificial Intelligence, Gaming, Software Engineering, VALIXIS Portal, Subhash Annam">
+  <meta name="description" content="VALIXIS is an elite technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.">
+  <meta name="keywords" content="VALIXIS, Artificial Intelligence, Gaming Studio, Software Engineering, VALIXIS Portal, Subhash Annam">
   <meta name="author" content="VALIXIS Technologies">
 
   <!-- Open Graph / Social Cards -->
   <meta property="og:title" content="VALIXIS — Building Intelligent Solutions for a Better Tomorrow">
-  <meta property="og:description" content="A next-generation technology company pioneering at the intersection of Gaming, Enterprise Software, AI Innovation, and Future-Ready Platforms.">
+  <meta property="og:description" content="Next-generation technology and gaming company pioneering at the intersection of Gaming, Enterprise Software, AI Innovation, and Future-Ready Platforms.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://valixis.tech">
   <meta property="og:image" content="assets/valixis-logo-full.jpg">
@@ -22,50 +22,49 @@
   <!-- Google Fonts: Orbitron (Primary Display) & Inter (Secondary Body) & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Three.js for 3D Holographic WebGL Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
     /* ==========================================================================
-       VALIXIS OFFICIAL BRAND DESIGN SYSTEM
-       Colors & Typography per Corporate Brand Guidelines Report
+       VALIXIS AWWWARDS-TIER BRAND DESIGN SYSTEM
+       Strictly adhering to official brand identity:
+       Colors: Cyan #00D9FF, Blue #3B82F6, Purple #7C3AED, Magenta #FF2ED6
+       Background: #0D1117, #070A0F, #141A24
+       Fonts: Orbitron (Headings), Inter (Body), JetBrains Mono (Tech/Data)
        ========================================================================== */
     :root {
-      /* Official Palette */
       --valixis-cyan: #00D9FF;
-      --valixis-cyan-glow: rgba(0, 217, 255, 0.35);
+      --valixis-cyan-glow: rgba(0, 217, 255, 0.4);
       --valixis-blue: #3B82F6;
       --valixis-purple: #7C3AED;
-      --valixis-purple-glow: rgba(124, 58, 237, 0.35);
+      --valixis-purple-glow: rgba(124, 58, 237, 0.4);
       --valixis-magenta: #FF2ED6;
-      --valixis-magenta-glow: rgba(255, 46, 214, 0.35);
+      --valixis-magenta-glow: rgba(255, 46, 214, 0.4);
 
-      /* Dark Background System */
       --bg-dark: #0D1117;
-      --bg-darker: #070A0F;
-      --bg-card: #141A24;
-      --bg-card-hover: #1A2230;
-      --bg-surface: #1B2232;
-      --border-color: #242D3D;
-      --border-glow: rgba(0, 217, 255, 0.25);
+      --bg-darker: #06090E;
+      --bg-card: rgba(20, 26, 36, 0.85);
+      --bg-card-hover: rgba(28, 36, 50, 0.95);
+      --border-color: rgba(36, 45, 61, 0.8);
+      --border-glow: rgba(0, 217, 255, 0.3);
 
-      /* Text System */
       --text-white: #F8FAFC;
       --text-muted: #94A3B8;
       --text-dim: #64748B;
 
-      /* Signature Brand Gradients */
       --brand-gradient: linear-gradient(135deg, #00D9FF 0%, #3B82F6 35%, #7C3AED 70%, #FF2ED6 100%);
       --brand-gradient-alt: linear-gradient(135deg, #00D9FF 0%, #7C3AED 50%, #FF2ED6 100%);
-      --card-gradient: linear-gradient(180deg, rgba(20, 26, 36, 0.95) 0%, rgba(13, 17, 23, 0.98) 100%);
+      --card-gradient: linear-gradient(180deg, rgba(22, 29, 41, 0.8) 0%, rgba(13, 17, 23, 0.9) 100%);
 
-      /* Typography */
       --font-display: 'Orbitron', -apple-system, sans-serif;
       --font-body: 'Inter', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
-      /* Transitions & Shadows */
-      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      --box-glow: 0 0 25px rgba(0, 217, 255, 0.15);
+      --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -88,61 +87,115 @@
       overflow-x: hidden;
       position: relative;
       font-size: 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Ambient Futuristic Lighting Orbs */
-    .ambient-orb {
+    /* Ambient Film Grain & Scanline Overlay */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Subtle Cyber Grid */
+    .cyber-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 85%);
+    }
+
+    /* Ambient Aurora Orbs */
+    .aurora-orb {
       position: fixed;
       border-radius: 50%;
       filter: blur(140px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.55;
+      opacity: 0.45;
+      transition: transform 0.8s ease;
     }
-    .orb-cyan {
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, var(--valixis-cyan) 0%, rgba(0, 217, 255, 0) 70%);
-      top: -150px;
-      left: -100px;
-    }
-    .orb-purple {
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle, var(--valixis-purple) 0%, rgba(124, 58, 237, 0) 70%);
-      top: 30%;
-      right: -200px;
-    }
-    .orb-magenta {
+    .orb-1 {
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, var(--valixis-magenta) 0%, rgba(255, 46, 214, 0) 70%);
-      bottom: 10%;
+      background: radial-gradient(circle, var(--valixis-cyan) 0%, transparent 70%);
+      top: -200px;
       left: -150px;
     }
-
-    /* Subtle Circuit Background Grid */
-    .circuit-grid {
-      position: fixed;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
+    .orb-2 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, var(--valixis-purple) 0%, transparent 70%);
+      top: 35%;
+      right: -250px;
+    }
+    .orb-3 {
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, var(--valixis-magenta) 0%, transparent 70%);
+      bottom: 5%;
+      left: -200px;
     }
 
     .container {
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     /* ==========================================================================
-       TYPOGRAPHY STYLES
+       AWWWARDS-LEVEL INTERACTIVE CURSOR
+       ========================================================================== */
+    .custom-cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--valixis-cyan);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      box-shadow: 0 0 10px var(--valixis-cyan);
+    }
+    .custom-cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(0, 217, 255, 0.4);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+    }
+    body.cursor-hover .custom-cursor-ring {
+      width: 60px;
+      height: 60px;
+      border-color: var(--valixis-magenta);
+      background: rgba(255, 46, 214, 0.08);
+    }
+    body.cursor-hover .custom-cursor-dot {
+      background: var(--valixis-magenta);
+      box-shadow: 0 0 14px var(--valixis-magenta);
+    }
+    @media (hover: none) and (pointer: coarse) {
+      .custom-cursor-dot, .custom-cursor-ring { display: none !important; }
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY
        ========================================================================== */
     h1, h2, h3, h4, .brand-font {
       font-family: var(--font-display);
@@ -164,16 +217,16 @@
     }
 
     /* ==========================================================================
-       NAVBAR
+       NAVBAR (SLEEK, BLURRED, METALLIC RIM)
        ========================================================================== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13, 17, 23, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
+      background: rgba(13, 17, 23, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       padding: 16px 0;
       transition: var(--transition-smooth);
     }
@@ -192,17 +245,21 @@
     }
 
     .brand-logo-img {
-      height: 40px;
+      height: 42px;
       width: auto;
-      filter: drop-shadow(0 0 12px var(--valixis-cyan-glow));
+      filter: drop-shadow(0 0 14px var(--valixis-cyan-glow));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brand-header:hover .brand-logo-img {
+      transform: scale(1.06) rotate(-3deg);
     }
 
     .brand-title {
       font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 800;
+      font-size: 1.65rem;
+      font-weight: 900;
       color: #FFF;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
     }
 
     .brand-title span.x-accent {
@@ -214,7 +271,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 34px;
       list-style: none;
     }
 
@@ -223,41 +280,36 @@
       font-weight: 500;
       color: var(--text-muted);
       text-decoration: none;
-      transition: var(--transition-smooth);
+      transition: var(--transition-fast);
       position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--brand-gradient);
+      transition: width 0.3s ease;
     }
 
     .nav-link:hover {
-      color: var(--valixis-cyan);
+      color: #FFF;
     }
-
-    .showcase-pill-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(0, 217, 255, 0.1);
-      border: 1px solid rgba(0, 217, 255, 0.3);
-      color: var(--valixis-cyan);
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition-smooth);
-    }
-
-    .showcase-pill-badge:hover {
-      background: rgba(0, 217, 255, 0.2);
-      transform: translateY(-1px);
+    .nav-link:hover::after {
+      width: 100%;
     }
 
     .nav-cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 20px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.2) 100%);
+      padding: 10px 22px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(124, 58, 237, 0.22) 100%);
       border: 1px solid var(--valixis-cyan);
       color: #FFF;
       font-family: var(--font-body);
@@ -265,39 +317,55 @@
       font-size: 0.9rem;
       text-decoration: none;
       transition: var(--transition-smooth);
-      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
     }
 
     .nav-cta-btn:hover {
-      background: linear-gradient(135deg, rgba(0, 217, 255, 0.25) 0%, rgba(124, 58, 237, 0.35) 100%);
-      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
-      transform: translateY(-1px);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.3) 0%, rgba(124, 58, 237, 0.4) 100%);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.45);
+      transform: translateY(-2px);
     }
 
     /* ==========================================================================
-       HERO SECTION
+       HERO SECTION WITH REAL-TIME THREE.JS WEBGL CORE
        ========================================================================== */
     .hero {
-      padding: 100px 0 80px;
-      text-align: center;
+      padding: 80px 0 70px;
       position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-split-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 7px 18px;
+      padding: 8px 18px;
       border-radius: 30px;
-      background: rgba(20, 26, 36, 0.85);
+      background: rgba(20, 26, 36, 0.7);
       border: 1px solid var(--border-glow);
       font-family: var(--font-mono);
       font-size: 0.82rem;
       color: var(--valixis-cyan);
-      margin-bottom: 28px;
-      box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+      margin-bottom: 26px;
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.18);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      backdrop-filter: blur(12px);
     }
 
     .pulse-dot {
@@ -305,49 +373,44 @@
       height: 8px;
       background-color: var(--valixis-cyan);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--valixis-cyan);
+      box-shadow: 0 0 12px var(--valixis-cyan);
       animation: pulse-glow 2s infinite ease-in-out;
     }
 
     @keyframes pulse-glow {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
+      50% { opacity: 0.3; transform: scale(1.4); }
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+      font-size: clamp(2.5rem, 4.8vw, 4.2rem);
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.12;
       margin-bottom: 24px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
       text-transform: uppercase;
     }
 
     .hero-subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
       color: var(--text-muted);
-      max-width: 780px;
-      margin: 0 auto 38px;
-      font-weight: 400;
+      max-width: 620px;
+      margin-bottom: 38px;
       line-height: 1.7;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 60px;
+      margin-bottom: 48px;
     }
 
     .btn-primary-gradient {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 34px;
+      padding: 15px 34px;
       border-radius: 10px;
       background: var(--brand-gradient);
       color: #FFF;
@@ -357,13 +420,13 @@
       letter-spacing: 0.05em;
       text-decoration: none;
       transition: var(--transition-smooth);
-      box-shadow: 0 0 30px rgba(0, 217, 255, 0.35);
+      box-shadow: 0 0 35px rgba(0, 217, 255, 0.4);
       border: none;
       cursor: pointer;
     }
 
     .btn-primary-gradient:hover {
-      box-shadow: 0 0 45px rgba(255, 46, 214, 0.5);
+      box-shadow: 0 0 50px rgba(255, 46, 214, 0.6);
       transform: translateY(-2px);
     }
 
@@ -371,9 +434,9 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 30px;
+      padding: 15px 30px;
       border-radius: 10px;
-      background: rgba(20, 26, 36, 0.7);
+      background: rgba(20, 26, 36, 0.75);
       border: 1px solid var(--border-color);
       color: #FFF;
       font-family: var(--font-body);
@@ -381,59 +444,107 @@
       font-size: 0.95rem;
       text-decoration: none;
       transition: var(--transition-smooth);
+      backdrop-filter: blur(12px);
     }
 
     .btn-outline-glass:hover {
       border-color: var(--valixis-cyan);
-      background: rgba(26, 34, 48, 0.9);
+      background: rgba(28, 36, 50, 0.9);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.2);
       transform: translateY(-2px);
     }
 
-    /* Live Corporate Metrics Bar */
-    .hero-metrics-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      padding: 24px;
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
-      margin-top: 20px;
+    /* Three.js 3D Viewport Container */
+    .hero-3d-viewport {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .metric-item {
-      text-align: center;
-      padding: 8px;
+    #hero-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
     }
 
-    .metric-value {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .metric-label {
-      font-size: 0.85rem;
+    .canvas-hud-overlay {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       color: var(--text-dim);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .hud-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--valixis-cyan);
+      box-shadow: 0 0 8px var(--valixis-cyan);
+    }
+
+    /* Corporate Ticker Bar */
+    .ticker-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 20px 0;
+      background: rgba(10, 14, 22, 0.6);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 48px;
+      animation: ticker-slide 28s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes ticker-slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .ticker-accent {
+      color: var(--valixis-cyan);
+      font-weight: 800;
     }
 
     /* ==========================================================================
-       SECTION COMMON STYLES
+       SPOTLIGHT INTERACTIVE CARDS & 3D TILT
        ========================================================================== */
     .section {
-      padding: 90px 0;
+      padding: 100px 0;
       position: relative;
     }
 
     .section-header {
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto 56px;
+      max-width: 820px;
+      margin: 0 auto 60px;
     }
 
     .section-tag {
@@ -441,17 +552,17 @@
       font-size: 0.8rem;
       color: var(--valixis-cyan);
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 12px;
+      letter-spacing: 0.16em;
+      margin-bottom: 14px;
       display: block;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .section-title {
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 16px;
+      font-size: clamp(2.1rem, 3.6vw, 3rem);
+      font-weight: 900;
+      line-height: 1.22;
+      margin-bottom: 18px;
       text-transform: uppercase;
     }
 
@@ -461,72 +572,184 @@
       line-height: 1.7;
     }
 
-    /* ==========================================================================
-       PILLARS GRID (4 THEMES: GAMING, TECH, AI, FUTURE READY)
-       ========================================================================== */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .pillar-card {
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 36px 28px;
-      transition: var(--transition-smooth);
+    /* The Spotlight Card System */
+    .spotlight-card {
       position: relative;
+      background: var(--bg-card);
+      border-radius: 18px;
+      padding: 38px 30px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      border: 1px solid var(--border-color);
+      transform-style: preserve-3d;
+      backdrop-filter: blur(14px);
     }
 
-    .pillar-card::before {
+    /* Dynamic cursor spotlight glow overlay */
+    .spotlight-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--brand-gradient);
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: radial-gradient(
+        400px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(0, 217, 255, 0.7),
+        rgba(124, 58, 237, 0.4) 40%,
+        transparent 70%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
       opacity: 0;
-      transition: var(--transition-smooth);
+      transition: opacity 0.4s ease;
     }
 
-    .pillar-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0, 217, 255, 0.4);
-      box-shadow: 0 15px 35px rgba(0, 217, 255, 0.1);
-    }
-
-    .pillar-card:hover::before {
+    .spotlight-card:hover::before {
       opacity: 1;
     }
 
+    .spotlight-card:hover {
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 217, 255, 0.12);
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 26px;
+    }
+
     .pillar-icon-box {
-      width: 54px;
-      height: 54px;
-      border-radius: 12px;
-      background: rgba(26, 34, 48, 0.8);
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: rgba(28, 36, 50, 0.8);
       border: 1px solid var(--border-color);
       display: grid;
       place-items: center;
-      margin-bottom: 22px;
-      font-size: 1.5rem;
+      margin-bottom: 24px;
+      font-size: 1.6rem;
+      transition: transform 0.3s ease;
+    }
+    .spotlight-card:hover .pillar-icon-box {
+      transform: scale(1.1) translateZ(20px);
     }
 
     .pillar-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 14px;
       letter-spacing: 0.05em;
     }
 
     .pillar-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE DIVISION EXPLORER TABS (AWWWARDS FEATURE)
+       ========================================================================== */
+    .division-explorer {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 44px;
+      margin-top: 50px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .explorer-nav {
+      display: flex;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 20px;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 10px 22px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      letter-spacing: 0.05em;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: rgba(0, 217, 255, 0.12);
+      border-color: var(--valixis-cyan);
+      color: #FFF;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+
+    .tab-content-panel {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .tab-content-panel.active {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-info-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .tab-info-desc {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .spec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-white);
+    }
+    .spec-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--valixis-cyan);
+    }
+
+    .tab-interactive-display {
+      background: rgba(9, 12, 18, 0.95);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.6);
     }
 
     /* ==========================================================================
@@ -538,119 +761,104 @@
       gap: 28px;
     }
 
-    .product-card {
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 34px;
-      transition: var(--transition-smooth);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      border-color: rgba(124, 58, 237, 0.5);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
-    }
-
-    .product-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 18px;
-    }
-
     .product-tag {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 6px;
       background: rgba(255, 46, 214, 0.12);
-      border: 1px solid rgba(255, 46, 214, 0.3);
+      border: 1px solid rgba(255, 46, 214, 0.35);
       color: var(--valixis-magenta);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 16px;
     }
 
     .product-title {
-      font-size: 1.45rem;
+      font-size: 1.55rem;
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #FFF;
     }
 
     .product-desc {
       color: var(--text-muted);
       font-size: 0.96rem;
-      line-height: 1.65;
+      line-height: 1.68;
       margin-bottom: 24px;
-      flex-grow: 1;
     }
 
     .product-tech-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: auto;
       padding-top: 18px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .tech-chip {
       font-family: var(--font-mono);
-      font-size: 0.76rem;
-      padding: 3px 9px;
-      border-radius: 4px;
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.04);
       color: var(--text-dim);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    /* Highlighted Flagship Product Card: VALIXIS Portal */
+    /* Flagship VALIXIS Portal */
     .product-flagship {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 36px;
-      background: linear-gradient(135deg, rgba(20, 26, 36, 0.98) 0%, rgba(13, 17, 23, 0.98) 100%);
       border: 1px solid var(--valixis-cyan);
       box-shadow: 0 0 35px rgba(0, 217, 255, 0.15);
     }
 
-    .flagship-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .flagship-right {
-      background: rgba(10, 14, 22, 0.9);
+    /* Live Terminal Console */
+    .console-terminal {
+      background: #06090F;
       border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 24px;
+      border-radius: 12px;
+      padding: 22px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 0.84rem;
+      gap: 10px;
     }
-
-    .code-line {
+    .terminal-header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
+      margin-bottom: 6px;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+    }
+    .traffic-lights {
+      display: flex;
+      gap: 6px;
+    }
+    .traffic-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .code-row {
+      display: flex;
       gap: 12px;
-      margin-bottom: 10px;
       color: var(--text-muted);
     }
-    .code-num { color: var(--text-dim); min-width: 20px; }
-    .code-cyan { color: var(--valixis-cyan); font-weight: 600; }
-    .code-purple { color: var(--valixis-purple); }
-    .code-magenta { color: var(--valixis-magenta); }
+    .c-cyan { color: var(--valixis-cyan); }
+    .c-purple { color: var(--valixis-purple); }
+    .c-green { color: #10B981; }
 
     /* ==========================================================================
-       MISSION, VISION & VALUES SECTION
+       MISSION, VISION & VALUES
        ========================================================================== */
     .mvv-layout {
       display: grid;
@@ -660,29 +868,23 @@
     }
 
     .mv-card {
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
+      padding: 44px 38px;
       border-radius: 18px;
-      padding: 40px;
-      position: relative;
     }
 
     .mv-badge {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      letter-spacing: 0.14em;
+      margin-bottom: 18px;
       display: block;
       font-weight: 700;
     }
 
-    .badge-mission { color: var(--valixis-cyan); }
-    .badge-vision { color: var(--valixis-magenta); }
-
     .mv-quote {
       font-family: var(--font-display);
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       line-height: 1.5;
       color: #FFF;
       font-weight: 700;
@@ -691,174 +893,143 @@
     .values-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
     .val-card {
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 24px 18px;
       text-align: center;
-      transition: var(--transition-smooth);
-    }
-
-    .val-card:hover {
-      border-color: var(--valixis-cyan);
-      transform: translateY(-4px);
+      padding: 28px 20px;
     }
 
     .val-title {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       letter-spacing: 0.05em;
     }
 
     .val-desc {
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* ==========================================================================
-       LEADERSHIP SECTION
+       LEADERSHIP
        ========================================================================== */
     .leadership-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 800px;
+      gap: 34px;
+      max-width: 820px;
       margin: 0 auto;
     }
 
     .leader-card {
-      background: var(--card-gradient);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 36px 28px;
       text-align: center;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    .leader-card:hover {
-      border-color: var(--valixis-cyan);
-      box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
-      transform: translateY(-4px);
+      padding: 42px 32px;
     }
 
     .leader-avatar-box {
-      width: 86px;
-      height: 86px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--valixis-cyan) 0%, var(--valixis-purple) 100%);
       display: grid;
       place-items: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 22px;
       padding: 3px;
     }
 
     .avatar-inner {
       width: 100%;
       height: 100%;
-      background: var(--bg-card);
+      background: var(--bg-dark);
       border-radius: 50%;
       display: grid;
       place-items: center;
       font-family: var(--font-display);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 800;
       color: #FFF;
     }
 
     .leader-name {
-      font-size: 1.35rem;
+      font-size: 1.45rem;
       font-weight: 800;
       margin-bottom: 6px;
     }
 
     .leader-role {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--valixis-cyan);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .leader-bio {
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ==========================================================================
-       CONTACT & INQUIRIES
+       CONTACT & GLOBAL INQUIRIES
        ========================================================================== */
     .contact-box {
-      background: linear-gradient(135deg, rgba(20, 26, 36, 0.95) 0%, rgba(13, 17, 23, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.96) 0%, rgba(13, 17, 23, 0.98) 100%);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 60px 40px;
+      border-radius: 24px;
+      padding: 68px 44px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
       position: relative;
       overflow: hidden;
     }
 
-    .contact-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: 20%;
-      width: 60%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     .contact-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 800;
-      margin-bottom: 16px;
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      font-weight: 900;
+      margin-bottom: 18px;
       text-transform: uppercase;
     }
 
     .contact-desc {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 36px;
+      max-width: 620px;
+      margin: 0 auto 38px;
     }
 
     .contact-channels {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .contact-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      background: rgba(26, 34, 48, 0.8);
+      gap: 12px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: rgba(28, 36, 50, 0.85);
       border: 1px solid var(--border-color);
       color: #FFF;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       transition: var(--transition-smooth);
     }
 
     .contact-pill:hover {
       border-color: var(--valixis-cyan);
-      box-shadow: 0 0 20px rgba(0, 217, 255, 0.25);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.3);
       transform: translateY(-2px);
     }
 
@@ -866,10 +1037,10 @@
        FOOTER
        ========================================================================== */
     .footer {
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       background: var(--bg-darker);
-      padding: 50px 0 30px;
-      margin-top: 60px;
+      padding: 60px 0 36px;
+      margin-top: 70px;
     }
 
     .footer-top {
@@ -877,15 +1048,15 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 36px;
+      gap: 28px;
+      margin-bottom: 40px;
     }
 
     .footer-tagline {
       font-family: var(--font-display);
       font-size: 0.95rem;
       color: var(--text-muted);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
     .footer-bottom {
@@ -894,41 +1065,47 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 18px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-dim);
-      padding-top: 24px;
+      padding-top: 28px;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     /* Responsive */
-    @media (max-width: 960px) {
-      .hero-metrics-bar { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 1024px) {
+      .hero-split-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-3d-viewport { height: 400px; }
       .product-flagship { grid-template-columns: 1fr; }
+      .tab-content-panel.active { grid-template-columns: 1fr; }
       .mvv-layout { grid-template-columns: 1fr; }
       .values-row { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
     }
     @media (max-width: 600px) {
-      .hero-metrics-bar { grid-template-columns: 1fr; }
       .values-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-orb orb-cyan"></div>
-  <div class="ambient-orb orb-purple"></div>
-  <div class="ambient-orb orb-magenta"></div>
+  <!-- Film Grain & Ambient Lighting -->
+  <div class="film-grain"></div>
+  <div class="cyber-grid"></div>
+  <div class="aurora-orb orb-1"></div>
+  <div class="aurora-orb orb-2"></div>
+  <div class="aurora-orb orb-3"></div>
 
-  <!-- Background Grid -->
-  <div class="circuit-grid"></div>
+  <!-- Interactive Dual-Ring Cyber Cursor -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-ring" id="cursorRing"></div>
 
-  <!-- Header / Navigation -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
       <a href="#hero" class="brand-header">
-        <img src="assets/valixis-logo-transparent.png" alt="VALIXIS V Logo" class="brand-logo-img">
+        <img src="assets/valixis-logo-transparent.png" alt="VALIXIS Logo" class="brand-logo-img">
         <span class="brand-title">VALI<span class="x-accent">X</span>IS</span>
       </a>
 
@@ -947,54 +1124,63 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Live Three.js WebGL Core -->
   <section class="hero" id="hero">
     <div class="container">
-      <div class="hero-badge">
-        <span class="pulse-dot"></span>
-        <span>VALIXIS Technologies &bull; Next-Gen Enterprise &amp; Gaming Ecosystem</span>
-      </div>
+      <div class="hero-split-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>VALIXIS Technologies &bull; Next-Gen Enterprise &amp; Gaming</span>
+          </div>
 
-      <h1 class="hero-title">
-        Building <span class="brand-gradient-text">Intelligent Solutions</span><br>
-        for a <span class="brand-gradient-text-alt">Better Tomorrow</span>
-      </h1>
+          <h1 class="hero-title">
+            Building <span class="brand-gradient-text">Intelligent Solutions</span><br>
+            for a <span class="brand-gradient-text-alt">Better Tomorrow</span>
+          </h1>
 
-      <p class="hero-subtitle">
-        A next-generation technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.
-      </p>
+          <p class="hero-subtitle">
+            An elite technology company pioneering at the convergence of Artificial Intelligence, High-Performance Software, Enterprise Platforms, and Next-Gen Gaming.
+          </p>
 
-      <div class="hero-actions">
-        <a href="#products" class="btn-primary-gradient">
-          <span>Explore Ecosystem</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="#divisions" class="btn-outline-glass">
-          <span>Core Divisions</span>
-        </a>
-      </div>
-
-      <!-- Live Corporate Metrics Bar -->
-      <div class="hero-metrics-bar">
-        <div class="metric-item">
-          <div class="metric-value brand-gradient-text">4</div>
-          <div class="metric-label">Strategic Pillars</div>
+          <div class="hero-actions">
+            <a href="#products" class="btn-primary-gradient">
+              <span>Explore Ecosystem</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#divisions" class="btn-outline-glass">
+              <span>Core Divisions</span>
+            </a>
+          </div>
         </div>
-        <div class="metric-item">
-          <div class="metric-value" style="color: var(--valixis-cyan);">Enterprise</div>
-          <div class="metric-label">Portal &amp; Cloud Infra</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-value" style="color: var(--valixis-purple);">AI Native</div>
-          <div class="metric-label">Autonomous Systems</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-value" style="color: var(--valixis-magenta);">Gaming</div>
-          <div class="metric-label">Interactive Entertainment</div>
+
+        <!-- Three.js 3D Viewport -->
+        <div class="hero-3d-viewport">
+          <canvas id="hero-canvas"></canvas>
+          <div class="canvas-hud-overlay">
+            <span class="hud-dot"></span>
+            <span>THREE.JS WEBGL CORE &bull; INTERACTIVE 3D</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Corporate Ticker Bar -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> VALIXIS PORTAL CORE ARCHITECTURE</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> ROW LEVEL SECURITY PRODUCTION ENFORCED</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> FLUTTER WEB CI/CD PIPELINE</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> NEXT-GEN GAMING STUDIO LABS</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> AUTONOMOUS AI AGENT SWARMS</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> SOVEREIGN CLOUD &amp; DISTRIBUTED STORAGE</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> VALIXIS PORTAL CORE ARCHITECTURE</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> ROW LEVEL SECURITY PRODUCTION ENFORCED</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> FLUTTER WEB CI/CD PIPELINE</div>
+      <div class="ticker-item"><span class="ticker-accent">&bull;</span> NEXT-GEN GAMING STUDIO LABS</div>
+    </div>
+  </div>
 
   <!-- Four Core Strategic Pillars -->
   <section class="section" id="divisions">
@@ -1008,7 +1194,7 @@
       </div>
 
       <div class="pillars-grid">
-        <div class="pillar-card">
+        <div class="spotlight-card">
           <div class="pillar-icon-box" style="border-color: rgba(255, 46, 214, 0.4); color: var(--valixis-magenta);">🎮</div>
           <h3 class="pillar-name" style="color: var(--valixis-magenta);">GAMING</h3>
           <p class="pillar-desc">
@@ -1016,7 +1202,7 @@
           </p>
         </div>
 
-        <div class="pillar-card">
+        <div class="spotlight-card">
           <div class="pillar-icon-box" style="border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">⚡</div>
           <h3 class="pillar-name" style="color: var(--valixis-cyan);">TECHNOLOGY</h3>
           <p class="pillar-desc">
@@ -1024,7 +1210,7 @@
           </p>
         </div>
 
-        <div class="pillar-card">
+        <div class="spotlight-card">
           <div class="pillar-icon-box" style="border-color: rgba(124, 58, 237, 0.4); color: var(--valixis-purple);">🧠</div>
           <h3 class="pillar-name" style="color: var(--valixis-purple);">AI &amp; INNOVATION</h3>
           <p class="pillar-desc">
@@ -1032,12 +1218,110 @@
           </p>
         </div>
 
-        <div class="pillar-card">
+        <div class="spotlight-card">
           <div class="pillar-icon-box" style="border-color: rgba(59, 130, 246, 0.4); color: var(--valixis-blue);">🚀</div>
           <h3 class="pillar-name" style="color: var(--valixis-blue);">FUTURE READY</h3>
           <p class="pillar-desc">
             Architected for long-horizon scalability. Building software systems designed to withstand paradigm shifts, maintain data sovereignty, and expand seamlessly.
           </p>
+        </div>
+      </div>
+
+      <!-- Interactive Division Explorer Tabs (Awwwards Feature) -->
+      <div class="division-explorer">
+        <div class="explorer-nav">
+          <button class="tab-btn active" onclick="switchTab('tab-gaming', this)">🎮 GAMING DIVISION</button>
+          <button class="tab-btn" onclick="switchTab('tab-tech', this)">⚡ ENTERPRISE TECH</button>
+          <button class="tab-btn" onclick="switchTab('tab-ai', this)">🧠 AI &amp; SWARMS</button>
+          <button class="tab-btn" onclick="switchTab('tab-future', this)">🚀 FUTURE READY</button>
+        </div>
+
+        <!-- Gaming Tab -->
+        <div class="tab-content-panel active" id="tab-gaming">
+          <div>
+            <h3 class="tab-info-title" style="color: var(--valixis-magenta);">Next-Gen Interactive Experiences</h3>
+            <p class="tab-info-desc">
+              We design gaming systems that merge procedural 3D environments, real-time physics engines, and autonomous behavioral AI to build experiences that push creative and technical limits.
+            </p>
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-bullet"></span> Real-time custom shaders &amp; procedural level generation</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Autonomous agent logic powering emergent gameplay</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Low-latency multiplayer networking architecture</li>
+            </ul>
+          </div>
+          <div class="tab-interactive-display">
+            <div style="color: var(--text-dim); margin-bottom: 12px;">// VALIXIS GAMING LABS INITIALIZATION</div>
+            <div style="color: var(--valixis-magenta);">&gt; ENGINE_STATUS: ACTIVE</div>
+            <div style="color: var(--valixis-cyan);">&gt; FRAME_BUDGET: 120 FPS TARGET</div>
+            <div style="color: var(--text-muted);">&gt; AGENT_BEHAVIORS: 256 CONCURRENT MESHES</div>
+            <div style="color: #10B981; margin-top: 12px;">&gt; RENDER PIPELINE: VULKAN / WEBGL OPTIMIZED</div>
+          </div>
+        </div>
+
+        <!-- Tech Tab -->
+        <div class="tab-content-panel" id="tab-tech">
+          <div>
+            <h3 class="tab-info-title" style="color: var(--valixis-cyan);">Zero-Compromise Enterprise Systems</h3>
+            <p class="tab-info-desc">
+              Enterprise architecture engineered for high concurrency and strict security. Powered by PostgreSQL with Row Level Security, CI/CD automated build pipelines, and Flutter Web.
+            </p>
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-bullet"></span> Strict Row Level Security policies at database kernel</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Automated GitHub Actions CI/CD with verification suites</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Sub-second global replication and edge distribution</li>
+            </ul>
+          </div>
+          <div class="tab-interactive-display">
+            <div style="color: var(--text-dim); margin-bottom: 12px;">// ENTERPRISE CLUSTER TELEMETRY</div>
+            <div style="color: var(--valixis-cyan);">&gt; POSTGRESQL RLS: 100% POLICIES ENFORCED</div>
+            <div style="color: var(--valixis-purple);">&gt; SECURITY_DEFINER FUNCTIONS: ACTIVE</div>
+            <div style="color: var(--text-muted);">&gt; UPTIME: 99.998% GLOBAL CDN REACH</div>
+            <div style="color: #10B981; margin-top: 12px;">&gt; AUDIT LOGGING: IMMUTABLE DISPATCH VERIFIED</div>
+          </div>
+        </div>
+
+        <!-- AI Tab -->
+        <div class="tab-content-panel" id="tab-ai">
+          <div>
+            <h3 class="tab-info-title" style="color: var(--valixis-purple);">Autonomous Intelligence &amp; Multi-Agent Swarms</h3>
+            <p class="tab-info-desc">
+              Pioneering goal-directed AI workflows. Our background daemons operate 24/7 executing task prioritization, DNS verifications, telemetry monitoring, and structured natural language pipelines.
+            </p>
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-bullet"></span> Background daemon architecture with zero human intervention</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Autonomous lead qualification &amp; deliverability pre-flight</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Real-time multi-channel telemetry &amp; Telegram alerting</li>
+            </ul>
+          </div>
+          <div class="tab-interactive-display">
+            <div style="color: var(--text-dim); margin-bottom: 12px;">// VALIXIS SWARM INTELLIGENCE</div>
+            <div style="color: var(--valixis-purple);">&gt; ACTIVE_SWARM: VALIXIS_AUTONOMOUS_DAEMON</div>
+            <div style="color: var(--valixis-cyan);">&gt; HEURISTIC_EVALUATION: ZERO_HARD_BOUNCE_POLICY</div>
+            <div style="color: var(--text-muted);">&gt; TELEGRAM_DISPATCHER: @valixis_metspy_bot LIVE</div>
+            <div style="color: #10B981; margin-top: 12px;">&gt; MODEL_INFERENCE: EXTENDED MULTI-TIER REASONING</div>
+          </div>
+        </div>
+
+        <!-- Future Ready Tab -->
+        <div class="tab-content-panel" id="tab-future">
+          <div>
+            <h3 class="tab-info-title" style="color: var(--valixis-blue);">Sovereign, Long-Horizon Infrastructure</h3>
+            <p class="tab-info-desc">
+              Software built to stand the test of time. We architect systems with zero lock-in, open protocols, sovereign data ownership, and decoupled components that can scale indefinitely.
+            </p>
+            <ul class="spec-list">
+              <li class="spec-item"><span class="spec-bullet"></span> Sovereign data architectures with complete client IP ownership</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Modular microservices designed for seamless horizontal growth</li>
+              <li class="spec-item"><span class="spec-bullet"></span> Encrypted local-first backup nodes with automated synchronization</li>
+            </ul>
+          </div>
+          <div class="tab-interactive-display">
+            <div style="color: var(--text-dim); margin-bottom: 12px;">// LONG-HORIZON READINESS PROTOCOL</div>
+            <div style="color: var(--valixis-blue);">&gt; DATA_SOVEREIGNTY: 100% OWNERSHIP PRESERVED</div>
+            <div style="color: var(--valixis-cyan);">&gt; TAILSCALE_MESH: PEER-TO-PEER ENCRYPTED</div>
+            <div style="color: var(--text-muted);">&gt; BACKUP_SYNC: HYBRID CLOUD &amp; HARDWARE NODES</div>
+            <div style="color: #10B981; margin-top: 12px;">&gt; ARCHITECTURE_STATUS: RESILIENT TO DRIFT</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1056,14 +1340,12 @@
 
       <div class="products-grid">
         <!-- Flagship: VALIXIS Portal -->
-        <div class="product-card product-flagship">
-          <div class="flagship-left">
-            <div class="product-header">
-              <span class="product-tag" style="background: rgba(0, 217, 255, 0.12); border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">Flagship System</span>
-            </div>
-            <h3 class="product-title" style="font-size: 1.85rem;">VALIXIS Portal</h3>
+        <div class="spotlight-card product-flagship">
+          <div>
+            <span class="product-tag" style="background: rgba(0, 217, 255, 0.12); border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">Flagship Platform</span>
+            <h3 class="product-title" style="font-size: 1.95rem;">VALIXIS Portal</h3>
             <p class="product-desc">
-              The internal operational backbone of VALIXIS. Bridges corporate task management with GitHub development pipelines. Features role-based access, Row Level Security (RLS), pull request submission synchronization, and automated CI/CD verification.
+              The internal operational backbone of VALIXIS. Bridges corporate task management directly with GitHub development pipelines. Features role-based access control, PostgreSQL Row Level Security (RLS), pull request submission synchronization, and automated CI/CD verification.
             </p>
             <div class="product-tech-chips">
               <span class="tech-chip">Flutter Web</span>
@@ -1072,20 +1354,26 @@
               <span class="tech-chip">GitHub Actions CI/CD</span>
             </div>
           </div>
-          <div class="flagship-right">
-            <div class="code-line"><span class="code-num">01</span><span class="code-cyan">SYSTEM</span><span>: VALIXIS_PORTAL_CORE</span></div>
-            <div class="code-line"><span class="code-num">02</span><span class="code-purple">SECURITY</span><span>: PRODUCTION_RLS_ENFORCED</span></div>
-            <div class="code-line"><span class="code-num">03</span><span class="code-cyan">WORKFLOW</span><span>: TASK &rarr; PR &rarr; SUBMISSION</span></div>
-            <div class="code-line"><span class="code-num">04</span><span class="code-magenta">PIPELINE</span><span>: GITHUB_ACTIONS_AUTOMATED</span></div>
-            <div class="code-line"><span class="code-num">05</span><span class="code-cyan">STATUS</span><span>: OPERATIONAL / ACTIVE</span></div>
+          <div class="console-terminal">
+            <div class="terminal-header">
+              <div class="traffic-lights">
+                <span class="traffic-dot" style="background: #EF4444;"></span>
+                <span class="traffic-dot" style="background: #F59E0B;"></span>
+                <span class="traffic-dot" style="background: #10B981;"></span>
+              </div>
+              <span>PORTAL_KERNEL_V2.6</span>
+            </div>
+            <div class="code-row"><span class="c-cyan">01</span><span>AUTH: JWT_SECURE_EXCHANGE</span></div>
+            <div class="code-row"><span class="c-purple">02</span><span>RLS: POLICIES_ACTIVE [SECURITY_DEFINER]</span></div>
+            <div class="code-row"><span class="c-cyan">03</span><span>WORKFLOW: TASK &rarr; PR &rarr; SUBMISSION</span></div>
+            <div class="code-row"><span class="c-green">04</span><span>PIPELINE: GITHUB_ACTIONS_BUILT (0 ERRORS)</span></div>
+            <div class="code-row"><span class="c-cyan">05</span><span>STATUS: LIVE PRODUCTION ENGINE</span></div>
           </div>
         </div>
 
         <!-- VALIXIS Cloud -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag">Infrastructure</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag">Infrastructure</span>
           <h3 class="product-title">VALIXIS Cloud</h3>
           <p class="product-desc">
             Sovereign cloud infrastructure and distributed storage built for maximum data privacy, end-to-end encryption, and low-latency synchronization across local and remote nodes.
@@ -1098,10 +1386,8 @@
         </div>
 
         <!-- VALIXIS Flow -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag">Automation</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag">Automation</span>
           <h3 class="product-title">VALIXIS Flow</h3>
           <p class="product-desc">
             High-velocity workflow orchestration and autonomous agent automation engine. Executes background task queues, lead intelligence, and multi-tier event pipelines.
@@ -1114,10 +1400,8 @@
         </div>
 
         <!-- VALIXIS Desk-AI -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag">Intelligence</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag">Intelligence</span>
           <h3 class="product-title">VALIXIS Desk-AI</h3>
           <p class="product-desc">
             Native desktop cognitive workspace integrating localized intelligence, automated system monitoring, and frictionless engineering productivity tooling.
@@ -1130,10 +1414,8 @@
         </div>
 
         <!-- VALIXIS Pulse -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag">Observability</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag">Observability</span>
           <h3 class="product-title">VALIXIS Pulse</h3>
           <p class="product-desc">
             Real-time observability and live telemetry dashboard tracking server load, automated service health, dispatch hit ratios, and network uptime across the VALIXIS mesh.
@@ -1146,10 +1428,8 @@
         </div>
 
         <!-- Fitora -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.3); color: #10B981;">Consumer AI</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.35); color: #10B981;">Consumer AI</span>
           <h3 class="product-title">Fitora</h3>
           <p class="product-desc">
             Next-generation intelligent fitness, workout analysis, and bio-tracking mobile platform. Combines computer vision with adaptive workout routines to optimize personal health.
@@ -1162,10 +1442,8 @@
         </div>
 
         <!-- VALIXIS Gaming Studio -->
-        <div class="product-card">
-          <div class="product-header">
-            <span class="product-tag" style="background: rgba(255, 46, 214, 0.12); border-color: rgba(255, 46, 214, 0.3); color: var(--valixis-magenta);">Interactive</span>
-          </div>
+        <div class="spotlight-card">
+          <span class="product-tag" style="background: rgba(255, 46, 214, 0.12); border-color: rgba(255, 46, 214, 0.35); color: var(--valixis-magenta);">Interactive</span>
           <h3 class="product-title">VALIXIS Gaming Studio</h3>
           <p class="product-desc">
             In-house game development lab engineering high-engagement game concepts, interactive mechanics, and procedural environments powered by our proprietary physics and AI pipelines.
@@ -1192,40 +1470,39 @@
       </div>
 
       <div class="mvv-layout">
-        <div class="mv-card" style="border-left: 4px solid var(--valixis-cyan);">
-          <span class="mv-badge badge-mission">Our Mission</span>
+        <div class="spotlight-card mv-card" style="border-left: 4px solid var(--valixis-cyan);">
+          <span class="mv-badge" style="color: var(--valixis-cyan);">Our Mission</span>
           <p class="mv-quote">
             "To build intelligent solutions that create real impact and shape a better tomorrow."
           </p>
         </div>
 
-        <div class="mv-card" style="border-left: 4px solid var(--valixis-magenta);">
-          <span class="mv-badge badge-vision">Our Vision</span>
+        <div class="spotlight-card mv-card" style="border-left: 4px solid var(--valixis-magenta);">
+          <span class="mv-badge" style="color: var(--valixis-magenta);">Our Vision</span>
           <p class="mv-quote">
             "To be a global leader in technology and gaming, known for innovation, quality, and positive impact."
           </p>
         </div>
       </div>
 
-      <!-- 5 Core Values: INNOVATE, DEVELOP, EMPOWER, PLAY, EXCEL -->
       <div class="values-row">
-        <div class="val-card">
+        <div class="spotlight-card val-card">
           <div class="val-title brand-gradient-text">INNOVATE</div>
           <p class="val-desc">Push boundaries, explore uncharted paradigms, and deliver lasting real-world impact.</p>
         </div>
-        <div class="val-card">
+        <div class="spotlight-card val-card">
           <div class="val-title" style="color: var(--valixis-cyan);">DEVELOP</div>
           <p class="val-desc">Build with precision, clean architecture, and industry-leading engineering practices.</p>
         </div>
-        <div class="val-card">
+        <div class="spotlight-card val-card">
           <div class="val-title" style="color: var(--valixis-purple);">EMPOWER</div>
           <p class="val-desc">Put transformative technological capabilities directly into the hands of people and businesses.</p>
         </div>
-        <div class="val-card">
+        <div class="spotlight-card val-card">
           <div class="val-title" style="color: var(--valixis-magenta);">PLAY</div>
           <p class="val-desc">Combine the joy and immersion of gaming with state-of-the-art interactive technology.</p>
         </div>
-        <div class="val-card">
+        <div class="spotlight-card val-card">
           <div class="val-title brand-gradient-text-alt">EXCEL</div>
           <p class="val-desc">Maintain uncompromising quality, rigorous automated testing, and continuous evolution.</p>
         </div>
@@ -1245,7 +1522,7 @@
       </div>
 
       <div class="leadership-grid">
-        <div class="leader-card">
+        <div class="spotlight-card leader-card">
           <div class="leader-avatar-box">
             <div class="avatar-inner">S</div>
           </div>
@@ -1256,7 +1533,7 @@
           </p>
         </div>
 
-        <div class="leader-card">
+        <div class="spotlight-card leader-card">
           <div class="leader-avatar-box" style="background: linear-gradient(135deg, var(--valixis-purple) 0%, var(--valixis-magenta) 100%);">
             <div class="avatar-inner">J</div>
           </div>
@@ -1320,5 +1597,219 @@
     </div>
   </footer>
 
+  <!-- ==========================================================================
+       AWWWARDS-LEVEL INTERACTIVE JAVASCRIPT
+       1. Three.js Holographic 3D WebGL Core
+       2. Dynamic Mouse-Follow Spotlight on Cards
+       3. 3D Card Tilt with Inertia
+       4. Custom Cyber Cursor Physics
+       5. Interactive Division Tab Switcher
+       ========================================================================== -->
+  <script>
+    // 1. CUSTOM CURSOR PHYSICS
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    });
+
+    function renderCursor() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    // Expand cursor ring when hovering clickable elements
+    const interactiveElements = document.querySelectorAll('a, button, .spotlight-card, .tab-btn');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // 2. DYNAMIC CARD SPOTLIGHT & 3D TILT
+    const cards = document.querySelectorAll('.spotlight-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // 3D Tilt calculation
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6; // Max 6 deg
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    });
+
+    // 3. INTERACTIVE DIVISION TAB SWITCHER
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const panel = document.getElementById(tabId);
+      if (panel) panel.classList.add('active');
+    }
+
+    // 4. THREE.JS 3D HOLOGRAPHIC CYBER CORE
+    (function initThreeCore() {
+      const container = document.querySelector('.hero-3d-viewport');
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas || !container || typeof THREE === 'undefined') return;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.z = 7;
+
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Master Group
+      const coreGroup = new THREE.Group();
+      scene.add(coreGroup);
+
+      // A. Outer Wireframe Icosahedron (Cyan Glow)
+      const outerGeo = new THREE.IcosahedronGeometry(2.3, 1);
+      const outerMat = new THREE.MeshBasicMaterial({
+        color: 0x00D9FF,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.38
+      });
+      const outerMesh = new THREE.Mesh(outerGeo, outerMat);
+      coreGroup.add(outerMesh);
+
+      // B. Middle Orbital Ring (Magenta Neon)
+      const ringGeo = new THREE.TorusGeometry(2.7, 0.035, 16, 100);
+      const ringMat = new THREE.MeshBasicMaterial({
+        color: 0xFF2ED6,
+        transparent: true,
+        opacity: 0.75
+      });
+      const ringMesh1 = new THREE.Mesh(ringGeo, ringMat);
+      ringMesh1.rotation.x = Math.PI / 3;
+      ringMesh1.rotation.y = Math.PI / 4;
+      coreGroup.add(ringMesh1);
+
+      const ringMesh2 = new THREE.Mesh(ringGeo, ringMat.clone());
+      ringMesh2.material.color.setHex(0x7C3AED);
+      ringMesh2.rotation.x = -Math.PI / 3;
+      ringMesh2.rotation.y = -Math.PI / 4;
+      coreGroup.add(ringMesh2);
+
+      // C. Inner Faceted Core (Purple Metallic with Point Lights)
+      const innerGeo = new THREE.OctahedronGeometry(1.2, 0);
+      const innerMat = new THREE.MeshStandardMaterial({
+        color: 0x7C3AED,
+        roughness: 0.2,
+        metalness: 0.85,
+        wireframe: false,
+        emissive: 0x2A0845,
+        emissiveIntensity: 0.5
+      });
+      const innerMesh = new THREE.Mesh(innerGeo, innerMat);
+      coreGroup.add(innerMesh);
+
+      // D. Floating 3D Star-Dust Particles
+      const particleCount = 800;
+      const particleGeo = new THREE.BufferGeometry();
+      const posArray = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount * 3; i += 3) {
+        posArray[i] = (Math.random() - 0.5) * 12;
+        posArray[i + 1] = (Math.random() - 0.5) * 12;
+        posArray[i + 2] = (Math.random() - 0.5) * 12;
+      }
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+      const particleMat = new THREE.PointsMaterial({
+        size: 0.035,
+        color: 0x00D9FF,
+        transparent: true,
+        opacity: 0.65
+      });
+      const particles = new THREE.Points(particleGeo, particleMat);
+      scene.add(particles);
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+
+      const cyanLight = new THREE.PointLight(0x00D9FF, 2.5, 15);
+      cyanLight.position.set(4, 4, 4);
+      scene.add(cyanLight);
+
+      const magentaLight = new THREE.PointLight(0xFF2ED6, 2.5, 15);
+      magentaLight.position.set(-4, -4, -2);
+      scene.add(magentaLight);
+
+      // Interactive Mouse Parallax Lerp
+      let targetRotX = 0;
+      let targetRotY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        const normX = (e.clientX / window.innerWidth) - 0.5;
+        const normY = (e.clientY / window.innerHeight) - 0.5;
+        targetRotY = normX * 0.9;
+        targetRotX = normY * 0.9;
+      });
+
+      // Render Loop
+      let clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Constant organic spin
+        outerMesh.rotation.y = elapsedTime * 0.18;
+        outerMesh.rotation.x = elapsedTime * 0.12;
+
+        innerMesh.rotation.y = -elapsedTime * 0.25;
+        innerMesh.rotation.z = elapsedTime * 0.15;
+
+        ringMesh1.rotation.z = elapsedTime * 0.2;
+        ringMesh2.rotation.z = -elapsedTime * 0.25;
+
+        particles.rotation.y = elapsedTime * 0.04;
+
+        // Inertia follow
+        coreGroup.rotation.y += (targetRotY - coreGroup.rotation.y) * 0.06;
+        coreGroup.rotation.x += (targetRotX - coreGroup.rotation.x) * 0.06;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Window Resize Listener
+      window.addEventListener('resize', () => {
+        if (!container) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+    })();
+  </script>
 </body>
 </html>
