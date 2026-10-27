@@ -1803,6 +1803,40 @@
       window.addEventListener('resize', updateViewport);
     })();
 
+    // 5. CLEAN URL ROUTING (Awwwards-Tier HTML5 History API)
+    // Updates browser address bar cleanly to /leadership, /divisions, /products, etc. without '#'
+    (function initCleanRouting() {
+      // Intercept anchor clicks
+      document.querySelectorAll('.nav-link, a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#') && href.length > 1) {
+            const targetId = href.substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+              // Update browser address bar to clean route without '#'
+              if (window.history && window.history.pushState) {
+                window.history.pushState(null, '', '/' + targetId);
+              }
+            }
+          }
+        });
+      });
+
+      // Handle direct hash navigation on initial load if present
+      if (window.location.hash) {
+        const hashTarget = document.getElementById(window.location.hash.substring(1));
+        if (hashTarget) {
+          setTimeout(() => hashTarget.scrollIntoView({ behavior: 'smooth' }), 150);
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', '/' + window.location.hash.substring(1));
+          }
+        }
+      }
+    })();
+
   </script>
 </body>
 </html>
