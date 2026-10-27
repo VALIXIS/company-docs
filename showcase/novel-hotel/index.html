@@ -1,0 +1,3440 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="heritage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>NOVEL Hotel · Boutique Suites, Haute Cuisine & Starlight Rooftop · Guntur</title>
+  <meta name="description" content="Guntur's premier boutique luxury hotel & gourmet destination. Famed Chicken Potlam Biryani, open-air starlight veranda, luxury executive suites, and 300-seat grand banquet hall in Chandramouli Nagar.">
+
+  <!-- Elite Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGNER LUXURY PALETTE (STRICTLY LIGHT LUXURY MODE)
+       ========================================================================== */
+    :root, [data-theme="heritage"] {
+      --canvas: #FAF7F2;
+      --canvas-warm: #F4EDE2;
+      --surface: #FFFFFF;
+      --surface-elevated: #FDFBF8;
+      --surface-border: #E8DFCF;
+      --surface-border-subtle: #F0E8DC;
+      
+      --gold-primary: #C59B27;
+      --gold-dark: #916E16;
+      --gold-deep: #5A440D;
+      --gold-light: #FBF4E4;
+      --gold-border: rgba(197, 155, 39, 0.32);
+      --gold-glow: rgba(197, 155, 39, 0.18);
+
+      --emerald-accent: #059669;
+      --emerald-soft: #ECFDF5;
+      --emerald-border: #A7F3D0;
+      
+      --text-headline: #13100D;
+      --text-body: #47413A;
+      --text-muted: #736C63;
+      --text-subtle: #999187;
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-crest: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --shadow-subtle: 0 2px 12px rgba(19, 16, 13, 0.03);
+      --shadow-card: 0 12px 35px -6px rgba(19, 16, 13, 0.05), 0 3px 10px -2px rgba(19, 16, 13, 0.02);
+      --shadow-hover: 0 24px 50px -10px rgba(19, 16, 13, 0.09), 0 6px 18px -3px rgba(19, 16, 13, 0.03);
+      --shadow-glow: 0 0 35px rgba(197, 155, 39, 0.18);
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-pill: 9999px;
+
+      --container-max: 1260px;
+    }
+
+    [data-theme="botanical"] {
+      --canvas: #F4F8F6;
+      --canvas-warm: #E8F2EC;
+      --surface: #FFFFFF;
+      --surface-elevated: #F9FCFA;
+      --surface-border: #D5E5DC;
+      --surface-border-subtle: #E2ECE6;
+      
+      --gold-primary: #059669;
+      --gold-dark: #047857;
+      --gold-deep: #064E3B;
+      --gold-light: #ECFDF5;
+      --gold-border: rgba(5, 150, 105, 0.32);
+      --gold-glow: rgba(5, 150, 105, 0.18);
+
+      --emerald-accent: #059669;
+      --emerald-soft: #E6F8F0;
+      --emerald-border: #A7F3D0;
+      
+      --text-headline: #0C1E15;
+      --text-body: #344B3F;
+      --text-muted: #627A6E;
+      --text-subtle: #899E93;
+    }
+
+    [data-theme="sunset"] {
+      --canvas: #FAF5F0;
+      --canvas-warm: #F5EAE0;
+      --surface: #FFFFFF;
+      --surface-elevated: #FDF9F6;
+      --surface-border: #EADBCE;
+      --surface-border-subtle: #F2E5D9;
+      
+      --gold-primary: #C25E2E;
+      --gold-dark: #9C451D;
+      --gold-deep: #662B0F;
+      --gold-light: #FEF3EC;
+      --gold-border: rgba(194, 94, 46, 0.32);
+      --gold-glow: rgba(194, 94, 46, 0.2);
+
+      --emerald-accent: #D97706;
+      --emerald-soft: #FFFBEB;
+      --emerald-border: #FCD34D;
+      
+      --text-headline: #241208;
+      --text-body: #593C2C;
+      --text-muted: #826352;
+      --text-subtle: #A38675;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--canvas);
+      color: var(--text-headline);
+      font-family: var(--font-sans);
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      background-color: var(--canvas);
+      padding-bottom: 78px;
+      position: relative;
+    }
+
+    /* Pinned Real-Time Scroll Progress Indicator Bar */
+    #scrollProgressTrack {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(197, 155, 39, 0.12);
+      z-index: 1000;
+    }
+
+    #scrollProgressBar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-primary), #EAB308, var(--gold-dark));
+      box-shadow: 0 0 10px var(--gold-glow);
+      transition: width 0.08s linear;
+    }
+
+    /* Interactive Fluid Cursor Ambient Spotlight */
+    #cursorLightFollower {
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, var(--gold-glow) 0%, rgba(255, 255, 255, 0) 70%);
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      opacity: 0.55;
+      mix-blend-mode: multiply;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Ambient Gold Starlight Canvas */
+    #ambientStarlightCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ==========================================================================
+       CINEMATIC SCROLL-REVEAL ENTRANCE ANIMATIONS
+       ========================================================================== */
+    .reveal-on-scroll {
+      opacity: 1;
+      transform: translateY(0);
+      filter: none;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+
+    /* 3D Tilt Card Base with Specular Radial Glow */
+    [data-tilt] {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out, box-shadow 0.25s ease;
+      will-change: transform;
+      position: relative;
+    }
+
+    /* Announcement Privilege Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, var(--canvas-warm) 0%, var(--surface-elevated) 50%, var(--canvas-warm) 100%);
+      border-bottom: 1px solid var(--surface-border);
+      padding: 9px 18px;
+      font-size: 0.82rem;
+      text-align: center;
+      color: var(--text-body);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .announcement-highlight {
+      background: var(--gold-light);
+      color: var(--gold-dark);
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 0.72rem;
+      border: 1px solid var(--gold-border);
+    }
+
+    /* ==========================================================================
+       MINIMALIST HAUTE HEADER
+       ========================================================================== */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-monogram {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-crest);
+      font-weight: 700;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 14px var(--gold-glow);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .brand-cluster:hover .brand-monogram {
+      transform: scale(1.05) rotate(-3deg);
+    }
+
+    .brand-meta h1 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-headline);
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-meta h1 span {
+      color: var(--gold-primary);
+      font-weight: 400;
+      font-size: 1.15rem;
+    }
+
+    .brand-meta p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold-primary);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-menu a:hover {
+      color: var(--gold-dark);
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Subtle Guest Ambience Selector Pill */
+    .ambience-picker-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--canvas-warm);
+      border: 1px solid var(--surface-border);
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .ambience-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .ambience-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .ambience-dot.active {
+      border-color: var(--text-headline);
+      transform: scale(1.15);
+    }
+
+    .ambience-dot[data-vibe="heritage"] { background: #C59B27; }
+    .ambience-dot[data-vibe="botanical"] { background: #059669; }
+    .ambience-dot[data-vibe="sunset"] { background: #C25E2E; }
+
+    .btn-phone-quick {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      background: var(--canvas-warm);
+      border: 1px solid var(--surface-border);
+      color: var(--text-headline);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-phone-quick:hover {
+      background: #FFFFFF;
+      border-color: var(--gold-primary);
+      color: var(--gold-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 14px var(--gold-glow);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px var(--gold-glow);
+    }
+
+    /* ==========================================================================
+       HERO EDITORIAL SECTION & DIRECT BOOKING ENGINE
+       ========================================================================== */
+    .hero-wrap {
+      padding: 56px 0 68px 0;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-editorial {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .editorial-origin-chip {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text-body);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .google-rating-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--gold-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .google-stars {
+      color: #F59E0B;
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+
+    .google-review-meta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-body);
+    }
+
+    .google-verified-tag {
+      background: var(--emerald-soft);
+      color: var(--emerald-accent);
+      border: 1px solid var(--emerald-border);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      text-transform: uppercase;
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+      line-height: 1.14;
+      color: var(--text-headline);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-dark);
+      font-weight: 400;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      max-width: 580px;
+    }
+
+    /* Live Animated Stats Band */
+    .hero-stats-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 18px 24px;
+      box-shadow: var(--shadow-card);
+      margin-top: 6px;
+    }
+
+    .stat-counter-unit {
+      text-align: left;
+      position: relative;
+    }
+
+    .stat-counter-unit:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--surface-border);
+    }
+
+    .counter-value {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-headline);
+      line-height: 1.1;
+    }
+
+    .counter-value::after {
+      content: attr(data-suffix);
+      font-size: 1.1rem;
+      color: var(--gold-primary);
+      margin-left: 2px;
+    }
+
+    .counter-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* Direct Booking Engine Card */
+    .engine-card {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow-hover);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .engine-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-primary), var(--gold-dark));
+    }
+
+    .engine-tab-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      background: var(--canvas-warm);
+      padding: 5px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 22px;
+    }
+
+    .tab-switch-btn {
+      background: none;
+      border: none;
+      padding: 9px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-body);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tab-switch-btn.active {
+      background: #FFFFFF;
+      color: var(--gold-dark);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .engine-pane {
+      display: none;
+    }
+
+    .engine-pane.active {
+      display: block;
+      animation: fadeInFast 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInFast {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .field-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-block label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    .field-input, .field-select {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.86rem;
+      color: var(--text-headline);
+      font-family: var(--font-sans);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .field-input:focus, .field-select:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    .direct-price-callout {
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--gold-deep);
+      font-weight: 700;
+    }
+
+    .btn-engine-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 13px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-engine-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-engine-submit.gold-flavor {
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      box-shadow: 0 4px 14px var(--gold-glow);
+    }
+
+    /* ==========================================================================
+       DIRECT PRIVILEGE & PRICE MATCH GUARANTEE BANNER
+       ========================================================================== */
+    .privilege-guarantee-section {
+      padding: 0 0 40px 0;
+    }
+
+    .privilege-card {
+      background: #FFFFFF;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-xl);
+      padding: 24px 32px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .privilege-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .privilege-emblem {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--gold-light);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .privilege-meta h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--text-headline);
+      font-weight: 700;
+    }
+
+    .privilege-meta p {
+      font-size: 0.84rem;
+      color: var(--text-body);
+      margin-top: 2px;
+    }
+
+    .privilege-compare-pills {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ota-struck-pill {
+      background: var(--canvas-warm);
+      border: 1px solid var(--surface-border);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .ota-struck-pill strike {
+      color: #9CA3AF;
+      font-weight: 700;
+    }
+
+    .direct-lock-pill {
+      background: var(--gold-light);
+      border: 1.5px solid var(--gold-primary);
+      color: var(--gold-dark);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Kinetic Infinite Marquee */
+    .gourmet-ticker-section {
+      width: 100%;
+      background: #FFFFFF;
+      border-top: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--surface-border);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 36px;
+      animation: tickerInfinite 28s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerInfinite {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-body);
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .ticker-bullet {
+      color: var(--gold-primary);
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON
+       ========================================================================== */
+    .content-section {
+      padding: 86px 0;
+      position: relative;
+    }
+
+    .section-header-wrap {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 52px auto;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      background: var(--canvas-warm);
+      border: 1px solid var(--surface-border);
+      color: var(--gold-dark);
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title-large {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      color: var(--text-headline);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle-text {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       ROOMS & SUITES SECTION (3D TILT WITH SPECULAR GLARE REFLECTION)
+       ========================================================================== */
+    .rooms-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .room-editorial-card {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Specular light reflection glare */
+    .room-editorial-card::after, .dish-card-item::after, .rooftop-interactive-media::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle 300px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.45) 0%, transparent 80%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 5;
+    }
+
+    .room-editorial-card:hover::after, .dish-card-item:hover::after, .rooftop-interactive-media:hover::after {
+      opacity: 1;
+    }
+
+    .room-editorial-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .room-media-box {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .room-media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .room-editorial-card:hover .room-media-box img {
+      transform: scale(1.06);
+    }
+
+    .room-tier-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-headline);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .room-price-tag {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: rgba(19, 16, 13, 0.88);
+      backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .room-price-tag span {
+      color: #FCD34D;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .room-content-box {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 14px;
+    }
+
+    .room-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--text-headline);
+      font-weight: 700;
+    }
+
+    .room-desc {
+      font-size: 0.86rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    .room-amenity-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .amenity-chip {
+      background: var(--canvas-warm);
+      color: var(--text-body);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .room-footer-row {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .direct-benefit-note {
+      font-size: 0.72rem;
+      color: var(--emerald-accent);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-book-room {
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-deep);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-book-room:hover {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+    }
+
+    /* ==========================================================================
+       ROOFTOP VERANDA & TIME-OF-DAY AMBIENCE SIMULATOR WITH WEB AUDIO
+       ========================================================================== */
+    .rooftop-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .rooftop-interactive-media {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+      height: 420px;
+      background: #13100D;
+    }
+
+    .rooftop-interactive-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease;
+    }
+
+    .rooftop-overlay-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      padding: 14px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 6;
+    }
+
+    .time-selector-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--text-headline);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .time-ambience-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+    }
+
+    .time-ambience-btn {
+      background: var(--canvas-warm);
+      border: 1px solid var(--surface-border);
+      padding: 7px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .time-ambience-btn.active {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+      box-shadow: 0 2px 8px var(--gold-glow);
+    }
+
+    .rooftop-editorial-side {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .rooftop-feature-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .rooftop-bullet-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .rooftop-icon-bubble {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--gold-light);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .rooftop-bullet-card h4 {
+      font-size: 0.92rem;
+      color: var(--text-headline);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .rooftop-bullet-card p {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* Web Audio Ambience Toggle Button */
+    .btn-audio-soundscape {
+      background: var(--canvas-warm);
+      border: 1.5px solid var(--gold-border);
+      color: var(--gold-dark);
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 4px;
+    }
+
+    .btn-audio-soundscape:hover {
+      background: #FFFFFF;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .btn-audio-soundscape.playing {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+      box-shadow: 0 4px 14px var(--gold-glow);
+    }
+
+    /* ==========================================================================
+       HAUTE CUISINE & SIGNATURE NOVEL DISHES (WITH TASTING INSPECTOR)
+       ========================================================================== */
+    .menu-category-pills {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 38px;
+      flex-wrap: wrap;
+    }
+
+    .category-filter-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      color: var(--text-body);
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .category-filter-btn.active, .category-filter-btn:hover {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+
+    .menu-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .dish-card-item {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dish-card-item:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .dish-thumbnail-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .dish-card-item:hover .dish-thumbnail-img {
+      transform: scale(1.05);
+    }
+
+    .dish-meta-wrap {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .dish-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .dish-name {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-headline);
+      line-height: 1.25;
+    }
+
+    .dish-cost {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+      white-space: nowrap;
+    }
+
+    .dish-description-text {
+      font-size: 0.84rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+
+    .culinary-notes-pill {
+      background: var(--canvas-warm);
+      border: 1px dashed var(--surface-border);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .dish-interactive-actions {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-inspect-profile {
+      background: none;
+      border: none;
+      color: var(--gold-dark);
+      font-size: 0.74rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 0;
+    }
+
+    .btn-inspect-profile:hover {
+      text-decoration: underline;
+    }
+
+    .dish-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--surface-border-subtle);
+    }
+
+    .spice-gauge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #DC2626;
+    }
+
+    .btn-add-food {
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      color: var(--gold-deep);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.76rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-add-food:hover {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+    }
+
+    /* ==========================================================================
+       300-PAX GRAND BANQUET ESTIMATOR & ATELIER
+       ========================================================================== */
+    .banquet-suite-card {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-hover);
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+    }
+
+    .banquet-interactive-calc {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .calc-slider-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .calc-slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-headline);
+    }
+
+    .calc-slider-header span {
+      color: var(--gold-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+
+    .banquet-range-input {
+      width: 100%;
+      height: 6px;
+      border-radius: var(--radius-pill);
+      accent-color: var(--gold-primary);
+      cursor: pointer;
+    }
+
+    .package-tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tier-option-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 12px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tier-option-card.selected {
+      border-color: var(--gold-primary);
+      background: var(--gold-light);
+    }
+
+    .tier-option-card h5 {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-headline);
+      margin-bottom: 2px;
+    }
+
+    .tier-option-card p {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+    }
+
+    .banquet-quote-summary {
+      background: #FFFFFF;
+      border: 1px dashed var(--gold-border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quote-est-total {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--gold-dark);
+    }
+
+    /* ==========================================================================
+       VERIFIED GOOGLE REVIEWS SECTION (2,883 REVIEWS · 4.7 RATING)
+       ========================================================================== */
+    .reviews-triple-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-quote-card {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .review-stars-row {
+      color: #F59E0B;
+      font-size: 0.95rem;
+    }
+
+    .review-quote-body {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-body);
+      font-style: italic;
+    }
+
+    .review-author-wrap {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reviewer-avatar-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--canvas-warm);
+      color: var(--gold-dark);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.88rem;
+      border: 1px solid var(--surface-border);
+    }
+
+    .reviewer-meta h5 {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-headline);
+    }
+
+    .reviewer-meta span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Location & Map Section */
+    .location-card-container {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .location-details-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .location-meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: var(--text-body);
+    }
+
+    .map-frame-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 280px;
+      border: 1px solid var(--surface-border);
+    }
+
+    .map-frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ==========================================================================
+       MOBILE BOTTOM DOCK NAVIGATION
+       ========================================================================== */
+    .mobile-dock-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid var(--surface-border);
+      padding: 10px 14px;
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .mobile-dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-dock-item.active, .mobile-dock-item:hover {
+      color: var(--gold-primary);
+    }
+
+    .mobile-dock-item .dock-icon {
+      font-size: 1.25rem;
+    }
+
+    .mobile-wa-pill {
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      color: #FFFFFF;
+      padding: 9px 15px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 0.76rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px var(--gold-glow);
+    }
+
+    /* Floating Cart Drawer Toggle */
+    .floating-cart-pill {
+      position: fixed;
+      right: 20px;
+      bottom: 92px;
+      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 0.92rem;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-hover);
+      cursor: pointer;
+      z-index: 90;
+      border: none;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .floating-cart-pill:hover {
+      transform: scale(1.04);
+    }
+
+    .cart-bubble-num {
+      background: #FFFFFF;
+      color: var(--gold-dark);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    /* Toast Notification */
+    .toast-bubble {
+      position: fixed;
+      bottom: 96px;
+      left: 50%;
+      transform: translateX(-50%) translateY(40px);
+      background: var(--gold-dark);
+      color: #FFFFFF;
+      padding: 11px 24px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 3000;
+      box-shadow: 0 6px 25px var(--gold-glow);
+    }
+
+    .toast-bubble.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Cart & Tasting Modals */
+    .modal-backdrop-layer {
+      position: fixed;
+      inset: 0;
+      background: rgba(19, 16, 13, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 2500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-dialog-box {
+      background: #FFFFFF;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 34px;
+      box-shadow: var(--shadow-hover);
+      position: relative;
+    }
+
+    .close-dialog-btn {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero-stats-band {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .stat-counter-unit:nth-child(2)::after {
+        display: none;
+      }
+      .rooms-card-grid {
+        grid-template-columns: 1fr;
+      }
+      .rooftop-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .menu-card-grid {
+        grid-template-columns: 1fr;
+      }
+      .banquet-suite-card {
+        grid-template-columns: 1fr;
+      }
+      .reviews-triple-grid {
+        grid-template-columns: 1fr;
+      }
+      .location-card-container {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .mobile-dock-nav {
+        display: flex;
+      }
+      .floating-cart-pill {
+        right: 14px;
+        bottom: 82px;
+        padding: 9px 16px;
+        font-size: 0.82rem;
+      }
+      .privilege-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pinned Real-Time Scroll Progress Indicator Bar -->
+  <div id="scrollProgressTrack">
+    <div id="scrollProgressBar"></div>
+  </div>
+
+  <!-- Interactive Fluid Cursor Light Follower -->
+  <div id="cursorLightFollower"></div>
+
+  <!-- Interactive Ambient Starlight Canvas -->
+  <canvas id="ambientStarlightCanvas"></canvas>
+
+  <!-- Top Privilege Announcement Bar -->
+  <div class="announcement-bar">
+    <span>✨ <strong>DIRECT PRIVILEGE</strong> Save ₹800+/night vs MakeMyTrip + Complimentary Buffet Breakfast</span>
+    <span class="announcement-highlight">Zero Commission Guaranteed</span>
+  </div>
+
+  <!-- Minimalist Haute Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#hero" class="brand-cluster">
+          <div class="brand-monogram">N</div>
+          <div class="brand-meta">
+            <h1>NOVEL <span>HOTEL</span></h1>
+            <p>Boutique Suites · Haute Cuisine · Rooftop · Guntur</p>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu">
+            <li><a href="#rooms">Suites & Living</a></li>
+            <li><a href="#rooftop">Starlight Veranda</a></li>
+            <li><a href="#menu">Signature Potlam</a></li>
+            <li><a href="#banquet">Grand Banquets</a></li>
+            <li><a href="#location">Directions</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-cta-group">
+          <!-- Subtle Atmospheric Lighting Control -->
+          <div class="ambience-picker-pill" title="Atmospheric Mood">
+            <button class="ambience-dot active" data-vibe="heritage" onclick="setSiteAmbience('heritage', this)" title="Champagne Gold"></button>
+            <button class="ambience-dot" data-vibe="botanical" onclick="setSiteAmbience('botanical', this)" title="Botanical Emerald"></button>
+            <button class="ambience-dot" data-vibe="sunset" onclick="setSiteAmbience('sunset', this)" title="Terracotta Dusk"></button>
+          </div>
+
+          <a href="tel:+919281166835" class="btn-phone-quick">
+            <span>📞</span> 092811 66835
+          </a>
+          <a href="#booking-engine" class="btn-primary-header">
+            Direct Reserve
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-wrap" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left Editorial Column -->
+        <div class="hero-editorial reveal-on-scroll">
+          <div class="hero-badge-row">
+            <span class="editorial-origin-chip">Est. Chandramouli Nagar · Guntur</span>
+            <div class="google-rating-chip">
+              <span class="google-stars">★ 4.7</span>
+              <span class="google-review-meta">2,883 Google Reviews</span>
+              <span class="google-verified-tag">#1 in Guntur</span>
+            </div>
+          </div>
+
+          <h1 class="hero-headline">
+            A Gourmet Sanctuary & <em>Starlight Rooftop.</em>
+          </h1>
+
+          <p class="hero-lead">
+            Home to Guntur's famed Chicken Potlam Biryani, open-sky terrace dining with big screen music, and refined executive suites in Chandramouli Nagar. Direct bookings with zero aggregator markups.
+          </p>
+
+          <!-- Live Animated Stats Band -->
+          <div class="hero-stats-band reveal-on-scroll stagger-1">
+            <div class="stat-counter-unit">
+              <div class="counter-value" data-counter="2883">0</div>
+              <div class="counter-title">Google Reviews</div>
+            </div>
+            <div class="stat-counter-unit">
+              <div class="counter-value" data-counter="4.7" data-suffix="★">0</div>
+              <div class="counter-title">Guest Rating</div>
+            </div>
+            <div class="stat-counter-unit">
+              <div class="counter-value" data-counter="300" data-suffix="+">0</div>
+              <div class="counter-title">Banquet Capacity</div>
+            </div>
+            <div class="stat-counter-unit">
+              <div class="counter-value" data-counter="100" data-suffix="%">0</div>
+              <div class="counter-title">Direct Privilege</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Direct Booking Engine Box -->
+        <div class="reveal-on-scroll stagger-2" id="booking-engine">
+          <div class="engine-card" data-tilt>
+            
+            <div class="engine-tab-switch">
+              <button class="tab-switch-btn active" onclick="switchEngineTab('room', this)">
+                <span>🛏️ Stay</span>
+              </button>
+              <button class="tab-switch-btn" onclick="switchEngineTab('rooftop', this)">
+                <span>🍷 Rooftop</span>
+              </button>
+              <button class="tab-switch-btn" onclick="switchEngineTab('banquet', this)">
+                <span>🎉 Banquets</span>
+              </button>
+            </div>
+
+            <!-- Rooms Tab -->
+            <div class="engine-pane active" id="pane-room">
+              <form onsubmit="handleDirectRoomBooking(event)">
+                <div class="form-row-2">
+                  <div class="field-block">
+                    <label>Check-in Date</label>
+                    <input type="date" id="roomCheckIn" class="field-input" required>
+                  </div>
+                  <div class="field-block">
+                    <label>Check-out Date</label>
+                    <input type="date" id="roomCheckOut" class="field-input" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="field-block">
+                    <label>Suite Category</label>
+                    <select id="roomTypeSelect" class="field-select" onchange="updateRoomTotal()">
+                      <option value="Deluxe King Room" data-price="3400">Deluxe King Room (₹3,400)</option>
+                      <option value="Executive Club Suite" data-price="4200" selected>Executive Club Suite (₹4,200)</option>
+                      <option value="Presidential Royal Suite" data-price="5800">Presidential Royal Suite (₹5,800)</option>
+                    </select>
+                  </div>
+                  <div class="field-block">
+                    <label>Guests</label>
+                    <select id="roomGuestsSelect" class="field-select">
+                      <option value="1 Adult">1 Adult</option>
+                      <option value="2 Adults" selected>2 Adults</option>
+                      <option value="2 Adults, 1 Child">2 Adults + 1 Child</option>
+                      <option value="3 Adults">3 Adults</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="direct-price-callout">
+                  <span>Direct Rate: <strong id="calculatedPrice">₹4,200</strong> <span style="font-size:0.75rem; color:#6B7280;">(OTAs charge ₹5,200+)</span></span>
+                  <span>🎁 Free Buffet Breakfast</span>
+                </div>
+
+                <button type="submit" class="btn-engine-submit">
+                  <span>💬 Lock Direct Rate via WhatsApp</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Rooftop Tab -->
+            <div class="engine-pane" id="pane-rooftop">
+              <form onsubmit="handleRooftopReservation(event)">
+                <div class="form-row-2">
+                  <div class="field-block">
+                    <label>Dining Date</label>
+                    <input type="date" id="rooftopDate" class="field-input" required>
+                  </div>
+                  <div class="field-block">
+                    <label>Time Slot</label>
+                    <select id="rooftopTime" class="field-select">
+                      <option value="7:00 PM (Sunset Hour)">7:00 PM (Sunset Hour)</option>
+                      <option value="8:15 PM (Prime Starlight)" selected>8:15 PM (Prime Starlight)</option>
+                      <option value="9:30 PM (Big Screen & Dinner)">9:30 PM (Big Screen & Dinner)</option>
+                      <option value="10:30 PM (Late Night Breeze)">10:30 PM (Late Night Breeze)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="field-block">
+                    <label>Party Size</label>
+                    <select id="rooftopPax" class="field-select">
+                      <option value="2 Guests (Couples Terrace)">2 Guests (Couples Terrace)</option>
+                      <option value="4 Guests (Family Table)" selected>4 Guests (Family Table)</option>
+                      <option value="6-8 Guests (Celebration Table)">6-8 Guests (Celebration)</option>
+                      <option value="10+ Guests (Group Terrace Lounge)">10+ Guests (Group Lounge)</option>
+                    </select>
+                  </div>
+                  <div class="field-block">
+                    <label>Seating Preference</label>
+                    <select id="rooftopPref" class="field-select">
+                      <option value="Near Big Screen">Near Big Screen</option>
+                      <option value="Open Skyline Edge" selected>Open Skyline Edge</option>
+                      <option value="Candlelight Corner">Candlelight Corner</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="direct-price-callout" style="background:#FFFBEB; border-color:#FCD34D; color:#92400E;">
+                  <span>✨ Rooftop Live Screen Active Tonight</span>
+                  <span>⭐ No Cover Charge</span>
+                </div>
+
+                <button type="submit" class="btn-engine-submit gold-flavor">
+                  <span>🍷 Reserve Rooftop Table via WhatsApp</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Banquet Tab -->
+            <div class="engine-pane" id="pane-banquet">
+              <form onsubmit="handleBanquetFastQuote(event)">
+                <div class="form-row-2">
+                  <div class="field-block">
+                    <label>Event Type</label>
+                    <select id="banquetEventType" class="field-select">
+                      <option value="Wedding / Reception">Wedding / Reception</option>
+                      <option value="Birthday / Anniversary" selected>Birthday / Anniversary</option>
+                      <option value="Corporate Seminar">Corporate Seminar</option>
+                      <option value="Family Get-Together">Family Get-Together</option>
+                    </select>
+                  </div>
+                  <div class="field-block">
+                    <label>Expected Guests</label>
+                    <select id="banquetFastPax" class="field-select">
+                      <option value="50-100 Guests">50 – 100 Guests</option>
+                      <option value="100-175 Guests" selected>100 – 175 Guests</option>
+                      <option value="200-300 Guests">200 – 300 Guests (Full Hall)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-block" style="margin-bottom: 14px;">
+                  <label>Tentative Date</label>
+                  <input type="date" id="banquetDate" class="field-input" required>
+                </div>
+
+                <div class="direct-price-callout" style="background:#F0F9FF; border-color:#BAE6FD; color:#0369A1;">
+                  <span>🏛️ 300-Capacity Grand Air-Conditioned Hall</span>
+                  <span>🍲 In-House Catering</span>
+                </div>
+
+                <button type="submit" class="btn-engine-submit">
+                  <span>📋 Request Date Lock & Banquet Quote</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Direct Privilege & Price Match Guarantee Banner -->
+  <div class="privilege-guarantee-section reveal-on-scroll">
+    <div class="container">
+      <div class="privilege-card">
+        <div class="privilege-meta">
+          <div class="privilege-emblem">🛡️</div>
+          <div>
+            <h4>Direct Privilege & Best Rate Guarantee</h4>
+            <p>Save 18% to 22% in third-party OTA commissions by reserving directly with Novel Hotel.</p>
+          </div>
+        </div>
+
+        <div class="privilege-compare-pills">
+          <div class="ota-struck-pill">
+            MakeMyTrip / Goibibo: <strike>₹4,956/nt</strike> (With taxes & breakfast)
+          </div>
+          <div class="direct-lock-pill">
+            <span>✓ Direct Rate: ₹3,400/nt</span>
+            <span style="background:var(--emerald-accent); color:#FFF; font-size:0.68rem; padding:2px 6px; border-radius:10px;">Save ₹1,556</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seamless Gourmet Infinite Marquee -->
+  <div class="gourmet-ticker-section">
+    <div class="ticker-track">
+      <div class="ticker-item">CHICKEN POTLAM BIRYANI <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">NELLORE CHEPALA PULUSU <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">4.7 ★ GOOGLE RATED (2,883 REVIEWS) <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">ROOFTOP STARLIGHT VERANDA <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">300-GUEST GRAND BANQUET ATELIER <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">TAWA APOLLO SEAFOOD <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">100% DIRECT BOOKING PRIVILEGE <span class="ticker-bullet">✦</span></div>
+      <!-- Loop duplicate -->
+      <div class="ticker-item">CHICKEN POTLAM BIRYANI <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">NELLORE CHEPALA PULUSU <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">4.7 ★ GOOGLE RATED (2,883 REVIEWS) <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">ROOFTOP STARLIGHT VERANDA <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">300-GUEST GRAND BANQUET ATELIER <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">TAWA APOLLO SEAFOOD <span class="ticker-bullet">✦</span></div>
+      <div class="ticker-item">100% DIRECT BOOKING PRIVILEGE <span class="ticker-bullet">✦</span></div>
+    </div>
+  </div>
+
+  <!-- Accommodations / Botanical & Executive Suites (3D Tilt Cards) -->
+  <section class="content-section" id="rooms">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Sanctuary Suites</span>
+        <h2 class="section-title-large">Refined Living in Chandramouli Nagar</h2>
+        <p class="section-subtitle-text">
+          Designed for restful luxury and seamless business stays. Every suite features high-speed Wi-Fi, custom acoustics, and complimentary room service.
+        </p>
+      </div>
+
+      <div class="rooms-card-grid">
+        
+        <!-- Deluxe King Room -->
+        <div class="room-editorial-card reveal-on-scroll stagger-1" data-tilt>
+          <div class="room-media-box">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=80" alt="Deluxe King Room" loading="lazy">
+            <span class="room-tier-badge">Deluxe King</span>
+            <div class="room-price-tag">Direct: <span>₹3,400</span>/nt</div>
+          </div>
+          <div class="room-content-box">
+            <h3 class="room-title">Deluxe King Room</h3>
+            <p class="room-desc">Spacious bedroom with an ultra-plush King mattress, silent climate control, smart LED television, and rain shower.</p>
+            <div class="room-amenity-list">
+              <span class="amenity-chip">King Bed</span>
+              <span class="amenity-chip">High-Speed Wi-Fi</span>
+              <span class="amenity-chip">Rain Shower</span>
+              <span class="amenity-chip">Complimentary Breakfast</span>
+            </div>
+            <div class="room-footer-row">
+              <span class="direct-benefit-note">✓ ₹800 Lower than MMT</span>
+              <button class="btn-book-room" onclick="quickBookRoom('Deluxe King Room', 3400)">Direct Reserve →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Club Suite -->
+        <div class="room-editorial-card reveal-on-scroll stagger-2" data-tilt>
+          <div class="room-media-box">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80" alt="Executive Club Suite" loading="lazy">
+            <span class="room-tier-badge" style="background:#FEF3C7; color:#92400E;">Most Popular</span>
+            <div class="room-price-tag">Direct: <span>₹4,200</span>/nt</div>
+          </div>
+          <div class="room-content-box">
+            <h3 class="room-title">Executive Club Suite</h3>
+            <p class="room-desc">Ideal for corporate leaders and extended family stays. Features a dedicated work salon, separate lounge, and marble powder room.</p>
+            <div class="room-amenity-list">
+              <span class="amenity-chip">Separate Lounge</span>
+              <span class="amenity-chip">Ergonomic Desk</span>
+              <span class="amenity-chip">Express Laundry</span>
+              <span class="amenity-chip">Buffet Included</span>
+            </div>
+            <div class="room-footer-row">
+              <span class="direct-benefit-note">✓ Complimentary Hi-Tea</span>
+              <button class="btn-book-room" onclick="quickBookRoom('Executive Club Suite', 4200)">Direct Reserve →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presidential Royal Suite -->
+        <div class="room-editorial-card reveal-on-scroll stagger-3" data-tilt>
+          <div class="room-media-box">
+            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=700&q=80" alt="Presidential Royal Suite" loading="lazy">
+            <span class="room-tier-badge" style="background:#EDE9FE; color:#5B21B6;">Signature Luxury</span>
+            <div class="room-price-tag">Direct: <span>₹5,800</span>/nt</div>
+          </div>
+          <div class="room-content-box">
+            <h3 class="room-title">Presidential Royal Suite</h3>
+            <p class="room-desc">Top-floor residence boasting panoramic Guntur skyline vistas, deep-soaking bathtub, dining table, and private butler service.</p>
+            <div class="room-amenity-list">
+              <span class="amenity-chip">Top-Floor Skyline</span>
+              <span class="amenity-chip">Soaking Tub</span>
+              <span class="amenity-chip">Dining Area</span>
+              <span class="amenity-chip">VIP Concierge</span>
+            </div>
+            <div class="room-footer-row">
+              <span class="direct-benefit-note">✓ VIP Airport Pickup Option</span>
+              <button class="btn-book-room" onclick="quickBookRoom('Presidential Royal Suite', 5800)">Direct Reserve →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooftop Veranda & Day-to-Night Ambience Simulator with Web Audio Synthesizer -->
+  <section class="content-section" id="rooftop" style="background: var(--canvas-warm);">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Skyline Gastronomy</span>
+        <h2 class="section-title-large">The Starlight Rooftop Veranda</h2>
+        <p class="section-subtitle-text">
+          Guntur's favorite open-terrace sanctuary. Big screen music, gentle evening breezes, and candlelit cabanas high above the Chandramouli Nagar avenue.
+        </p>
+      </div>
+
+      <div class="rooftop-split-grid">
+        
+        <!-- Interactive Ambience Display -->
+        <div class="rooftop-interactive-media reveal-on-scroll stagger-1" data-tilt>
+          <img id="rooftopDynamicImg" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Rooftop Dining Ambience">
+          
+          <div class="rooftop-overlay-controls">
+            <div class="time-selector-label">
+              <span id="rooftopZoneTitle">Starlight Prime & Big Screen (8:30 PM)</span>
+              <span style="color:var(--gold-primary); font-size:0.7rem;">Live Ambience View</span>
+            </div>
+            <div class="time-ambience-pills">
+              <button class="time-ambience-btn" onclick="switchRooftopTime('sunset', this)">
+                🌇 Sunset (6:30 PM)
+              </button>
+              <button class="time-ambience-btn active" onclick="switchRooftopTime('starlight', this)">
+                ✨ Starlight (8:30 PM)
+              </button>
+              <button class="time-ambience-btn" onclick="switchRooftopTime('midnight', this)">
+                🌙 Late Night (10:30 PM)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editorial Text & Features -->
+        <div class="rooftop-editorial-side reveal-on-scroll stagger-2">
+          <h3 class="section-title-large" style="font-size: 2rem; margin-bottom: 0;">Open Skies, Giant Screen & Signature Grills</h3>
+          <p class="section-subtitle-text" id="rooftopZoneDesc">
+            As twilight settles, our rooftop comes alive with acoustic melodies, giant screen entertainment, and the intoxicating fragrance of charcoal tikkas and dum biryani.
+          </p>
+
+          <div class="rooftop-feature-bullets">
+            <div class="rooftop-bullet-card">
+              <div class="rooftop-icon-bubble">📺</div>
+              <div>
+                <h4>Giant High-Definition Outdoor Screen</h4>
+                <p>Live cricket matches, curated musical reels, and ambient visuals under the stars.</p>
+              </div>
+            </div>
+
+            <div class="rooftop-bullet-card">
+              <div class="rooftop-icon-bubble">🌬️</div>
+              <div>
+                <h4>Naturally Breezy Open-Air Terrace</h4>
+                <p>Elevated above street dust and bustle, providing cool natural airflow across Chandramouli Nagar.</p>
+              </div>
+            </div>
+
+            <div class="rooftop-bullet-card">
+              <div class="rooftop-icon-bubble">🕯️</div>
+              <div>
+                <h4>Candlelight Couples & Family Cabanas</h4>
+                <p>Intimate seating arrangements designed for romantic anniversaries and joyous family dinners.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <button class="btn-audio-soundscape" id="audioSoundscapeBtn" onclick="toggleRooftopSoundscape(this)">
+              <span>🎧 Rooftop Terrace Lounge Soundscape (Live Audio)</span>
+            </button>
+            <button class="btn-primary-header" onclick="scrollToEngine('rooftop')">
+              Book a Rooftop Table →
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Haute Cuisine & Signature Dishes with Flavour Profiles -->
+  <section class="content-section" id="menu">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Table d'Hôte</span>
+        <h2 class="section-title-large">The Legendary Novel Menu</h2>
+        <p class="section-subtitle-text">
+          Prepared by seasoned Andhra ustaads. Fresh farm meats, authentic Guntur red chilies, and pure ghee aromatics.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="menu-category-pills reveal-on-scroll">
+        <button class="category-filter-btn active" onclick="filterMenu('all', this)">All Specialties</button>
+        <button class="category-filter-btn" onclick="filterMenu('biryani', this)">Signature Biryanis</button>
+        <button class="category-filter-btn" onclick="filterMenu('coastal', this)">Coastal Andhra Seafood</button>
+        <button class="category-filter-btn" onclick="filterMenu('tandoor', this)">Nawabi Kababs</button>
+      </div>
+
+      <!-- Menu Grid with Culinary Flavour Notes and Inspector -->
+      <div class="menu-card-grid">
+        
+        <!-- Potlam Biryani -->
+        <div class="dish-card-item reveal-on-scroll stagger-1" data-category="biryani" data-tilt>
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Chicken Potlam Biryani" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Chicken Potlam Biryani</h4>
+              <span class="dish-cost">₹360</span>
+            </div>
+            <p class="dish-description-text">Guntur's iconic recipe. Aromatic spiced biryani with juicy minced chicken encased inside a golden omelette pouch.</p>
+            <span class="culinary-notes-pill">Notes: Smoked Star Anise · Ghee Infused Rice · Crepe Omelette Envelope</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('potlam')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️🌶️ High-Med Spice</span>
+                <button class="btn-add-food" onclick="addToOrder('Chicken Potlam Biryani', 360)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mutton Dum Biryani -->
+        <div class="dish-card-item reveal-on-scroll stagger-2" data-category="biryani" data-tilt>
+          <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80" alt="Novel Special Mutton Dum Biryani" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Novel Special Mutton Dum Biryani</h4>
+              <span class="dish-cost">₹440</span>
+            </div>
+            <p class="dish-description-text">Slow dum-cooked tender mutton cuts layered with aged long grain basmati rice, saffron ghee, and whole spices.</p>
+            <span class="culinary-notes-pill">Notes: 6-Hour Clay Dum · Brown Onions · Saffron Milk Infusion</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('mutton')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️🌶️ Rich Andhra Dum</span>
+                <button class="btn-add-food" onclick="addToOrder('Novel Special Mutton Dum Biryani', 440)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nellore Chepala Pulusu -->
+        <div class="dish-card-item reveal-on-scroll stagger-3" data-category="coastal" data-tilt>
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Nellore Chepala Pulusu" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Nellore Chepala Pulusu</h4>
+              <span class="dish-cost">₹390</span>
+            </div>
+            <p class="dish-description-text">Traditional coastal fish curry prepared with ripe tamarind pulp, fenugreek, and mustard seeds simmered in an earthen pot.</p>
+            <span class="culinary-notes-pill">Notes: Clay Pot Matured · Raw Mango Slices · Fiery Tangy Gravy</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('chepala')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️🌶️🌶️ Fiery Coastal</span>
+                <button class="btn-add-food" onclick="addToOrder('Nellore Chepala Pulusu', 390)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tawa Apollo Fish Fry -->
+        <div class="dish-card-item reveal-on-scroll stagger-1" data-category="coastal" data-tilt>
+          <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=600&q=80" alt="Tawa Apollo Fish Fry" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Tawa Apollo Fish Fry</h4>
+              <span class="dish-cost">₹380</span>
+            </div>
+            <p class="dish-description-text">Crisp boneless fish fillets seasoned with Guntur red chili paste, curry leaves, and beaten curd sauce seared on an iron tawa.</p>
+            <span class="culinary-notes-pill">Notes: Crisp Exterior · Curry Leaf Infusion · Yoghurt Tempering</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('tawa')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️🌶️ Crisp & Tangy</span>
+                <button class="btn-add-food" onclick="addToOrder('Tawa Apollo Fish Fry', 380)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nawabi Murgh Malai Kabab -->
+        <div class="dish-card-item reveal-on-scroll stagger-2" data-category="tandoor" data-tilt>
+          <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80" alt="Nawabi Murgh Malai Kabab" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Nawabi Murgh Malai Kabab</h4>
+              <span class="dish-cost">₹350</span>
+            </div>
+            <p class="dish-description-text">Succulent boneless chicken chunks marinated in fresh cream, cashew paste, mild cardamom, and char-grilled in a clay tandoor.</p>
+            <span class="culinary-notes-pill">Notes: Malai Cream · Roasted Cashew Crust · Charcoal Smoke</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('kabab')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️ Mild & Silky</span>
+                <button class="btn-add-food" onclick="addToOrder('Nawabi Murgh Malai Kabab', 350)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Royal Paneer Butter Masala -->
+        <div class="dish-card-item reveal-on-scroll stagger-3" data-category="tandoor" data-tilt>
+          <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80" alt="Royal Paneer Butter Masala" class="dish-thumbnail-img">
+          <div class="dish-meta-wrap">
+            <div class="dish-top-row">
+              <h4 class="dish-name">Royal Paneer Butter Masala</h4>
+              <span class="dish-cost">₹290</span>
+            </div>
+            <p class="dish-description-text">Farm fresh cottage cheese cubes cooked in a velvety tomato makhani gravy enriched with butter and kasuri methi.</p>
+            <span class="culinary-notes-pill">Notes: Sun-Ripened Tomatoes · Honey Undertones · Butter Finish</span>
+            
+            <div class="dish-interactive-actions">
+              <button class="btn-inspect-profile" onclick="openDishProfileModal('paneer')">
+                <span>🔍 Inspect Recipe & Flavor Notes</span>
+              </button>
+              <div class="dish-action-row">
+                <span class="spice-gauge">🌶️ Mild Vegetarian</span>
+                <button class="btn-add-food" onclick="addToOrder('Royal Paneer Butter Masala', 290)">+ Add to Order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 300-Pax Grand Banquet Atelier Section -->
+  <section class="content-section" id="banquet" style="background: var(--canvas-warm);">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Celebrations & Conferences</span>
+        <h2 class="section-title-large">Grand Banquets for Up to 300 Guests</h2>
+        <p class="section-subtitle-text">
+          Host weddings, receptions, birthdays, and corporate galas in Guntur's finest column-free banquet hall. Complete with gourmet in-house catering and audio-visual setups.
+        </p>
+      </div>
+
+      <div class="banquet-suite-card reveal-on-scroll">
+        
+        <!-- Left Editorial Detail -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <h3 class="section-title-large" style="font-size: 1.85rem; margin-bottom: 0;">Flawless Events, Exquisite Hospitality</h3>
+          <p class="section-subtitle-text">
+            Our banquet hall provides central air conditioning, customizable theatrical lighting, stage risers, and a dedicated banquet kitchen team preparing hot meals live for your guests.
+          </p>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="background:#FFFFFF; padding:16px; border-radius:var(--radius-md); border:1px solid var(--surface-border);">
+              <h5 style="font-size:0.88rem; color:var(--text-headline); font-weight:700;">Hall Capacity</h5>
+              <p style="font-size:0.8rem; color:var(--text-body); margin-top:4px;">Up to 300 Floating / 200 Seated Guests</p>
+            </div>
+            <div style="background:#FFFFFF; padding:16px; border-radius:var(--radius-md); border:1px solid var(--surface-border);">
+              <h5 style="font-size:0.88rem; color:var(--text-headline); font-weight:700;">Catering Service</h5>
+              <p style="font-size:0.8rem; color:var(--text-body); margin-top:4px;">Authentic Andhra, North Indian & Continental</p>
+            </div>
+          </div>
+
+          <div style="margin-top:auto;">
+            <span style="font-size:0.8rem; color:var(--text-muted);">Direct Event Sales Contact:</span>
+            <div style="display:flex; align-items:center; gap:12px; margin-top:6px;">
+              <a href="tel:+919550714566" class="btn-phone-quick">
+                <span>📞</span> +91 95507 14566
+              </a>
+              <span style="font-size:0.82rem; font-weight:700; color:var(--emerald-accent);">Available 9 AM – 9 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Interactive Banquet Estimator -->
+        <div class="banquet-interactive-calc">
+          <div class="calc-slider-box">
+            <div class="calc-slider-header">
+              <span>Guest Count</span>
+              <span id="banquetPaxDisplay">150 Guests</span>
+            </div>
+            <input type="range" class="banquet-range-input" id="banquetPaxSlider" min="50" max="300" step="10" value="150" oninput="calculateBanquetBudget()">
+          </div>
+
+          <div>
+            <label style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:8px; display:block;">Select Catering Menu Tier</label>
+            <div class="package-tier-grid">
+              <div class="tier-option-card selected" onclick="selectBanquetPackage('Silver', 650, this)">
+                <h5>Silver Tier</h5>
+                <p>₹650/plate</p>
+              </div>
+              <div class="tier-option-card" onclick="selectBanquetPackage('Gold', 850, this)">
+                <h5>Gold Tier</h5>
+                <p>₹850/plate</p>
+              </div>
+              <div class="tier-option-card" onclick="selectBanquetPackage('Diamond', 1150, this)">
+                <h5>Diamond Tier</h5>
+                <p>₹1,150/plate</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="banquet-quote-summary">
+            <div>
+              <span style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Estimated Catering Total</span>
+              <div class="quote-est-total" id="banquetTotalEst">₹97,500</div>
+            </div>
+            <button class="btn-primary-header" onclick="bookBanquetTourWhatsApp()">
+              Schedule Hall Tour →
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Google Reviews Section (2,883 Reviews · 4.7 Rating) -->
+  <section class="content-section" id="reviews">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Unfiltered Guest Love</span>
+        <h2 class="section-title-large">Rated 4.7 ★ across 2,883+ Google Reviews</h2>
+        <p class="section-subtitle-text">
+          Real words from travelers, wedding hosts, and food enthusiasts who visit Novel Hotel in Chandramouli Nagar.
+        </p>
+      </div>
+
+      <div class="reviews-triple-grid">
+        
+        <div class="review-quote-card reveal-on-scroll stagger-1" data-tilt>
+          <div class="review-stars-row">★★★★★</div>
+          <p class="review-quote-body">
+            "The Chicken Potlam Biryani here is hands down the best in Guntur! The omelette wrapped around the hot spiced biryani is simply magical. Rooftop dining with the cool night breeze and giant screen was unforgettable."
+          </p>
+          <div class="review-author-wrap">
+            <div class="reviewer-avatar-circle">VK</div>
+            <div class="reviewer-meta">
+              <h5>Vamsi Krishna</h5>
+              <span>Local Guide · 42 Reviews</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-quote-card reveal-on-scroll stagger-2" data-tilt>
+          <div class="review-stars-row">★★★★★</div>
+          <p class="review-quote-body">
+            "Booked 8 rooms for a family wedding in Chandramouli Nagar. The staff was courteous, rooms were spotless, and the banquet food arranged by their team was delicious. Booking directly saved us a huge amount compared to Goibibo."
+          </p>
+          <div class="review-author-wrap">
+            <div class="reviewer-avatar-circle">SN</div>
+            <div class="reviewer-meta">
+              <h5>Srinivas Nanduri</h5>
+              <span>Verified Stay · Executive Suite</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-quote-card reveal-on-scroll stagger-3" data-tilt>
+          <div class="review-stars-row">★★★★★</div>
+          <p class="review-quote-body">
+            "Nellore Chepala Pulusu and Apollo Fish were mindblowing! Outstanding service from the restaurant captains. If you are in Guntur, this is the #1 place to bring family for dinner."
+          </p>
+          <div class="review-author-wrap">
+            <div class="reviewer-avatar-circle">PR</div>
+            <div class="reviewer-meta">
+              <h5>Pooja Reddy</h5>
+              <span>Food & Travel Critic</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Landmark Directions -->
+  <section class="content-section" id="location" style="background: var(--canvas-warm);">
+    <div class="container">
+      <div class="section-header-wrap reveal-on-scroll">
+        <span class="tag-badge">Central Destination</span>
+        <h2 class="section-title-large">Prime Location in Chandramouli Nagar</h2>
+        <p class="section-subtitle-text">
+          Situated in the upscale heart of Guntur, directly opposite Bakers Fun Road in Lakshmipuram. Easy access from the railway station and bus terminus.
+        </p>
+      </div>
+
+      <div class="location-card-container reveal-on-scroll">
+        <div class="location-details-col">
+          <h3 class="section-title-large" style="font-size:1.8rem; margin-bottom:0;">NOVEL Hotel & Restaurant</h3>
+          <p class="section-subtitle-text">4-1-35/3, 1/2, Lakshmipuram, Chandramouli Nagar (Opp. Bakers Fun Road), Guntur, Andhra Pradesh 522007</p>
+
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+            <div class="location-meta-pill">
+              <span>📍</span> <strong>Landmark:</strong> Opposite Bakers Fun Road
+            </div>
+            <div class="location-meta-pill">
+              <span>🚆</span> <strong>Guntur Railway Station:</strong> 3.8 km (~10 mins)
+            </div>
+            <div class="location-meta-pill">
+              <span>🚌</span> <strong>NTR Bus Station:</strong> 4.2 km (~12 mins)
+            </div>
+            <div class="location-meta-pill">
+              <span>🅿️</span> <strong>Parking:</strong> Free On-Site Valet Parking
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;">
+            <a href="https://maps.google.com/?q=novel+hotel+guntur" target="_blank" class="btn-primary-header">
+              <span>🗺️ Open in Google Maps</span>
+            </a>
+            <a href="tel:+919281166835" class="btn-phone-quick">
+              <span>📞 Reception Desk</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="map-frame-wrap">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.4124991275467!2d80.428589!3d16.301389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a75e37793d55f%3A0xafb2364ac3aa8cf8!2sNovel%20Hotel!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            title="Novel Hotel Guntur Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer style="background:#FFFFFF; border-top:1px solid var(--surface-border); padding:50px 0 30px 0;">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; padding-bottom:30px; border-bottom:1px solid var(--surface-border-subtle);">
+        <div class="brand-cluster">
+          <div class="brand-monogram">N</div>
+          <div class="brand-meta">
+            <h1>NOVEL <span>HOTEL</span></h1>
+            <p>Boutique Suites · Haute Cuisine · Banquets · Guntur</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:20px; font-size:0.84rem; font-weight:600; color:var(--text-body);">
+          <a href="#rooms" style="text-decoration:none; color:inherit;">Suites</a>
+          <a href="#rooftop" style="text-decoration:none; color:inherit;">Rooftop Veranda</a>
+          <a href="#menu" style="text-decoration:none; color:inherit;">Biryani Menu</a>
+          <a href="#banquet" style="text-decoration:none; color:inherit;">Banquets</a>
+          <a href="https://instagram.com/novelhotel_guntur" target="_blank" style="text-decoration:none; color:inherit;">Instagram (@novelhotel_guntur)</a>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:24px; font-size:0.75rem; color:var(--text-muted);">
+        <p>© 2026 NOVEL Hotel & Restaurant, Guntur. All rights reserved.</p>
+        <p>Direct Privilege Booking Architecture · Zero Commission Guaranteed</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Dock Navigation -->
+  <div class="mobile-dock-nav">
+    <a href="#hero" class="mobile-dock-item">
+      <span class="dock-icon">🏛️</span>
+      <span>Home</span>
+    </a>
+    <a href="#rooms" class="mobile-dock-item">
+      <span class="dock-icon">🛏️</span>
+      <span>Rooms</span>
+    </a>
+    <a href="#rooftop" class="mobile-dock-item">
+      <span class="dock-icon">🍷</span>
+      <span>Rooftop</span>
+    </a>
+    <a href="#menu" class="mobile-dock-item">
+      <span class="dock-icon">🍲</span>
+      <span>Menu</span>
+    </a>
+    <a href="https://wa.me/919281166835?text=Hi%20Novel%20Hotel,%20I%20would%20like%20to%20inquire%20about%20direct%20booking" class="mobile-wa-pill" target="_blank">
+      <span>💬 Book Direct</span>
+    </a>
+  </div>
+
+  <!-- Floating Food Cart Drawer Pill -->
+  <button class="floating-cart-pill" id="floatingCartBtn" onclick="openCartModal()">
+    <span>🍲 Order Cart</span>
+    <span class="cart-bubble-num" id="cartCountBadge">0</span>
+    <span id="cartTotalSum">₹0</span>
+  </button>
+
+  <!-- Interactive Gastronomic Profile Modal -->
+  <div class="modal-backdrop-layer" id="profileModal" onclick="closeModalOnBg(event, 'profileModal')">
+    <div class="modal-dialog-box" style="max-width: 580px;">
+      <button class="close-dialog-btn" onclick="closeModal('profileModal')">×</button>
+      <div id="profileModalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="modal-backdrop-layer" id="cartModal" onclick="closeModalOnBg(event, 'cartModal')">
+    <div class="modal-dialog-box">
+      <button class="close-dialog-btn" onclick="closeModal('cartModal')">×</button>
+      <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:14px; color:var(--text-headline);">Your Novel Culinary Selection</h3>
+      <div id="cartItemsContainer" style="display:flex; flex-direction:column; gap:12px; margin:16px 0; max-height:280px; overflow-y:auto;">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div style="border-top:1px solid var(--surface-border); padding-top:14px; display:flex; justify-content:space-between; align-items:center; font-weight:800; font-size:1.1rem; color:var(--text-headline);">
+        <span>Total Amount:</span>
+        <span id="cartModalTotal" style="color:var(--gold-dark);">₹0</span>
+      </div>
+      <button class="btn-engine-submit" style="margin-top:18px;" onclick="dispatchFoodOrderWhatsApp()">
+        <span>📲 Send Order to Novel Hotel WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Bubble -->
+  <div class="toast-bubble" id="toastBubble"></div>
+
+  <!-- ==========================================================================
+       INTERACTIVE LOGIC & WEB AUDIO AMBIENCE SYNTHESIZER
+       ========================================================================== */
+  <script>
+    let cart = [];
+    let selectedBanquetPackage = { name: 'Silver', rate: 650 };
+    let audioCtx = null;
+    let isAudioPlaying = false;
+    let ambientGain = null;
+
+    // Dish Gastronomic Profiles Data
+    const dishProfiles = {
+      potlam: {
+        title: 'Chicken Potlam Biryani',
+        subtitle: 'Signature Secret Recipe · Golden Egg Crepe Enclosure',
+        spiceLevel: '🌶️🌶️🌶️ High-Medium Guntur Spice',
+        aroma: 'Smoked Star Anise, Shah Jeera & Pure Desi Ghee',
+        heritage: 'Novel Hotel\'s legendary culinary invention. Spiced country chicken tossed with long grain basmati rice and encased in a gossamer egg crepe pouch that seals in all volatile aromatic essences until pierced at your table.',
+        pairing: 'Chilled Mirapakaya Salan & Gongura Raita',
+        prepTime: 'Sealed degh dum cooking, folded fresh to order'
+      },
+      mutton: {
+        title: 'Novel Special Mutton Dum Biryani',
+        subtitle: 'Aged Dehradun Basmati & Tender Grass-Fed Lamb',
+        spiceLevel: '🌶️🌶️ Rich Andhra Dum',
+        aroma: 'Saffron milk infusion, mace, cinnamon quill',
+        heritage: 'Slow-cooked for 6 hours over wood embers in traditional sealed clay handis. Marinated with raw papaya and stone-ground spices for melt-in-the-mouth tenderness.',
+        pairing: 'Heirloom Burani Garlic Raita & Shahi Tukda',
+        prepTime: '6-Hour Clay Pot Wood Ember Dum'
+      },
+      chepala: {
+        title: 'Nellore Chepala Pulusu',
+        subtitle: 'Heirloom Coastal Fish Curry in Aged Clay Pot',
+        spiceLevel: '🌶️🌶️🌶️ Fiery Coastal Tang',
+        aroma: 'Mustard crackle, fenugreek, curry leaf and sun-dried tamarind',
+        heritage: 'Authentic Korameenu (Murrel) fish simmered with aged tamarind pulp and sesame oil in clay pots. Served steaming hot for maximum complexity of tangy, spicy notes.',
+        pairing: 'Steaming Sona Masoori Rice & Country Ghee',
+        prepTime: '45-minute earthen pot simmer'
+      },
+      tawa: {
+        title: 'Tawa Apollo Fish Fry',
+        subtitle: 'Crispy Boneless Fillets with Spiced Curd Tempering',
+        spiceLevel: '🌶️🌶️ Crisp & Tangy Sizzle',
+        aroma: 'Fresh curry leaves, crushed garlic, and green chilli sizzle',
+        heritage: 'Boneless river fish fillets flash-seared on high-heat heavy cast iron tawas, tossed in a spiced whipped curd emulsion with fried green chillies.',
+        pairing: 'Chilled Rooftop Mint Coolers or Lime Soda',
+        prepTime: 'Flash-seared to order on cast-iron tawa'
+      },
+      kabab: {
+        title: 'Nawabi Murgh Malai Kabab',
+        subtitle: 'Velvety Cashew & Clotted Malai Cream Chicken',
+        spiceLevel: '🌶️ Delicate & Velvety',
+        aroma: 'Green cardamom, white pepper, melted cheese, roasted cashews',
+        heritage: 'Supreme cuts of farm chicken steeped for 14 hours in fresh malai, roasted cashew butter, and royal herbs, kissed by open charcoal flames in a clay tandoor.',
+        pairing: 'Mint emulsion, pickled shallots & butter naan',
+        prepTime: 'Charcoal clay tandoor charred at 400°C'
+      },
+      paneer: {
+        title: 'Royal Paneer Butter Masala',
+        subtitle: 'Artisanal Cottage Cheese in Satin Tomato Makhani',
+        spiceLevel: '🌶️ Mild Vegetarian Decadence',
+        aroma: 'Kasuri methi, crushed green cardamom, and farm butter',
+        heritage: 'Fresh block cottage cheese simmered in slow-reduced plum tomatoes, roasted cashew paste, and churned butter with subtle honey notes.',
+        pairing: 'Garlic Butter Naan or Jeera Pulao',
+        prepTime: 'Slow-simmered satin tomato reduction'
+      }
+    };
+
+    // Discreet Ambient Mood Switching
+    function setSiteAmbience(themeKey, btnEl) {
+      document.documentElement.setAttribute('data-theme', themeKey);
+      document.querySelectorAll('.ambience-dot').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      showToast('Atmospheric Mood: ' + themeKey.toUpperCase());
+    }
+
+    // Interactive Fluid Cursor Ambient Spotlight Follower
+    function initCursorFollower() {
+      const follower = document.getElementById('cursorLightFollower');
+      if (!follower) return;
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let curX = mouseX;
+      let curY = mouseY;
+
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animate() {
+        curX += (mouseX - curX) * 0.12;
+        curY += (mouseY - curY) * 0.12;
+        follower.style.left = curX + 'px';
+        follower.style.top = curY + 'px';
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // Interactive 3D Perspective Tilt with Specular Glare Reflection
+    function init3DTilt() {
+      const tiltCards = document.querySelectorAll('[data-tilt]');
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5.5;
+          const rotateY = ((x - centerX) / centerX) * 5.5;
+
+          card.style.setProperty('--mouse-x', x + 'px');
+          card.style.setProperty('--mouse-y', y + 'px');
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+      });
+    }
+
+    // Rooftop Time-of-Day Ambience Simulator
+    function switchRooftopTime(timeKey, btnEl) {
+      document.querySelectorAll('.time-ambience-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const img = document.getElementById('rooftopDynamicImg');
+      const title = document.getElementById('rooftopZoneTitle');
+      const desc = document.getElementById('rooftopZoneDesc');
+
+      const scenarios = {
+        sunset: {
+          src: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80',
+          title: 'Sunset Golden Hour (6:30 PM)',
+          desc: 'Warm golden sunlight washing over the Chandramouli Nagar skyline. Perfect for cold pressed mocktails, fresh kebabs, and romantic sunset conversations.'
+        },
+        starlight: {
+          src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+          title: 'Starlight Prime & Big Screen (8:30 PM)',
+          desc: 'Breezy open skies with giant screen music & cricket screenings. The aroma of Chicken Potlam Biryani and Tawa Apollo fish fills the cool night air.'
+        },
+        midnight: {
+          src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
+          title: 'Midnight Breeze & Desserts (10:30 PM)',
+          desc: 'A tranquil open terrace sanctuary under starry skies. Savor hot Badam milk, Shahi Tukda, and late-night culinary cravings.'
+        }
+      };
+
+      const selected = scenarios[timeKey];
+      if (selected && img) {
+        img.style.opacity = '0.3';
+        img.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          img.src = selected.src;
+          title.textContent = selected.title;
+          desc.textContent = selected.desc;
+          img.style.opacity = '1';
+          img.style.transform = 'scale(1)';
+        }, 220);
+      }
+    }
+
+    // Web Audio API Ambient Rooftop Lounge Synthesizer
+    function toggleRooftopSoundscape(btn) {
+      try {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        if (isAudioPlaying) {
+          if (ambientGain) {
+            ambientGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+            setTimeout(() => {
+              if (ambientGain) { ambientGain.disconnect(); ambientGain = null; }
+            }, 1300);
+          }
+          isAudioPlaying = false;
+          btn.classList.remove('playing');
+          btn.innerHTML = '<span>🎧 Rooftop Terrace Lounge Soundscape (Live Audio)</span>';
+          showToast('Rooftop soundscape paused');
+        } else {
+          ambientGain = audioCtx.createGain();
+          ambientGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+          ambientGain.gain.linearRampToValueAtTime(0.09, audioCtx.currentTime + 2.0);
+          ambientGain.connect(audioCtx.destination);
+
+          // Warm harmonic lounge chord: D Minor 9 (D3, F3, A3, C4, E4)
+          const chord = [146.83, 174.61, 220.00, 261.63, 329.63];
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(500, audioCtx.currentTime);
+          filter.connect(ambientGain);
+
+          chord.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            osc.detune.setValueAtTime((idx - 2) * 5, audioCtx.currentTime);
+
+            const oscGain = audioCtx.createGain();
+            oscGain.gain.setValueAtTime(0.18 / chord.length, audioCtx.currentTime);
+            osc.connect(oscGain);
+            oscGain.connect(filter);
+            osc.start();
+          });
+
+          isAudioPlaying = true;
+          btn.classList.add('playing');
+          btn.innerHTML = '<span>⏸️ Ambient Soundscape Active (Click to Pause)</span>';
+          showToast('🎵 Playing Starlight Rooftop Soundscape');
+        }
+      } catch (err) {
+        console.warn('Web Audio note:', err);
+      }
+    }
+
+    // Gastronomic Profile Inspector Modal
+    function openDishProfileModal(dishKey) {
+      const p = dishProfiles[dishKey];
+      if (!p) return;
+
+      const container = document.getElementById('profileModalContent');
+      container.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px; margin-bottom:14px;">
+          <span style="font-size:2rem;">🍲</span>
+          <div>
+            <h3 style="font-family:var(--font-serif); font-size:1.6rem; color:var(--text-headline); line-height:1.2;">${p.title}</h3>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--gold-dark);">${p.subtitle}</span>
+          </div>
+        </div>
+        <div style="background:var(--canvas-warm); border:1px solid var(--surface-border); border-radius:var(--radius-md); padding:16px; display:flex; flex-direction:column; gap:10px; margin:16px 0;">
+          <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
+            <strong style="color:var(--text-headline);">Spice Intensity:</strong>
+            <span style="color:#DC2626; font-weight:800;">${p.spiceLevel}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
+            <strong style="color:var(--text-headline);">Dominant Aromatics:</strong>
+            <span style="color:var(--text-body);">${p.aroma}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
+            <strong style="color:var(--text-headline);">Preparation Technique:</strong>
+            <span style="color:var(--text-body);">${p.prepTime}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.82rem;">
+            <strong style="color:var(--text-headline);">Recommended Pairing:</strong>
+            <span style="color:var(--emerald-accent); font-weight:700;">${p.pairing}</span>
+          </div>
+        </div>
+        <p style="font-size:0.9rem; line-height:1.65; color:var(--text-body); margin-bottom:18px;">
+          ${p.heritage}
+        </p>
+        <button class="btn-primary-header" style="width:100%; justify-content:center;" onclick="closeModal('profileModal'); addToOrder('${p.title}', 360)">
+          + Add This Dish to Order
+        </button>
+      `;
+      openModal('profileModal');
+    }
+
+    // Scroll Progress Tracker
+    function initScrollProgressTracker() {
+      const bar = document.getElementById('scrollProgressBar');
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }, { passive: true });
+    }
+
+    // Starlight Canvas Particles
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientStarlightCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      for (let i = 0; i < 45; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.5 + 0.5,
+          alpha: Math.random() * 0.6 + 0.2,
+          speedY: Math.random() * 0.25 + 0.05,
+          pulseSpeed: Math.random() * 0.02 + 0.005
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(197, 155, 39, ${p.alpha})`;
+          ctx.fill();
+
+          p.y -= p.speedY;
+          p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.01;
+          if (p.alpha < 0.1) p.alpha = 0.1;
+          if (p.alpha > 0.8) p.alpha = 0.8;
+
+          if (p.y < 0) {
+            p.y = height + 5;
+            p.x = Math.random() * width;
+          }
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    // Cinematic Scroll Observer
+    function initScrollObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    }
+
+    // Animated Numbers Counter
+    function initCounters() {
+      const counterEls = document.querySelectorAll('[data-counter]');
+      let started = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            counterEls.forEach(el => {
+              const target = parseFloat(el.getAttribute('data-counter'));
+              const isDecimal = target % 1 !== 0;
+              const duration = 1600;
+              const startTime = performance.now();
+
+              function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentVal = isDecimal ? (easeOut * target).toFixed(1) : Math.floor(easeOut * target);
+
+                el.textContent = currentVal.toLocaleString('en-IN');
+
+                if (progress < 1) {
+                  requestAnimationFrame(update);
+                } else {
+                  el.textContent = isDecimal ? target.toFixed(1) : target.toLocaleString('en-IN');
+                }
+              }
+              requestAnimationFrame(update);
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+
+      const statsBand = document.querySelector('.hero-stats-band');
+      if (statsBand) observer.observe(statsBand);
+    }
+
+    // Switch Booking Engine Tab
+    function switchEngineTab(tabKey, btn) {
+      document.querySelectorAll('.tab-switch-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.engine-pane').forEach(p => p.classList.remove('active'));
+      const activePane = document.getElementById('pane-' + tabKey);
+      if (activePane) activePane.classList.add('active');
+    }
+
+    function scrollToEngine(tabKey) {
+      const engine = document.getElementById('booking-engine');
+      if (engine) {
+        engine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const tabs = document.querySelectorAll('.tab-switch-btn');
+        if (tabKey === 'rooftop' && tabs[1]) tabs[1].click();
+        if (tabKey === 'banquet' && tabs[2]) tabs[2].click();
+        if (tabKey === 'room' && tabs[0]) tabs[0].click();
+      }
+    }
+
+    // Calculate Direct Room Price
+    function updateRoomTotal() {
+      const select = document.getElementById('roomTypeSelect');
+      const opt = select.options[select.selectedIndex];
+      const price = parseInt(opt.getAttribute('data-price')) || 4200;
+
+      const checkIn = new Date(document.getElementById('roomCheckIn').value);
+      const checkOut = new Date(document.getElementById('roomCheckOut').value);
+
+      let nights = 1;
+      if (checkIn && checkOut && checkOut > checkIn) {
+        const diffTime = Math.abs(checkOut - checkIn);
+        nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
+      }
+
+      const total = price * nights;
+      document.getElementById('calculatedPrice').textContent = '₹' + total.toLocaleString('en-IN') + (nights > 1 ? ` (${nights} nts)` : '');
+    }
+
+    // Direct Room Booking WhatsApp Dispatcher
+    function handleDirectRoomBooking(e) {
+      e.preventDefault();
+      const checkIn = document.getElementById('roomCheckIn').value;
+      const checkOut = document.getElementById('roomCheckOut').value;
+      const suite = document.getElementById('roomTypeSelect').value;
+      const guests = document.getElementById('roomGuestsSelect').value;
+      const price = document.getElementById('calculatedPrice').textContent;
+
+      const msg = `*NOVEL HOTEL DIRECT RESERVATION REQUEST*%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `• Suite: ${suite}%0A` +
+                  `• Check-In: ${checkIn}%0A` +
+                  `• Check-Out: ${checkOut}%0A` +
+                  `• Occupancy: ${guests}%0A` +
+                  `• Direct Rate: ${price}%0A` +
+                  `• Benefit: Zero OTA markup + Complimentary Buffet Breakfast%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `Kindly confirm availability and lock my direct reservation.`;
+
+      window.open(`https://wa.me/919281166835?text=${msg}`, '_blank');
+      showToast('Opening WhatsApp to lock direct suite rate...');
+    }
+
+    function quickBookRoom(roomName, price) {
+      scrollToEngine('room');
+      const select = document.getElementById('roomTypeSelect');
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === roomName) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      updateRoomTotal();
+      showToast(`Selected ${roomName}`);
+    }
+
+    // Rooftop Table Reservation WhatsApp Dispatcher
+    function handleRooftopReservation(e) {
+      e.preventDefault();
+      const date = document.getElementById('rooftopDate').value;
+      const slot = document.getElementById('rooftopTime').value;
+      const pax = document.getElementById('rooftopPax').value;
+      const pref = document.getElementById('rooftopPref').value;
+
+      const msg = `*NOVEL HOTEL STARLIGHT ROOFTOP RESERVATION*%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `• Date: ${date}%0A` +
+                  `• Time: ${slot}%0A` +
+                  `• Party Size: ${pax}%0A` +
+                  `• Seating: ${pref}%0A` +
+                  `• Venue: Open Terrace Veranda & Big Screen%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `Please reserve our starlight table.`;
+
+      window.open(`https://wa.me/919281166835?text=${msg}`, '_blank');
+      showToast('Forwarding rooftop reservation to WhatsApp...');
+    }
+
+    // Banquet Quick Quote WhatsApp Dispatcher
+    function handleBanquetFastQuote(e) {
+      e.preventDefault();
+      const eventType = document.getElementById('banquetEventType').value;
+      const pax = document.getElementById('banquetFastPax').value;
+      const date = document.getElementById('banquetDate').value;
+
+      const msg = `*NOVEL GRAND BANQUET FAST INQUIRY*%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `• Event Type: ${eventType}%0A` +
+                  `• Expected Guests: ${pax}%0A` +
+                  `• Preferred Date: ${date}%0A` +
+                  `• Venue: 300-Capacity Grand Air-Conditioned Hall%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `Please provide hall availability and catering packages.`;
+
+      window.open(`https://wa.me/919550714566?text=${msg}`, '_blank');
+      showToast('Connecting with Banquet Sales Team on WhatsApp...');
+    }
+
+    // Menu Category Filter
+    function filterMenu(category, btn) {
+      document.querySelectorAll('.category-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.dish-card-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Add to WhatsApp Food Order Cart
+    function addToOrder(name, price) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+      updateCartUI();
+      showToast(`Added ${name} to order`);
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      const pill = document.getElementById('floatingCartBtn');
+      const badge = document.getElementById('cartCountBadge');
+      const totalEl = document.getElementById('cartTotalSum');
+
+      if (count > 0) {
+        pill.style.display = 'inline-flex';
+        badge.textContent = count;
+        totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      } else {
+        pill.style.display = 'none';
+      }
+    }
+
+    function openCartModal() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalEl = document.getElementById('cartModalTotal');
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:0.88rem; text-align:center;">Your order cart is empty.</p>';
+        totalEl.textContent = '₹0';
+      } else {
+        let total = 0;
+        container.innerHTML = cart.map((item, idx) => {
+          total += item.price * item.qty;
+          return `
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--canvas-warm); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--surface-border);">
+              <div>
+                <strong style="font-size:0.86rem; color:var(--text-headline);">${item.name}</strong>
+                <div style="font-size:0.75rem; color:var(--text-muted);">₹${item.price} each</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <button onclick="changeQty(${idx}, -1)" style="width:26px; height:26px; border-radius:50%; border:1px solid var(--surface-border); background:#FFF; cursor:pointer;">-</button>
+                <span style="font-size:0.86rem; font-weight:700;">${item.qty}</span>
+                <button onclick="changeQty(${idx}, 1)" style="width:26px; height:26px; border-radius:50%; border:1px solid var(--surface-border); background:#FFF; cursor:pointer;">+</button>
+                <span style="font-size:0.88rem; font-weight:800; color:var(--gold-dark); margin-left:8px;">₹${item.price * item.qty}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+        totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      }
+
+      openModal('cartModal');
+    }
+
+    function changeQty(index, delta) {
+      if (cart[index]) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+      }
+      updateCartUI();
+      openCartModal();
+    }
+
+    function dispatchFoodOrderWhatsApp() {
+      if (cart.length === 0) return;
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const itemsList = cart.map(i => `• ${i.name} × ${i.qty} = ₹${i.price * i.qty}`).join('%0A');
+
+      const msg = `*NOVEL HOTEL DIRECT CULINARY ORDER*%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `${itemsList}%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `*Total Bill: ₹${total.toLocaleString('en-IN')}*%0A` +
+                  `• Delivery / Dine-in Pickup at Chandramouli Nagar%0A` +
+                  `Please prepare our order fresh!`;
+
+      window.open(`https://wa.me/919281166835?text=${msg}`, '_blank');
+      closeModal('cartModal');
+      showToast('Order dispatched to Novel Kitchen on WhatsApp!');
+    }
+
+    // Banquet Budget Calculator
+    function calculateBanquetBudget() {
+      const pax = parseInt(document.getElementById('banquetPaxSlider').value) || 150;
+      document.getElementById('banquetPaxDisplay').textContent = pax + ' Guests';
+
+      const total = pax * selectedBanquetPackage.rate;
+      document.getElementById('banquetTotalEst').textContent = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function selectBanquetPackage(name, rate, el) {
+      selectedBanquetPackage = { name, rate };
+      document.querySelectorAll('.tier-option-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      calculateBanquetBudget();
+    }
+
+    function bookBanquetTourWhatsApp() {
+      const pax = document.getElementById('banquetPaxSlider').value;
+      const total = document.getElementById('banquetTotalEst').textContent;
+
+      const msg = `*NOVEL GRAND BANQUET HALL TOUR & BOOKING*%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `• Expected Capacity: ${pax} Guests%0A` +
+                  `• Selected Catering Tier: ${selectedBanquetPackage.name} (₹${selectedBanquetPackage.rate}/plate)%0A` +
+                  `• Estimated Food Budget: ${total}%0A` +
+                  `• Venue: 300-Capacity Central A/C Hall%0A` +
+                  `━━━━━━━━━━━━━━━━━━%0A` +
+                  `I would like to schedule an in-person hall walk-through.`;
+
+      window.open(`https://wa.me/919550714566?text=${msg}`, '_blank');
+      showToast('Opening WhatsApp to schedule banquet walk-through...');
+    }
+
+    // Modal Helpers
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.style.display = 'none';
+    }
+
+    function closeModalOnBg(e, id) {
+      if (e.target.id === id) {
+        closeModal(id);
+      }
+    }
+
+    // Toast Bubble
+    function showToast(text) {
+      const toast = document.getElementById('toastBubble');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      initScrollProgressTracker();
+      initCursorFollower();
+      initAmbientCanvas();
+      init3DTilt();
+      initScrollObserver();
+      initCounters();
+
+      // Set default dates
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+
+      const fmt = (d) => d.toISOString().split('T')[0];
+
+      const checkInInput = document.getElementById('roomCheckIn');
+      const checkOutInput = document.getElementById('roomCheckOut');
+      const rooftopDateInput = document.getElementById('rooftopDate');
+      const banquetDateInput = document.getElementById('banquetDate');
+
+      if (checkInInput) checkInInput.value = fmt(today);
+      if (checkOutInput) checkOutInput.value = fmt(tomorrow);
+      if (rooftopDateInput) rooftopDateInput.value = fmt(today);
+      if (banquetDateInput) {
+        const nextMonth = new Date();
+        nextMonth.setDate(today.getDate() + 30);
+        banquetDateInput.value = fmt(nextMonth);
+      }
+
+      updateRoomTotal();
+      calculateBanquetBudget();
+    });
+  </script>
+</body>
+</html>
