@@ -1177,9 +1177,524 @@
     @media (max-width: 600px) {
       .values-row { grid-template-columns: 1fr; }
     }
+  
+    /* ==========================================================================
+       AWWWARDS UPGRADE: TELEMETRY HUD & NAV CONTROLS
+       ========================================================================== */
+    .nav-telemetry {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(16, 24, 38, 0.7);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: #94A3B8;
+      user-select: none;
+      transition: var(--transition-fast);
+    }
+    .nav-telemetry:hover {
+      border-color: var(--valixis-cyan);
+      color: #FFF;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+    .telemetry-led {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+      animation: ledPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes ledPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-search-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .nav-search-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--valixis-cyan);
+      color: #FFF;
+      box-shadow: 0 0 16px rgba(0, 217, 255, 0.25);
+    }
+    .nav-search-kbd {
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--valixis-cyan);
+    }
+
+    .nav-audio-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .nav-audio-btn:hover, .nav-audio-btn.active {
+      border-color: var(--valixis-magenta);
+      color: #FFF;
+      box-shadow: 0 0 14px rgba(255, 46, 214, 0.3);
+    }
+
+    /* ==========================================================================
+       AWWWARDS UPGRADE: NATIVE ACCESSIBLE COMMAND PALETTE (<dialog>)
+       ========================================================================== */
+    dialog:modal {
+      overscroll-behavior: contain;
+    }
+    dialog::backdrop {
+      overflow: hidden;
+      overscroll-behavior: contain;
+      background: rgba(5, 7, 11, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .cmd-dialog {
+      margin: auto;
+      padding: 0;
+      border: 1px solid var(--border-glow);
+      border-radius: 18px;
+      background: rgba(13, 17, 23, 0.96);
+      color: #FFF;
+      width: min(640px, calc(100vw - 32px));
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 217, 255, 0.25);
+      overflow: hidden;
+      outline: none;
+    }
+
+    .cmd-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .cmd-search-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(20, 26, 36, 0.6);
+    }
+    .cmd-search-icon {
+      color: var(--valixis-cyan);
+      flex-shrink: 0;
+    }
+    .cmd-input {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #FFF;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+    }
+    .cmd-input::placeholder {
+      color: #64748B;
+    }
+    .cmd-esc-badge {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94A3B8;
+      cursor: pointer;
+    }
+
+    .cmd-results {
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
+    }
+    .cmd-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748B;
+      padding: 10px 12px 6px 12px;
+    }
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #E2E8F0;
+      transition: background 0.15s ease, transform 0.15s ease;
+      cursor: pointer;
+    }
+    .cmd-item:hover, .cmd-item.selected {
+      background: rgba(0, 217, 255, 0.12);
+      color: #FFF;
+      transform: translateX(4px);
+    }
+    .cmd-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+    .cmd-item-icon.gaming { color: var(--valixis-magenta); border-color: rgba(255, 46, 214, 0.3); }
+    .cmd-item-icon.tech { color: var(--valixis-cyan); border-color: rgba(0, 217, 255, 0.3); }
+    .cmd-item-icon.ai { color: var(--valixis-purple); border-color: rgba(124, 58, 237, 0.3); }
+    .cmd-item-icon.future { color: var(--valixis-blue); border-color: rgba(59, 130, 246, 0.3); }
+    .cmd-item-icon.sa { color: var(--valixis-cyan); }
+    .cmd-item-icon.js { color: var(--valixis-magenta); }
+    .cmd-item-icon.email { color: #10B981; }
+
+    .cmd-item-text {
+      flex-grow: 1;
+      min-width: 0;
+    }
+    .cmd-item-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+    .cmd-item-sub {
+      font-size: 0.78rem;
+      color: #94A3B8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cmd-item-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #64748B;
+      flex-shrink: 0;
+    }
+
+    .cmd-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(10, 14, 20, 0.8);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #64748B;
+    }
+    .cmd-shortcuts {
+      display: flex;
+      gap: 14px;
+    }
+    .cmd-shortcuts kbd {
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #94A3B8;
+    }
+    .cmd-valixis-tag {
+      letter-spacing: 0.08em;
+      color: var(--valixis-cyan);
+      opacity: 0.8;
+    }
+
+    /* ==========================================================================
+       AWWWARDS UPGRADE: ROTATING BORDER BEAM (Flagship Portal Card)
+       ========================================================================== */
+    .product-flagship {
+      position: relative;
+      overflow: hidden;
+    }
+    .border-beam-track {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 1;
+      padding: 1.5px;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .border-beam-track::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0 320deg, var(--valixis-cyan) 345deg, var(--valixis-magenta) 360deg);
+      animation: rotateBorderBeam 7s linear infinite;
+    }
+    @keyframes rotateBorderBeam {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .border-beam-track::before { animation: none; }
+    }
+
+    /* ==========================================================================
+       AWWWARDS UPGRADE: INTERACTIVE TERMINAL PLAYGROUND & AGENT SIMULATOR
+       ========================================================================== */
+    .terminal-tabs {
+      display: flex;
+      gap: 6px;
+      margin-left: 10px;
+    }
+    .term-tab {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .term-tab.active, .term-tab:hover {
+      background: rgba(0, 217, 255, 0.12);
+      border-color: var(--valixis-cyan);
+      color: #FFF;
+    }
+
+    .term-run-btn {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10B981;
+      color: #10B981;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .term-run-btn:hover {
+      background: #10B981;
+      color: #07090D;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+    }
+
+    .term-body {
+      display: none;
+    }
+    .term-body.active {
+      display: block;
+    }
+    .code-row.highlight {
+      background: rgba(0, 217, 255, 0.08);
+      border-left: 2px solid var(--valixis-cyan);
+      padding-left: 6px;
+      margin-top: 6px;
+    }
+    .term-cursor {
+      display: inline-block;
+      color: var(--valixis-cyan);
+      animation: termBlink 1s infinite;
+      font-weight: bold;
+    }
+    @keyframes termBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Dynamic Cursor Spotlight for all Bento cards */
+    .spotlight-card {
+      position: relative;
+    }
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(420px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(0, 217, 255, 0.09), transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 0;
+    }
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Awwwards Interactive Feature: Global ⌘K Command Palette Dialog -->
+  <dialog id="cmd-palette" class="cmd-dialog" aria-label="VALIXIS System Command Palette" closedby="any">
+    <div class="cmd-box">
+      <div class="cmd-search-header">
+        <svg class="cmd-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmdInput" class="cmd-input" placeholder="Type a division, product, leader, or action..." autocomplete="off">
+        <button type="button" class="cmd-esc-badge" onclick="document.getElementById('cmd-palette').close()">ESC</button>
+      </div>
+
+      <div class="cmd-results" id="cmdResults">
+        <div class="cmd-group-label">Divisions &amp; Strategic Pillars</div>
+        <a href="#divisions" class="cmd-item" data-keywords="gaming interactive 3d procedural physics simulation engines" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon gaming">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4" /><path d="M6 12h4m-2-2v4" /><circle cx="15" cy="10" r="1" fill="currentColor" /><circle cx="18" cy="13" r="1" fill="currentColor" /></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Gaming Division</div>
+            <div class="cmd-item-sub">Next-gen interactive environments &amp; procedural engines</div>
+          </div>
+          <span class="cmd-item-badge">#divisions</span>
+        </a>
+
+        <a href="#divisions" class="cmd-item" data-keywords="enterprise technology cloud distributed high availability infrastructure" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon tech">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M9 9h6v6H9z" /><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3" /></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Enterprise Technology</div>
+            <div class="cmd-item-sub">High-availability cloud &amp; distributed platforms</div>
+          </div>
+          <span class="cmd-item-badge">#divisions</span>
+        </a>
+
+        <a href="#divisions" class="cmd-item" data-keywords="ai swarms autonomous neural agents workflows orchestration" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon ai">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="4" r="2" /><circle cx="4" cy="12" r="2" /><circle cx="20" cy="12" r="2" /><circle cx="8" cy="20" r="2" /><circle cx="16" cy="20" r="2" /><circle cx="12" cy="12" r="1.5" fill="currentColor" /><path d="M12 6l-6.5 4.5M12 6l6.5 4.5M5.5 13.5l1.5 4.5M18.5 13.5l-1.5 4.5M9.5 20h5" /></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">AI &amp; Swarms</div>
+            <div class="cmd-item-sub">Autonomous multi-agent systems &amp; neural orchestration</div>
+          </div>
+          <span class="cmd-item-badge">#divisions</span>
+        </a>
+
+        <a href="#divisions" class="cmd-item" data-keywords="future ready protocol scalability sovereignty resilience architecture" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon future">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" /><path d="M12 11l8-4.5M12 11v9M12 11L4 6.5" /></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Future Ready Architecture</div>
+            <div class="cmd-item-sub">Long-horizon paradigm resilience &amp; data sovereignty</div>
+          </div>
+          <span class="cmd-item-badge">#divisions</span>
+        </a>
+
+        <div class="cmd-group-label">Software Ecosystem</div>
+        <a href="#products" class="cmd-item" data-keywords="valixis portal flagship management task github supabase flutter rls" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon tech">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">VALIXIS Portal (Flagship)</div>
+            <div class="cmd-item-sub">Internal OS, GitHub sync &amp; PostgreSQL RLS</div>
+          </div>
+          <span class="cmd-item-badge">#products</span>
+        </a>
+
+        <a href="#products" class="cmd-item" data-keywords="valixis cloud storage sovereign edge encryption private nodes" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon tech">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">VALIXIS Cloud</div>
+            <div class="cmd-item-sub">Sovereign distributed storage &amp; node encryption</div>
+          </div>
+          <span class="cmd-item-badge">#products</span>
+        </a>
+
+        <a href="#products" class="cmd-item" data-keywords="valixis flow orchestration autonomous agent swarms automation queues" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon ai">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">VALIXIS Flow</div>
+            <div class="cmd-item-sub">Autonomous event streaming &amp; queue automation</div>
+          </div>
+          <span class="cmd-item-badge">#products</span>
+        </a>
+
+        <div class="cmd-group-label">Executive Leadership</div>
+        <a href="leadership/" class="cmd-item" data-keywords="subhash annam founder ceo chief executive officer leadership governance" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon sa">SA</div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Subhash Annam</div>
+            <div class="cmd-item-sub">Founder &amp; Chief Executive Officer (CEO)</div>
+          </div>
+          <span class="cmd-item-badge">/leadership/</span>
+        </a>
+
+        <a href="leadership/" class="cmd-item" data-keywords="jyothsna sri co-founder cco chief commercial officer partnerships commercial" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon js">JS</div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Jyothsna Sri</div>
+            <div class="cmd-item-sub">Co-Founder &amp; Chief Commercial Officer (CCO)</div>
+          </div>
+          <span class="cmd-item-badge">/leadership/</span>
+        </a>
+
+        <div class="cmd-group-label">Communications &amp; Briefings</div>
+        <a href="mailto:official.valixis@gmail.com" class="cmd-item" data-keywords="contact email briefing enterprise partnership inquiry" onclick="onCmdSelect(this)">
+          <div class="cmd-item-icon email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="cmd-item-text">
+            <div class="cmd-item-title">Schedule Executive Briefing</div>
+            <div class="cmd-item-sub">official.valixis@gmail.com</div>
+          </div>
+          <span class="cmd-item-badge">Email</span>
+        </a>
+      </div>
+
+      <div class="cmd-footer">
+        <div class="cmd-shortcuts">
+          <span><kbd>&uarr;&darr;</kbd> Navigate</span>
+          <span><kbd>&crarr;</kbd> Select</span>
+          <span><kbd>ESC</kbd> Close</span>
+        </div>
+        <span class="cmd-valixis-tag">VALIXIS // COMMAND BUS</span>
+      </div>
+    </div>
+  </dialog>
+
 
   <!-- Film Grain & Ambient Lighting -->
   <div class="film-grain"></div>
@@ -1206,6 +1721,22 @@
         <li><a href="#leadership" class="nav-link">Leadership</a></li>
         <li><a href="#contact" class="nav-link">Inquiries</a></li>
       </ul>
+
+      <div class="nav-telemetry" title="Operational Infrastructure Telemetry">
+        <span class="telemetry-led"></span>
+        <span>KERNEL V2.8 &bull; 99.99%</span>
+      </div>
+
+      <button type="button" class="nav-search-btn" id="btnOpenSearch" title="Search Ecosystem (Ctrl+K)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="nav-search-label">Quick Find</span>
+        <kbd class="nav-search-kbd">⌘K</kbd>
+      </button>
+
+      <button type="button" class="nav-audio-btn" id="btnToggleAudio" title="Toggle UI Sound Effects" aria-label="Toggle Sound Effects">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="iconSoundOn"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="iconSoundOff" style="display: none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      </button>
 
       <a href="#contact" class="nav-cta-btn">
         <span>Get in Touch</span>
@@ -1381,6 +1912,9 @@
       <div class="products-grid">
         <!-- Flagship: VALIXIS Portal -->
         <div class="spotlight-card product-flagship">
+          <!-- Animated Luminous Border Beam Track -->
+          <div class="border-beam-track"></div>
+
           <div>
             <span class="product-tag" style="background: rgba(0, 217, 255, 0.12); border-color: rgba(0, 217, 255, 0.4); color: var(--valixis-cyan);">Flagship Platform</span>
             <h3 class="product-title" style="font-size: 1.95rem;">VALIXIS Portal</h3>
@@ -1394,20 +1928,50 @@
               <span class="tech-chip">GitHub Actions CI/CD</span>
             </div>
           </div>
-          <div class="console-terminal">
+
+          <!-- Interactive Tabbed Console Terminal & Agent Simulator -->
+          <div class="console-terminal" id="interactiveTerminal">
             <div class="terminal-header">
               <div class="traffic-lights">
                 <span class="traffic-dot" style="background: #EF4444;"></span>
                 <span class="traffic-dot" style="background: #F59E0B;"></span>
                 <span class="traffic-dot" style="background: #10B981;"></span>
               </div>
-              <span>PORTAL_KERNEL_V2.6</span>
+              <div class="terminal-tabs">
+                <button type="button" class="term-tab active" onclick="switchTermTab('orchestrator', this)">AGENT_SWARM</button>
+                <button type="button" class="term-tab" onclick="switchTermTab('rls', this)">SECURITY_RLS</button>
+                <button type="button" class="term-tab" onclick="switchTermTab('cicd', this)">CI_CD</button>
+              </div>
+              <button type="button" class="term-run-btn" id="btnRunSimulation" onclick="runAgentSimulation()">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>RUN SIM</span>
+              </button>
             </div>
-            <div class="code-row"><span class="c-cyan">01</span><span>AUTH: JWT_SECURE_EXCHANGE</span></div>
-            <div class="code-row"><span class="c-purple">02</span><span>RLS: POLICIES_ACTIVE [SECURITY_DEFINER]</span></div>
-            <div class="code-row"><span class="c-cyan">03</span><span>WORKFLOW: TASK &rarr; PR &rarr; SUBMISSION</span></div>
-            <div class="code-row"><span class="c-green">04</span><span>PIPELINE: GITHUB_ACTIONS_BUILT (0 ERRORS)</span></div>
-            <div class="code-row"><span class="c-cyan">05</span><span>STATUS: LIVE PRODUCTION ENGINE</span></div>
+
+            <!-- Tab 1: Agent Swarm Live Simulator -->
+            <div class="term-body active" id="term-orchestrator">
+              <div class="code-row"><span class="c-cyan">01</span><span>SWARM_ORCHESTRATOR: ONLINE [4 ACTIVE WORKERS]</span></div>
+              <div class="code-row"><span class="c-purple">02</span><span>DISPATCH: RESEARCH &rarr; PLAN &rarr; CODE &rarr; AUDIT</span></div>
+              <div class="code-row"><span class="c-cyan">03</span><span>PIPELINE: DISTRIBUTED RUNTIME ACTIVE</span></div>
+              <div class="code-row"><span class="c-green">04</span><span>TELEMETRY: LATENCY 12ms // DRIFT 0.00%</span></div>
+              <div class="code-row highlight"><span class="c-cyan">&gt;</span><span id="termSimLog">STATUS: READY FOR LIVE DISPATCH</span><span class="term-cursor">_</span></div>
+            </div>
+
+            <!-- Tab 2: Security RLS -->
+            <div class="term-body" id="term-rls">
+              <div class="code-row"><span class="c-purple">01</span><span>CREATE POLICY "tenant_isolation" ON "tasks"</span></div>
+              <div class="code-row"><span class="c-cyan">02</span><span>  FOR ALL TO authenticated</span></div>
+              <div class="code-row"><span class="c-cyan">03</span><span>  USING (auth.jwt() -&gt;&gt; 'tenant_id' = org_id);</span></div>
+              <div class="code-row"><span class="c-green">04</span><span>-- RLS STRICT ENFORCEMENT VERIFIED [OK]</span></div>
+            </div>
+
+            <!-- Tab 3: CI/CD Pipeline -->
+            <div class="term-body" id="term-cicd">
+              <div class="code-row"><span class="c-green">PASS</span><span>test/unit_agent_consensus_test.dart (184ms)</span></div>
+              <div class="code-row"><span class="c-green">PASS</span><span>test/rls_permission_matrix_test.dart (92ms)</span></div>
+              <div class="code-row"><span class="c-green">PASS</span><span>test/threejs_viewport_render_test.dart (110ms)</span></div>
+              <div class="code-row"><span class="c-cyan">&gt;&gt;</span><span>BUILD DEPLOYED TO GITHUB PAGES [STATUS: 200]</span></div>
+            </div>
           </div>
         </div>
 
@@ -1893,6 +2457,284 @@
 
       window.addEventListener('resize', updateViewport);
     })();
+
+    // ==========================================================================
+    // AWWWARDS UPGRADE: NATIVE WEB AUDIO HAPTICS ENGINE (Zero Asset Downloads)
+    // ==========================================================================
+    const audioEngine = (function() {
+      let ctx = null;
+      let enabled = localStorage.getItem('valixis_audio') === 'true';
+
+      function initCtx() {
+        if (!ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) ctx = new AudioCtx();
+        }
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume();
+        }
+      }
+
+      function playClick(freq = 820, duration = 0.035) {
+        if (!enabled) return;
+        try {
+          initCtx();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          gain.gain.setValueAtTime(0.035, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + duration);
+        } catch (e) {}
+      }
+
+      function playChime() {
+        if (!enabled) return;
+        try {
+          initCtx();
+          if (!ctx) return;
+          [523.25, 659.25, 783.99].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.06);
+            gain.gain.setValueAtTime(0.025, ctx.currentTime + i * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i * 0.06 + 0.18);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(ctx.currentTime + i * 0.06);
+            osc.stop(ctx.currentTime + i * 0.06 + 0.18);
+          });
+        } catch (e) {}
+      }
+
+      function toggle() {
+        initCtx();
+        enabled = !enabled;
+        localStorage.setItem('valixis_audio', enabled);
+        updateAudioUI();
+        if (enabled) playChime();
+        return enabled;
+      }
+
+      function updateAudioUI() {
+        const btn = document.getElementById('btnToggleAudio');
+        const iconOn = document.getElementById('iconSoundOn');
+        const iconOff = document.getElementById('iconSoundOff');
+        if (!btn) return;
+        if (enabled) {
+          btn.classList.add('active');
+          if (iconOn) iconOn.style.display = 'block';
+          if (iconOff) iconOff.style.display = 'none';
+        } else {
+          btn.classList.remove('active');
+          if (iconOn) iconOn.style.display = 'none';
+          if (iconOff) iconOff.style.display = 'block';
+        }
+      }
+
+      return { playClick, playChime, toggle, updateAudioUI, initCtx };
+    })();
+
+    // Initialize audio button state
+    document.addEventListener('DOMContentLoaded', () => {
+      audioEngine.updateAudioUI();
+      const btn = document.getElementById('btnToggleAudio');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          audioEngine.toggle();
+        });
+      }
+    });
+
+    // Attach click sound to interactive elements
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.tab-btn, .term-tab, .nav-link, .nav-cta-btn, .btn-ghost, .btn-primary, .term-run-btn, .cmd-item')) {
+        audioEngine.playClick(840, 0.035);
+      }
+    });
+
+    // ==========================================================================
+    // AWWWARDS UPGRADE: COMMAND PALETTE CONTROLLER (<dialog>)
+    // ==========================================================================
+    const cmdPalette = document.getElementById('cmd-palette');
+    const cmdInput = document.getElementById('cmdInput');
+    const btnOpenSearch = document.getElementById('btnOpenSearch');
+
+    function openCommandPalette() {
+      if (!cmdPalette) return;
+      audioEngine.playClick(960, 0.04);
+      if (typeof cmdPalette.showModal === 'function') {
+        cmdPalette.showModal();
+      } else {
+        cmdPalette.setAttribute('open', '');
+      }
+      if (cmdInput) {
+        cmdInput.value = '';
+        filterCmdItems('');
+        setTimeout(() => cmdInput.focus(), 60);
+      }
+    }
+
+    if (btnOpenSearch) {
+      btnOpenSearch.addEventListener('click', openCommandPalette);
+    }
+
+    // Keyboard shortcut listener: Ctrl+K / Cmd+K
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (cmdPalette && cmdPalette.open) {
+          cmdPalette.close();
+        } else {
+          openCommandPalette();
+        }
+      }
+    });
+
+    // Fallback light dismiss for browsers lacking native closedby="any"
+    if (cmdPalette && !('closedBy' in HTMLDialogElement.prototype)) {
+      const outside = (e, dialog) => {
+        const r = dialog.getBoundingClientRect();
+        return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+      };
+      let pressedOutside = false;
+      cmdPalette.addEventListener('pointerdown', (e) => { pressedOutside = outside(e, cmdPalette); });
+      cmdPalette.addEventListener('pointerup', (e) => {
+        if (pressedOutside && outside(e, cmdPalette)) cmdPalette.close();
+      });
+    }
+
+    // Fuzzy filter command items
+    function filterCmdItems(query) {
+      const items = document.querySelectorAll('.cmd-item');
+      const q = query.toLowerCase().trim();
+      let hasMatches = false;
+
+      items.forEach((item) => {
+        const title = (item.querySelector('.cmd-item-title')?.textContent || '').toLowerCase();
+        const sub = (item.querySelector('.cmd-item-sub')?.textContent || '').toLowerCase();
+        const kw = (item.getAttribute('data-keywords') || '').toLowerCase();
+
+        if (!q || title.includes(q) || sub.includes(q) || kw.includes(q)) {
+          item.style.display = 'flex';
+          hasMatches = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    if (cmdInput) {
+      cmdInput.addEventListener('input', (e) => {
+        filterCmdItems(e.target.value);
+      });
+
+      cmdInput.addEventListener('keydown', (e) => {
+        const visibleItems = Array.from(document.querySelectorAll('.cmd-item')).filter(i => i.style.display !== 'none');
+        if (!visibleItems.length) return;
+
+        let currentIndex = visibleItems.findIndex(i => i.classList.contains('selected'));
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          audioEngine.playClick(650, 0.025);
+          if (currentIndex !== -1) visibleItems[currentIndex].classList.remove('selected');
+          currentIndex = (currentIndex + 1) % visibleItems.length;
+          visibleItems[currentIndex].classList.add('selected');
+          visibleItems[currentIndex].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          audioEngine.playClick(650, 0.025);
+          if (currentIndex !== -1) visibleItems[currentIndex].classList.remove('selected');
+          currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+          visibleItems[currentIndex].classList.add('selected');
+          visibleItems[currentIndex].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          const target = currentIndex !== -1 ? visibleItems[currentIndex] : visibleItems[0];
+          if (target) {
+            onCmdSelect(target);
+            target.click();
+          }
+        }
+      });
+    }
+
+    function onCmdSelect(item) {
+      audioEngine.playChime();
+      if (cmdPalette) cmdPalette.close();
+    }
+
+    // ==========================================================================
+    // AWWWARDS UPGRADE: DYNAMIC CURSOR SPOTLIGHT ON BENTO GRID CARDS
+    // ==========================================================================
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // ==========================================================================
+    // AWWWARDS UPGRADE: INTERACTIVE TERMINAL SWITCHER & AGENT SIMULATOR
+    // ==========================================================================
+    function switchTermTab(tabId, btn) {
+      document.querySelectorAll('.term-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.term-body').forEach(b => b.classList.remove('active'));
+
+      btn.classList.add('active');
+      const target = document.getElementById('term-' + tabId);
+      if (target) target.classList.add('active');
+    }
+
+    let isSimRunning = false;
+    function runAgentSimulation() {
+      if (isSimRunning) return;
+      isSimRunning = true;
+
+      switchTermTab('orchestrator', document.querySelectorAll('.term-tab')[0]);
+      audioEngine.playClick(920, 0.05);
+
+      const logEl = document.getElementById('termSimLog');
+      const steps = [
+        "DISPATCHING TASK: [SCHEMA MIGRATION V2.8]...",
+        "AGENT_RESEARCH: ANALYZING DATABASE CONSTRAINTS (100% OK)",
+        "AGENT_SECURITY: RLS POLICIES VERIFIED [0 LEAKS]",
+        "AGENT_CODE: ATOMIC COMMIT PUSHED (SHA: 44685e4)",
+        "CONSENSUS REACHED: ALL 4 AGENTS VALIDATED",
+        "STATUS: COMPLETED IN 1.24s (0 REGRESSIONS)"
+      ];
+
+      let stepIdx = 0;
+      logEl.textContent = steps[0];
+
+      const interval = setInterval(() => {
+        stepIdx++;
+        if (stepIdx < steps.length) {
+          logEl.textContent = steps[stepIdx];
+          audioEngine.playClick(720 + stepIdx * 80, 0.03);
+        } else {
+          clearInterval(interval);
+          isSimRunning = false;
+          audioEngine.playChime();
+        }
+      }, 350);
+    }
+
+    // Expose global methods for inline HTML event attributes & command palette
+    window.switchTermTab = switchTermTab;
+    window.runAgentSimulation = runAgentSimulation;
+    window.audioEngine = audioEngine;
+    window.openCommandPalette = openCommandPalette;
 
     // 5. CLEAN URL ROUTING (Awwwards-Tier HTML5 History API)
     // Updates browser address bar cleanly to /leadership, /divisions, /products, etc. without '#'
