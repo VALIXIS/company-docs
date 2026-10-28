@@ -1735,7 +1735,8 @@
         const aspect = width / height;
         camera.aspect = aspect;
         // Large-scale framing: baseZ 10.4 keeps the large 4.2 V emblem & 3.65 rings prominent and 100% visible
-        const baseZ = 10.4;
+        // Scaled up baseZ to 11.2 to gracefully frame the massive 5.2 V emblem & 4.18 orbital rings
+        const baseZ = 11.2;
         camera.position.z = aspect < 1.0 ? baseZ / Math.min(aspect, 1.0) : baseZ;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height);
@@ -1767,8 +1768,8 @@
           side: THREE.FrontSide,
           depthWrite: false
         });
-        // Sized up to 4.2 x 3.2 (nearly 2x visual presence of previous 3.0 plane)
-        const vGeo = new THREE.PlaneGeometry(4.2, 3.2);
+        // Massive, cinematic V emblem: 5.2 x 3.95 for maximum brand dominance
+        const vGeo = new THREE.PlaneGeometry(5.2, 3.95);
         const vMeshFront = new THREE.Mesh(vGeo, vMatFront);
         vMeshFront.position.z = 0.04;
         vGroup.add(vMeshFront);
@@ -1786,48 +1787,61 @@
         vGroup.add(vMeshBack);
       });
 
-      // B. Sleek Outer Revolving Neon Rings (Cyan & Tech Purple Orbital Geometry - Inner Pink Ring Removed)
-      // Ring 1: Electric Cyan (#00D9FF)
-      const ringGeo1 = new THREE.TorusGeometry(3.15, 0.036, 16, 140);
+      // B. Sleek Outer Revolving Neon Rings (Proportionally scaled up to gracefully orbit the larger V)
+      // Ring 1: Electric Cyan (#00D9FF) - Scaled to 3.55 radius with 0.040 tube
+      const ringGeo1 = new THREE.TorusGeometry(3.55, 0.040, 16, 140);
       const ringMat1 = new THREE.MeshBasicMaterial({
         color: 0x00D9FF,
         transparent: true,
-        opacity: 0.90
+        opacity: 0.92
       });
       const ring1 = new THREE.Mesh(ringGeo1, ringMat1);
       ring1.rotation.x = -Math.PI / 3;
       ring1.rotation.y = -Math.PI / 4;
       masterGroup.add(ring1);
 
-      // Ring 2: Deep Tech Purple (#7C3AED)
-      const ringGeo2 = new THREE.TorusGeometry(3.70, 0.028, 16, 140);
+      // Ring 2: Deep Tech Purple (#7C3AED) - Scaled to 4.18 radius with 0.032 tube
+      const ringGeo2 = new THREE.TorusGeometry(4.18, 0.032, 16, 140);
       const ringMat2 = new THREE.MeshBasicMaterial({
         color: 0x7C3AED,
         transparent: true,
-        opacity: 0.75
+        opacity: 0.80
       });
       const ring2 = new THREE.Mesh(ringGeo2, ringMat2);
       ring2.rotation.x = Math.PI / 6;
       ring2.rotation.z = Math.PI / 3;
       masterGroup.add(ring2);
 
-      // C. Expansive Floating Stardust Particle Field (Large cosmic spread across background)
-      const particleCount = 1400;
+      // C. Vastly Extended Cosmic Stellar Field (2,800 stars spanning wide deep 3D cosmos)
+      const particleCount = 2800;
       const particleGeo = new THREE.BufferGeometry();
       const posArray = new Float32Array(particleCount * 3);
+      const colArray = new Float32Array(particleCount * 3);
+
+      const starWhite = new THREE.Color(0xF8FAFC);  // Crisp starlight white
+      const starCyan  = new THREE.Color(0x00D9FF);  // Electric cyan accent
+      const starPurple= new THREE.Color(0xA78BFA);  // Tech violet accent
 
       for (let i = 0; i < particleCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 38;      // wide horizontal expanse
-        posArray[i + 1] = (Math.random() - 0.5) * 28;  // tall vertical expanse
-        posArray[i + 2] = (Math.random() - 0.5) * 24;  // deep 3D volume
+        // Extended far beyond the viewport bounds across entire hero and margins
+        posArray[i]     = (Math.random() - 0.5) * 68;  // Extra wide horizontal spread
+        posArray[i + 1] = (Math.random() - 0.5) * 52;  // Extra tall vertical spread
+        posArray[i + 2] = (Math.random() - 0.5) * 42;  // Deep 3D volume
+
+        const rand = Math.random();
+        const starColor = rand < 0.60 ? starWhite : (rand < 0.85 ? starCyan : starPurple);
+        colArray[i]     = starColor.r;
+        colArray[i + 1] = starColor.g;
+        colArray[i + 2] = starColor.b;
       }
       particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      particleGeo.setAttribute('color', new THREE.BufferAttribute(colArray, 3));
 
       const particleMat = new THREE.PointsMaterial({
-        size: 0.035,
-        color: 0x00D9FF,
+        size: 0.040,
+        vertexColors: true,
         transparent: true,
-        opacity: 0.70
+        opacity: 0.85
       });
       const particles = new THREE.Points(particleGeo, particleMat);
       scene.add(particles);
