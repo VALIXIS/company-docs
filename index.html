@@ -3534,49 +3534,7 @@
       const vGroup = new THREE.Group();
       masterGroup.add(vGroup);
 
-      // GLSL Holographic Energy Aura Plane behind the V
-      const auraVertexShader = `
-        varying vec2 vUv;
-        void main() {
-          vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `;
-
-      const auraFragmentShader = `
-        varying vec2 vUv;
-        uniform vec3 uColor;
-        uniform float uTime;
-        uniform float uIntensity;
-
-        void main() {
-          float dist = length(vUv - vec2(0.5));
-          float glow = exp(-dist * 4.8) * (0.85 + 0.15 * sin(uTime * 2.4));
-          float ring = smoothstep(0.48, 0.44, dist) * smoothstep(0.36, 0.42, dist) * 0.45;
-          float alpha = clamp((glow + ring) * uIntensity, 0.0, 1.0);
-          gl_FragColor = vec4(uColor, alpha * 0.85);
-        }
-      `;
-
-      const auraUniforms = {
-        uColor: { value: new THREE.Color(0x00D9FF) },
-        uTime: { value: 0 },
-        uIntensity: { value: 0.90 }
-      };
-
-      const auraGeo = new THREE.PlaneGeometry(6.4, 6.4);
-      const auraMat = new THREE.ShaderMaterial({
-        vertexShader: auraVertexShader,
-        fragmentShader: auraFragmentShader,
-        uniforms: auraUniforms,
-        transparent: true,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
-        side: THREE.DoubleSide
-      });
-      const auraMesh = new THREE.Mesh(auraGeo, auraMat);
-      auraMesh.position.z = -0.08;
-      vGroup.add(auraMesh);
+      
 
       // Razor-Sharp High-Res V Monolith Texture
       const textureLoader = new THREE.TextureLoader();
@@ -3704,8 +3662,6 @@
           });
           gsap.to(ringMat1.color, { r: 1.0, g: 0.18, b: 0.84, duration: 1.0 }); // #FF2ED6
           gsap.to(ringMat2.color, { r: 0.0, g: 0.85, b: 1.0, duration: 1.0 });  // #00D9FF
-          gsap.to(auraUniforms.uColor.value, { r: 1.0, g: 0.18, b: 0.84, duration: 1.0 });
-          gsap.to(auraUniforms.uIntensity, { value: 1.1, duration: 1.0 });
 
         } else if (tabId === 'tab-tech') {
           // Sovereign enterprise symmetry, electric cyan & sapphire precision
@@ -3722,8 +3678,6 @@
           });
           gsap.to(ringMat1.color, { r: 0.0, g: 0.85, b: 1.0, duration: 1.0 }); // #00D9FF
           gsap.to(ringMat2.color, { r: 0.23, g: 0.51, b: 0.96, duration: 1.0 }); // #3B82F6
-          gsap.to(auraUniforms.uColor.value, { r: 0.0, g: 0.85, b: 1.0, duration: 1.0 });
-          gsap.to(auraUniforms.uIntensity, { value: 0.85, duration: 1.0 });
 
         } else if (tabId === 'tab-ai') {
           // Cognitive elevation, deep neural violet & electric cyan swirl
@@ -3740,8 +3694,6 @@
           });
           gsap.to(ringMat1.color, { r: 0.54, g: 0.36, b: 0.96, duration: 1.0 }); // #8B5CF6
           gsap.to(ringMat2.color, { r: 0.0, g: 0.94, b: 1.0, duration: 1.0 });   // #00F0FF
-          gsap.to(auraUniforms.uColor.value, { r: 0.54, g: 0.36, b: 0.96, duration: 1.0 });
-          gsap.to(auraUniforms.uIntensity, { value: 1.0, duration: 1.0 });
 
         } else if (tabId === 'tab-future') {
           // Deep cosmos horizon, cosmic sapphire & nebula purple
@@ -3758,8 +3710,6 @@
           });
           gsap.to(ringMat1.color, { r: 0.15, g: 0.39, b: 0.92, duration: 1.2 }); // #2563EB
           gsap.to(ringMat2.color, { r: 0.58, g: 0.20, b: 0.92, duration: 1.2 }); // #9333EA
-          gsap.to(auraUniforms.uColor.value, { r: 0.15, g: 0.39, b: 0.92, duration: 1.2 });
-          gsap.to(auraUniforms.uIntensity, { value: 0.75, duration: 1.2 });
         }
       };
 
@@ -3781,7 +3731,6 @@
         if (!isHeroVisible) return;
 
         const elapsedTime = clock.getElapsedTime();
-        auraUniforms.uTime.value = elapsedTime;
 
         // 3D V Logo organic breathing & gentle floating turn
         vGroup.rotation.y = Math.sin(elapsedTime * 0.8) * 0.35;
