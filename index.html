@@ -100,7 +100,7 @@
 
           "@type": "ImageObject",
 
-          "url": "https://valixis.tech/assets/valixis-logo-transparent.png?v=4",
+          "url": "https://valixis.tech/assets/valixis-logo-transparent.png?v=5",
 
           "caption": "VALIXIS Official Emblem"
 
@@ -4017,7 +4017,10 @@
     // ==========================================================================
     // 4. AWWWARDS-TIER THREE.JS + GLSL SHADER ENGINE & CHOREOGRAPHED 3D STAGE
     // ==========================================================================
-    let update3DStageForDivision = null; // Stage synchronizer hook
+        // Global Scroll & Stage State (Declared at top to prevent TDZ ReferenceError)
+    var globalScrollY = 0;
+    var targetGlobalScrollY = 0;
+    var update3DStageForDivision = null;
 
     (function initValixis3DLogo() {
       const container = document.querySelector('.hero-3d-viewport');
@@ -4061,7 +4064,7 @@
 
       // Razor-Sharp High-Res V Monolith Texture
       const textureLoader = new THREE.TextureLoader();
-      textureLoader.load('assets/valixis-logo-transparent.png?v=4', (texture) => {
+      textureLoader.load('assets/valixis-logo-transparent.png?v=5', (texture) => {
         texture.generateMipmaps = true;
         texture.minFilter = THREE.LinearMipmapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -4076,7 +4079,7 @@
           side: THREE.FrontSide,
           depthWrite: false
         });
-        const vGeo = new THREE.PlaneGeometry(5.2, 3.95);
+        const vGeo = new THREE.PlaneGeometry(5.2, 4.35);
         const vMeshFront = new THREE.Mesh(vGeo, vMatFront);
         vMeshFront.position.z = 0.04;
         vGroup.add(vMeshFront);
@@ -4394,8 +4397,7 @@
     // UPGRADE 1: LENIS LUXURY INERTIAL SMOOTH SCROLL
     // ==========================================================================
     let lenis = null;
-    let globalScrollY = 0;
-    let targetGlobalScrollY = 0;
+    // globalScrollY & targetGlobalScrollY declared globally above
 
     if (typeof Lenis !== 'undefined') {
       lenis = new Lenis({
