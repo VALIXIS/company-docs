@@ -194,6 +194,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 
 
 
@@ -2834,6 +2835,46 @@
       }
     }
 
+  
+    /* ==========================================================================
+       FEATURE 1 & 2: LENIS SMOOTH SCROLL & 3D BENTO GYRO TILT
+       ========================================================================== */
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* 3D Bento Card Perspective Physics */
+    .spotlight-card, .mv-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+      position: relative;
+    }
+
+    .spotlight-card:hover, .mv-card:hover {
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 217, 255, 0.18);
+      border-color: rgba(0, 217, 255, 0.4);
+    }
+
+    /* Disable 3D tilt on touch devices to ensure native gesture performance */
+    @media (hover: none) and (pointer: coarse) {
+      .spotlight-card, .mv-card {
+        transform: none !important;
+      }
+    }
+
   </style>
 
 </head>
@@ -4233,9 +4274,22 @@
         particles.rotation.y = elapsedTime * (0.04 * particleSpeedFactor) + mouseX * 0.12;
         particles.rotation.x = mouseY * 0.12;
 
-        // Smooth spring inertia follow
+        // Smooth spring inertia follow for mouse parallax
         masterGroup.rotation.y += (targetRotY - masterGroup.rotation.y) * 0.06;
         masterGroup.rotation.x += (targetRotX - masterGroup.rotation.x) * 0.06;
+
+        // UPGRADE 3: SCROLL-DRIVEN 3D SCROLLYTELLING INTERPOLATION
+        globalScrollY += (targetGlobalScrollY - globalScrollY) * 0.07;
+        const scrollFactor = Math.min(globalScrollY / 1200, 1.0);
+
+        // 1. Dynamic continuous orbital drift tied to scroll
+        masterGroup.position.y = -scrollFactor * 0.85;
+        // 2. Gyro rings widen subtly on scroll
+        ring1.scale.setScalar(1.0 + scrollFactor * 0.12);
+        ring2.scale.setScalar(1.0 + scrollFactor * 0.15);
+        // 3. Stardust particles expand into deeper 3D depth as user travels down the page
+        particles.position.y = -scrollFactor * 1.5;
+        particles.rotation.z = globalScrollY * 0.0003;
 
         renderer.render(scene, camera);
       }
@@ -4333,6 +4387,88 @@
           drawer.setAttribute('aria-hidden', 'true');
         }
       });
+    })();
+
+    
+    // ==========================================================================
+    // UPGRADE 1: LENIS LUXURY INERTIAL SMOOTH SCROLL
+    // ==========================================================================
+    let lenis = null;
+    let globalScrollY = 0;
+    let targetGlobalScrollY = 0;
+
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1.0,
+        smoothTouch: false, // Preserves native momentum touch responsiveness on iOS/Android
+        touchMultiplier: 2.0,
+        infinite: false
+      });
+
+      lenis.on('scroll', (e) => {
+        targetGlobalScrollY = e.scroll;
+      });
+
+      function lenisRaf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(lenisRaf);
+      }
+      requestAnimationFrame(lenisRaf);
+
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#') && href.length > 1) {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              lenis.scrollTo(target, { offset: -70, duration: 1.3 });
+            }
+          }
+        });
+      });
+    } else {
+      window.addEventListener('scroll', () => {
+        targetGlobalScrollY = window.scrollY || window.pageYOffset;
+      }, { passive: true });
+    }
+
+    // ==========================================================================
+    // UPGRADE 2: 3D BENTO CARD GYRO TILT WITH SPECULAR GLARE
+    // ==========================================================================
+    (function init3DBentoTilt() {
+      // Only enable tilt on fine pointer devices (desktop mouse/trackpad)
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const tiltCards = document.querySelectorAll('.spotlight-card, .mv-card');
+        
+        tiltCards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Subtle, high-end angular tilt (max 5.5 degrees)
+            const rotateX = ((y - centerY) / centerY) * -5.5;
+            const rotateY = ((x - centerX) / centerX) * 5.5;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.018, 1.018, 1.018)`;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+          });
+        });
+      }
     })();
 
     // 5. CLEAN URL ROUTING (Awwwards-Tier HTML5 History API)
