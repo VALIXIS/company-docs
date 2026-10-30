@@ -20,7 +20,7 @@
 
   <link rel="canonical" href="https://valixis.tech/">
 
-  <meta name="theme-color" content="#0D1117">
+  <meta name="theme-color" content="#06090E">
 
 
 
@@ -100,7 +100,7 @@
 
           "@type": "ImageObject",
 
-          "url": "https://valixis.tech/assets/valixis-logo-transparent.png",
+          "url": "https://valixis.tech/assets/valixis-logo-transparent.png?v=4",
 
           "caption": "VALIXIS Official Emblem"
 
@@ -2320,34 +2320,174 @@
 
 
 
-    /* Responsive */
+    
+
+    /* ==========================================================================
+       RESPONSIVE & FLUID MOBILE UI/UX ARCHITECTURE
+       ========================================================================== */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100vw;
+    }
 
     @media (max-width: 1024px) {
-
       .hero-split-grid { grid-template-columns: 1fr; text-align: center; }
-
       .hero-subtitle { margin-left: auto; margin-right: auto; }
-
       .hero-actions { justify-content: center; }
-
       .hero-brand-showcase { margin-top: 20px; }
-
       .product-flagship { grid-template-columns: 1fr; }
-
       .tab-content-panel.active { grid-template-columns: 1fr; }
-
       .mvv-layout { grid-template-columns: 1fr; }
-
       .values-row { grid-template-columns: repeat(2, 1fr); }
-
       .nav-links { display: none; }
+    }
 
+    @media (max-width: 768px) {
+      /* Mobile Swipeable Tab Bar with Touch Snap */
+      .explorer-nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+        padding-bottom: 14px !important;
+        margin-bottom: 24px !important;
+        gap: 10px !important;
+        scrollbar-width: none !important;
+      }
+      .explorer-nav::-webkit-scrollbar {
+        display: none !important;
+      }
+      .tab-btn {
+        flex-shrink: 0 !important;
+        scroll-snap-align: start !important;
+        white-space: nowrap !important;
+        min-height: 44px !important;
+        padding: 10px 18px !important;
+        font-size: 0.8rem !important;
+        border-radius: 24px !important;
+      }
+
+      /* Console & Terminal Mobile Overflow Protection */
+      .console-terminal {
+        overflow-x: auto !important;
+        max-width: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 16px !important;
+        border-radius: 10px !important;
+      }
+      .code-row {
+        flex-wrap: wrap !important;
+        word-break: break-word !important;
+        font-size: 0.76rem !important;
+      }
+
+      /* Touch Target Enhancements (WCAG 44px) */
+      .btn, .btn-primary, .btn-secondary, .inquiry-card {
+        min-height: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Mobile Spacing & Padding Optimization */
+      .section-container {
+        padding: 60px 18px !important;
+      }
+      .spotlight-card, .product-card, .division-card {
+        padding: 22px 18px !important;
+      }
+      
+      /* High-Contrast Readability */
+      .hero-subtitle, .product-desc, .tab-desc, p {
+        color: #CBD5E1 !important;
+      }
+      .card-subtitle, .text-muted {
+        color: #94A3B8 !important;
+      }
+
+      /* Extra Bottom Padding for Floating Action Bar */
+      body {
+        padding-bottom: 74px !important;
+      }
     }
 
     @media (max-width: 600px) {
-
       .values-row { grid-template-columns: 1fr; }
+      .hero-title {
+        font-size: clamp(2.2rem, 9vw, 3.4rem) !important;
+        line-height: 1.15 !important;
+      }
+      .hero-subtitle {
+        font-size: 1rem !important;
+        padding: 0 4px !important;
+      }
+      .hero-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+      }
+      .hero-actions .btn {
+        width: 100% !important;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+    }
 
+    /* Floating Mobile Quick Action Bar (Visible Only on Small Screens) */
+    .mobile-quick-action-bar {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-quick-action-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: rgba(6, 9, 14, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(0, 217, 255, 0.2);
+        padding: 10px 16px;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+      }
+      .mobile-action-btn-primary {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #00D9FF 0%, #3B82F6 100%);
+        color: #03060D;
+        font-weight: 800;
+        font-size: 0.85rem;
+        padding: 12px 16px;
+        border-radius: 12px;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        box-shadow: 0 4px 15px rgba(0, 217, 255, 0.35);
+      }
+      .mobile-action-btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #FFF;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 12px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        text-decoration: none;
+      }
     }
 
   
@@ -2371,6 +2511,327 @@
 
     .tab-btn {
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+  
+    /* Mobile Navigation Drawer & Hamburger Styling */
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 42px;
+      height: 42px;
+      padding: 11px 9px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 101;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+      background: rgba(0, 217, 255, 0.12);
+      border-color: var(--valixis-cyan);
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #FFF;
+      border-radius: 2px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+
+    .mobile-menu-toggle.active .line-1 {
+      transform: translateY(7px) rotate(45deg);
+      background-color: var(--valixis-cyan);
+    }
+    .mobile-menu-toggle.active .line-2 {
+      opacity: 0;
+    }
+    .mobile-menu-toggle.active .line-3 {
+      transform: translateY(-7px) rotate(-45deg);
+      background-color: var(--valixis-cyan);
+    }
+
+    .mobile-nav-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(8, 12, 19, 0.96);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+      padding: 24px 20px 32px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-drawer.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 12px 16px;
+      color: #E2E8F0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-nav-link:hover, .mobile-nav-link:active {
+      background: rgba(0, 217, 255, 0.12);
+      color: var(--valixis-cyan);
+    }
+
+    .mobile-drawer-cta {
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-drawer-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+    }
+
+    /* Enhanced Responsive Media Queries for Mobile/Tablet */
+    @media (max-width: 1024px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      .mobile-nav-drawer {
+        display: flex;
+      }
+      .nav-links {
+        display: none !important;
+      }
+      .nav-cta-btn {
+        display: none !important; /* Replaced by drawer CTA on mobile */
+      }
+      .hero-split-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+      }
+      .hero-3d-viewport {
+        height: 480px;
+        min-height: 420px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 40px 0 50px;
+        min-height: auto;
+      }
+      .hero-split-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-3d-viewport {
+        height: 360px;
+        min-height: 320px;
+        width: 100%;
+        margin: 16px 0;
+        order: 2; /* Sits naturally right below hero title and above secondary buttons */
+      }
+      .hero-content {
+        order: 1;
+        width: 100%;
+      }
+    }
+
+  
+    /* ==========================================================================
+       CONSOLIDATED FLAWLESS RESPONSIVE ARCHITECTURE
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none !important;
+      }
+      .nav-cta-btn {
+        display: none !important;
+      }
+      .mobile-menu-toggle {
+        display: flex !important;
+      }
+      .hero-split-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 20px;
+      }
+      .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero-3d-viewport {
+        height: 440px !important;
+        min-height: 380px !important;
+        width: 100% !important;
+      }
+      .product-flagship {
+        grid-template-columns: 1fr !important;
+      }
+      .tab-content-panel.active {
+        grid-template-columns: 1fr !important;
+      }
+      .mvv-layout {
+        grid-template-columns: 1fr !important;
+      }
+      .values-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px !important;
+      }
+      .nav-wrapper {
+        gap: 12px !important;
+      }
+      .brand-lockup-img {
+        height: 30px !important;
+      }
+      .hero {
+        padding: 24px 0 40px !important;
+        min-height: auto !important;
+      }
+      .hero-badge {
+        font-size: 0.72rem !important;
+        padding: 6px 14px !important;
+        margin-bottom: 16px !important;
+      }
+      .hero-title {
+        font-size: clamp(1.85rem, 7.5vw, 2.45rem) !important;
+        line-height: 1.14 !important;
+        margin-bottom: 14px !important;
+      }
+      .hero-subtitle {
+        font-size: 0.92rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 18px !important;
+      }
+      .hero-actions {
+        flex-direction: row !important;
+        width: 100% !important;
+        gap: 8px !important;
+      }
+      .hero-actions .btn-primary-gradient,
+      .hero-actions .btn-outline-glass {
+        flex: 1 !important;
+        width: auto !important;
+        justify-content: center !important;
+        padding: 10px 12px !important;
+        font-size: 0.82rem !important;
+        min-height: 42px !important;
+      }
+      .hero-3d-viewport {
+        height: 320px !important;
+        min-height: 280px !important;
+        margin: 8px 0 !important;
+      }
+    }
+
+  
+    /* Strict Ambient Canvas Clipping (Zero Horizontal Scrollbar / Overflow) */
+    .ambient-background-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    html, body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      width: 100%;
+      overflow: visible;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    @media (max-width: 1024px) {
+      .brand-header {
+        max-width: calc(100% - 64px);
+      }
+      .brand-lockup-img {
+        max-width: 100%;
+        height: 28px !important;
+        object-fit: contain;
+      }
+      .mobile-menu-toggle {
+        display: flex !important;
+      }
+      .nav-links {
+        display: none !important;
+      }
+      .nav-cta-btn {
+        display: none !important;
+      }
     }
 
   </style>
@@ -2433,16 +2894,37 @@
 
 
 
-      <a href="#contact" class="nav-cta-btn">
+            <div class="nav-right-group">
+        <a href="#contact" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
 
-        <span>Get in Touch</span>
-
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-
-      </a>
-
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
     </div>
 
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="#divisions" class="mobile-nav-link">Divisions</a></li>
+        <li><a href="#products" class="mobile-nav-link">Ecosystem</a></li>
+        <li><a href="#mission" class="mobile-nav-link">Mission &amp; Values</a></li>
+        <li><a href="#leadership" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Inquiries</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="#contact" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
   </header>
 
 
@@ -3538,7 +4020,7 @@
 
       // Razor-Sharp High-Res V Monolith Texture
       const textureLoader = new THREE.TextureLoader();
-      textureLoader.load('assets/valixis-logo-transparent.png?v=2', (texture) => {
+      textureLoader.load('assets/valixis-logo-transparent.png?v=4', (texture) => {
         texture.generateMipmaps = true;
         texture.minFilter = THREE.LinearMipmapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -3549,6 +4031,7 @@
         const vMatFront = new THREE.MeshBasicMaterial({
           map: texture,
           transparent: true,
+          alphaTest: 0.05,
           side: THREE.FrontSide,
           depthWrite: false
         });
@@ -3560,6 +4043,7 @@
         const vMatBack = new THREE.MeshBasicMaterial({
           map: texture,
           transparent: true,
+          alphaTest: 0.05,
           side: THREE.FrontSide,
           depthWrite: false
         });
@@ -3803,7 +4287,55 @@
       }
     });
 
-// 5. CLEAN URL ROUTING (Awwwards-Tier HTML5 History API)
+
+    // Mobile Navigation Drawer Controller
+    (function initMobileNav() {
+      const toggle = document.getElementById('mobileMenuToggle');
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (!toggle || !drawer) return;
+
+      function toggleMenu() {
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+          drawer.classList.remove('open');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        } else {
+          drawer.classList.add('open');
+          toggle.classList.add('active');
+          toggle.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+        }
+      }
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Close on clicking any mobile nav link
+      drawer.querySelectorAll('.mobile-nav-link, .mobile-drawer-btn').forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!drawer.contains(e.target) && !toggle.contains(e.target) && drawer.classList.contains('open')) {
+          drawer.classList.remove('open');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+
+    // 5. CLEAN URL ROUTING (Awwwards-Tier HTML5 History API)
 
     // Updates browser address bar cleanly to /leadership, /divisions, /products, etc. without '#'
 
