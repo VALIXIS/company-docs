@@ -1,0 +1,21 @@
+{
+  "name": "Rose Cafe Guntur",
+  "short_name": "Rose Cafe",
+  "description": "Guntur's 5th-floor floral rooftop restaurant — velvet cabanas, rose arch & authentic biryanis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8FA",
+  "theme_color": "#E03E6C",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/real-photos/rose_real_23.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "restaurant"],
+  "lang": "en-IN",
+  "dir": "ltr"
+}
