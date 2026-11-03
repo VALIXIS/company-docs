@@ -531,6 +531,25 @@
         scroll-behavior: auto !important;
       }
     }
+  
+    .avatar-initials {
+      width: 100%;
+      height: 100%;
+      background: #0A0E14;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--valixis-cyan);
+      letter-spacing: 0.05em;
+    }
+    .avatar-initials.jyothsna {
+      color: var(--valixis-magenta);
+    }
+
   </style>
 </head>
 <body>
@@ -588,9 +607,7 @@
       <div class="exec-grid">
         <!-- Subhash Annam (CEO) -->
         <article class="exec-card">
-          <div class="avatar-wrapper">
-            <img src="../assets/subhash-annam.jpg" alt="Subhash Annam — Founder &amp; CEO of VALIXIS" class="avatar-img" width="130" height="130">
-          </div>
+          <div class="avatar-wrapper"><div class="avatar-initials" aria-label="Subhash Annam Initials">SA</div></div>
           <h2 class="exec-name">Subhash Annam</h2>
           <div class="exec-role">Founder &amp; Chief Executive Officer (CEO)</div>
           <p class="exec-bio">
@@ -614,9 +631,7 @@
 
         <!-- Jyothsna Sri (CCO) -->
         <article class="exec-card jyothsna">
-          <div class="avatar-wrapper jyothsna">
-            <img src="../assets/jyothsna-sri.jpg" alt="Jyothsna Sri — Co-Founder &amp; CCO of VALIXIS" class="avatar-img" width="130" height="130">
-          </div>
+          <div class="avatar-wrapper jyothsna"><div class="avatar-initials jyothsna" aria-label="Jyothsna Sri Initials">JS</div></div>
           <h2 class="exec-name">Jyothsna Sri</h2>
           <div class="exec-role">Co-Founder &amp; Chief Commercial Officer (CCO)</div>
           <p class="exec-bio">
