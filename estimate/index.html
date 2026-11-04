@@ -352,6 +352,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css">
 </head>
 <body>
 
@@ -369,7 +370,7 @@
           <li><a href="../services/" class="nav-link">Services</a></li>
           <li><a href="../work/" class="nav-link">Work</a></li>
           <li><a href="../estimate/" class="nav-link active">Estimate</a></li>
-          <li><a href="../client-sites/" class="nav-link">Showcase</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../projects/" class="nav-link">Projects</a></li>
           <li><a href="../contact/" class="nav-link">Contact</a></li>
@@ -423,7 +424,7 @@
       </div>
 
       <!-- Wizard Box -->
-      <div class="wizard-box">
+      <div class="spotlight-card wizard-box">
         
         <!-- STEP 1: PROJECT TYPE -->
         <div class="step-pane active" id="step1">
@@ -434,35 +435,35 @@
           </div>
 
           <div class="opt-grid" id="typeGrid">
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'AI Agent / Automation', 3)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'AI Agent / Automation', 3)">
               <div class="opt-card-title">AI Agent / Automation</div>
               <p class="opt-card-desc">Autonomous multi-agent pipelines, cognitive document intelligence, or RAG search.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Mobile Application', 3)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Mobile Application', 3)">
               <div class="opt-card-title">Mobile Application</div>
               <p class="opt-card-desc">Cross-platform iOS and Android mobile app built with Flutter or native protocols.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Web Application', 2)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Web Application', 2)">
               <div class="opt-card-title">Web Application</div>
               <p class="opt-card-desc">Interactive SaaS platform, customer portal, or dynamic full-stack dashboard.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Business Website', 1)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Business Website', 1)">
               <div class="opt-card-title">Business Website</div>
               <p class="opt-card-desc">High-converting commercial storefront, restaurant direct ordering, or clinic booking.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Enterprise Platform', 4)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Enterprise Platform', 4)">
               <div class="opt-card-title">Enterprise Platform</div>
               <p class="opt-card-desc">Multi-tenant backend, complex role-based access control, and telemetry pipelines.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, '3D Interactive Experience', 3)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, '3D Interactive Experience', 3)">
               <div class="opt-card-title">3D Interactive Experience</div>
               <p class="opt-card-desc">Hardware-accelerated browser 3D, spatial product configurator, or virtual tour.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Gaming Project', 4)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Gaming Project', 4)">
               <div class="opt-card-title">Gaming Project</div>
               <p class="opt-card-desc">Custom interactive game prototype, WebGL canvas mechanics, or physics engine.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectType(this, 'Custom Project', 2)">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectType(this, 'Custom Project', 2)">
               <div class="opt-card-title">Custom Project</div>
               <p class="opt-card-desc">Bespoke system architecture or hybrid multi-platform engineering challenge.</p>
             </div>
@@ -483,51 +484,51 @@
           </div>
 
           <div class="opt-grid" id="reqGrid">
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Authentication & Access Control')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Authentication & Access Control')">
               <div class="opt-card-title">Authentication</div>
               <p class="opt-card-desc">Secure JWT, OAuth, social login, or multi-tenant user access roles.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Admin Dashboard')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Admin Dashboard')">
               <div class="opt-card-title">Admin Dashboard</div>
               <p class="opt-card-desc">Centralized control center for managing orders, users, metrics, and content.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Payment Gateway & Checkout')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Payment Gateway & Checkout')">
               <div class="opt-card-title">Payment Gateway</div>
               <p class="opt-card-desc">Direct checkout flow supporting UPI, credit cards, or international Stripe.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'AI Integration & LLMs')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'AI Integration & LLMs')">
               <div class="opt-card-title">AI Integration</div>
               <p class="opt-card-desc">LLM agents, vector embeddings, local model inference, or vision analysis.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Third-Party APIs & Webhooks')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Third-Party APIs & Webhooks')">
               <div class="opt-card-title">Third-Party APIs</div>
               <p class="opt-card-desc">Integration with external CRMs, ERPs, shipping, or custom data feeds.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Real-Time Data & WebSockets')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Real-Time Data & WebSockets')">
               <div class="opt-card-title">Real-Time Data</div>
               <p class="opt-card-desc">Live status updates, telemetry feeds, instant messaging, or WebSockets.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Database Architecture (PostgreSQL/RLS)')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Database Architecture (PostgreSQL/RLS)')">
               <div class="opt-card-title">Database Architecture</div>
               <p class="opt-card-desc">Relational PostgreSQL schema with Row Level Security and indexing.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Cloud Infrastructure & CDN')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Cloud Infrastructure & CDN')">
               <div class="opt-card-title">Cloud Infrastructure</div>
               <p class="opt-card-desc">High-speed global edge caching, SSL, Docker containers, and CI/CD pipelines.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Automated Notifications')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Automated Notifications')">
               <div class="opt-card-title">Notifications</div>
               <p class="opt-card-desc">Automated alerts via WhatsApp Business, Telegram, SMS, or transactional email.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Custom CMS & Content Editor')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Custom CMS & Content Editor')">
               <div class="opt-card-title">Custom CMS</div>
               <p class="opt-card-desc">Intuitive portal for non-technical team members to edit menus, blogs, or items.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Telemetry & Analytics')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Telemetry & Analytics')">
               <div class="opt-card-title">Analytics</div>
               <p class="opt-card-desc">Privacy-first conversion tracking, error telemetry, and performance monitors.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="toggleReq(this, 'Security & Encryption')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="toggleReq(this, 'Security & Encryption')">
               <div class="opt-card-title">Security &amp; Hardening</div>
               <p class="opt-card-desc">OWASP compliance, input sanitization, CSRF mitigation, and secret auditing.</p>
             </div>
@@ -548,27 +549,27 @@
           </div>
 
           <div class="opt-grid" id="timeGrid">
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, 'Urgent / 2 Weeks', 'Fast-Track Rapid Sprint')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, 'Urgent / 2 Weeks', 'Fast-Track Rapid Sprint')">
               <div class="opt-card-title">Urgent / 2 Weeks</div>
               <p class="opt-card-desc">Fast-track rapid sprint delivering a core functional module or pilot MVP.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, 'Approximately 1 Month', 'Standard Milestone Sprint')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, 'Approximately 1 Month', 'Standard Milestone Sprint')">
               <div class="opt-card-title">Approximately 1 Month</div>
               <p class="opt-card-desc">Balanced cadence for a complete responsive web application or portal.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, '2–3 Months', 'Multi-Phase Architectural Build')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, '2–3 Months', 'Multi-Phase Architectural Build')">
               <div class="opt-card-title">2–3 Months</div>
               <p class="opt-card-desc">Comprehensive mobile app or multi-system enterprise integration.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, 'Long-Term Development', 'Phased Product Roadmap')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, 'Long-Term Development', 'Phased Product Roadmap')">
               <div class="opt-card-title">Long-Term Development</div>
               <p class="opt-card-desc">Multi-quarter technical roadmap with iterative production releases.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, 'Ongoing Engineering Partnership', 'Dedicated Dev Pod Retainer')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, 'Ongoing Engineering Partnership', 'Dedicated Dev Pod Retainer')">
               <div class="opt-card-title">Ongoing Partnership</div>
               <p class="opt-card-desc">Retained full-stack engineering pod managing continuous deployments.</p>
             </div>
-            <div class="opt-card" tabindex="0" onclick="selectTimeline(this, 'Not Sure Yet', 'Exploratory Technical Discovery')">
+            <div class="spotlight-card opt-card" tabindex="0" onclick="selectTimeline(this, 'Not Sure Yet', 'Exploratory Technical Discovery')">
               <div class="opt-card-title">Not Sure Yet</div>
               <p class="opt-card-desc">Require initial architectural consultation to define scope and milestones.</p>
             </div>
@@ -588,7 +589,7 @@
             <p class="step-subtext">Review your generated project scope profile below. You can copy the brief or send it directly for a rapid quotation.</p>
           </div>
 
-          <div class="result-summary-card">
+          <div class="spotlight-card result-summary-card">
             <div class="result-row">
               <span class="res-label">Selected Project Type:</span>
               <span class="res-val" id="resType">AI Agent / Automation</span>
@@ -616,8 +617,9 @@
             </p>
           </div>
 
-          <div class="pricing-note">
-            <strong>Transparent Commercial Notice:</strong> Indicative estimates align with VALIXIS Services Charter tiers (Founder Pilots from ₹18,000; Monthly Engineering Pods from ₹60,000/mo). Exact pricing and milestones are confirmed upon technical requirements review. No guaranteed pricing without finalized specification.
+          <div class="pricing-note" style="border-left: 3px solid var(--valixis-cyan); background: rgba(0, 217, 255, 0.05); padding: 18px 20px; border-radius: 8px; margin: 24px 0; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
+            <strong style="color: var(--valixis-cyan); display: block; margin-bottom: 6px; font-family: var(--font-mono); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.08em;">Official Non-Binding Scoping Notice</strong>
+            All estimates, complexity indexes, sprint schedules, and architectural recommendations generated by this calculator are illustrative scoping models intended for preliminary technical discovery. They do not constitute a binding legal contract, formal quotation, or fixed-price commitment. Final architecture specifications, milestone deliverables, and commercials are formalized exclusively upon technical requirements review and bilateral agreement.
           </div>
 
           <div class="actions-grid">
@@ -864,5 +866,7 @@ Generated via: https://valixis.tech/estimate/`;
     });
   </script>
 
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../assets/js/valixis-core.js"></script>
 </body>
 </html>

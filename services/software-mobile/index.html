@@ -271,6 +271,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="../../assets/css/valixis-theme.css">
 </head>
 <body>
 
@@ -288,10 +289,9 @@
           <li><a href="../../services/" class="nav-link active">Services</a></li>
           <li><a href="../../work/" class="nav-link">Work</a></li>
           <li><a href="../../estimate/" class="nav-link">Estimate</a></li>
-          <li><a href="../../client-sites/" class="nav-link">Showcase</a></li>
+          <li><a href="../../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../../projects/" class="nav-link">Projects</a></li>
-          <li><a href="../../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -470,26 +470,22 @@
       <section class="content-section">
         <div class="section-title-wrap">
           <span class="section-eyebrow">Track Record</span>
-          <h2 class="section-heading">Proprietary Platforms &amp; Client Deployments</h2>
+          <h2 class="section-heading">Proprietary Mobile & Software Architectures</h2></div><div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div class="spotlight-card service-box" style="border-top: 2px solid #00D9FF;">
+          <div class="p-status" style="color: #00D9FF; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Mobile Engine</div>
+          <h4 class="box-title">Fitora Mobile Core Engine</h4>
+          <p class="box-desc">Offline-first Flutter biometric tracking application featuring high-frequency sensor ingestion and local SQLite cryptographic caching.</p>
         </div>
-        <div class="grid-3">
-          
-        <div class="service-box" style="border-top: 2px solid #3B82F6;">
-          <div class="p-status" style="color: #3B82F6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">In Development</div>
-          <h4 class="box-title">Fitora Consumer Mobile Platform</h4>
-          <p class="box-desc">Cross-platform consumer AI application combining computer vision routines with adaptive physical conditioning.</p>
+        <div class="spotlight-card service-box" style="border-top: 2px solid #7C3AED;">
+          <div class="p-status" style="color: #7C3AED; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Telemetry Platform</div>
+          <h4 class="box-title">VALIXIS PULSE Fleet Telemetry</h4>
+          <p class="box-desc">High-concurrency mobile and server fleet observability system streaming live heartbeats and resource allocations over WebSockets.</p>
         </div>
-        <div class="service-box" style="border-top: 2px solid #3B82F6;">
-          <div class="p-status" style="color: #3B82F6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">In Development</div>
-          <h4 class="box-title">VALIXIS Pulse</h4>
-          <p class="box-desc">Lightweight telemetry and distributed node monitoring platform designed for real-time uptime verification.</p>
-        </div>
-        <div class="service-box" style="border-top: 2px solid #3B82F6;">
-          <div class="p-status" style="color: #3B82F6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Launched Platform</div>
-          <h4 class="box-title">VALIXIS Portal Backbone</h4>
-          <p class="box-desc">Internal operations engine managing developer workflows, code deployment synchronizations, and permissions.</p>
-        </div>
-        </div>
+        <div class="spotlight-card service-box" style="border-top: 2px solid #FF2ED6;">
+          <div class="p-status" style="color: #FF2ED6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Framework Standard</div>
+          <h4 class="box-title">Layered Cross-Platform Architecture</h4>
+          <p class="box-desc">Production pattern strictly isolating presentation UI, reactive BLoC/Notifier logic, and repository abstractions for 120 FPS performance.</p>
+        </div></div>
       </section>
 
       <!-- Consultation CTA -->
@@ -520,5 +516,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../../assets/js/valixis-core.js"></script>
 </body>
 </html>

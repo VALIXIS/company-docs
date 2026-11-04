@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Featured Work &amp; Interactive Client Showcases | VALIXIS</title>
-  <meta name="description" content="Explore live interactive client web applications, demonstration platforms, and spatial dining systems engineered by VALIXIS.">
+  <title>Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS</title>
+  <meta name="description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
   <link rel="canonical" href="https://valixis.tech/work/">
   <meta name="robots" content="index, follow">
   
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="VALIXIS">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Featured Work &amp; Interactive Client Showcases | VALIXIS">
-  <meta property="og:description" content="Explore live interactive client web applications, demonstration platforms, and spatial dining systems engineered by VALIXIS.">
+  <meta property="og:title" content="Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS">
+  <meta property="og:description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
   <meta property="og:url" content="https://valixis.tech/work/">
   <meta property="og:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
   <meta property="og:image:width" content="1024">
@@ -20,11 +20,11 @@
   <meta property="og:image:alt" content="VALIXIS Official Emblem">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Featured Work &amp; Interactive Client Showcases | VALIXIS">
-  <meta name="twitter:description" content="Explore live interactive client web applications, demonstration platforms, and spatial dining systems engineered by VALIXIS.">
+  <meta name="twitter:title" content="Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS">
+  <meta name="twitter:description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
   <meta name="twitter:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
 
-    <!-- Favicon Suite & Search Engine Identity Icons -->
+  <!-- Favicon Suite & Search Engine Identity Icons -->
   <link rel="shortcut icon" href="https://valixis.tech/favicon.ico?v=20261104">
   <link rel="icon" type="image/x-icon" href="https://valixis.tech/favicon.ico?v=20261104">
   <link rel="icon" type="image/png" sizes="48x48" href="https://valixis.tech/assets/favicon-48x48.png?v=20261104">
@@ -34,9 +34,12 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://valixis.tech/assets/apple-touch-icon.png?v=20261104">
   <link rel="icon" type="image/png" sizes="192x192" href="https://valixis.tech/assets/android-chrome-192x192.png?v=20261104">
   <link rel="icon" type="image/png" sizes="512x512" href="https://valixis.tech/assets/android-chrome-512x512.png?v=20261104">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Fonts & Shared Core Theme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css">
 
   <script type="application/ld+json">
 {
@@ -46,8 +49,8 @@
       "@type": "CollectionPage",
       "@id": "https://valixis.tech/work/#webpage",
       "url": "https://valixis.tech/work/",
-      "name": "Featured Work & Interactive Client Showcases | VALIXIS",
-      "description": "Explore production-grade client web platforms, interactive demonstration applications, and spatial dining experiences engineered by VALIXIS.",
+      "name": "Technical Architecture Blueprints & Systems Engineering | VALIXIS",
+      "description": "Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.",
       "isPartOf": {
         "@type": "WebSite",
         "@id": "https://valixis.tech/#website",
@@ -77,7 +80,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Featured Work",
+          "name": "Technical Work",
           "item": "https://valixis.tech/work/"
         }
       ]
@@ -87,202 +90,126 @@
   </script>
 
   <style>
-    :root {
-      --valixis-cyan: #00D9FF;
-      --valixis-blue: #3B82F6;
-      --valixis-purple: #7C3AED;
-      --valixis-magenta: #FF2ED6;
-      --bg-dark: #0D1117;
-      --bg-darker: #06090E;
-      --bg-card: rgba(20, 26, 36, 0.85);
-      --bg-card-hover: rgba(28, 36, 50, 0.95);
-      --border-color: rgba(255, 255, 255, 0.1);
-      --text-main: #F1F5F9;
-      --text-muted: #94A3B8;
-      --font-display: 'Orbitron', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .bp-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .bp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+    .bp-domain {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .bp-metric {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+    .bp-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: #FFF;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .bp-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+    .bp-spec-box {
+      background: rgba(6, 9, 14, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 22px;
+    }
+    .bp-spec-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .bp-spec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.86rem;
+      color: #E2E8F0;
+    }
+    .bp-spec-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bp-spec-list li::before {
+      content: '▹';
+      color: var(--valixis-cyan);
+      font-size: 0.75rem;
+    }
+    .bp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .bp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 4px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg-darker); color: var(--text-main); font-family: var(--font-body); }
-    body { min-height: 100vh; overflow-x: hidden; position: relative; line-height: 1.6; }
-
-    .ambient-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 12%, rgba(0, 217, 255, 0.10) 0%, transparent 60%),
-                  radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-                  #06090E;
-      z-index: -1; pointer-events: none;
+    /* Philosophy Banner */
+    .creed-banner {
+      margin-top: 70px;
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.9), rgba(13, 17, 23, 0.95));
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .creed-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--brand-gradient);
     }
 
-    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-
-    .navbar {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(6, 9, 14, 0.82); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color); padding: 16px 0;
-    }
-    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; }
-    .brand-header { display: flex; align-items: center; text-decoration: none; }
-    .brand-lockup-img { height: 32px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
-    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: var(--transition-smooth); }
-    .nav-link:hover, .nav-link.active { color: var(--valixis-cyan); }
-
-    .btn-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-      color: #FFF; background: linear-gradient(135deg, #00D9FF 0%, #3B82F6 100%);
-      border: 1px solid rgba(255, 255, 255, 0.2); text-decoration: none;
-      box-shadow: 0 4px 14px rgba(0, 217, 255, 0.35); transition: var(--transition-smooth);
-    }
-    .btn-cta:hover { transform: translateY(-2px); filter: brightness(1.15); }
-
-    /* Breadcrumbs */
-    .breadcrumbs { padding: 20px 0 0 0; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
-    .breadcrumbs a { color: var(--text-muted); text-decoration: none; }
-    .breadcrumbs a:hover { color: var(--valixis-cyan); }
-    .breadcrumbs span { margin: 0 6px; }
-
-    /* Header */
-    .work-hero { padding: 48px 0 36px; text-align: center; border-bottom: 1px solid var(--border-color); }
-    .work-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 14px; border-radius: 999px;
-      background: rgba(0, 217, 255, 0.08); border: 1px solid rgba(0, 217, 255, 0.4);
-      color: var(--valixis-cyan); font-family: var(--font-mono); font-size: 0.78rem;
-      font-weight: 600; text-transform: uppercase; margin-bottom: 16px;
-    }
-    .work-heading {
-      font-family: var(--font-display); font-size: 2.6rem; font-weight: 800;
-      color: #FFF; margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.2;
-    }
-    .work-lead { font-size: 1.1rem; color: var(--text-muted); max-width: 820px; margin: 0 auto; line-height: 1.6; }
-
-    /* Transparency Disclaimer Notice */
-    .classification-banner {
-      background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px; padding: 14px 20px; margin: 28px 0 10px; font-size: 0.82rem; color: var(--text-muted);
-      display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap;
-    }
-    .class-item { display: inline-flex; align-items: center; gap: 6px; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-
-    /* Work Grid */
-    .work-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px; padding: 40px 0 60px;
-    }
-
-    .work-card {
-      background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
-      transition: var(--transition-smooth);
-    }
-    .work-card:hover { background: var(--bg-card-hover); transform: translateY(-4px); box-shadow: 0 14px 35px rgba(0,0,0,0.5); }
-
-    .card-img-wrap { position: relative; width: 100%; height: 180px; overflow: hidden; background: #0A0E17; }
-    .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .work-card:hover .card-img { transform: scale(1.04); }
-    .card-img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(20, 26, 36, 0.95) 100%); }
-
-    .card-body { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
-
-    .card-top-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-    .classification-badge {
-      display: inline-block; padding: 3px 9px; border-radius: 6px; border: 1px solid;
-      font-family: var(--font-mono); font-size: 0.70rem; font-weight: 600; text-transform: uppercase;
-    }
-    .industry-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
-
-    .work-title { font-family: var(--font-display); font-size: 1.35rem; color: #FFF; margin-bottom: 4px; }
-    .work-location { font-family: var(--font-mono); font-size: 0.76rem; color: #64748B; margin-bottom: 8px; }
-    .work-tagline { font-size: 0.88rem; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
-    .work-desc { font-size: 0.90rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 18px; flex-grow: 1; }
-
-    .tech-stack-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
-    .p-tech-tag {
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 4px 10px; border-radius: 5px; font-family: var(--font-mono); font-size: 0.74rem; color: #CBD5E1;
-    }
-
-    .card-action-hub { display: flex; gap: 10px; align-items: center; margin-top: auto; flex-wrap: wrap; }
-    .btn-demo {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 16px; border-radius: 8px; font-size: 0.84rem; font-weight: 700;
-      border: none; cursor: pointer; text-decoration: none; transition: var(--transition-smooth);
-    }
-    .btn-demo:hover { filter: brightness(1.15); transform: translateY(-1px); }
-
-    .btn-subtle {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 9px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
-      color: var(--text-main); background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color); text-decoration: none; transition: var(--transition-smooth);
-    }
-    .btn-subtle:hover { border-color: var(--valixis-cyan); color: var(--valixis-cyan); }
-
-    .btn-icon {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px; border-radius: 8px;
-      color: var(--text-muted); background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color); text-decoration: none; transition: var(--transition-smooth);
-    }
-    .btn-icon:hover { color: #FFF; border-color: rgba(255,255,255,0.3); }
-
-    /* Interactive Safe Demo Modal */
-    .modal-backdrop {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(6, 9, 14, 0.85); backdrop-filter: blur(12px);
-      align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-backdrop.active { display: flex; }
-
-    .modal-window {
-      background: #0D1117; border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 16px; width: 100%; max-width: 1040px; height: 88vh;
-      display: flex; flex-direction: column; overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
-    }
-
-    .modal-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 20px; border-bottom: 1px solid var(--border-color); background: rgba(6, 9, 14, 0.95);
-    }
-    .modal-title-group { display: flex; align-items: center; gap: 12px; }
-    .modal-title { font-family: var(--font-display); font-size: 1.05rem; color: #FFF; }
-    
-    .modal-controls { display: flex; align-items: center; gap: 10px; }
-    .device-btn {
-      padding: 5px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.74rem;
-      background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-muted);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .device-btn.active, .device-btn:hover { color: #FFF; border-color: var(--valixis-cyan); }
-
-    .modal-frame-container { flex: 1; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
-    .demo-iframe { width: 100%; height: 100%; border: none; transition: width 0.3s ease; }
-    .demo-iframe.mobile-view { width: 390px; height: 100%; box-shadow: 0 0 40px rgba(0,217,255,0.2); border-left: 1px solid #222; border-right: 1px solid #222; }
-
-    .close-modal-btn {
-      background: none; border: none; color: var(--text-muted); font-size: 1.4rem;
-      cursor: pointer; padding: 4px 8px; line-height: 1; transition: color 0.2s;
-    }
-    .close-modal-btn:hover { color: #FFF; }
-
-    /* Footer */
-    .footer { padding: 32px 0; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.84rem; color: var(--text-muted); }
-    .footer a { color: var(--text-muted); text-decoration: none; }
-    .footer a:hover { color: var(--valixis-cyan); }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .work-heading { font-size: 1.9rem; }
-      .work-grid { grid-template-columns: 1fr; }
-      .modal-window { height: 95vh; padding: 0; }
-      .device-btn { display: none; }
+    @media (max-width: 900px) {
+      .blueprint-grid { grid-template-columns: 1fr; }
+      .creed-banner { padding: 36px 24px; }
     }
   
     /* WCAG 2.1 AA Accessibility & Keyboard Navigation */
@@ -298,17 +225,23 @@
         scroll-behavior: auto !important;
       }
     }
+
   </style>
 </head>
 <body>
 
-  <div class="ambient-bg"></div>
+  <div class="aurora-bg"></div>
 
+  <!-- Universal Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
-      <a href="../" class="brand-header" title="VALIXIS &mdash; Return to Homepage">
-        <img src="../assets/valixis-horizontal-lockup.png?v=5" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+      <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
       </a>
+
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
@@ -316,329 +249,218 @@
           <li><a href="../services/" class="nav-link">Services</a></li>
           <li><a href="../work/" class="nav-link active">Work</a></li>
           <li><a href="../estimate/" class="nav-link">Estimate</a></li>
-          <li><a href="../client-sites/" class="nav-link">Showcase</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../projects/" class="nav-link">Projects</a></li>
-          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="../contact/" class="btn-cta">
-        <span>Commission a Project</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      <a href="../contact/" class="nav-cta-btn">
+        <span>Get in Touch</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     </div>
   </header>
 
-  <main>
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span>/</span>
+      <span style="color: var(--text-main);">Technical Work</span>
+    </nav>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
     <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="../">Home</a> <span>/</span> <span style="color:#FFF;">Featured Work</span>
-      </nav>
+      <div class="section-eyebrow">Engineering Blueprints &bull; Systems Architecture</div>
+      <h1 class="page-hero-title">Technical <span class="gradient-text">Work &amp; Blueprints</span></h1>
+      <p class="page-hero-subtitle">
+        Architectural breakdowns, engineering achievements, and technical blueprints engineered across autonomous AI agent daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.
+      </p>
+    </div>
+  </section>
 
-      <section class="work-hero">
-        <div class="work-badge">Production Portfolios &amp; Interactive Demos</div>
-        <h1 class="work-heading">Client Showcases &amp; Interactive Systems</h1>
-        <p class="work-lead">
-          Explore functional client web applications, commercial direct ordering engines, and spatial dining environments engineered by VALIXIS. Every demo is live, interactive, and mobile-ready.
-        </p>
+  <!-- Blueprints Grid -->
+  <main class="container" style="padding-bottom: 80px;">
+    <div class="blueprint-grid">
 
-        <div class="classification-banner">
-          <div class="class-item"><span class="dot" style="background:#10B981;"></span> <strong>Demonstration Project:</strong> Functional client system built for local venue operations.</div>
-          <div class="class-item"><span class="dot" style="background:#F59E0B;"></span> <strong>Interactive Concept:</strong> Themed experiential dining and 3D spatial prototype.</div>
-          <div class="class-item"><span class="dot" style="background:#64748B;"></span> <strong>Concept Showcase:</strong> Architectural benchmark demonstrating specialty workflows.</div>
+      <!-- 1. 3D WebGL Engine -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">Interactive Computing</span>
+          <span class="bp-metric">60 FPS Locked &bull; Zero Alpha Bleed</span>
         </div>
-      </section>
+        <h2 class="bp-title">VALIXIS 3D Gyroscopic WebGL Engine</h2>
+        <p class="bp-desc">
+          High-performance interactive WebGL hero engine orchestrating multi-axis gimbal ring physics, particle field vortexes, and dynamic quaternion rotations without ambient box artifacts or GPU thermal throttling.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Additive luminous blending eliminating background rectangle artifacts.</li>
+            <li>Euler-to-Quaternion rotation interpolation for gimbal-lock prevention.</li>
+            <li>Automated requestAnimationFrame freezing on browser tab visibility loss.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Three.js r128</span>
+          <span class="bp-tag">GLSL Shaders</span>
+          <span class="bp-tag">Canvas WebGL</span>
+          <span class="bp-tag">RAF Throttling</span>
+        </div>
+      </article>
 
-      <!-- Work Matrix -->
-      <section class="work-grid">
-        
-        <article class="work-card" data-category="Demonstration Project" style="border-top: 3px solid #E03E6C;">
-          
-          <div class="card-img-wrap">
-            <img src="../client-sites/rose-cafe/assets/gallery/aesthetic_restaurant.jpg" alt="Rose Cafe" loading="lazy" class="card-img" width="1200" height="800">
-            <div class="card-img-overlay"></div>
-          </div>
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #10B981; border-color: #10B981; background: rgba(255,255,255,0.03);">
-                Demonstration Project
-              </span>
-              <span class="industry-tag">Specialty Floral Cafe & Dining</span>
-            </div>
+      <!-- 2. VALIXIS FLOW -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">Autonomous Intelligence</span>
+          <span class="bp-metric">Sub-Second Queue Dispatch</span>
+        </div>
+        <h2 class="bp-title">VALIXIS FLOW: Autonomous Task Daemons</h2>
+        <p class="bp-desc">
+          Event-driven background orchestration engine powering sovereign AI daemons. Decomposes high-level engineering directives into structured tool-calling DAGs with isolated sandboxing and deterministic state rollback.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Reactive asynchronous event loops with priority-based concurrency controls.</li>
+            <li>Strict JSON Schema tool definition and validated output extraction.</li>
+            <li>Cryptographically protected session contexts with zero credential leaks.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Python AsyncIO</span>
+          <span class="bp-tag">Structured Function Calling</span>
+          <span class="bp-tag">Agent Daemons</span>
+          <span class="bp-tag">Task DAGs</span>
+        </div>
+      </article>
 
-            <h2 class="work-title">Rose Cafe</h2>
-            <div class="work-location">&bull; Arundelpet, Guntur, AP</div>
-            <p class="work-tagline" style="color: #E03E6C;">5th Floor Indoor Floral Sanctuary & Multi-Cuisine Dining</p>
-            <p class="work-desc">A bespoke mobile-first direct ordering web app engineered to bypass third-party food delivery commissions (22%-28%). Features categorized menu modifiers (milk, roast, size), 1-click UPI direct checkout, and automated WhatsApp Barista KDS dispatch.</p>
+      <!-- 3. VALIXIS PULSE -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">System Observability</span>
+          <span class="bp-metric">&lt; 50ms Real-Time Heartbeat</span>
+        </div>
+        <h2 class="bp-title">VALIXIS PULSE: Distributed Telemetry</h2>
+        <p class="bp-desc">
+          High-throughput distributed observability pipeline streaming live health heartbeats, memory allocations, and worker execution telemetry across multi-region services via duplex WebSocket streams.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Duplex persistent WebSocket streams with automated exponential backoff.</li>
+            <li>Row-Level Security (RLS) data isolation enforced at the PostgreSQL layer.</li>
+            <li>Time-series compression reducing wire overhead by over 70%.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">WebSockets</span>
+          <span class="bp-tag">PostgreSQL RLS</span>
+          <span class="bp-tag">Time-Series Telemetry</span>
+          <span class="bp-tag">Fleet Monitoring</span>
+        </div>
+      </article>
 
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">Mobile-First HTML5</span><span class="p-tech-tag">Modern CSS3</span><span class="p-tech-tag">Vanilla ES6+</span><span class="p-tech-tag">Web Audio API</span>
-            </div>
+      <!-- 4. Fitora Mobile Core -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">Mobile Systems</span>
+          <span class="bp-metric">120 FPS Native Display Smoothness</span>
+        </div>
+        <h2 class="bp-title">Fitora Mobile Engine: Biometric Telemetry</h2>
+        <p class="bp-desc">
+          Offline-first cross-platform mobile client engine designed for high-frequency sensor ingestion, biometric velocity tracking, and zero-latency cryptographic token caching.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Strict layered architecture separating UI, Business Logic, and Data Layer.</li>
+            <li>Offline-first local SQLite caching with conflict-free cloud replication.</li>
+            <li>Native Bluetooth Low Energy (BLE) sensor ingestion pipelines.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Flutter / Dart</span>
+          <span class="bp-tag">Offline-First SQLite</span>
+          <span class="bp-tag">Bluetooth LE</span>
+          <span class="bp-tag">Zero Bloat</span>
+        </div>
+      </article>
 
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/rose-cafe/index.html', 'Rose Cafe', '#E03E6C')" class="btn-demo" style="background: #E03E6C; color: #000; box-shadow: 0 4px 14px rgba(224, 62, 108, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              <a href="rose-cafe/" class="btn-subtle"><span>View Case Study</span> &rarr;</a>
-              <a href="../client-sites/rose-cafe/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="work-card" data-category="Demonstration Project" style="border-top: 3px solid #D4AF37;">
-          
-          <div class="card-img-wrap">
-            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=80" alt="Novel Hotel & Suites" loading="lazy" class="card-img" width="700" height="467">
-            <div class="card-img-overlay"></div>
-          </div>
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #10B981; border-color: #10B981; background: rgba(255,255,255,0.03);">
-                Demonstration Project
-              </span>
-              <span class="industry-tag">Boutique Hospitality & Dining</span>
-            </div>
+    </div>
 
-            <h2 class="work-title">Novel Hotel & Suites</h2>
-            <div class="work-location">&bull; Chandramouli Nagar, Guntur, AP</div>
-            <p class="work-tagline" style="color: #D4AF37;">Boutique Suites, Haute Cuisine & Starlight Rooftop Veranda</p>
-            <p class="work-desc">A luxury digital hospitality experience engineered for boutique hotel accommodations and grand dining. Features 3D card tilt physics, suite reservations, rooftop veranda showcase, legendary culinary menu, and direct banquet inquiry booking for up to 300 guests.</p>
-
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">Responsive HTML5</span><span class="p-tech-tag">CSS3 Custom Properties</span><span class="p-tech-tag">Tilt.js Physics</span><span class="p-tech-tag">Direct Booking Modal</span>
-            </div>
-
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/novel-hotel/index.html', 'Novel Hotel & Suites', '#D4AF37')" class="btn-demo" style="background: #D4AF37; color: #000; box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              <a href="novel-hotel/" class="btn-subtle"><span>View Case Study</span> &rarr;</a>
-              <a href="../client-sites/novel-hotel/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="work-card" data-category="Interactive Concept & Prototype" style="border-top: 3px solid #F59E0B;">
-          
-          <div class="card-img-wrap">
-            <img src="../client-sites/rose-cafe/assets/gallery/chic_interior.jpg" alt="Hiyya Dino Mandi" loading="lazy" class="card-img" width="1200" height="800">
-            <div class="card-img-overlay"></div>
-          </div>
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #F59E0B; border-color: #F59E0B; background: rgba(255,255,255,0.03);">
-                Interactive Concept & Prototype
-              </span>
-              <span class="industry-tag">Themed Experiential Dining</span>
-            </div>
-
-            <h2 class="work-title">Hiyya Dino Mandi</h2>
-            <div class="work-location">&bull; Guntur, AP</div>
-            <p class="work-tagline" style="color: #F59E0B;">Guntur's Prehistoric Arabian Dining Sanctuary</p>
-            <p class="work-desc">An experiential dining web platform combining prehistoric atmospheric themes with traditional Arabian Majlis family feast booking. Features atmospheric dark ambient styling, Royal Feast Guild pre-ordering, and direct zero-commission group dining reservations.</p>
-
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">CSS3 Spatial Transforms</span><span class="p-tech-tag">HTML5 Canvas Effects</span><span class="p-tech-tag">Interactive Modal Engine</span><span class="p-tech-tag">WhatsApp Dispatch</span>
-            </div>
-
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/hiyya-dino-mandi/index.html', 'Hiyya Dino Mandi', '#F59E0B')" class="btn-demo" style="background: #F59E0B; color: #000; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              <a href="hiyya-dino-mandi/" class="btn-subtle"><span>View Case Study</span> &rarr;</a>
-              <a href="../client-sites/hiyya-dino-mandi/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="work-card" data-category="Concept Showcase (Requires Verification)" style="border-top: 3px solid #C28B47;">
-          
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #64748B; border-color: #64748B; background: rgba(255,255,255,0.03);">
-                Concept Showcase (Requires Verification)
-              </span>
-              <span class="industry-tag">Heritage Coffee Roastery & Bistro</span>
-            </div>
-
-            <h2 class="work-title">Roastery Coffee House</h2>
-            <div class="work-location">&bull; Banjara Hills, Hyderabad, TS</div>
-            <p class="work-tagline" style="color: #C28B47;">Heritage Coffee Roastery & Artisanal Bistro Showcase</p>
-            <p class="work-desc">An exploratory technology showcase engineered for heritage specialty coffee venues. Features custom brew method selectors, single-origin bean showcases, bistro breakfast ordering, and 1-click mobile checkout.</p>
-
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">Specialty Roast Selector</span><span class="p-tech-tag">Responsive Grid</span><span class="p-tech-tag">UPI Checkout Flow</span><span class="p-tech-tag">Mobile PWA Ready</span>
-            </div>
-
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/roastery-coffee-house/index.html', 'Roastery Coffee House', '#C28B47')" class="btn-demo" style="background: #C28B47; color: #000; box-shadow: 0 4px 14px rgba(194, 139, 71, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              
-              <a href="../client-sites/roastery-coffee-house/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="work-card" data-category="Concept Showcase (Requires Verification)" style="border-top: 3px solid #CA8A04;">
-          
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #64748B; border-color: #64748B; background: rgba(255,255,255,0.03);">
-                Concept Showcase (Requires Verification)
-              </span>
-              <span class="industry-tag">Specialty Roastery & Craft Bakehouse</span>
-            </div>
-
-            <h2 class="work-title">Subko Specialty Coffee</h2>
-            <div class="work-location">&bull; Bandra, Mumbai, MH</div>
-            <p class="work-tagline" style="color: #CA8A04;">Specialty Coffee Roasters, Craft Bakehouse & Cacao Mill</p>
-            <p class="work-desc">An architectural benchmark demonstration showcasing origin-traceable coffee bags, pod towers, craft sourdough bakehouse items, and single-estate bean selections with direct courier dispatch.</p>
-
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">Multi-Category Filter</span><span class="p-tech-tag">Fluid Motion CSS</span><span class="p-tech-tag">Direct Payment Workflow</span><span class="p-tech-tag">High-DPI Typography</span>
-            </div>
-
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/subko-coffee/index.html', 'Subko Specialty Coffee', '#CA8A04')" class="btn-demo" style="background: #CA8A04; color: #000; box-shadow: 0 4px 14px rgba(202, 138, 4, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              
-              <a href="../client-sites/subko-coffee/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="work-card" data-category="Concept Showcase (Requires Verification)" style="border-top: 3px solid #38BDF8;">
-          
-          <div class="card-body">
-            <div class="card-top-meta">
-              <span class="classification-badge" style="color: #64748B; border-color: #64748B; background: rgba(255,255,255,0.03);">
-                Concept Showcase (Requires Verification)
-              </span>
-              <span class="industry-tag">Craft Specialty Roastery</span>
-            </div>
-
-            <h2 class="work-title">Blue Tokai Coffee Roasters</h2>
-            <div class="work-location">&bull; Pali Naka, Bandra West, Mumbai, MH</div>
-            <p class="work-tagline" style="color: #38BDF8;">Craft Specialty Roastery & Fresh Grind Selection</p>
-            <p class="work-desc">An exploratory mobile-first web app demonstrating grind-size customization (Whole Beans, French Press, Aeropress, Espresso), roast profile cards, and fresh harvest delivery scheduling.</p>
-
-            <div class="tech-stack-row">
-              <span class="p-tech-tag">Grind Profile Modifier</span><span class="p-tech-tag">Instant UPI Checkout</span><span class="p-tech-tag">Mobile-First Architecture</span><span class="p-tech-tag">FastAPI Ready</span>
-            </div>
-
-            <div class="card-action-hub">
-              <button onclick="openDemoModal('../client-sites/blue-tokai/index.html', 'Blue Tokai Coffee Roasters', '#38BDF8')" class="btn-demo" style="background: #38BDF8; color: #000; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span>Launch Interactive Demo</span>
-              </button>
-              
-              <a href="../client-sites/blue-tokai/index.html" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Open Fullscreen in New Window">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-      </section>
-
+    <!-- Creed Banner -->
+    <div class="creed-banner">
+      <div class="section-eyebrow" style="justify-content: center;">First Principles Engineering</div>
+      <h3 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px;">Sovereign Architecture Over Speculative Wrappers</h3>
+      <p style="color: var(--text-muted); max-width: 760px; margin: 0 auto 30px; font-size: 1.02rem; line-height: 1.7;">
+        VALIXIS constructs cohesive digital platforms from mathematical fundamentals. We reject fragile SaaS middleware, generic template scaffolding, and artificial complexity &mdash; engineering sovereign software designed for long-term operational resilience.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="../estimate/" class="btn-primary-gradient">
+          <span>Scope an Architecture Build &rarr;</span>
+        </a>
+        <a href="../ecosystem/" class="btn-outline-glass">
+          <span>Explore Ecosystem Platforms</span>
+        </a>
+      </div>
     </div>
   </main>
 
-  <!-- Safe Interactive Demo Modal -->
-  <div class="modal-backdrop" id="demoModal" onclick="closeOnBackdrop(event)">
-    <div class="modal-window">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#00D9FF;"></span>
-          <span class="modal-title" id="modalProjectName">Interactive Preview</span>
-        </div>
-        <div class="modal-controls">
-          <button class="device-btn active" id="btnDesktop" onclick="setDeviceView('desktop')">Desktop</button>
-          <button class="device-btn" id="btnMobile" onclick="setDeviceView('mobile')">Mobile (390px)</button>
-          <a href="#" id="modalExternalLink" target="_blank" rel="noopener noreferrer" class="btn-subtle" style="padding:4px 10px; font-size:0.75rem;">
-            <span>Fullscreen</span> &nearr;
-          </a>
-          <button class="close-modal-btn" onclick="closeDemoModal()">&times;</button>
-        </div>
-      </div>
-      <div class="modal-frame-container">
-        <!-- Sandboxed Lazy-Loaded Iframe -->
-        <iframe id="demoIframe" class="demo-iframe" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms" title="Interactive Client Project Demo"></iframe>
-      </div>
-    </div>
-  </div>
-
+  <!-- Universal Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../" class="brand-header" style="margin-bottom: 16px;">
+            <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
+            Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Venture</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About VALIXIS</a></li>
+            <li><a href="../leadership/">Leadership</a></li>
+            <li><a href="../ecosystem/">Ecosystem Platforms</a></li>
+            <li><a href="../projects/">Development Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="../services/">Commercial Services</a></li>
+            <li><a href="../work/">Technical Work</a></li>
+            <li><a href="../estimate/">Scope Estimator</a></li>
+            <li><a href="../contact/">Architecture Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
+            Founded in 2026 as an independent, currently unregistered technology venture operating on first principles.
+          </p>
+          <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      </div>
     </div>
   </footer>
 
-  <script>
-    function openDemoModal(url, name, accent) {
-      const modal = document.getElementById('demoModal');
-      const iframe = document.getElementById('demoIframe');
-      const title = document.getElementById('modalProjectName');
-      const extLink = document.getElementById('modalExternalLink');
-
-      title.textContent = name + ' — Interactive Demo';
-      title.style.color = accent || '#FFF';
-      extLink.href = url;
-      
-      // Lazy load only when opened
-      iframe.src = url;
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeDemoModal() {
-      const modal = document.getElementById('demoModal');
-      const iframe = document.getElementById('demoIframe');
-      modal.classList.remove('active');
-      iframe.src = 'about:blank'; // Unload to free memory
-      document.body.style.overflow = '';
-    }
-
-    function closeOnBackdrop(e) {
-      if (e.target.id === 'demoModal') {
-        closeDemoModal();
-      }
-    }
-
-    function setDeviceView(mode) {
-      const iframe = document.getElementById('demoIframe');
-      const btnDesk = document.getElementById('btnDesktop');
-      const btnMob = document.getElementById('btnMobile');
-
-      if (mode === 'mobile') {
-        iframe.classList.add('mobile-view');
-        btnMob.classList.add('active');
-        btnDesk.classList.remove('active');
-      } else {
-        iframe.classList.remove('mobile-view');
-        btnDesk.classList.add('active');
-        btnMob.classList.remove('active');
-      }
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDemoModal();
-    });
-  </script>
-
+  <!-- Lenis & Core Interaction Engine -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../assets/js/valixis-core.js"></script>
 </body>
 </html>

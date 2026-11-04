@@ -271,6 +271,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="../../assets/css/valixis-theme.css">
 </head>
 <body>
 
@@ -288,10 +289,9 @@
           <li><a href="../../services/" class="nav-link active">Services</a></li>
           <li><a href="../../work/" class="nav-link">Work</a></li>
           <li><a href="../../estimate/" class="nav-link">Estimate</a></li>
-          <li><a href="../../client-sites/" class="nav-link">Showcase</a></li>
+          <li><a href="../../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../../projects/" class="nav-link">Projects</a></li>
-          <li><a href="../../leadership/" class="nav-link">Leadership</a></li>
           <li><a href="../../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -470,26 +470,22 @@
       <section class="content-section">
         <div class="section-title-wrap">
           <span class="section-eyebrow">Track Record</span>
-          <h2 class="section-heading">Proprietary Platforms &amp; Client Deployments</h2>
+          <h2 class="section-heading">Proprietary 3D Engines & Simulation Systems</h2></div><div class="grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div class="spotlight-card service-box" style="border-top: 2px solid #00D9FF;">
+          <div class="p-status" style="color: #00D9FF; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Deployed Engine</div>
+          <h4 class="box-title">VALIXIS 3D Gyroscopic WebGL Engine</h4>
+          <p class="box-desc">Real-time Three.js r128 engine with custom GLSL additive shaders, quaternion rotations, and zero alpha bounding box artifacts.</p>
         </div>
-        <div class="grid-3">
-          
-        <div class="service-box" style="border-top: 2px solid #FF2ED6;">
-          <div class="p-status" style="color: #FF2ED6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Live on valixis.tech</div>
-          <h4 class="box-title">VALIXIS 3D Emblem Monolith</h4>
-          <p class="box-desc">Custom WebGL gyro-orbital monolith featuring dual-layer alpha textures and intelligent IntersectionObserver GPU throttling.</p>
-        </div>
-        <div class="service-box" style="border-top: 2px solid #FF2ED6;">
-          <div class="p-status" style="color: #FF2ED6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Live Demo</div>
-          <h4 class="box-title">HIYYA DINO MANDI Prehistoric Sanctuary</h4>
-          <p class="box-desc">Interactive dining experience integrating prehistoric 3D visual themes with Arabian family feast reservation flows.</p>
-        </div>
-        <div class="service-box" style="border-top: 2px solid #FF2ED6;">
-          <div class="p-status" style="color: #FF2ED6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">In Development</div>
+        <div class="spotlight-card service-box" style="border-top: 2px solid #7C3AED;">
+          <div class="p-status" style="color: #7C3AED; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Gaming Division</div>
           <h4 class="box-title">VALIXIS Gaming Studio Titles</h4>
-          <p class="box-desc">Exploratory interactive mechanics, physics simulations, and indie title concept prototypes.</p>
+          <p class="box-desc">Next-generation interactive simulation titles and procedural physics engines built for real-time player agency and low latency.</p>
         </div>
-        </div>
+        <div class="spotlight-card service-box" style="border-top: 2px solid #FF2ED6;">
+          <div class="p-status" style="color: #FF2ED6; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px;">Simulation Canvas</div>
+          <h4 class="box-title">Interactive Canvas Mathematics</h4>
+          <p class="box-desc">GPU-accelerated particle field mathematics, mouse-reactive magnetic fields, and requestAnimationFrame tab throttling.</p>
+        </div></div>
       </section>
 
       <!-- Consultation CTA -->
@@ -520,5 +516,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../../assets/js/valixis-core.js"></script>
 </body>
 </html>
