@@ -459,10 +459,10 @@
       </nav>
 
       <div class="nav-right-group">
-        <a href="../contact/" class="nav-cta-btn">
-          <span>Get in Touch</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+        <div class="nav-status-pill">
+          <span class="pulse-dot"></span>
+          <span>Direct Inquiries Open</span>
+        </div>
 
         <!-- Mobile Menu Toggle Button (Hamburger) -->
         <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -484,8 +484,8 @@
         <li><a href="../contact/" class="mobile-nav-link active">Contact</a></li>
       </ul>
       <div class="mobile-drawer-cta">
-        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
-          <span>Get in Touch</span>
+        <a href="#inquiry-form" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Submit Requirements</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -511,58 +511,46 @@
       <p class="page-subtitle">
         Whether you are scheduling a technical scoping session, exploring commercial platform deployment, or submitting detailed architectural requirements &mdash; our executive engineering team welcomes direct dialogue.
       </p>
-
-      <!-- Quick Jump Bar -->
-      <div class="quick-jump-bar">
-        <a href="#booking" class="jump-btn active">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <span>1. Book 15-Min Scoping Session</span>
-        </a>
-        <a href="#inquiry-form" class="jump-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <span>2. Submit Project Requirements</span>
-        </a>
-        <a href="#channels" class="jump-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>3. Direct Outreach Channels</span>
-        </a>
-      </div>
     </div>
   </section>
 
   <main class="container">
 
-    <!-- PART A: CAL.COM 15-MINUTE CONSULTATION BOOKING -->
-    <section class="section-block" id="booking" aria-labelledby="booking-heading">
+    <!-- PART A: 15-MINUTE ARCHITECTURE & SCOPING SESSION -->
+    <section class="spotlight-card direct-booking-card reveal-on-scroll" id="booking" aria-labelledby="booking-heading">
       <div class="block-header">
         <div class="block-tag">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <span>15-Minute Technical Consultation</span>
+          <span>15-Minute Technical Scoping Session</span>
         </div>
-        <h2 class="block-title" id="booking-heading">
-          Book a 15-Minute Architecture &amp; Scoping Session
+        <h2 class="block-title" id="booking-heading" style="font-family: var(--font-display); font-size: 1.85rem; color: #FFF; margin: 12px 0;">
+          Schedule a Direct 1-on-1 Architecture Consultation
         </h2>
-        <p class="block-desc">
-          Discuss your product idea, technical requirements and possible implementation approach with the VALIXIS team. Direct 1-on-1 discussion with Founder &amp; CEO Subhash Annam &mdash; zero sales fluff, 100% technical feasibility.
+        <p class="block-desc" style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; max-width: 720px;">
+          Discuss your product vision, system specifications, and optimal implementation roadmap directly with VALIXIS leadership. Direct 1-on-1 dialogue with Founder &amp; CEO Subhash Annam &mdash; zero sales pitch, 100% technical feasibility.
         </p>
       </div>
 
-      <div class="direct-booking-box">
-        <div class="fallback-actions">
-          <a href="https://wa.me/919603416707?text=Hello%20Subhash,%20I%20would%20like%20to%20schedule%20a%2015-minute%20VALIXIS%20Architecture%20%26%20Scoping%20Session." target="_blank" rel="noopener noreferrer" class="btn-fallback btn-fallback-wa">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
-            <span>WhatsApp Direct Booking</span>
-          </a>
-          <a href="mailto:official.valixis@gmail.com?subject=Schedule%20VALIXIS%2015-Minute%20Architecture%20Session&body=Hello%20VALIXIS%20Team,%0A%0AI%20would%20like%20to%20schedule%20a%2015-minute%20architecture%20session.%0A%0ACompany/Name:%0APreferred%20Date/Time:%0ABrief%20Requirements:" class="btn-fallback btn-fallback-email">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <span>Email Consultation Request</span>
-          </a>
-        </div>
+      <div class="booking-pills-row">
+        <a href="https://wa.me/919603416707?text=Hello%20Subhash,%20I%20would%20like%20to%20schedule%20a%2015-minute%20VALIXIS%20Architecture%20%26%20Scoping%20Session." target="_blank" rel="noopener noreferrer" class="btn-booking-wa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
+          <span>WhatsApp Direct Booking</span>
+        </a>
+        <a href="mailto:official.valixis@gmail.com?subject=Schedule%20VALIXIS%2015-Minute%20Architecture%20Session&body=Hello%20VALIXIS%20Team,%0A%0AI%20would%20like%20to%20schedule%20a%2015-minute%20architecture%20session.%0A%0ACompany/Name:%0APreferred%20Date/Time:%0ABrief%20Requirements:" class="btn-booking-email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email Consultation Request</span>
+        </a>
+      </div>
+
+      <div class="booking-perks">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Direct Founder Access</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Instant Feasibility Check</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Strict NDA Discretion</span>
       </div>
     </section>
 
     <!-- PART B: PROJECT INQUIRY & SCOPE SUBMISSION FORM -->
-    <section class="section-block" id="inquiry-form" aria-labelledby="form-heading">
+    <section class="spotlight-card section-block" id="inquiry-form" style="margin-bottom: 70px;" aria-labelledby="form-heading">
       <div class="block-header">
         <div class="block-tag magenta">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
@@ -749,7 +737,7 @@
       <div class="contact-grid">
         
         <!-- Email Outreach -->
-        <div class="contact-card">
+        <div class="spotlight-card contact-card">
           <div>
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -768,7 +756,7 @@
         </div>
 
         <!-- WhatsApp Outreach -->
-        <div class="contact-card">
+        <div class="spotlight-card contact-card">
           <div>
             <div class="card-icon magenta">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>

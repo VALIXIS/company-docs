@@ -1816,3 +1816,252 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   outline: 2px solid #00D9FF !important;
   outline-offset: 3px !important;
 }
+
+
+/* ==========================================================================
+   PARTNERSHIP MODELS GRID & LIGHT SCROLL REVEALS
+   ========================================================================== */
+.fw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+@media (max-width: 768px) {
+  .fw-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.fw-card {
+  background: rgba(13, 17, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.fw-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 217, 255, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 217, 255, 0.1);
+}
+.fw-card-number {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--valixis-cyan);
+  text-transform: uppercase;
+}
+.fw-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #FFF;
+  margin: 0;
+}
+.fw-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Light Scroll Reveal (Hardware-Accelerated) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   LEADERSHIP EXECUTIVE BENTO SPOTLIGHT WIDGET
+   ========================================================================== */
+.leadership-cta-widget {
+  background: linear-gradient(135deg, rgba(20, 26, 36, 0.85) 0%, rgba(13, 17, 23, 0.95) 100%);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  border-radius: 20px;
+  padding: 56px 40px;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 217, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+.leadership-cta-widget::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(0, 217, 255, 0.12), transparent 70%);
+  pointer-events: none;
+}
+.leadership-cta-widget .widget-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.leadership-cta-widget .widget-title {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: #FFF;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.leadership-cta-widget .widget-desc {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto 28px auto;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.leadership-cta-widget .widget-perks {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.leadership-cta-widget .perk-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 9999px;
+}
+.leadership-cta-widget .perk-icon {
+  color: var(--valixis-cyan);
+  font-weight: 700;
+}
+.leadership-cta-widget .widget-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   CONTACT PAGE CYBER-LUXURY ELEVATIONS
+   ========================================================================== */
+.nav-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--valixis-cyan);
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+.nav-status-pill .pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--valixis-cyan);
+  box-shadow: 0 0 8px var(--valixis-cyan);
+  animation: pulseDot 2s infinite;
+}
+
+.direct-booking-card {
+  background: linear-gradient(135deg, rgba(20, 26, 36, 0.9) 0%, rgba(13, 17, 23, 0.95) 100%);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  border-radius: 20px;
+  padding: 44px 36px;
+  margin-bottom: 50px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 217, 255, 0.08);
+}
+.booking-pills-row {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.btn-booking-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #6EE7B7;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+.btn-booking-wa:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10B981;
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+  transform: translateY(-2px);
+}
+.btn-booking-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid rgba(0, 217, 255, 0.35);
+  color: var(--valixis-cyan);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+.btn-booking-email:hover {
+  background: rgba(0, 217, 255, 0.18);
+  border-color: var(--valixis-cyan);
+  color: #FFF;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
+  transform: translateY(-2px);
+}
+.booking-perks {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.booking-perks span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #CBD5E1;
+}
+.booking-perks span svg {
+  color: var(--valixis-cyan);
+}
