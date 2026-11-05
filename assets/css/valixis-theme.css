@@ -2065,3 +2065,111 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .booking-perks span svg {
   color: var(--valixis-cyan);
 }
+
+/* ==========================================================================
+   UNIVERSAL CTA BUTTON FALLBACK & BENTO CTA WIDGETS
+   ========================================================================== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: var(--brand-gradient);
+  border: 1px solid rgba(0, 217, 255, 0.4);
+  color: #FFF !important;
+  font-family: var(--font-display);
+  font-size: 0.90rem;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(0, 217, 255, 0.35);
+  transition: var(--transition-smooth);
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(0, 217, 255, 0.6);
+  border-color: var(--valixis-cyan);
+}
+
+.services-cta-widget,
+.ecosystem-cta-widget {
+  background: linear-gradient(135deg, rgba(20, 26, 36, 0.85) 0%, rgba(13, 17, 23, 0.95) 100%);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  border-radius: 20px;
+  padding: 56px 40px;
+  text-align: center;
+  margin-top: 64px;
+  margin-bottom: 70px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 217, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+.services-cta-widget::before,
+.ecosystem-cta-widget::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 250px;
+  background: radial-gradient(ellipse, rgba(0, 217, 255, 0.12), transparent 70%);
+  pointer-events: none;
+}
+.cta-widget-title {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: #FFF;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+.cta-widget-desc {
+  color: var(--text-muted);
+  max-width: 660px;
+  margin: 0 auto 28px auto;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.cta-widget-perks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.cta-widget-perks .perk-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 9999px;
+}
+.cta-widget-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .services-cta-widget,
+  .ecosystem-cta-widget {
+    padding: 40px 20px;
+  }
+  .cta-widget-title {
+    font-size: 1.6rem;
+  }
+  .cta-widget-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-widget-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+}
