@@ -102,76 +102,6 @@
   </script>
 
   <style>
-    :root {
-      --valixis-cyan: #00D9FF;
-      --valixis-blue: #3B82F6;
-      --valixis-purple: #7C3AED;
-      --valixis-magenta: #FF2ED6;
-      --accent: #FF2ED6;
-      --accent-glow: rgba(255, 46, 214, 0.35);
-      --bg-dark: #0D1117;
-      --bg-darker: #06090E;
-      --bg-card: rgba(20, 26, 36, 0.85);
-      --bg-card-hover: rgba(28, 36, 50, 0.95);
-      --border-color: rgba(255, 255, 255, 0.1);
-      --text-main: #F1F5F9;
-      --text-muted: #94A3B8;
-      --font-display: 'Orbitron', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg-darker); color: var(--text-main); font-family: var(--font-body); }
-    body { min-height: 100vh; overflow-x: hidden; position: relative; line-height: 1.6; }
-
-    .ambient-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 15%, var(--accent-glow) 0%, transparent 60%),
-                  radial-gradient(circle at 90% 85%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-                  #06090E;
-      z-index: -1; pointer-events: none;
-    }
-
-    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-
-    .navbar {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(6, 9, 14, 0.82); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color); padding: 16px 0;
-    }
-    .nav-wrapper { display: flex; align-items: center; justify-content: space-between; }
-    .brand-header { display: flex; align-items: center; text-decoration: none; }
-    .brand-lockup-img { height: 32px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
-    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: var(--transition-smooth); }
-    .nav-link:hover, .nav-link.active { color: var(--accent); }
-
-    .btn-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-      color: #FFF; background: linear-gradient(135deg, #FF2ED6 0%, #3B82F6 100%);
-      border: 1px solid rgba(255, 255, 255, 0.2); text-decoration: none;
-      box-shadow: 0 4px 14px var(--accent-glow); transition: var(--transition-smooth);
-    }
-    .btn-cta:hover { transform: translateY(-2px); filter: brightness(1.15); }
-
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 9px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
-      color: var(--text-main); background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color); text-decoration: none;
-      transition: var(--transition-smooth);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* Breadcrumbs */
-    .breadcrumbs { padding: 20px 0 0 0; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
-    .breadcrumbs a { color: var(--text-muted); text-decoration: none; transition: var(--transition-smooth); }
-    .breadcrumbs a:hover { color: var(--accent); }
-    .breadcrumbs span { margin: 0 6px; }
-
     /* Hero */
     .service-hero { padding: 48px 0 40px; border-bottom: 1px solid var(--border-color); }
     .service-badge {
@@ -262,44 +192,63 @@
       outline: 2px solid #00D9FF !important;
       outline-offset: 3px !important;
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
   </style>
-  <link rel="stylesheet" href="../../assets/css/valixis-theme.css">
+  <link rel="stylesheet" href="../../assets/css/valixis-theme.css?v=20261105">
 </head>
 <body>
 
   <div class="ambient-bg"></div>
 
+    <!-- Universal Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
-      <a href="../../" class="brand-header" title="VALIXIS &mdash; Return to Homepage">
-        <img src="../../assets/valixis-horizontal-lockup.png?v=5" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+      <a href="../../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
       </a>
 
+      <!-- Desktop Navigation Links -->
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="../../about/" class="nav-link">About</a></li>
           <li><a href="../../services/" class="nav-link active">Services</a></li>
-          <li><a href="../../work/" class="nav-link">Work</a></li>
+          <li><a href="../../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../../estimate/" class="nav-link">Estimate</a></li>
           <li><a href="../../leadership/" class="nav-link">Leadership</a></li>
-          <li><a href="../../ecosystem/" class="nav-link">Ecosystem</a></li>
-          <li><a href="../../projects/" class="nav-link">Projects</a></li>
           <li><a href="../../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="../../contact/" class="btn-cta">
-        <span>Request Consultation</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+      <div class="nav-right-group">
+        <a href="../../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../../services/" class="mobile-nav-link active">Services</a></li>
+        <li><a href="../../ecosystem/" class="mobile-nav-link">Ecosystem</a></li>
+        <li><a href="../../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../../leadership/" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="../../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -510,9 +459,51 @@
     </div>
   </main>
 
+    <!-- Universal Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../../" class="brand-header" style="margin-bottom: 16px;">
+            <img src="../../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
+            Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Venture</h4>
+          <ul class="footer-links">
+            <li><a href="../../about/">About VALIXIS</a></li>
+            <li><a href="../../leadership/">Leadership</a></li>
+            <li><a href="../../ecosystem/">Ecosystem Platforms</a></li>
+            <li><a href="../../projects/">Development Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="../../services/">Commercial Services</a></li>
+            <li><a href="../../work/">Technical Work</a></li>
+            <li><a href="../../estimate/">Scope Estimator</a></li>
+            <li><a href="../../contact/">Architecture Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
+            Founded in 2026 as an independent technology venture operating on first principles.
+          </p>
+          <a href="../../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      </div>
     </div>
   </footer>
 

@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIYYA DINO MANDI · Guntur's Prehistoric Arabian Dining Sanctuary</title>
+
+  <!-- Google Fonts: Syne, Cinzel Decorative, Cinzel, Plus Jakarta Sans, Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+
+  <style>
+    /* ==========================================================================
+       LUXURY JURASSIC DESIGN SYSTEM — HIGH-END EDITORIAL DINING
+       ========================================================================== */
+    :root {
+      --bg-obsidian: #060907;
+      --bg-cavern: #09120C;
+      --bg-glass: rgba(14, 24, 18, 0.75);
+      --bg-glass-elevated: rgba(20, 34, 25, 0.85);
+
+      --amber-molten: #FF7A00;
+      --amber-gold: #F59E0B;
+      --amber-glow: rgba(245, 158, 11, 0.35);
+      --amber-soft: #FDE68A;
+
+      --emerald-biolum: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.3);
+
+      --text-pure: #FFFFFF;
+      --text-primary: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-subtle: #6B7280;
+
+      --border-faint: rgba(245, 158, 11, 0.16);
+      --border-accent: rgba(245, 158, 11, 0.42);
+      --border-glow: rgba(255, 122, 0, 0.7);
+
+      --font-display: 'Syne', sans-serif;
+      --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Modern Web Guidance: Scroll Progress Indicator */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--amber-molten), var(--amber-gold), var(--emerald-biolum));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: scroll()) {
+        @keyframes grow-scroll {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+        :root {
+          scroll-timeline: --page-scroll block;
+        }
+        #scrollProgress {
+          animation: grow-scroll auto linear;
+          animation-timeline: --page-scroll;
+        }
+      }
+    }
+
+    /* Ambient Embers Canvas in Background */
+    #embersCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    /* Custom Floating Luxury Cursor */
+    .custom-cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--amber-gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+      box-shadow: 0 0 14px var(--amber-gold);
+    }
+
+    .custom-cursor-ring {
+      position: fixed;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    }
+
+    @media (max-width: 900px) {
+      .custom-cursor-dot, .custom-cursor-ring { display: none; }
+    }
+
+    /* ==========================================================================
+       FLOATING GLASS CAPSULE NAVIGATION
+       ========================================================================== */
+    .nav-capsule-wrap {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+
+    .nav-capsule {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 1240px;
+      background: rgba(10, 17, 12, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-faint);
+      border-radius: 60px;
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav-capsule:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--amber-glow);
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-sigil {
+      width: 42px;
+      height: 42px;
+      background: radial-gradient(circle, #2C1802 0%, #100C06 100%);
+      border: 1px solid var(--amber-gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-titles .brand-name {
+      font-family: var(--font-royal);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #FFF 0%, var(--amber-soft) 50%, var(--amber-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .brand-titles .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--emerald-biolum);
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a:hover {
+      color: #FFF;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sound-synth-pill {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--border-accent);
+      color: var(--amber-soft);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .sound-synth-pill:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: var(--amber-gold);
+      box-shadow: 0 0 15px var(--amber-glow);
+    }
+
+    .wave-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 12px;
+    }
+
+    .wave-bar {
+      width: 2px;
+      height: 100%;
+      background: var(--amber-gold);
+      border-radius: 1px;
+      animation: barDance 1.2s infinite ease-in-out alternate;
+    }
+
+    .wave-bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+    .wave-bar:nth-child(3) { animation-delay: 0.4s; height: 80%; }
+    .wave-bar:nth-child(4) { animation-delay: 0.1s; height: 40%; }
+
+    @keyframes barDance {
+      0% { transform: scaleY(0.3); }
+      100% { transform: scaleY(1); }
+    }
+
+    .reserve-pill-btn {
+      background: linear-gradient(135deg, var(--amber-molten) 0%, var(--amber-gold) 100%);
+      color: #000;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .reserve-pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 122, 0, 0.6);
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+
+    /* ==========================================================================
+       HERO: THE PRIMORDIAL SANCTUARY (CENTERED, HARMONIOUS, 3D INTEGRATED)
+       ========================================================================== */
+    .hero-cinematic {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 6vw 60px;
+      z-index: 2;
+    }
+
+    .hero-status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--emerald-glow);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 2px;
+      color: var(--emerald-biolum);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-dot-green {
+      width: 8px;
+      height: 8px;
+      background: var(--emerald-biolum);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--emerald-biolum);
+      animation: pulseGreen 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    .hero-main-title {
+      max-width: 980px;
+      margin: 0 auto 18px;
+    }
+
+    .title-sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--amber-gold);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .title-main {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #FFF 20%, var(--amber-soft) 50%, var(--amber-gold) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 35px rgba(245, 158, 11, 0.35);
+    }
+
+    .hero-editorial-sub {
+      font-size: clamp(0.98rem, 1.35vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-editorial-sub strong {
+      color: #FFF;
+      font-weight: 600;
+    }
+
+    .hero-button-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .btn-epic-primary {
+      background: linear-gradient(135deg, var(--amber-molten) 0%, var(--amber-gold) 100%);
+      color: #050705;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 15px 34px;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-epic-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(255, 122, 0, 0.6);
+      filter: brightness(1.1);
+    }
+
+    .btn-epic-roar {
+      background: rgba(14, 24, 18, 0.85);
+      border: 1px solid var(--border-accent);
+      color: #FFF;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn-epic-roar:hover {
+      border-color: var(--amber-gold);
+      background: rgba(245, 158, 11, 0.2);
+      box-shadow: 0 0 25px var(--amber-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Quick Hero Metrics Bar */
+    .hero-metrics-bar {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-subtle);
+      letter-spacing: 1.5px;
+    }
+
+    .hero-metrics-bar strong {
+      color: var(--amber-gold);
+    }
+
+    /* ==========================================================================
+       MARQUEE TICKER: THE EXPEDITION ACCREDITATIONS
+       ========================================================================== */
+    .marquee-strip {
+      position: relative;
+      background: #040605;
+      border-top: 1px solid var(--border-faint);
+      border-bottom: 1px solid var(--border-faint);
+      padding: 20px 0;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeRun 32s linear infinite;
+      gap: 40px;
+    }
+
+    @keyframes marqueeRun {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .marquee-item span.highlight {
+      color: var(--amber-gold);
+      font-family: var(--font-royal);
+    }
+
+    .marquee-item .sep-gem {
+      color: var(--emerald-biolum);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================================================
+       SECTION 3: ASYMMETRIC EDITORIAL FEAST SPREAD
+       ========================================================================== */
+    .section-feasts {
+      position: relative;
+      padding: 120px 6vw;
+      background: var(--bg-obsidian);
+      z-index: 5;
+    }
+
+    .editorial-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 60px;
+      border-bottom: 1px solid var(--border-faint);
+      padding-bottom: 28px;
+    }
+
+    .editorial-header-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      text-transform: uppercase;
+      color: #FFF;
+    }
+
+    .editorial-header-left h2 span {
+      font-family: var(--font-royal);
+      background: linear-gradient(135deg, var(--amber-soft), var(--amber-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .editorial-header-right {
+      max-width: 440px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .editorial-feast-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 32px;
+    }
+
+    /* Giant Hero Dish Card */
+    .dish-hero-plate {
+      background: linear-gradient(145deg, rgba(20, 34, 25, 0.8) 0%, rgba(10, 16, 12, 0.9) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 28px;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .dish-hero-plate:hover {
+      transform: translateY(-4px);
+      border-color: var(--amber-gold);
+    }
+
+    .dish-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .dish-crown-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber-gold);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    .dish-price-huge {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFF;
+    }
+
+    .dish-price-huge span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      font-family: var(--font-sans);
+    }
+
+    .dish-hero-titles h3 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #FFF;
+      margin-bottom: 14px;
+    }
+
+    .dish-hero-titles p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    .plate-ingredient-nodes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .ing-chip {
+      background: rgba(6, 10, 8, 0.75);
+      border: 1px solid var(--border-faint);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ing-chip span.dot {
+      width: 6px;
+      height: 6px;
+      background: var(--amber-gold);
+      border-radius: 50%;
+    }
+
+    /* Asymmetric Right Column */
+    .editorial-sub-dishes {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .dish-sub-card {
+      background: rgba(14, 22, 17, 0.75);
+      border: 1px solid var(--border-faint);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .dish-sub-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-accent);
+      background: rgba(18, 30, 22, 0.9);
+    }
+
+    .dish-sub-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .dish-sub-top h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .dish-sub-top .sub-price {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--amber-gold);
+    }
+
+    .dish-sub-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .dish-sub-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-card-order {
+      background: transparent;
+      border: 1px solid var(--border-accent);
+      color: var(--amber-soft);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-card-order:hover {
+      background: var(--amber-gold);
+      color: #000;
+      border-color: var(--amber-gold);
+      box-shadow: 0 0 15px var(--amber-glow);
+    }
+
+    @media (max-width: 980px) {
+      .editorial-feast-grid { grid-template-columns: 1fr; }
+      .editorial-header-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    /* ==========================================================================
+       SECTION 4: THE GOLDEN DASTARKHWAN (INTERACTIVE MANDI PLATTER SIZER)
+       ========================================================================== */
+    .section-sizer {
+      position: relative;
+      padding: 120px 6vw;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 122, 0, 0.08) 0%, var(--bg-obsidian) 75%);
+      z-index: 5;
+    }
+
+    .sizer-box {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(12, 19, 14, 0.85);
+      border: 1px solid var(--border-accent);
+      border-radius: 36px;
+      padding: 50px;
+      backdrop-filter: blur(24px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
+    }
+
+    .sizer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .thali-visualizer-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .circular-thali-disc {
+      width: clamp(260px, 30vw, 380px);
+      height: clamp(260px, 30vw, 380px);
+      border-radius: 50%;
+      background: radial-gradient(circle, #2E1B04 0%, #150E04 60%, #080502 100%);
+      border: 8px solid #9A6A23;
+      box-shadow: 
+        0 0 0 4px #42290A,
+        0 0 50px rgba(245, 158, 11, 0.3),
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .thali-rice-mound {
+      width: 65%;
+      height: 65%;
+      border-radius: 50%;
+      background: radial-gradient(circle, #EBD5A0 0%, #D4A853 60%, #9B7020 100%);
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 168, 83, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--font-royal);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1A1005;
+      padding: 14px;
+      letter-spacing: 1px;
+    }
+
+    .orbit-meat-node {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #451E09 0%, #240C03 100%);
+      border: 2px solid var(--amber-gold);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8), 0 0 15px var(--amber-glow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: all 0.4s ease;
+    }
+
+    .orbit-meat-node span.node-label {
+      font-family: var(--font-mono);
+      font-size: 0.52rem;
+      color: #FFF;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .orbit-pos-1 { top: -16px; }
+    .orbit-pos-2 { right: -16px; }
+    .orbit-pos-3 { bottom: -16px; }
+    .orbit-pos-4 { left: -16px; }
+
+    .sizer-controls-col h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #FFF;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .sizer-controls-col p.lead {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 26px;
+    }
+
+    .sizer-step-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--amber-gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .platter-tier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .tier-btn {
+      background: rgba(6, 11, 8, 0.8);
+      border: 1px solid var(--border-faint);
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tier-btn.active, .tier-btn:hover {
+      border-color: var(--amber-gold);
+      background: rgba(245, 158, 11, 0.15);
+      box-shadow: 0 0 20px var(--amber-glow);
+    }
+
+    .tier-btn .tier-name {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #FFF;
+      display: block;
+    }
+
+    .tier-btn .tier-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .tier-btn .tier-price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--amber-gold);
+      margin-top: 5px;
+      display: block;
+    }
+
+    .meat-selection-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .meat-pill {
+      background: rgba(6, 11, 8, 0.8);
+      border: 1px solid var(--border-faint);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .meat-pill.active, .meat-pill:hover {
+      background: var(--amber-gold);
+      color: #000;
+      font-weight: 800;
+      border-color: var(--amber-gold);
+      box-shadow: 0 0 15px var(--amber-glow);
+    }
+
+    .live-sizer-total-box {
+      background: rgba(4, 7, 5, 0.9);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .sizer-total-left span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .sizer-total-left strong {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--amber-gold);
+    }
+
+    @media (max-width: 980px) {
+      .sizer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .sizer-box { padding: 32px 20px; }
+    }
+
+    /* ==========================================================================
+       SECTION 5: BHAGYASHRI BORSE INAUGURATION & VIP CABANAS
+       ========================================================================== */
+    .section-atmosphere {
+      position: relative;
+      padding: 120px 6vw;
+      background: var(--bg-obsidian);
+      z-index: 5;
+    }
+
+    .atmosphere-split {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .celeb-spotlight-card {
+      background: radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.12) 0%, rgba(8, 14, 10, 0.95) 80%);
+      border: 1px solid var(--border-accent);
+      border-radius: 30px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
+    }
+
+    .celeb-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--amber-gold);
+      color: var(--amber-soft);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .celeb-spotlight-card h3 {
+      font-family: var(--font-royal);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      color: #FFF;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .celeb-spotlight-card h3 span {
+      background: linear-gradient(135deg, var(--amber-soft), var(--amber-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .celeb-spotlight-card p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .celeb-stats-strip {
+      display: flex;
+      gap: 28px;
+      border-top: 1px solid var(--border-faint);
+      padding-top: 22px;
+    }
+
+    .c-stat strong {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: #FFF;
+      display: block;
+    }
+
+    .c-stat span {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .atmosphere-cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .atmo-card {
+      background: rgba(14, 22, 17, 0.75);
+      border: 1px solid var(--border-faint);
+      border-radius: 24px;
+      padding: 26px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      transition: all 0.3s ease;
+    }
+
+    .atmo-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(20, 32, 24, 0.9);
+      transform: translateX(6px);
+    }
+
+    .atmo-icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .atmo-text h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .atmo-text p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 980px) {
+      .atmosphere-split { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================================================
+       SECTION 6: LIVE EXPEDITION CONCIERGE & RADAR
+       ========================================================================== */
+    .section-concierge {
+      position: relative;
+      padding: 120px 6vw;
+      background: radial-gradient(circle at 50% 80%, rgba(13, 38, 27, 0.5) 0%, var(--bg-obsidian) 70%);
+      z-index: 5;
+    }
+
+    .concierge-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: rgba(10, 16, 12, 0.85);
+      border: 1px solid var(--border-accent);
+      border-radius: 36px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      backdrop-filter: blur(24px);
+    }
+
+    .radar-info-side h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .radar-info-side p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .live-tracker-pill-box {
+      background: rgba(6, 10, 7, 0.85);
+      border: 1px solid var(--emerald-glow);
+      border-radius: 20px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+
+    .tracker-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .tracker-row:last-child { margin-bottom: 0; }
+
+    .tracker-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tracker-val {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--emerald-biolum);
+    }
+
+    .map-embed-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .map-frame-box {
+      width: 100%;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .map-frame-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);
+    }
+
+    .direct-booking-cta-bar {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .concierge-wrap { grid-template-columns: 1fr; padding: 32px 20px; }
+    }
+
+    /* ==========================================================================
+       EDITORIAL FOOTER
+       ========================================================================== */
+    footer.editorial-footer {
+      position: relative;
+      background: #030504;
+      border-top: 1px solid var(--border-faint);
+      padding: 60px 6vw 36px;
+      z-index: 5;
+    }
+
+    .footer-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      gap: 36px;
+    }
+
+    .footer-brand-side h4 {
+      font-family: var(--font-royal);
+      font-size: 1.5rem;
+      color: #FFF;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand-side p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-address-side {
+      max-width: 400px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-address-side strong {
+      color: #FFF;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 26px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      letter-spacing: 1px;
+    }
+
+    .valixis-credit a {
+      color: var(--amber-gold);
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Purely visual scroll progress bar (modern web guidance) -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Ambient Golden Embers Background Canvas -->
+  <canvas id="embersCanvas"></canvas>
+
+  <!-- Custom Floating Luxury Cursor -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-ring" id="cursorRing"></div>
+
+  <!-- Floating Glass Capsule Navigation -->
+  <div class="nav-capsule-wrap">
+    <nav class="nav-capsule">
+      <a href="#sanctum" class="brand-cluster">
+        <div class="brand-sigil">🦖</div>
+        <div class="brand-titles">
+          <span class="brand-name">HIYYA DINO</span>
+          <span class="brand-sub">Mandi · Guntur</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#sanctum">Sanctum</a></li>
+        <li><a href="#feasts">Royal Feast</a></li>
+        <li><a href="#sizer">Platter Sizer</a></li>
+        <li><a href="#atmosphere">VIP Cabanas</a></li>
+        <li><a href="#concierge">Location</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="sound-synth-pill" id="roarSynthBtn" onclick="triggerJurassicRoar(true)" title="Synthesize Jurassic Roar">
+          <div class="wave-bars">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+          <span>APEX ROAR</span>
+        </button>
+
+        <a href="https://wa.me/919920986666?text=Hi%20Hiyya%20Dino%20Mandi!%20I%20would%20like%20to%20reserve%20a%20VIP%20Dino%20Cabana%20table%20in%20Guntur." target="_blank" class="reserve-pill-btn">
+          <span>Book Cabana ↗</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ==========================================================================
+       HERO: THE PRIMORDIAL SANCTUARY (CENTERED, HARMONIOUS, 3D INTEGRATED)
+       ========================================================================== -->
+  <section class="hero-cinematic" id="sanctum">
+    <div class="hero-status-tag">
+      <span class="pulse-dot-green"></span>
+      <span>India's 1st Dinosaur-Themed Arabian Mandi</span>
+    </div>
+
+    <div class="hero-main-title">
+      <span class="title-sub">GUNTUR'S PREHISTORIC ARABIAN SANCTUARY</span>
+      <h1 class="title-main">HIYYA DINO MANDI</h1>
+    </div>
+
+    <p class="hero-editorial-sub">
+      Where 65-million-year-old apex animatronics meet slow-simmered Arabian Dastarkhwan feasts. 
+      Dine beneath <strong>two roaring life-sized animatronic dinosaurs</strong> in Brindavan Gardens.
+    </p>
+
+    <div class="hero-button-cluster">
+      <a href="#feasts" class="btn-epic-primary">
+        <span>🍗 Explore Royal Feasts ↓</span>
+      </a>
+      <button class="btn-epic-roar" onclick="triggerJurassicRoar(true)">
+        <span>🦖 Unleash Apex Roar</span>
+      </button>
+      <a href="https://wa.me/919920986666?text=Hello%20Hiyya%20Dino%20Mandi%20team,%20I'd%20like%20to%20reserve%20a%20table%20tonight." target="_blank" class="btn-card-order" style="padding:15px 26px; border-radius:40px; font-size:0.88rem;">
+        <span>WhatsApp Concierge ↗</span>
+      </a>
+    </div>
+
+    <div class="hero-metrics-bar">
+      <span>COORDINATES: <strong>16.3132° N, 80.4208° E</strong></span>
+      <span>HABITAT: <strong>BRINDAVAN GARDENS, GUNTUR</strong></span>
+      <span>CAPACITY: <strong>200+ EXPEDITION SEATS</strong></span>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MARQUEE TICKER: THE EXPEDITION ACCREDITATIONS
+       ========================================================================== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="highlight">HIYYA DINO MANDI</span> <span class="sep-gem">✦</span> 2 LIFE-SIZED ANIMATRONIC BEASTS</div>
+      <div class="marquee-item"><span class="highlight">CHICKEN JUICY MANDI</span> <span class="sep-gem">✦</span> 24-HOUR SPICED BROTH</div>
+      <div class="marquee-item"><span class="highlight">GONGURA MUTTON</span> <span class="sep-gem">✦</span> ANDHRA HERITAGE MEETS ADENESE RICE</div>
+      <div class="marquee-item"><span class="highlight">INAUGURATED BY BHAGYASHRI BORSE</span> <span class="sep-gem">✦</span> 28TH JULY 2026</div>
+      <div class="marquee-item"><span class="highlight">6-PAX DINO MONSTER PLATTER</span> <span class="sep-gem">✦</span> GUNTUR'S GREATEST FAMILY BANQUET</div>
+      <!-- Duplicate for seamless infinite loop -->
+      <div class="marquee-item"><span class="highlight">HIYYA DINO MANDI</span> <span class="sep-gem">✦</span> 2 LIFE-SIZED ANIMATRONIC BEASTS</div>
+      <div class="marquee-item"><span class="highlight">CHICKEN JUICY MANDI</span> <span class="sep-gem">✦</span> 24-HOUR SPICED BROTH</div>
+      <div class="marquee-item"><span class="highlight">GONGURA MUTTON</span> <span class="sep-gem">✦</span> ANDHRA HERITAGE MEETS ADENESE RICE</div>
+      <div class="marquee-item"><span class="highlight">INAUGURATED BY BHAGYASHRI BORSE</span> <span class="sep-gem">✦</span> 28TH JULY 2026</div>
+      <div class="marquee-item"><span class="highlight">6-PAX DINO MONSTER PLATTER</span> <span class="sep-gem">✦</span> GUNTUR'S GREATEST FAMILY BANQUET</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 3: ASYMMETRIC EDITORIAL FEAST SPREAD
+       ========================================================================== -->
+  <section class="section-feasts" id="feasts">
+    <div class="editorial-header-row">
+      <div class="editorial-header-left">
+        <h2>THE ROYAL <span>FEAST GUILD</span></h2>
+      </div>
+      <div class="editorial-header-right">
+        Slow-cooked over hardwood charcoal in sealed earthenware pits. Each platter brings together fragrant long-grain Arabic basmati, secret Yemeni masalas, and Guntur’s legendary chillies.
+      </div>
+    </div>
+
+    <div class="editorial-feast-grid">
+      <!-- Big Hero Dish: Chicken Juicy Mandi -->
+      <div class="dish-hero-plate">
+        <div>
+          <div class="dish-badge-row">
+            <span class="dish-crown-tag">👑 Guntur's #1 Rated Mandi</span>
+            <div class="dish-price-huge">₹420 <span>/ Single Platter</span></div>
+          </div>
+
+          <div class="dish-hero-titles">
+            <h3>Chicken Juicy Mandi</h3>
+            <p>
+              The legendary house specialty. Tender, fall-off-the-bone slow-poached and spiced chicken resting on golden basmati infused with 24-hour chicken bone stock, cardamom pods, and roasted dry lemons.
+            </p>
+          </div>
+
+          <div class="plate-ingredient-nodes">
+            <div class="ing-chip"><span class="dot"></span> 24-Hour Spiced Bone Stock Rice</div>
+            <div class="ing-chip"><span class="dot"></span> Velvety Garlic Toum Mayo</div>
+            <div class="ing-chip"><span class="dot"></span> Warm Khaliya Herbal Soup</div>
+            <div class="ing-chip"><span class="dot"></span> Roasted Crispy Fried Onions & Cashews</div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-faint); padding-top:24px;">
+          <span style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-subtle);">SERVES 1-2 ADVENTURERS</span>
+          <a href="https://wa.me/919920986666?text=Hi!%20I%20would%20like%20to%20order%20Chicken%20Juicy%20Mandi%20from%20Hiyya%20Dino%20Mandi." target="_blank" class="btn-epic-primary" style="padding:12px 28px; font-size:0.88rem;">
+            <span>Order Platter ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column Asymmetric Dishes -->
+      <div class="editorial-sub-dishes">
+        <!-- Gongura Mutton Mandi -->
+        <div class="dish-sub-card">
+          <div>
+            <div class="dish-sub-top">
+              <h4>Gongura Mutton Mandi</h4>
+              <span class="sub-price">₹560</span>
+            </div>
+            <p>
+              The revolutionary Andhra-Arabian masterpiece. Tangy indigenous sorrel leaves braised with prime mountain goat meat and served over aromatic saffron mandi rice.
+            </p>
+          </div>
+          <div class="dish-sub-footer">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-subtle);">FIERY & TANGY · GUNTUR SPECIAL</span>
+            <a href="https://wa.me/919920986666?text=Hi!%20I'd%20like%20to%20order%20the%20Gongura%20Mutton%20Mandi." target="_blank" class="btn-card-order">Select Dish ↗</a>
+          </div>
+        </div>
+
+        <!-- 6-Pax Dino Monster Mega Platter -->
+        <div class="dish-sub-card" style="border-color: rgba(245,158,11,0.4); background: radial-gradient(circle at 10% 20%, rgba(245,158,11,0.1) 0%, rgba(14,22,17,0.85) 100%);">
+          <div>
+            <div class="dish-sub-top">
+              <h4>Dino Monster Mega Platter</h4>
+              <span class="sub-price">₹2,150</span>
+            </div>
+            <p>
+              The ultimate family feast: feeds 6–8 people. An enormous brass dastarkhwan loaded with Chicken Juicy, Crispy Fried Chicken, Mutton Chops, Arabian Grilled Fish, and 4 sides of Toum and Khaliya.
+            </p>
+          </div>
+          <div class="dish-sub-footer">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--amber-gold);">FEEDS 6 TO 8 ADULTS</span>
+            <a href="https://wa.me/919920986666?text=Hi!%20We%20want%20to%20book%20the%206-8%20pax%20Dino%20Monster%20Mega%20Platter%20at%20Hiyya%20Dino%20Mandi." target="_blank" class="btn-card-order" style="background:var(--amber-gold); color:#000;">Lock Mega Platter ↗</a>
+          </div>
+        </div>
+
+        <!-- Prehistoric Starters -->
+        <div class="dish-sub-card">
+          <div>
+            <div class="dish-sub-top">
+              <h4>Chicken Chekkalu & Pakoda</h4>
+              <span class="sub-price">₹290</span>
+            </div>
+            <p>
+              Ultra-crunchy street-style chicken morsels tossed in crushed peppercorns, curry leaves, and green chillies. The perfect table opener.
+            </p>
+          </div>
+          <div class="dish-sub-footer">
+            <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-subtle);">APPETIZER GUILD</span>
+            <a href="https://wa.me/919920986666?text=Hi!%20Adding%20Chicken%20Chekkalu%20to%20my%20order." target="_blank" class="btn-card-order">Add Starter ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: THE GOLDEN DASTARKHWAN (INTERACTIVE MANDI PLATTER SIZER)
+       ========================================================================== -->
+  <section class="section-sizer" id="sizer">
+    <div class="sizer-box">
+      <div class="sizer-grid">
+        <!-- Interactive Circular Mandi Visualizer -->
+        <div class="thali-visualizer-col">
+          <div class="circular-thali-disc" id="thaliDisc">
+            <div class="thali-rice-mound" id="thaliRiceText">
+              SAFFRON BASMATI
+            </div>
+            <div class="orbit-meat-node orbit-pos-1" id="meatNode1">
+              🍗
+              <span class="node-label">JUICY</span>
+            </div>
+            <div class="orbit-meat-node orbit-pos-2" id="meatNode2">
+              🥩
+              <span class="node-label">MUTTON</span>
+            </div>
+            <div class="orbit-meat-node orbit-pos-3" id="meatNode3">
+              🐟
+              <span class="node-label">FISH</span>
+            </div>
+            <div class="orbit-meat-node orbit-pos-4" id="meatNode4">
+              🥣
+              <span class="node-label">TOUM</span>
+            </div>
+          </div>
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-subtle); margin-top:30px; letter-spacing:1px;">
+            ✦ LIVE DASTARKHWAN TRAY VISUALIZER ✦
+          </div>
+        </div>
+
+        <!-- Platter Builder Controls -->
+        <div class="sizer-controls-col">
+          <span class="sizer-step-label">Step 01 · Select Platter Scale</span>
+          <h3>Custom Mandi Architect</h3>
+          <p class="lead">
+            Customize your Arabian Dastarkhwan tray in real-time. Watch the platter rebalance, recalculate portions, and dispatch directly to the kitchen.
+          </p>
+
+          <div class="platter-tier-grid">
+            <div class="tier-btn active" onclick="selectTier('single', 380, '1 Person', this)">
+              <span class="tier-name">Single Explorer</span>
+              <span class="tier-meta">1 Adult · 1 Signature Cut</span>
+              <span class="tier-price">₹380</span>
+            </div>
+
+            <div class="tier-btn" onclick="selectTier('duo', 750, '2 Persons', this)">
+              <span class="tier-name">Couple Duo</span>
+              <span class="tier-meta">2 Adults · 2 Cuts + 2 Broths</span>
+              <span class="tier-price">₹750</span>
+            </div>
+
+            <div class="tier-btn" onclick="selectTier('quad', 1390, '4 Persons', this)">
+              <span class="tier-name">Family Quad</span>
+              <span class="tier-meta">4 Adults · 4 Cuts + Sides</span>
+              <span class="tier-price">₹1,390</span>
+            </div>
+
+            <div class="tier-btn" onclick="selectTier('monster', 2150, '6-8 Persons', this)">
+              <span class="tier-name">Dino Mega Platter</span>
+              <span class="tier-meta">6-8 Adults · Multi-Meat Feast</span>
+              <span class="tier-price">₹2,150</span>
+            </div>
+          </div>
+
+          <span class="sizer-step-label">Step 02 · Pick Your Preferred Meat Cut</span>
+          <div class="meat-selection-pills">
+            <button class="meat-pill active" onclick="selectMeat('Chicken Juicy', this)">🍗 Chicken Juicy</button>
+            <button class="meat-pill" onclick="selectMeat('Crispy Fried Chicken', this)">🔥 Arabian Fried</button>
+            <button class="meat-pill" onclick="selectMeat('Gongura Mutton', this)">🥩 Gongura Mutton</button>
+            <button class="meat-pill" onclick="selectMeat('Arabian Special Fish', this)">🐟 Grilled Fish</button>
+          </div>
+
+          <!-- Total & Dispatch Box -->
+          <div class="live-sizer-total-box">
+            <div class="sizer-total-left">
+              <span id="sizerSummaryText">Single Explorer · Chicken Juicy</span>
+              <strong id="sizerPriceDisplay">₹380</strong>
+            </div>
+            <button class="btn-epic-primary" onclick="dispatchCustomPlatter()" style="padding:14px 26px; font-size:0.88rem;">
+              <span>Order via WhatsApp 💬</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: BHAGYASHRI BORSE CELEBRITY SPOTLIGHT & VIP CABANAS
+       ========================================================================== -->
+  <section class="section-atmosphere" id="atmosphere">
+    <div class="atmosphere-split">
+      <!-- Celebrity Card -->
+      <div class="celeb-spotlight-card">
+        <div class="celeb-tag">★ Grand Inauguration Milestone</div>
+        <h3>Inaugurated by Actress<br><span>Bhagyashri Borse</span></h3>
+        <p>
+          On 28th July 2026, Telugu cinema star <strong>Bhagyashri Borse</strong> officially launched Hiyya Dino Mandi in Guntur, marking the 4th iconic chapter of the renowned Hiyya Hospitality Group.
+        </p>
+
+        <div class="celeb-stats-strip">
+          <div class="c-stat">
+            <strong>4th</strong>
+            <span>Hiyya Group Chapter</span>
+          </div>
+          <div class="c-stat">
+            <strong>200+</strong>
+            <span>Dining Capacity</span>
+          </div>
+          <div class="c-stat">
+            <strong>2</strong>
+            <span>Animatronic Beasts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cabana Features Stack -->
+      <div class="atmosphere-cards-stack">
+        <div class="atmo-card">
+          <div class="atmo-icon-box">🪨</div>
+          <div class="atmo-text">
+            <h4>Prehistoric Cave Cabanas</h4>
+            <p>Secluded family dining caves featuring fossil-textured masonry, gentle amber cave lighting, and authentic Arabic carpet seating.</p>
+          </div>
+        </div>
+
+        <div class="atmo-card">
+          <div class="atmo-icon-box">🦖</div>
+          <div class="atmo-text">
+            <h4>The Apex T-Rex Arena</h4>
+            <p>Dine directly under our 20-foot animatronic predator as it moves, turns its head, and roars during family peak dinner hours.</p>
+          </div>
+        </div>
+
+        <div class="atmo-card">
+          <div class="atmo-icon-box">🎉</div>
+          <div class="atmo-text">
+            <h4>Kids & Birthday Celebrations</h4>
+            <p>Custom birthday cake presentations, prehistoric photo backdrops, and dedicated child-friendly spice levels for hassle-free family gatherings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: LIVE EXPEDITION RADAR & LOCATION CONCIERGE
+       ========================================================================== -->
+  <section class="section-concierge" id="concierge">
+    <div class="concierge-wrap">
+      <div class="radar-info-side">
+        <h3>EXPEDITION CONCIERGE</h3>
+        <p>
+          Located at Brindavan Gardens on Kundula Road, directly above Ratnadeep Super Market. Secure your VIP cabana to bypass peak evening waiting lines.
+        </p>
+
+        <div class="live-tracker-pill-box">
+          <div class="tracker-row">
+            <span class="tracker-label">CURRENT QUEUE STATUS:</span>
+            <span class="tracker-val" id="queueStatusLive">🟢 TABLES AVAILABLE</span>
+          </div>
+          <div class="tracker-row">
+            <span class="tracker-label">PEAK DINNER RUSH:</span>
+            <span class="tracker-val" style="color:var(--amber-gold);">6:00 PM – 10:30 PM</span>
+          </div>
+          <div class="tracker-row">
+            <span class="tracker-label">AVERAGE WALK-IN WAIT:</span>
+            <span class="tracker-val">~10 - 15 MINUTES</span>
+          </div>
+          <div class="tracker-row">
+            <span class="tracker-label">WHATSAPP RESERVATION:</span>
+            <span class="tracker-val" style="color:#FFF;">0 MINUTE DIRECT SEATING</span>
+          </div>
+        </div>
+
+        <div class="direct-booking-cta-bar">
+          <a href="https://wa.me/919920986666?text=Hi%20Hiyya%20Dino%20Mandi,%20I'd%20like%20to%20book%20a%20table%20for%20a%20family%20of%204%20tonight." target="_blank" class="btn-epic-primary">
+            <span>Direct WhatsApp Booking ↗</span>
+          </a>
+          <a href="tel:09920986666" class="btn-card-order" style="padding:15px 24px; border-radius:40px; font-size:0.88rem;">
+            <span>Call 099209 86666</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="map-embed-side">
+        <div class="map-frame-box">
+          <iframe 
+            src="https://maps.google.com/maps?q=hiyya+dino+mandi+guntur&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            title="Hiyya Dino Mandi Location Map"
+            allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups">
+          </iframe>
+        </div>
+
+        <div style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">
+          📍 <strong>Kundula Road, Brindavan Gardens</strong> (Above Ratnadeep Super Market, Beside Ayyappa Swamy Temple / Kamma Hostel), Guntur, Andhra Pradesh 522006.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDITORIAL FOOTER
+       ========================================================================== -->
+  <footer class="editorial-footer">
+    <div class="footer-top-row">
+      <div class="footer-brand-side">
+        <h4>HIYYA DINO MANDI</h4>
+        <p>Chapter IV · The Hiyya Hospitality Group</p>
+      </div>
+
+      <div class="footer-address-side">
+        <strong>HABITAT LOCATION</strong>
+        Kundula Road, Brindavan Gardens, Above Ratnadeep, Guntur, AP 522006.<br>
+        Direct Inquiries: +91 99209 86666 · Open Daily 12:00 PM – 11:00 PM.
+      </div>
+    </div>
+
+    <div class="footer-bottom-row">
+      <div>© 2026 HIYYA DINO MANDI. ALL RIGHTS RESERVED.</div>
+      <div class="valixis-credit">ENGINEERED BY <a href="../index.html">VALIXIS TECHNOLOGIES</a></div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       SCRIPTS: THREE.JS 3D SCENE, AUDIO SYNTHESIZER & INTERACTIVITY
+       ========================================================================== -->
+  <script>
+    // --------------------------------------------------------------------------
+    // 1. MODERN WEB GUIDANCE: SCROLL PROGRESS FALLBACK
+    // --------------------------------------------------------------------------
+    if (!CSS.supports('animation-timeline', 'scroll()')) {
+      const progressBar = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const pct = scrollable > 0 ? (scrolled / scrollable) : 0;
+        progressBar.style.transform = `scaleX(${pct})`;
+      }, { passive: true });
+    }
+
+    // --------------------------------------------------------------------------
+    // 2. LUXURY FLOATING CURSOR PHYSICS
+    // --------------------------------------------------------------------------
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = `${mouseX}px`;
+      dot.style.top = `${mouseY}px`;
+    });
+
+    function renderCursor() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = `${ringX}px`;
+      ring.style.top = `${ringY}px`;
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+
+    // --------------------------------------------------------------------------
+    // 3. AMBIENT GOLDEN EMBERS CANVAS (60FPS PREHISTORIC PARTICLES)
+    // --------------------------------------------------------------------------
+    const emberCanvas = document.getElementById('embersCanvas');
+    const eCtx = emberCanvas.getContext('2d');
+    let eWidth, eHeight;
+    let particles = [];
+
+    function resizeEmbers() {
+      eWidth = emberCanvas.width = window.innerWidth;
+      eHeight = emberCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeEmbers);
+    resizeEmbers();
+
+    class Ember {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * eWidth;
+        this.y = eHeight + Math.random() * 20;
+        this.size = Math.random() * 2.5 + 0.8;
+        this.speedY = Math.random() * 1.2 + 0.3;
+        this.speedX = (Math.random() - 0.5) * 0.8;
+        this.opacity = Math.random() * 0.6 + 0.2;
+        this.hue = Math.random() > 0.5 ? '#F59E0B' : '#FF7A00';
+      }
+      update() {
+        this.y -= this.speedY;
+        this.x += this.speedX;
+        if (this.y < -10) this.reset();
+      }
+      draw() {
+        eCtx.beginPath();
+        eCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        eCtx.fillStyle = this.hue;
+        eCtx.globalAlpha = this.opacity;
+        eCtx.fill();
+        eCtx.globalAlpha = 1.0;
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Ember());
+    }
+
+    function animateEmbers() {
+      eCtx.clearRect(0, 0, eWidth, eHeight);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateEmbers);
+    }
+    animateEmbers();
+
+    // --------------------------------------------------------------------------
+    // 4. WEB AUDIO SYNTHESIZER: JURASSIC ROAR GENERATOR
+    // --------------------------------------------------------------------------
+    let audioCtx = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function triggerJurassicRoar(withShake = true) {
+      initAudioContext();
+
+      const now = audioCtx.currentTime;
+
+      // 1. Sub-Bass Rumble Oscillator
+      const subOsc = audioCtx.createOscillator();
+      const subGain = audioCtx.createGain();
+      subOsc.type = 'sawtooth';
+      subOsc.frequency.setValueAtTime(95, now);
+      subOsc.frequency.exponentialRampToValueAtTime(32, now + 1.2);
+      subGain.gain.setValueAtTime(0.55, now);
+      subGain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+      subOsc.connect(subGain);
+      subGain.connect(audioCtx.destination);
+
+      // 2. Throaty Mid-Range Modulator
+      const midOsc = audioCtx.createOscillator();
+      const midGain = audioCtx.createGain();
+      midOsc.type = 'triangle';
+      midOsc.frequency.setValueAtTime(280, now);
+      midOsc.frequency.linearRampToValueAtTime(80, now + 0.9);
+      midGain.gain.setValueAtTime(0.4, now);
+      midGain.gain.exponentialRampToValueAtTime(0.001, now + 1.1);
+      midOsc.connect(midGain);
+      midGain.connect(audioCtx.destination);
+
+      // 3. Breath / Cavern Burst Noise
+      const bufferSize = audioCtx.sampleRate * 1.2;
+      const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      const whiteNoise = audioCtx.createBufferSource();
+      whiteNoise.buffer = noiseBuffer;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(650, now);
+      filter.frequency.exponentialRampToValueAtTime(180, now + 1.2);
+      filter.Q.setValueAtTime(3.5, now);
+
+      const noiseGain = audioCtx.createGain();
+      noiseGain.gain.setValueAtTime(0.45, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+
+      whiteNoise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(audioCtx.destination);
+
+      subOsc.start(now);
+      midOsc.start(now);
+      whiteNoise.start(now);
+
+      subOsc.stop(now + 1.4);
+      midOsc.stop(now + 1.4);
+      whiteNoise.stop(now + 1.4);
+
+      if (withShake) {
+        document.body.classList.add('screen-shake-effect');
+        setTimeout(() => document.body.classList.remove('screen-shake-effect'), 700);
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // 6. INTERACTIVE MANDI ARCHITECT (PLATTER SIZER)
+    // --------------------------------------------------------------------------
+    let currentTierPrice = 380;
+    let currentTierName = "Single Explorer";
+    let currentMeatChoice = "Chicken Juicy";
+
+    function selectTier(tierKey, price, servings, btnEl) {
+      currentTierPrice = price;
+      if (tierKey === 'single') currentTierName = "Single Explorer (1 Pax)";
+      if (tierKey === 'duo') currentTierName = "Couple Duo (2 Pax)";
+      if (tierKey === 'quad') currentTierName = "Family Quad (4 Pax)";
+      if (tierKey === 'monster') currentTierName = "Dino Mega Platter (6-8 Pax)";
+
+      document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const disc = document.getElementById('thaliDisc');
+      if (tierKey === 'single') disc.style.transform = "scale(0.9) rotate(0deg)";
+      if (tierKey === 'duo') disc.style.transform = "scale(1.0) rotate(45deg)";
+      if (tierKey === 'quad') disc.style.transform = "scale(1.08) rotate(90deg)";
+      if (tierKey === 'monster') disc.style.transform = "scale(1.18) rotate(180deg)";
+
+      updateSizerDisplay();
+    }
+
+    function selectMeat(meatName, btnEl) {
+      currentMeatChoice = meatName;
+      document.querySelectorAll('.meat-pill').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      document.getElementById('thaliRiceText').innerText = meatName.toUpperCase();
+      updateSizerDisplay();
+    }
+
+    function updateSizerDisplay() {
+      document.getElementById('sizerSummaryText').innerText = `${currentTierName} · ${currentMeatChoice}`;
+      document.getElementById('sizerPriceDisplay').innerText = `₹${currentTierPrice}`;
+    }
+
+    function dispatchCustomPlatter() {
+      const msg = `Hi Hiyya Dino Mandi! 🦖 I customized a Mandi Platter on your website:
+• Platter Scale: ${currentTierName}
+• Selected Cut: ${currentMeatChoice}
+• Total: ₹${currentTierPrice}
+
+Please confirm table availability and booking!`;
+      const url = `https://wa.me/919920986666?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    // --------------------------------------------------------------------------
+    // 7. TIME-BASED LIVE QUEUE TRACKER
+    // --------------------------------------------------------------------------
+    function updateQueueTelemetry() {
+      const now = new Date();
+      const hrs = now.getHours();
+      const statusEl = document.getElementById('queueStatusLive');
+      if (!statusEl) return;
+
+      if (hrs >= 18 && hrs <= 22) {
+        statusEl.innerHTML = "🟡 PEAK FAMILY RUSH (~15 MIN WAIT)";
+        statusEl.style.color = "#F59E0B";
+      } else if (hrs >= 12 && hrs <= 15) {
+        statusEl.innerHTML = "🟢 LUNCH FEAST ACTIVE";
+        statusEl.style.color = "#10B981";
+      } else {
+        statusEl.innerHTML = "🟢 TABLES READY FOR DIRECT SEATING";
+        statusEl.style.color = "#10B981";
+      }
+    }
+    updateQueueTelemetry();
+    setInterval(updateQueueTelemetry, 60000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIXIS — Executive Portrait Studio & Live Cropper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090D;
+      --bg-card: #0D1117;
+      --bg-panel: #131924;
+      --valixis-cyan: #00D9FF;
+      --valixis-purple: #7C3AED;
+      --valixis-magenta: #FF2ED6;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(0, 217, 255, 0.3);
+      --font-display: 'Orbitron', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: #FFF;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding-bottom: 80px;
+      overflow-x: hidden;
+    }
+
+    /* Ambient glow */
+    .bg-glow {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 15%, rgba(0, 217, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 46, 214, 0.08) 0%, transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--valixis-cyan);
+      color: var(--valixis-cyan);
+      letter-spacing: 0.08em;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--valixis-cyan) 0%, var(--valixis-purple) 60%, var(--valixis-magenta) 100%);
+      color: #FFF;
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(255, 46, 214, 0.6);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: #FFF;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--valixis-cyan);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .instructions-bar {
+      background: rgba(20, 26, 36, 0.75);
+      border: 1px solid var(--border-glow);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .instructions-text {
+      font-size: 0.92rem;
+      color: #CBD5E1;
+      line-height: 1.5;
+    }
+    .instructions-text strong {
+      color: var(--valixis-cyan);
+    }
+
+    /* Dual Studio Grid */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .studio-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    .studio-panel.subhash {
+      border-top: 3px solid var(--valixis-cyan);
+    }
+    .studio-panel.jyothsna {
+      border-top: 3px solid var(--valixis-magenta);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .panel-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .panel-role {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .subhash .panel-role { color: var(--valixis-cyan); }
+    .jyothsna .panel-role { color: var(--valixis-magenta); }
+
+    /* Interactive Canvas Viewport */
+    .viewport-box {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: #05070B;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+      user-select: none;
+      cursor: grab;
+    }
+    .viewport-box:active {
+      cursor: grabbing;
+    }
+
+    canvas.interactive-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Circular Mask Guide */
+    .circular-overlay {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 0 9999px rgba(5, 7, 11, 0.78);
+      z-index: 10;
+    }
+    .subhash .circular-overlay {
+      border: 4px solid var(--valixis-cyan);
+      box-shadow: 0 0 0 9999px rgba(5, 7, 11, 0.78), 0 0 30px rgba(0, 217, 255, 0.45);
+    }
+    .jyothsna .circular-overlay {
+      border: 4px solid var(--valixis-magenta);
+      box-shadow: 0 0 0 9999px rgba(5, 7, 11, 0.78), 0 0 30px rgba(255, 46, 214, 0.45);
+    }
+
+    .circle-guide-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 11;
+      opacity: 0.35;
+      background:
+        linear-gradient(to bottom, transparent 33.3%, rgba(255,255,255,0.4) 33.3%, rgba(255,255,255,0.4) 34%, transparent 34%),
+        linear-gradient(to right, transparent 50%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.4) 51%, transparent 51%);
+    }
+
+    .viewport-hint {
+      position: absolute;
+      bottom: 12px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: #94A3B8;
+      pointer-events: none;
+      z-index: 12;
+    }
+
+    /* Controls Panel */
+    .controls-panel {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .slider-label {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #94A3B8;
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .slider-input {
+      flex-grow: 1;
+      accent-color: var(--valixis-cyan);
+      height: 6px;
+      cursor: pointer;
+    }
+    .jyothsna .slider-input {
+      accent-color: var(--valixis-magenta);
+    }
+    .slider-val {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #FFF;
+      width: 45px;
+      text-align: right;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+    }
+
+    /* Live Preview Section */
+    .preview-section {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .preview-heading {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+    .preview-subtitle {
+      color: #94A3B8;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .cards-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 960px;
+      margin: 0 auto 30px auto;
+    }
+
+    .mockup-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .mockup-avatar-box {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--valixis-cyan) 0%, var(--valixis-purple) 100%);
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .mockup-avatar-box.jyothsna {
+      background: linear-gradient(135deg, var(--valixis-purple) 0%, var(--valixis-magenta) 100%);
+      box-shadow: 0 0 25px rgba(255, 46, 214, 0.4);
+    }
+    .mockup-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mockup-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .mockup-role {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .mockup-role.subhash { color: var(--valixis-cyan); }
+    .mockup-role.jyothsna { color: var(--valixis-magenta); }
+
+    .mockup-bio {
+      font-size: 0.88rem;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    /* Modal / Toast */
+    .deploy-status-box {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(0, 217, 255, 0.06);
+      border: 1px solid var(--border-glow);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      display: none;
+    }
+    .deploy-status-box.active {
+      display: block;
+    }
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: var(--valixis-cyan);
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 900px) {
+      .studio-grid { grid-template-columns: 1fr; }
+      .cards-preview-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Top Toast -->
+  <div id="floatingToast" style="display: none; position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; background: rgba(13, 17, 23, 0.95); backdrop-filter: blur(16px); border: 1px solid var(--valixis-cyan); box-shadow: 0 0 35px rgba(0, 217, 255, 0.5); padding: 14px 28px; border-radius: 40px; font-family: var(--font-mono); font-size: 0.9rem; align-items: center; gap: 12px; color: #FFF;">
+    <span id="floatingToastText"></span>
+  </div>
+
+  <div class="bg-glow"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand-title">
+      <span>VALIXIS</span>
+      <span class="brand-badge">Executive Portrait Studio</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="resetAll()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+        Reset Framing
+      </button>
+      <button class="btn btn-primary" id="btnDeploy" onclick="deployToProduction()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        🚀 Save &amp; Deploy to valixis.tech
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Instructions Bar -->
+    <div class="instructions-bar">
+      <div class="instructions-text">
+        <strong>Manual Interactive Framing:</strong> Click and drag either photo to reposition it within the glowing circle. Use your mouse scroll wheel or the zoom slider to resize. The live cards below show exactly how your changes look on <strong>valixis.tech</strong>.
+      </div>
+      <div>
+        <button class="btn btn-secondary btn-sm" onclick="downloadBothJpgs()">
+          💾 Download Both HD JPGs
+        </button>
+      </div>
+    </div>
+
+    <!-- Dual Studio Grid -->
+    <div class="studio-grid">
+      
+      <!-- SUBHASH ANNAM STUDIO -->
+      <div class="studio-panel subhash">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Subhash Annam</h2>
+            <div class="panel-role">Founder &amp; Chief Executive Officer (CEO)</div>
+          </div>
+          <label class="btn btn-secondary btn-sm" style="cursor: pointer;">
+            Upload New Pic
+            <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(event, 'subhash')">
+          </label>
+        </div>
+
+        <div class="viewport-box" id="viewportSubhash">
+          <canvas id="canvasSubhash" class="interactive-canvas"></canvas>
+          <div class="circular-overlay">
+            <div class="circle-guide-lines"></div>
+          </div>
+          <div class="viewport-hint">🖱️ Drag to pan &bull; Scroll to zoom</div>
+        </div>
+
+        <div class="controls-panel">
+          <div class="slider-row">
+            <span class="slider-label">Zoom Scale:</span>
+            <input type="range" class="slider-input" id="zoomSubhash" min="0.3" max="3.0" step="0.01" value="1.0" oninput="onControlChange('subhash')">
+            <span class="slider-val" id="valZoomSubhash">100%</span>
+          </div>
+          <div class="slider-row">
+            <span class="slider-label">Contrast:</span>
+            <input type="range" class="slider-input" id="contrastSubhash" min="0.8" max="1.6" step="0.02" value="1.08" oninput="onControlChange('subhash')">
+            <span class="slider-val" id="valContrastSubhash">1.08</span>
+          </div>
+          <div class="slider-row">
+            <span class="slider-label">Brightness:</span>
+            <input type="range" class="slider-input" id="brightnessSubhash" min="0.8" max="1.4" step="0.02" value="1.0" oninput="onControlChange('subhash')">
+            <span class="slider-val" id="valBrightnessSubhash">1.00</span>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-secondary btn-sm" onclick="centerFace('subhash')">Center Face</button>
+            <button class="btn btn-secondary btn-sm" onclick="downloadSingle('subhash')">Export JPG</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JYOTHSNA SRI STUDIO -->
+      <div class="studio-panel jyothsna">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">Jyothsna Sri</h2>
+            <div class="panel-role">Co-Founder &amp; Chief Commercial Officer (CCO)</div>
+          </div>
+          <label class="btn btn-secondary btn-sm" style="cursor: pointer;">
+            Upload New Pic
+            <input type="file" accept="image/*" style="display: none;" onchange="handleFileUpload(event, 'jyothsna')">
+          </label>
+        </div>
+
+        <div class="viewport-box" id="viewportJyothsna">
+          <canvas id="canvasJyothsna" class="interactive-canvas"></canvas>
+          <div class="circular-overlay">
+            <div class="circle-guide-lines"></div>
+          </div>
+          <div class="viewport-hint">🖱️ Drag to pan &bull; Scroll to zoom</div>
+        </div>
+
+        <div class="controls-panel">
+          <div class="slider-row">
+            <span class="slider-label">Zoom Scale:</span>
+            <input type="range" class="slider-input" id="zoomJyothsna" min="0.3" max="3.0" step="0.01" value="1.0" oninput="onControlChange('jyothsna')">
+            <span class="slider-val" id="valZoomJyothsna">100%</span>
+          </div>
+          <div class="slider-row">
+            <span class="slider-label">Dehaze/Glow:</span>
+            <input type="range" class="slider-input" id="dehazeJyothsna" min="0" max="50" step="1" value="30" oninput="onControlChange('jyothsna')">
+            <span class="slider-val" id="valDehazeJyothsna">30</span>
+          </div>
+          <div class="slider-row">
+            <span class="slider-label">Contrast:</span>
+            <input type="range" class="slider-input" id="contrastJyothsna" min="0.8" max="1.6" step="0.02" value="1.22" oninput="onControlChange('jyothsna')">
+            <span class="slider-val" id="valContrastJyothsna">1.22</span>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-secondary btn-sm" onclick="centerFace('jyothsna')">Center Face</button>
+            <button class="btn btn-secondary btn-sm" onclick="downloadSingle('jyothsna')">Export JPG</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Live Card Mockup Section -->
+    <div class="preview-section">
+      <h3 class="preview-heading">Live Leadership Page Simulation</h3>
+      <p class="preview-subtitle">Rendered exactly as displayed on https://valixis.tech/leadership/</p>
+
+      <div class="cards-preview-grid">
+        <!-- Subhash Mockup Card -->
+        <div class="mockup-card">
+          <div class="mockup-avatar-box">
+            <img id="mockupImgSubhash" src="" class="mockup-avatar-img" alt="Subhash Annam">
+          </div>
+          <h4 class="mockup-name">Subhash Annam</h4>
+          <div class="mockup-role subhash">Founder &amp; Chief Executive Officer (CEO)</div>
+          <p class="mockup-bio">Systems architect, distributed infrastructure engineer, and product visionary directing VALIXIS's overarching technology roadmap, autonomous AI agent systems, internal portal governance, and global enterprise strategy.</p>
+        </div>
+
+        <!-- Jyothsna Mockup Card -->
+        <div class="mockup-card">
+          <div class="mockup-avatar-box jyothsna">
+            <img id="mockupImgJyothsna" src="" class="mockup-avatar-img" alt="Jyothsna Sri">
+          </div>
+          <h4 class="mockup-name">Jyothsna Sri</h4>
+          <div class="mockup-role jyothsna">Co-Founder &amp; Chief Commercial Officer (CCO)</div>
+          <p class="mockup-bio">Directing visual storytelling, product brand identity, human-computer interaction, and organizational culture across all VALIXIS divisions, engineering world-class design standards for enterprise platforms and next-gen gaming studios.</p>
+        </div>
+      </div>
+
+      <!-- Deploy Status -->
+      <div id="deployStatusBox" class="deploy-status-box">
+        <span class="spinner" id="deploySpinner"></span>
+        <span id="deployStatusText">Packaging and deploying cropped headshots...</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // State management for both portraits
+    const state = {
+      subhash: {
+        img: new Image(),
+        panX: 0,
+        panY: 0,
+        zoom: 1.0,
+        contrast: 1.08,
+        brightness: 1.0,
+        isDragging: false,
+        dragStartX: 0,
+        dragStartY: 0,
+        loaded: false
+      },
+      jyothsna: {
+        img: new Image(),
+        panX: 0,
+        panY: 0,
+        zoom: 1.0,
+        contrast: 1.22,
+        brightness: 1.0,
+        dehaze: 30,
+        isDragging: false,
+        dragStartX: 0,
+        dragStartY: 0,
+        loaded: false
+      }
+    };
+
+    const CIRCLE_DIAMETER = 240; // Diameter of preview circle overlay
+
+    // Initialize canvases
+    function init() {
+      setupCanvas('subhash', 'canvasSubhash', 'viewportSubhash', 'subhash_source.jpg');
+      setupCanvas('jyothsna', 'canvasJyothsna', 'viewportJyothsna', 'jyothsna_source.jpg');
+    }
+
+    function setupCanvas(person, canvasId, viewportId, defaultSrc) {
+      const canvas = document.getElementById(canvasId);
+      const viewport = document.getElementById(viewportId);
+      const ctx = canvas.getContext('2d');
+      const s = state[person];
+
+      function resize() {
+        canvas.width = viewport.clientWidth * window.devicePixelRatio;
+        canvas.height = viewport.clientHeight * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        draw(person);
+      }
+      window.addEventListener('resize', resize);
+
+      s.img.crossOrigin = 'anonymous';
+      s.img.src = defaultSrc + '?t=' + Date.now();
+      s.img.onload = () => {
+        s.loaded = true;
+        // Default golden ratio framing
+        if (person === 'subhash') {
+          // Set initial crop matching our calibrated 320x320 box
+          s.zoom = 1.35;
+          s.panX = -12;
+          s.panY = 18;
+          document.getElementById('zoomSubhash').value = s.zoom;
+          document.getElementById('valZoomSubhash').textContent = Math.round(s.zoom * 100) + '%';
+        } else {
+          s.zoom = 1.48;
+          s.panX = 14;
+          s.panY = 95;
+          document.getElementById('zoomJyothsna').value = s.zoom;
+          document.getElementById('valZoomJyothsna').textContent = Math.round(s.zoom * 100) + '%';
+        }
+        resize();
+        updateMockup(person);
+      };
+
+      // Mouse drag controls
+      viewport.addEventListener('mousedown', (e) => {
+        s.isDragging = true;
+        s.dragStartX = e.clientX - s.panX;
+        s.dragStartY = e.clientY - s.panY;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!s.isDragging) return;
+        s.panX = e.clientX - s.dragStartX;
+        s.panY = e.clientY - s.dragStartY;
+        draw(person);
+        updateMockup(person);
+      });
+
+      window.addEventListener('mouseup', () => {
+        s.isDragging = false;
+      });
+
+      // Mouse scroll zoom
+      viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY < 0 ? 0.05 : -0.05;
+        s.zoom = Math.max(0.3, Math.min(3.0, s.zoom + delta));
+        const sliderId = person === 'subhash' ? 'zoomSubhash' : 'zoomJyothsna';
+        const valId = person === 'subhash' ? 'valZoomSubhash' : 'valZoomJyothsna';
+        document.getElementById(sliderId).value = s.zoom;
+        document.getElementById(valId).textContent = Math.round(s.zoom * 100) + '%';
+        draw(person);
+        updateMockup(person);
+      }, { passive: false });
+    }
+
+    // Render Canvas
+    function draw(person) {
+      const s = state[person];
+      if (!s.loaded) return;
+
+      const canvas = document.getElementById(person === 'subhash' ? 'canvasSubhash' : 'canvasJyothsna');
+      const viewport = document.getElementById(person === 'subhash' ? 'viewportSubhash' : 'viewportJyothsna');
+      const ctx = canvas.getContext('2d');
+      const w = viewport.clientWidth;
+      const h = viewport.clientHeight;
+
+      ctx.save();
+      ctx.clearRect(0, 0, w, h);
+
+      // Filters (contrast / brightness / dehaze)
+      ctx.filter = `contrast(${s.contrast}) brightness(${s.brightness})`;
+
+      // Center the viewport
+      const cx = w / 2;
+      const cy = h / 2;
+
+      ctx.translate(cx + s.panX, cy + s.panY);
+      ctx.scale(s.zoom, s.zoom);
+
+      // Draw image centered
+      const imgW = s.img.width;
+      const imgH = s.img.height;
+      // Fit to reasonable starting width
+      const scaleBase = 260 / Math.min(imgW, imgH);
+      const drawW = imgW * scaleBase;
+      const drawH = imgH * scaleBase;
+
+      ctx.drawImage(s.img, -drawW / 2, -drawH / 2, drawW, drawH);
+      ctx.restore();
+    }
+
+    // Control slider change handler
+    function onControlChange(person) {
+      const s = state[person];
+      if (person === 'subhash') {
+        s.zoom = parseFloat(document.getElementById('zoomSubhash').value);
+        s.contrast = parseFloat(document.getElementById('contrastSubhash').value);
+        s.brightness = parseFloat(document.getElementById('brightnessSubhash').value);
+        document.getElementById('valZoomSubhash').textContent = Math.round(s.zoom * 100) + '%';
+        document.getElementById('valContrastSubhash').textContent = s.contrast.toFixed(2);
+        document.getElementById('valBrightnessSubhash').textContent = s.brightness.toFixed(2);
+      } else {
+        s.zoom = parseFloat(document.getElementById('zoomJyothsna').value);
+        s.dehaze = parseInt(document.getElementById('dehazeJyothsna').value);
+        s.contrast = parseFloat(document.getElementById('contrastJyothsna').value);
+        document.getElementById('valZoomJyothsna').textContent = Math.round(s.zoom * 100) + '%';
+        document.getElementById('valDehazeJyothsna').textContent = s.dehaze;
+        document.getElementById('valContrastJyothsna').textContent = s.contrast.toFixed(2);
+      }
+      draw(person);
+      updateMockup(person);
+    }
+
+    // Center Face Reset
+    function centerFace(person) {
+      const s = state[person];
+      if (person === 'subhash') {
+        s.panX = -12;
+        s.panY = 18;
+        s.zoom = 1.35;
+        document.getElementById('zoomSubhash').value = s.zoom;
+        document.getElementById('valZoomSubhash').textContent = '135%';
+      } else {
+        s.panX = 14;
+        s.panY = 95;
+        s.zoom = 1.48;
+        document.getElementById('zoomJyothsna').value = s.zoom;
+        document.getElementById('valZoomJyothsna').textContent = '148%';
+      }
+      draw(person);
+      updateMockup(person);
+    }
+
+    function resetAll() {
+      centerFace('subhash');
+      centerFace('jyothsna');
+    }
+
+    // Handle Uploading a new picture
+    function handleFileUpload(event, person) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const s = state[person];
+        s.img.src = e.target.result;
+        s.img.onload = () => {
+          s.panX = 0;
+          s.panY = 0;
+          s.zoom = 1.0;
+          const sliderId = person === 'subhash' ? 'zoomSubhash' : 'zoomJyothsna';
+          const valId = person === 'subhash' ? 'valZoomSubhash' : 'valZoomJyothsna';
+          document.getElementById(sliderId).value = 1.0;
+          document.getElementById(valId).textContent = '100%';
+          draw(person);
+          updateMockup(person);
+        };
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Export 600x600 high resolution circular portrait
+    function getCroppedBase64(person) {
+      const s = state[person];
+      const viewport = document.getElementById(person === 'subhash' ? 'viewportSubhash' : 'viewportJyothsna');
+      const w = viewport.clientWidth;
+      const h = viewport.clientHeight;
+
+      const exportSize = 600;
+      const offscreen = document.createElement('canvas');
+      offscreen.width = exportSize;
+      offscreen.height = exportSize;
+      const ctx = offscreen.getContext('2d');
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // Re-map the viewport coordinates centered on the circular cutout
+      const scaleRatio = exportSize / CIRCLE_DIAMETER;
+
+      ctx.save();
+      ctx.filter = `contrast(${s.contrast}) brightness(${s.brightness})`;
+
+      // Translate so (cx + panX, cy + panY) aligns with export center
+      ctx.translate(exportSize / 2, exportSize / 2);
+      ctx.scale(s.zoom * scaleRatio, s.zoom * scaleRatio);
+      ctx.translate(s.panX / s.zoom, s.panY / s.zoom);
+
+      const imgW = s.img.width;
+      const imgH = s.img.height;
+      const scaleBase = 260 / Math.min(imgW, imgH);
+      const drawW = imgW * scaleBase;
+      const drawH = imgH * scaleBase;
+
+      ctx.drawImage(s.img, -drawW / 2, -drawH / 2, drawW, drawH);
+      ctx.restore();
+
+      return offscreen.toDataURL('image/jpeg', 0.95);
+    }
+
+    // Update Mockup Card images
+    function updateMockup(person) {
+      const dataUrl = getCroppedBase64(person);
+      if (person === 'subhash') {
+        document.getElementById('mockupImgSubhash').src = dataUrl;
+      } else {
+        document.getElementById('mockupImgJyothsna').src = dataUrl;
+      }
+    }
+
+    // Download Single JPG
+    function downloadSingle(person) {
+      const dataUrl = getCroppedBase64(person);
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = person === 'subhash' ? 'subhash-annam.jpg' : 'jyothsna-sri.jpg';
+      a.click();
+    }
+
+    function downloadBothJpgs() {
+      downloadSingle('subhash');
+      setTimeout(() => downloadSingle('jyothsna'), 300);
+    }
+
+        // Save and Deploy directly to Production
+    async function deployToProduction() {
+      const btn = document.getElementById('btnDeploy');
+      const toast = document.getElementById('floatingToast');
+      const toastText = document.getElementById('floatingToastText');
+
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+      toast.style.display = 'flex';
+      toastText.innerHTML = '<span class="spinner"></span> Packaging 600x600 HD crops & pushing live to valixis.tech...';
+
+      try {
+        const subhashBase64 = getCroppedBase64('subhash');
+        const jyothsnaBase64 = getCroppedBase64('jyothsna');
+
+        const resp = await fetch('/api/save_and_deploy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            subhash_b64: subhashBase64,
+            jyothsna_b64: jyothsnaBase64
+          })
+        });
+
+        const result = await resp.json();
+        if (result.status === 'success') {
+          toastText.innerHTML = '🎉 <strong>DEPLOYED SUCCESSFULLY!</strong> <a href="https://valixis.tech/leadership/" target="_blank" style="color: #00D9FF; margin-left: 10px; text-decoration: underline; font-weight: bold;">View Live Site &rarr;</a>';
+          setTimeout(() => {
+            toast.style.display = 'none';
+          }, 8000);
+        } else {
+          toastText.innerHTML = '❌ Error: ' + result.message;
+        }
+      } catch (err) {
+        toastText.innerHTML = '❌ Error: ' + err.message;
+      } finally {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

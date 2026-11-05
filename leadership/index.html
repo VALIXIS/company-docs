@@ -123,138 +123,6 @@
   </script>
 
   <style>
-    :root {
-      --valixis-cyan: #00D9FF;
-      --valixis-cyan-glow: rgba(0, 217, 255, 0.4);
-      --valixis-blue: #3B82F6;
-      --valixis-purple: #7C3AED;
-      --valixis-purple-glow: rgba(124, 58, 237, 0.4);
-      --valixis-magenta: #FF2ED6;
-      --valixis-magenta-glow: rgba(255, 46, 214, 0.4);
-      --bg-dark: #0D1117;
-      --bg-darker: #06090E;
-      --bg-card: rgba(20, 26, 36, 0.85);
-      --bg-card-hover: rgba(28, 36, 50, 0.95);
-      --border-color: rgba(255, 255, 255, 0.1);
-      --border-glow: rgba(0, 217, 255, 0.35);
-      --text-main: #F1F5F9;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
-      --brand-gradient: linear-gradient(135deg, #00D9FF 0%, #3B82F6 50%, #7C3AED 100%);
-      --font-display: 'Orbitron', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; background: var(--bg-darker); color: var(--text-main); font-family: var(--font-body); }
-    body { min-height: 100vh; overflow-x: hidden; position: relative; }
-
-    /* Ambient Lighting */
-    .aurora-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      z-index: 0;
-      background: 
-        radial-gradient(circle at 15% 20%, rgba(0, 217, 255, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.14) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 46, 214, 0.06) 0%, transparent 60%);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 78px;
-      display: flex;
-      align-items: center;
-      background: rgba(13, 17, 23, 0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
-      z-index: 100;
-    }
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .brand-header {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-    .brand-lockup-img {
-      height: 38px;
-      width: auto;
-      filter: drop-shadow(0 0 14px rgba(0, 217, 255, 0.3));
-    }
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
-    .nav-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: var(--transition-smooth);
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--valixis-cyan);
-      text-shadow: 0 0 12px var(--valixis-cyan-glow);
-    }
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      border-radius: 8px;
-      background: var(--brand-gradient);
-      color: #FFF;
-      font-family: var(--font-display);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
-      transition: var(--transition-smooth);
-    }
-    .btn-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(255, 46, 214, 0.5);
-    }
-
-    /* Breadcrumbs */
-    .breadcrumb-nav {
-      padding: 110px 0 10px 0;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--text-dim);
-    }
-    .breadcrumb-nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .breadcrumb-nav a:hover {
-      color: var(--valixis-cyan);
-    }
-    .breadcrumb-nav span {
-      margin: 0 8px;
-      color: var(--text-dim);
-    }
-
     /* Hero */
     .page-hero {
       padding: 30px 0 60px 0;
@@ -526,14 +394,6 @@
       outline: 2px solid #00D9FF !important;
       outline-offset: 3px !important;
     }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
   
     .avatar-initials {
       width: 100%;
@@ -554,36 +414,62 @@
     }
 
   </style>
-  <link rel="stylesheet" href="../assets/css/valixis-theme.css">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css?v=20261105">
 </head>
 <body>
 
   <div class="aurora-bg"></div>
 
-  <!-- Navbar -->
+    <!-- Universal Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
       <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
-        <img src="../assets/valixis-horizontal-lockup.png?v=5" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+        <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
       </a>
 
+      <!-- Desktop Navigation Links -->
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="../about/" class="nav-link">About</a></li>
           <li><a href="../services/" class="nav-link">Services</a></li>
-          <li><a href="../work/" class="nav-link">Work</a></li>
+          <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../estimate/" class="nav-link">Estimate</a></li>
           <li><a href="../leadership/" class="nav-link active">Leadership</a></li>
-          <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
-          <li><a href="../projects/" class="nav-link">Projects</a></li>
           <li><a href="../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="../contact/" class="btn-cta">
-        <span>Get in Touch</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+      <div class="nav-right-group">
+        <a href="../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../services/" class="mobile-nav-link">Services</a></li>
+        <li><a href="../ecosystem/" class="mobile-nav-link">Ecosystem</a></li>
+        <li><a href="../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../leadership/" class="mobile-nav-link active">Leadership</a></li>
+        <li><a href="../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -674,10 +560,51 @@
     </div>
   </section>
 
-  <!-- Footer -->
+    <!-- Universal Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../" class="brand-header" style="margin-bottom: 16px;">
+            <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
+            Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Venture</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About VALIXIS</a></li>
+            <li><a href="../leadership/">Leadership</a></li>
+            <li><a href="../ecosystem/">Ecosystem Platforms</a></li>
+            <li><a href="../projects/">Development Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="../services/">Commercial Services</a></li>
+            <li><a href="../work/">Technical Work</a></li>
+            <li><a href="../estimate/">Scope Estimator</a></li>
+            <li><a href="../contact/">Architecture Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
+            Founded in 2026 as an independent technology venture operating on first principles.
+          </p>
+          <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      </div>
     </div>
   </footer>
 

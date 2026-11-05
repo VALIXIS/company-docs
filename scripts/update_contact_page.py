@@ -1,0 +1,1528 @@
+import os
+
+CONTACT_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Architecture Consultations — Inquiries | VALIXIS</title>
+  <meta name="description" content="Book a 15-minute architecture &amp; scoping session or submit project requirements to VALIXIS. Direct engineering consultation with leadership for AI automation, custom software, web platforms, and 3D systems.">
+  <meta name="keywords" content="Contact VALIXIS, Cal.com VALIXIS, Book Consultation, VALIXIS Inquiries, Architecture Scoping, Subhash Annam, Jyothsna Sri, AI Software Development">
+  <meta name="author" content="VALIXIS Technologies">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://valixis.tech/contact/">
+  <meta name="theme-color" content="#06090E">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="VALIXIS">
+  <meta property="og:title" content="Contact &amp; Architecture Consultations — Inquiries | VALIXIS">
+  <meta property="og:description" content="Book a 15-minute architecture &amp; scoping session or submit project requirements directly to VALIXIS leadership.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valixis.tech/contact/">
+  <meta property="og:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact VALIXIS — Consultations &amp; Project Inquiries">
+  <meta name="twitter:description" content="Schedule a 15-minute technical briefing or submit your project scope to VALIXIS executive leadership.">
+  <meta name="twitter:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+
+  <!-- Favicon Suite -->
+  <link rel="shortcut icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=3">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://valixis.tech/contact/#webpage",
+      "url": "https://valixis.tech/contact/",
+      "name": "Contact & Architecture Consultations — Inquiries | VALIXIS",
+      "description": "Official communications, 15-minute consultation booking, and project inquiry ingestion portal for VALIXIS.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://valixis.tech/#website",
+        "url": "https://valixis.tech",
+        "name": "VALIXIS"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://valixis.tech/#organization",
+        "name": "VALIXIS",
+        "url": "https://valixis.tech",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "official.valixis@gmail.com",
+          "telephone": "+91-9603416707",
+          "contactType": "General & Commercial Inquiries"
+        }
+      },
+      "potentialAction": [
+        {
+          "@type": "ScheduleAction",
+          "name": "Book a 15-Minute Architecture & Scoping Session",
+          "target": "https://cal.com/valixis/15min"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Submit Project Inquiry",
+          "target": "https://valixis.tech/contact/#inquiry-form"
+        }
+      ],
+      "breadcrumb": {
+        "@id": "https://valixis.tech/contact/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://valixis.tech/contact/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://valixis.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://valixis.tech/contact/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --valixis-cyan: #00D9FF;
+      --valixis-cyan-glow: rgba(0, 217, 255, 0.4);
+      --valixis-blue: #3B82F6;
+      --valixis-purple: #7C3AED;
+      --valixis-purple-glow: rgba(124, 58, 237, 0.4);
+      --valixis-magenta: #FF2ED6;
+      --valixis-magenta-glow: rgba(255, 46, 214, 0.4);
+      --bg-dark: #0D1117;
+      --bg-darker: #06090E;
+      --bg-card: rgba(20, 26, 36, 0.85);
+      --bg-card-hover: rgba(28, 36, 50, 0.95);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(0, 217, 255, 0.35);
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --brand-gradient: linear-gradient(135deg, #00D9FF 0%, #3B82F6 50%, #7C3AED 100%);
+      --brand-gradient-alt: linear-gradient(135deg, #FF2ED6 0%, #7C3AED 100%);
+      --font-display: 'Orbitron', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg-darker); color: var(--text-main); font-family: var(--font-body); }
+    body { min-height: 100vh; overflow-x: hidden; position: relative; }
+
+    .aurora-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(0, 217, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 46, 214, 0.05) 0%, transparent 60%);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .brand-header {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .brand-lockup-img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 0 14px rgba(0, 217, 255, 0.3));
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--valixis-cyan);
+      text-shadow: 0 0 12px var(--valixis-cyan-glow);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: var(--brand-gradient);
+      color: #FFF;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
+      transition: var(--transition-smooth);
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.55);
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb-nav {
+      padding: 105px 0 10px 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .breadcrumb-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb-nav a:hover {
+      color: var(--valixis-cyan);
+    }
+    .breadcrumb-nav span {
+      margin: 0 8px;
+      color: var(--text-dim);
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 24px 0 46px 0;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(20, 26, 36, 0.8);
+      border: 1px solid var(--border-glow);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--valixis-cyan);
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.2vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-subtitle {
+      font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+    }
+
+    /* Navigation Quick Jump Tabs */
+    .quick-jump-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    .jump-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: rgba(20, 26, 36, 0.7);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      transition: var(--transition-smooth);
+    }
+    .jump-btn:hover, .jump-btn.active {
+      color: var(--valixis-cyan);
+      border-color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.08);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+
+    /* Sections Layout */
+    .section-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 55px;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      transition: var(--transition-smooth);
+    }
+    .section-block:hover {
+      border-color: rgba(0, 217, 255, 0.3);
+    }
+    .block-header {
+      margin-bottom: 28px;
+    }
+    .block-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--valixis-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .block-tag.magenta {
+      color: var(--valixis-magenta);
+    }
+    .block-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .block-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    /* Cal.com Booking Card */
+    .cal-status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .status-pill-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--valixis-cyan);
+      font-weight: 600;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--valixis-cyan);
+      box-shadow: 0 0 10px var(--valixis-cyan);
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px var(--valixis-cyan); }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+    .cal-slug-tag {
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: var(--valixis-cyan);
+    }
+
+    .cal-embed-wrapper {
+      position: relative;
+      min-height: 640px;
+      background: #0D1117;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+    .cal-iframe {
+      width: 100%;
+      height: 640px;
+      border: none;
+      display: block;
+      background: transparent;
+    }
+    .cal-loader {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #0D1117;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 5;
+      transition: opacity 0.4s ease;
+    }
+    .cal-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .spinner-ring {
+      width: 44px;
+      height: 44px;
+      border: 3px solid rgba(0, 217, 255, 0.15);
+      border-top-color: var(--valixis-cyan);
+      border-radius: 50%;
+      animation: spinRing 0.9s linear infinite;
+    }
+    @keyframes spinRing {
+      to { transform: rotate(360deg); }
+    }
+    .loader-text {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--valixis-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    .cal-fallback-box {
+      margin-top: 24px;
+      background: rgba(13, 17, 23, 0.75);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .fallback-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      line-height: 1.55;
+    }
+    .fallback-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-fallback {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .btn-fallback-wa {
+      background: rgba(255, 46, 214, 0.1);
+      border: 1px solid rgba(255, 46, 214, 0.3);
+      color: var(--valixis-magenta);
+    }
+    .btn-fallback-wa:hover {
+      background: var(--valixis-magenta);
+      color: #FFF;
+      box-shadow: 0 0 15px var(--valixis-magenta-glow);
+    }
+    .btn-fallback-email {
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      color: var(--valixis-cyan);
+    }
+    .btn-fallback-email:hover {
+      background: var(--valixis-cyan);
+      color: #06090E;
+      box-shadow: 0 0 15px var(--valixis-cyan-glow);
+    }
+
+    /* Form Styles */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .req-star {
+      color: var(--valixis-magenta);
+      margin-left: 4px;
+    }
+    .char-count {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(13, 17, 23, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #FFF;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+    .form-select {
+      cursor: pointer;
+    }
+    .form-select option {
+      background: #0D1117;
+      color: #FFF;
+    }
+    .form-textarea {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--valixis-cyan);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.25);
+      background: rgba(13, 17, 23, 0.98);
+    }
+    .form-input.invalid, .form-select.invalid, .form-textarea.invalid {
+      border-color: #EF4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+    }
+    .input-hint {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+
+    /* Estimator Context Pill Banner */
+    .estimator-context-banner {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 22px;
+      font-size: 0.85rem;
+      color: var(--valixis-cyan);
+      font-family: var(--font-mono);
+    }
+    .estimator-context-banner.visible {
+      display: flex;
+    }
+
+    /* Privacy Notice */
+    .privacy-notice {
+      background: rgba(13, 17, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .privacy-notice strong {
+      color: var(--text-muted);
+    }
+
+    /* Submit Button */
+    .form-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      background: var(--brand-gradient);
+      border: none;
+      color: #FFF;
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.35);
+      transition: var(--transition-smooth);
+    }
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0, 217, 255, 0.6);
+    }
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .submit-spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #FFF;
+      border-radius: 50%;
+      animation: spinRing 0.8s linear infinite;
+    }
+    .btn-submit.loading .submit-spinner {
+      display: inline-block;
+    }
+
+    /* Alert / Feedback States */
+    .form-feedback {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-top: 24px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .form-feedback.visible {
+      display: block;
+    }
+    .form-feedback.success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6EE7B7;
+    }
+    .form-feedback.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+    }
+    .form-feedback.standby {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FCD34D;
+    }
+    .feedback-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .fallback-dispatch-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Contact Channels Cards */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 50px;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .contact-card:hover {
+      border-color: var(--valixis-cyan);
+      transform: translateY(-3px);
+    }
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--valixis-cyan);
+      margin-bottom: 20px;
+    }
+    .card-icon.magenta {
+      background: rgba(255, 46, 214, 0.08);
+      border-color: rgba(255, 46, 214, 0.3);
+      color: var(--valixis-magenta);
+    }
+    .c-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFF;
+      margin-bottom: 10px;
+    }
+    .c-desc {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .c-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--valixis-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      text-decoration: none;
+      word-break: break-all;
+      transition: var(--transition-smooth);
+    }
+    .c-link:hover {
+      text-shadow: 0 0 12px var(--valixis-cyan-glow);
+    }
+
+    /* Verification Box */
+    .verify-box {
+      background: rgba(13, 17, 23, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 34px;
+      margin-bottom: 70px;
+    }
+    .verify-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: #FFF;
+      margin-bottom: 12px;
+    }
+    .verify-text {
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 2;
+    }
+    .footer a { color: var(--valixis-cyan); text-decoration: none; }
+
+    /* Honeypot Trap (Offscreen) */
+    .hp-security-trap {
+      display: none !important;
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+    }
+
+    @media (max-width: 868px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .section-block { padding: 26px 18px; }
+      .contact-card { padding: 26px 20px; }
+      .cal-iframe { height: 580px; }
+      .cal-embed-wrapper { min-height: 580px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../assets/valixis-horizontal-lockup.png?v=3" alt="VALIXIS" class="brand-lockup-img">
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../about/" class="nav-link">About</a></li>
+          <li><a href="../services/" class="nav-link">Services</a></li>
+          <li><a href="../work/" class="nav-link">Work</a></li>
+          <li><a href="../estimate/" class="nav-link">Estimate</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
+          <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
+          <li><a href="../projects/" class="nav-link">Projects</a></li>
+          <li><a href="../contact/" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#booking" class="btn-cta">
+        <span>Book Session</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span>/</span>
+      <strong style="color: var(--text-main);">Contact &amp; Architecture Consultations</strong>
+    </nav>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="badge">Global Communications &bull; Direct Outreach &bull; Architecture Sessions</div>
+      <h1 class="page-title">
+        Connect with <span class="gradient-text">VALIXIS</span>
+      </h1>
+      <p class="page-subtitle">
+        Whether you are scheduling a technical scoping session, exploring commercial platform deployment, or submitting detailed architectural requirements &mdash; our executive engineering team welcomes direct dialogue.
+      </p>
+
+      <!-- Quick Jump Bar -->
+      <div class="quick-jump-bar">
+        <a href="#booking" class="jump-btn active">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span>1. Book 15-Min Scoping Session</span>
+        </a>
+        <a href="#inquiry-form" class="jump-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>2. Submit Project Requirements</span>
+        </a>
+        <a href="#channels" class="jump-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>3. Direct Outreach Channels</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- PART A: CAL.COM 15-MINUTE CONSULTATION BOOKING -->
+    <section class="section-block" id="booking" aria-labelledby="booking-heading">
+      <div class="block-header">
+        <div class="block-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>15-Minute Technical Consultation</span>
+        </div>
+        <h2 class="block-title" id="booking-heading">
+          Book a 15-Minute Architecture &amp; Scoping Session
+        </h2>
+        <p class="block-desc">
+          Discuss your product idea, technical requirements and possible implementation approach with the VALIXIS team. Direct 1-on-1 discussion with Founder &amp; CEO Subhash Annam &mdash; zero sales fluff, 100% technical feasibility.
+        </p>
+      </div>
+
+      <!-- Cal.com Status Bar -->
+      <div class="cal-status-bar">
+        <div class="status-pill-live">
+          <span class="pulse-dot"></span>
+          <span>Cal.com Integration Engine</span>
+        </div>
+        <div>
+          Target Booking Slot: <span class="cal-slug-tag" id="calSlugDisplay">cal.com/valixis/15min</span>
+        </div>
+      </div>
+
+      <!-- Embedded Iframe with Loading Skeleton -->
+      <div class="cal-embed-wrapper">
+        <div class="cal-loader" id="calLoader">
+          <div class="spinner-ring"></div>
+          <div class="loader-text">INITIALIZING SECURE BOOKING INTERFACE...</div>
+        </div>
+
+        <iframe 
+          id="calIframe" 
+          class="cal-iframe"
+          src="https://cal.com/valixis/15min?theme=dark&layout=month_view" 
+          title="VALIXIS 15-Minute Architecture Consultation Scheduler"
+          loading="lazy"
+          allow="camera; microphone; autoplay; fullscreen"
+          onload="handleCalLoaded()">
+        </iframe>
+      </div>
+
+      <!-- Cal Fallback Notice & Direct Action Buttons -->
+      <div class="cal-fallback-box">
+        <div class="fallback-info">
+          <strong>Calendar Privacy / Offline Notice:</strong> If your browser's ad-blocker or privacy shield prevents third-party calendar embeds from loading, you can book your 15-minute slot immediately via verified direct dispatch:
+        </div>
+        <div class="fallback-actions">
+          <a href="https://wa.me/919603416707?text=Hello%20Subhash,%20I%20would%20like%20to%20schedule%20a%2015-minute%20VALIXIS%20Architecture%20%26%20Scoping%20Session." target="_blank" rel="noopener noreferrer" class="btn-fallback btn-fallback-wa">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
+            <span>WhatsApp Direct Booking</span>
+          </a>
+          <a href="mailto:official.valixis@gmail.com?subject=Schedule%20VALIXIS%2015-Minute%20Architecture%20Session&body=Hello%20VALIXIS%20Team,%0A%0AI%20would%20like%20to%20schedule%20a%2015-minute%20architecture%20session.%0A%0ACompany/Name:%0APreferred%20Date/Time:%0ABrief%20Requirements:" class="btn-fallback btn-fallback-email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>Email Consultation Request</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART B: PROJECT INQUIRY & SCOPE SUBMISSION FORM -->
+    <section class="section-block" id="inquiry-form" aria-labelledby="form-heading">
+      <div class="block-header">
+        <div class="block-tag magenta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span>Commercial Engagement &bull; Formal Inquiries</span>
+        </div>
+        <h2 class="block-title" id="form-heading">
+          Submit Your Project Requirements
+        </h2>
+        <p class="block-desc">
+          Provide your technical specifications or business challenge. We review every submission directly and return an initial feasibility assessment within 24 business hours.
+        </p>
+      </div>
+
+      <!-- Estimator Pre-fill Banner (Conditional) -->
+      <div class="estimator-context-banner" id="estimatorBanner">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Specifications pre-populated from your interactive Project Scope Calculator calculation.</span>
+      </div>
+
+      <!-- Formal Form -->
+      <form id="projectInquiryForm" novalidate onsubmit="handleInquirySubmit(event)">
+
+        <!-- Honeypot anti-spam trap (invisible to human users) -->
+        <div class="hp-security-trap" aria-hidden="true">
+          <label for="valixis_hp_security">Leave this field blank</label>
+          <input type="text" name="valixis_hp_security" id="valixis_hp_security" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-grid">
+          
+          <!-- Full Name -->
+          <div class="form-group">
+            <label class="form-label" for="clientName">
+              <span>Full Name <span class="req-star">*</span></span>
+            </label>
+            <input 
+              type="text" 
+              id="clientName" 
+              name="clientName" 
+              class="form-input" 
+              placeholder="e.g. Subhash Annam" 
+              required 
+              minlength="2" 
+              maxlength="120"
+              autocomplete="name">
+            <span class="input-hint">Your legal or professional name</span>
+          </div>
+
+          <!-- Business Email -->
+          <div class="form-group">
+            <label class="form-label" for="clientEmail">
+              <span>Business Email <span class="req-star">*</span></span>
+            </label>
+            <input 
+              type="email" 
+              id="clientEmail" 
+              name="clientEmail" 
+              class="form-input" 
+              placeholder="name@company.com" 
+              required 
+              autocomplete="email">
+            <span class="input-hint">We send the architectural assessment here</span>
+          </div>
+
+          <!-- Company / Organization -->
+          <div class="form-group">
+            <label class="form-label" for="clientCompany">
+              <span>Company / Venture Name (Optional)</span>
+            </label>
+            <input 
+              type="text" 
+              id="clientCompany" 
+              name="clientCompany" 
+              class="form-input" 
+              placeholder="e.g. Novel Hotel or Stealth Startup" 
+              maxlength="150"
+              autocomplete="organization">
+            <span class="input-hint">Entity name or current development project</span>
+          </div>
+
+          <!-- Project Category -->
+          <div class="form-group">
+            <label class="form-label" for="projectCategory">
+              <span>Project Category <span class="req-star">*</span></span>
+            </label>
+            <select id="projectCategory" name="projectCategory" class="form-select" required>
+              <option value="" disabled selected>-- Select Technical Category --</option>
+              <option value="AI Automation & Intelligent Systems">AI Automation &amp; Intelligent Systems</option>
+              <option value="Custom Software & Mobile Applications">Custom Software &amp; Mobile Applications</option>
+              <option value="Web Platforms & Digital Experiences">Web Platforms &amp; Digital Experiences</option>
+              <option value="3D Interactive, WebGL & Gaming">3D Interactive, WebGL &amp; Gaming</option>
+              <option value="Enterprise Architecture & Custom Platform">Enterprise Architecture &amp; Custom Platform</option>
+              <option value="Other Commercial / Technical Inquiry">Other Commercial / Technical Inquiry</option>
+            </select>
+            <span class="input-hint">Primary technical domain of your engagement</span>
+          </div>
+
+          <!-- Expected Timeline -->
+          <div class="form-group">
+            <label class="form-label" for="expectedTimeline">
+              <span>Expected Delivery Timeline (Optional)</span>
+            </label>
+            <select id="expectedTimeline" name="expectedTimeline" class="form-select">
+              <option value="Exploring / Flexible" selected>Exploring / Flexible Schedule</option>
+              <option value="Urgent (~2 Weeks)">Urgent / Rapid Deployment (~2 Weeks)</option>
+              <option value="Approximately 1 Month">Approximately 1 Month</option>
+              <option value="2 – 3 Months">2 – 3 Months (Standard Production Cycle)</option>
+              <option value="Long-Term Development">Long-Term Multi-Quarter Initiative</option>
+              <option value="Ongoing Engineering Partnership">Ongoing Monthly Engineering Pod</option>
+            </select>
+            <span class="input-hint">Your target milestone cadence</span>
+          </div>
+
+          <!-- Preferred Contact Method -->
+          <div class="form-group">
+            <label class="form-label" for="preferredContact">
+              <span>Preferred Contact Method <span class="req-star">*</span></span>
+            </label>
+            <select id="preferredContact" name="preferredContact" class="form-select" required>
+              <option value="Email" selected>Email (Written Assessment &amp; Scope)</option>
+              <option value="WhatsApp">WhatsApp (Fast Direct Coordination)</option>
+              <option value="Direct Phone Call">Direct Phone Call (Architecture Discussion)</option>
+            </select>
+            <span class="input-hint">How our leadership should respond to you</span>
+          </div>
+
+          <!-- Project Description & Requirements -->
+          <div class="form-group full-width">
+            <label class="form-label" for="projectDescription">
+              <span>Project Description &amp; Technical Requirements <span class="req-star">*</span></span>
+              <span class="char-count" id="descCharCount">0 / 5000 characters</span>
+            </label>
+            <textarea 
+              id="projectDescription" 
+              name="projectDescription" 
+              class="form-textarea" 
+              placeholder="Outline your application goals, target users, required integrations (e.g., authentication, payments, AI models), and existing architecture (if any)..." 
+              required 
+              minlength="10" 
+              maxlength="5000"
+              oninput="handleDescriptionInput(event)"></textarea>
+            <span class="input-hint">Minimum 10 characters. Be as specific as possible for accurate technical review.</span>
+          </div>
+
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+          <strong>Confidentiality Notice:</strong> We respect your business intellectual property. All project specifications, commercial concepts, and contact details are handled strictly under technical confidentiality by VALIXIS leadership. Your data is stored solely to evaluate and respond to your inquiry and is never shared with third-party advertisers or external intermediaries.
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn-submit">
+            <span class="submit-spinner"></span>
+            <span id="submitBtnText">Submit Project Requirements</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">
+            Target Response Time: &le; 24 Business Hours
+          </div>
+        </div>
+
+        <!-- Interactive Feedback Card -->
+        <div id="formFeedback" class="form-feedback" role="alert"></div>
+
+      </form>
+    </section>
+
+    <!-- PART C: DIRECT OUTREACH CHANNELS -->
+    <section id="channels" aria-labelledby="channels-heading">
+      <div class="block-header" style="text-align: center; margin-bottom: 36px;">
+        <div class="block-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <span>Verified Channels</span>
+        </div>
+        <h2 class="block-title" id="channels-heading">Direct Executive Outreach</h2>
+        <p class="block-desc" style="margin: 0 auto;">
+          For urgent production matters, live demonstrations, or immediate founder conversations, reach out across our verified communication channels.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        
+        <!-- Email Outreach -->
+        <div class="contact-card">
+          <div>
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <h3 class="c-title">Official Inquiries &amp; Briefings</h3>
+            <p class="c-desc">
+              Direct your inquiries regarding custom platform development, technology briefings, partnerships, and technical specifications directly to our communications desk.
+            </p>
+          </div>
+          <div>
+            <a href="mailto:official.valixis@gmail.com" class="c-link">
+              <span>official.valixis@gmail.com</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- WhatsApp Outreach -->
+        <div class="contact-card">
+          <div>
+            <div class="card-icon magenta">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
+            </div>
+            <h3 class="c-title">Direct Real-Time Dispatch</h3>
+            <p class="c-desc">
+              For urgent business discussions, rapid technical alignment, or active project coordination, initiate a verified WhatsApp conversation directly with leadership.
+            </p>
+          </div>
+          <div>
+            <a href="https://wa.me/919603416707?text=Hello%20Subhash,%20I%20am%20reaching%20out%20regarding%20VALIXIS." target="_blank" rel="noopener noreferrer" class="c-link" style="color: var(--valixis-magenta);">
+              <span>WhatsApp: +91 9603416707</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Entity Transparency Note -->
+      <div class="verify-box">
+        <h3 class="verify-title">Verification &amp; Communications Policy</h3>
+        <p class="verify-text">
+          VALIXIS is an independent technology venture founded in 2026, headquartered in India (Hyderabad &amp; Andhra Pradesh). All business correspondence is handled directly by Founder &amp; CEO <strong>Subhash Annam</strong> and Co-Founder &amp; CCO <strong>Jyothsna Sri</strong>. We do not use unverified intermediary agencies.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+    </div>
+  </footer>
+
+  <!-- Operational Scripts: Cal.com Config & Lead Capture Engine -->
+  <script>
+    // =========================================================================
+    // CONFIGURATION VARIABLES (Production Architecture)
+    // =========================================================================
+    // Override window.VALIXIS_CALCOM_URL or window.VALIXIS_SUPABASE_ENDPOINT
+    // via your environment or build-time script.
+    window.VALIXIS_CALCOM_URL = window.VALIXIS_CALCOM_URL || "valixis/15min";
+    window.VALIXIS_SUPABASE_ENDPOINT = window.VALIXIS_SUPABASE_ENDPOINT || "";
+
+    const PAGE_LOAD_TIMESTAMP = Date.now();
+
+    // 1. Cal.com Loader Management
+    function handleCalLoaded() {
+      const loader = document.getElementById('calLoader');
+      if (loader) {
+        loader.classList.add('hidden');
+      }
+    }
+
+    // Fallback timer: Hide loader after 3.5s if frame event didn't fire
+    setTimeout(() => {
+      handleCalLoaded();
+    }, 3500);
+
+    // Dynamic Cal.com Slug Update
+    document.addEventListener('DOMContentLoaded', () => {
+      const slugDisplay = document.getElementById('calSlugDisplay');
+      const calIframe = document.getElementById('calIframe');
+      
+      if (window.VALIXIS_CALCOM_URL) {
+        if (slugDisplay) {
+          slugDisplay.textContent = `cal.com/${window.VALIXIS_CALCOM_URL}`;
+        }
+        if (calIframe && !calIframe.src.includes(window.VALIXIS_CALCOM_URL)) {
+          calIframe.src = `https://cal.com/${window.VALIXIS_CALCOM_URL}?theme=dark&layout=month_view`;
+        }
+      }
+
+      // Check for incoming scope from Estimate calculator
+      checkEstimatorPreFill();
+    });
+
+    // 2. Estimator Pre-fill Detection
+    function checkEstimatorPreFill() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const fromEstimate = urlParams.get('from') === 'estimate' || urlParams.get('source') === 'estimate';
+      const sessionScope = sessionStorage.getItem('valixis_estimated_scope');
+
+      if (fromEstimate || sessionScope) {
+        const banner = document.getElementById('estimatorBanner');
+        if (banner) banner.classList.add('visible');
+
+        const categoryInput = document.getElementById('projectCategory');
+        const descInput = document.getElementById('projectDescription');
+        const timelineInput = document.getElementById('expectedTimeline');
+
+        const storedCategory = sessionStorage.getItem('valixis_estimated_type');
+        const storedTimeline = sessionStorage.getItem('valixis_estimated_timeline');
+
+        if (storedCategory && categoryInput) {
+          // Map to dropdown value
+          for (let opt of categoryInput.options) {
+            if (opt.value.toLowerCase().includes(storedCategory.toLowerCase())) {
+              categoryInput.value = opt.value;
+              break;
+            }
+          }
+        }
+
+        if (storedTimeline && timelineInput) {
+          for (let opt of timelineInput.options) {
+            if (opt.value.toLowerCase().includes(storedTimeline.toLowerCase())) {
+              timelineInput.value = opt.value;
+              break;
+            }
+          }
+        }
+
+        if (sessionScope && descInput && !descInput.value) {
+          descInput.value = sessionScope;
+          handleDescriptionInput({ target: descInput });
+        }
+      }
+    }
+
+    // Character counter for textarea
+    function handleDescriptionInput(e) {
+      const len = e.target.value.length;
+      const counter = document.getElementById('descCharCount');
+      if (counter) {
+        counter.textContent = `${len} / 5000 characters`;
+        if (len < 10) {
+          counter.style.color = '#EF4444';
+        } else {
+          counter.style.color = 'var(--text-dim)';
+        }
+      }
+    }
+
+    // 3. Lead Capture & Form Ingestion
+    async function handleInquirySubmit(event) {
+      event.preventDefault();
+
+      const form = document.getElementById('projectInquiryForm');
+      const feedback = document.getElementById('formFeedback');
+      const submitBtn = document.getElementById('submitBtn');
+      const submitBtnText = document.getElementById('submitBtnText');
+
+      // Reset feedback
+      feedback.className = 'form-feedback';
+      feedback.innerHTML = '';
+      feedback.style.display = 'none';
+
+      // Honeypot check (Silent decoy response for bots)
+      const hpField = document.getElementById('valixis_hp_security');
+      if (hpField && hpField.value.trim() !== '') {
+        console.warn('Bot submission trapped via honeypot.');
+        showFeedback('success', 'Inquiry Received', 'Your project inquiry has been queued for engineering review.');
+        form.reset();
+        return;
+      }
+
+      // Anti-bot submission speed check (> 1.5 seconds)
+      const timeDelta = Date.now() - PAGE_LOAD_TIMESTAMP;
+      if (timeDelta < 1500) {
+        showFeedback('error', 'Submission Velocity Warning', 'Please take a moment to review your requirements before submitting.');
+        return;
+      }
+
+      // Read form data
+      const fullName = (document.getElementById('clientName').value || '').trim();
+      const businessEmail = (document.getElementById('clientEmail').value || '').trim();
+      const companyName = (document.getElementById('clientCompany').value || '').trim();
+      const projectCategory = document.getElementById('projectCategory').value;
+      const expectedTimeline = document.getElementById('expectedTimeline').value;
+      const preferredContact = document.getElementById('preferredContact').value;
+      const projectDescription = (document.getElementById('projectDescription').value || '').trim();
+
+      // Client-side validations
+      if (!fullName || fullName.length < 2) {
+        markInvalid('clientName');
+        showFeedback('error', 'Validation Notice', 'Please enter your full name (minimum 2 characters).');
+        return;
+      }
+
+      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      if (!businessEmail || !emailRegex.test(businessEmail)) {
+        markInvalid('clientEmail');
+        showFeedback('error', 'Validation Notice', 'Please provide a valid business email address.');
+        return;
+      }
+
+      if (!projectCategory) {
+        markInvalid('projectCategory');
+        showFeedback('error', 'Validation Notice', 'Please select a project category from the dropdown.');
+        return;
+      }
+
+      if (!projectDescription || projectDescription.length < 10) {
+        markInvalid('projectDescription');
+        showFeedback('error', 'Validation Notice', 'Please describe your project scope (minimum 10 characters).');
+        return;
+      }
+
+      // Clear any invalid outlines
+      clearInvalidOutlines();
+
+      // UI Loading State
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      submitBtnText.textContent = 'Transmitting Requirements...';
+
+      const payload = {
+        fullName,
+        businessEmail,
+        companyName,
+        projectCategory,
+        projectDescription,
+        expectedTimeline,
+        preferredContact,
+        hpSecurityTrap: hpField ? hpField.value : '',
+        submissionTimeDelta: timeDelta,
+      };
+
+      // Serverless Submission or Graceful Fallback
+      if (window.VALIXIS_SUPABASE_ENDPOINT && window.VALIXIS_SUPABASE_ENDPOINT.startsWith('http')) {
+        try {
+          const response = await fetch(window.VALIXIS_SUPABASE_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await response.json();
+
+          if (response.ok && result.success) {
+            showFeedback(
+              'success',
+              '✓ Project Inquiry Successfully Registered',
+              `Thank you, <strong>${escapeHtml(fullName)}</strong>. Your project specification has been logged (ID: <code>${result.inquiryId ? result.inquiryId.slice(0,8) : 'SUBMITTED'}</code>). Founder &amp; CEO Subhash Annam and the engineering team will review your architecture requirements and reach out via <strong>${escapeHtml(preferredContact)}</strong> within 24 business hours.`
+            );
+            form.reset();
+            handleDescriptionInput({ target: { value: '' } });
+            sessionStorage.removeItem('valixis_estimated_scope');
+          } else {
+            throw new Error(result.error || 'Server rejected submission');
+          }
+        } catch (apiErr) {
+          console.warn('Supabase Edge submission failed:', apiErr);
+          showStandbyFallback(payload, 'Notice: Serverless endpoint connection could not be established.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+          submitBtnText.textContent = 'Submit Project Requirements';
+        }
+      } else {
+        // Transparent Standby Fallback: Serverless endpoint not configured yet in static preview
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+          submitBtnText.textContent = 'Submit Project Requirements';
+          showStandbyFallback(
+            payload,
+            'Backend Storage Standby Notice: Live Supabase database endpoint is currently undergoing deployment. Your complete specification has been securely compiled into a direct 1-click dispatch package below:'
+          );
+        }, 700);
+      }
+    }
+
+    function showStandbyFallback(payload, notice) {
+      const waMessage = 
+        `*VALIXIS PROJECT INQUIRY*%0A` +
+        `--------------------------------%0A` +
+        `*Name:* ${encodeURIComponent(payload.fullName)}%0A` +
+        `*Email:* ${encodeURIComponent(payload.businessEmail)}%0A` +
+        `*Company:* ${encodeURIComponent(payload.companyName || 'Not specified')}%0A` +
+        `*Category:* ${encodeURIComponent(payload.projectCategory)}%0A` +
+        `*Timeline:* ${encodeURIComponent(payload.expectedTimeline || 'Flexible')}%0A` +
+        `*Preferred Channel:* ${encodeURIComponent(payload.preferredContact)}%0A%0A` +
+        `*Requirements:*%0A${encodeURIComponent(payload.projectDescription)}`;
+
+      const emailSubject = encodeURIComponent(`[VALIXIS Inquiry] ${payload.projectCategory} — ${payload.fullName}`);
+      const emailBody = 
+        `VALIXIS PROJECT INQUIRY\n` +
+        `================================\n` +
+        `Client Name: ${payload.fullName}\n` +
+        `Business Email: ${payload.businessEmail}\n` +
+        `Company: ${payload.companyName || 'Not specified'}\n` +
+        `Category: ${payload.projectCategory}\n` +
+        `Expected Timeline: ${payload.expectedTimeline || 'Flexible'}\n` +
+        `Preferred Contact: ${payload.preferredContact}\n\n` +
+        `Project Scope & Description:\n${payload.projectDescription}\n`;
+
+      const html = `
+        <div class="feedback-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>Immediate Direct Lead Dispatch</span>
+        </div>
+        <p style="margin-bottom: 12px;">${notice}</p>
+        <div class="fallback-dispatch-actions">
+          <a href="https://wa.me/919603416707?text=${waMessage}" target="_blank" rel="noopener noreferrer" class="btn-fallback btn-fallback-wa" style="padding: 10px 20px; font-size: 0.88rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-10.216c-5.503 0-9.969 4.467-9.969 9.97 0 1.76.459 3.477 1.332 4.992l-1.417 5.178 5.305-1.391c1.465.799 3.12 1.221 4.749 1.221 5.503 0 9.97-4.467 9.97-9.97 0-5.503-4.467-9.97-9.97-9.97zm0 18.127c-1.488 0-2.946-.4-4.22-1.155l-.303-.18-3.136.822.837-3.056-.197-.314c-.829-1.319-1.267-2.852-1.267-4.419 0-4.505 3.666-8.17 8.172-8.17 4.505 0 8.171 3.665 8.171 8.17s-3.666 8.172-8.171 8.172z"/></svg>
+            <span>Dispatch via WhatsApp (1-Click)</span>
+          </a>
+          <a href="mailto:official.valixis@gmail.com?subject=${emailSubject}&body=${encodeURIComponent(emailBody)}" class="btn-fallback btn-fallback-email" style="padding: 10px 20px; font-size: 0.88rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>Dispatch via Email (1-Click)</span>
+          </a>
+        </div>
+      `;
+      const feedback = document.getElementById('formFeedback');
+      feedback.className = 'form-feedback visible standby';
+      feedback.innerHTML = html;
+      feedback.style.display = 'block';
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showFeedback(type, title, message) {
+      const feedback = document.getElementById('formFeedback');
+      feedback.className = `form-feedback visible ${type}`;
+      feedback.innerHTML = `
+        <div class="feedback-title">
+          <span>${title}</span>
+        </div>
+        <p>${message}</p>
+      `;
+      feedback.style.display = 'block';
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function markInvalid(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.classList.add('invalid');
+        el.focus();
+      }
+    }
+
+    function clearInvalidOutlines() {
+      const inputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
+      inputs.forEach(el => el.classList.remove('invalid'));
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+
+</body>
+</html>
+"""
+
+def main():
+    paths = ['contact/index.html', 'VALIXIS WEBSITE/contact/index.html']
+    for p in paths:
+        with open(p, 'w', encoding='utf-8') as f:
+            f.write(CONTACT_HTML)
+        print(f"Updated {p} (size: {len(CONTACT_HTML)} bytes)")
+
+if __name__ == '__main__':
+    main()

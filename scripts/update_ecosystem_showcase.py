@@ -1,0 +1,1575 @@
+import os
+
+ECOSYSTEM_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALIXIS Technology Showcase — Ecosystem Products &amp; Video Demonstrations</title>
+  <meta name="description" content="Explore the verified software products of the VALIXIS technology ecosystem: VALIXIS Portal, FLOW, CLOUD, DESK_AI, PULSE, Fitora, and Gaming Studio. Includes 60–90 second technical video demonstration and architecture specifications.">
+  <meta name="keywords" content="VALIXIS Showcase, VALIXIS Ecosystem, VALIXIS Portal, VALIXIS FLOW, VALIXIS CLOUD, VALIXIS DESK_AI, VALIXIS PULSE, Fitora, VALIXIS Gaming Studio, AI Software, Tech Demo">
+  <meta name="author" content="VALIXIS Technologies">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://valixis.tech/ecosystem/">
+  <meta name="theme-color" content="#06090E">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="VALIXIS">
+  <meta property="og:title" content="VALIXIS Technology Showcase — Ecosystem Products &amp; Video Demonstrations">
+  <meta property="og:description" content="Explore the proprietary technology products engineered by VALIXIS. Featuring verified development statuses, interactive consoles, and technical video demonstration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valixis.tech/ecosystem/">
+  <meta property="og:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VALIXIS Technology Showcase — Products &amp; Demonstrations">
+  <meta name="twitter:description" content="Inspect the 7 proprietary products of the VALIXIS ecosystem with verified development statuses and architecture walkthrough.">
+  <meta name="twitter:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+
+  <!-- Favicon Suite -->
+  <link rel="shortcut icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png?v=3">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://valixis.tech/ecosystem/#webpage",
+      "url": "https://valixis.tech/ecosystem/",
+      "name": "VALIXIS Technology Showcase — Ecosystem Products & Video Demonstrations",
+      "description": "Comprehensive technology showcase presenting the 7 core platforms of the VALIXIS ecosystem: VALIXIS Portal, FLOW, CLOUD, DESK_AI, PULSE, Fitora, and Gaming Studio.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://valixis.tech/#website",
+        "url": "https://valixis.tech",
+        "name": "VALIXIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://valixis.tech/#organization",
+        "name": "VALIXIS",
+        "url": "https://valixis.tech"
+      },
+      "breadcrumb": {
+        "@id": "https://valixis.tech/ecosystem/#breadcrumb"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "VALIXIS Ecosystem 60-90 Second Technical Demonstration",
+      "description": "Architectural and technical walk-through of the VALIXIS software suite, showcasing Portal governance, FLOW autonomous background daemons, and PULSE observability telemetry.",
+      "thumbnailUrl": "https://valixis.tech/assets/videos/valixis-video-poster.png",
+      "uploadDate": "2026-11-03T00:00:00Z",
+      "duration": "PT1M30S",
+      "contentUrl": "https://valixis.tech/assets/videos/valixis-product-preview.mp4"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://valixis.tech/ecosystem/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://valixis.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ecosystem & Showcase",
+          "item": "https://valixis.tech/ecosystem/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --valixis-cyan: #00D9FF;
+      --valixis-cyan-glow: rgba(0, 217, 255, 0.4);
+      --valixis-blue: #3B82F6;
+      --valixis-purple: #7C3AED;
+      --valixis-purple-glow: rgba(124, 58, 237, 0.4);
+      --valixis-magenta: #FF2ED6;
+      --valixis-magenta-glow: rgba(255, 46, 214, 0.4);
+      --valixis-emerald: #10B981;
+      --valixis-amber: #F59E0B;
+      --bg-dark: #0D1117;
+      --bg-darker: #06090E;
+      --bg-card: rgba(20, 26, 36, 0.85);
+      --bg-card-hover: rgba(28, 36, 50, 0.95);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --border-glow: rgba(0, 217, 255, 0.35);
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --brand-gradient: linear-gradient(135deg, #00D9FF 0%, #3B82F6 50%, #7C3AED 100%);
+      --brand-gradient-alt: linear-gradient(135deg, #FF2ED6 0%, #7C3AED 100%);
+      --font-display: 'Orbitron', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg-darker); color: var(--text-main); font-family: var(--font-body); }
+    body { min-height: 100vh; overflow-x: hidden; position: relative; }
+
+    .aurora-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: 
+        radial-gradient(circle at 15% 20%, rgba(0, 217, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 46, 214, 0.05) 0%, transparent 60%);
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .brand-header {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .brand-lockup-img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 0 14px rgba(0, 217, 255, 0.3));
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--valixis-cyan);
+      text-shadow: 0 0 12px var(--valixis-cyan-glow);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: var(--brand-gradient);
+      color: #FFF;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
+      transition: var(--transition-smooth);
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.55);
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb-nav {
+      padding: 105px 0 10px 0;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .breadcrumb-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb-nav a:hover {
+      color: var(--valixis-cyan);
+    }
+    .breadcrumb-nav span {
+      margin: 0 8px;
+      color: var(--text-dim);
+    }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 24px 0 44px 0;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(20, 26, 36, 0.8);
+      border: 1px solid var(--border-glow);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--valixis-cyan);
+      margin-bottom: 20px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-subtitle {
+      font-size: clamp(1.02rem, 1.8vw, 1.22rem);
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 32px auto;
+      line-height: 1.7;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 30px;
+      background: rgba(20, 26, 36, 0.7);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      color: var(--valixis-cyan);
+      border-color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.08);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+    .filter-count {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+    }
+
+    /* SECTION 1: VIDEO EXPERIENCE THEATER */
+    .video-theater-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 36px;
+      margin-bottom: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .video-theater-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--brand-gradient);
+    }
+    .theater-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .theater-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--valixis-magenta);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .theater-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 8px;
+    }
+    .theater-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+    .theater-duration-pill {
+      background: rgba(255, 46, 214, 0.1);
+      border: 1px solid rgba(255, 46, 214, 0.3);
+      color: var(--valixis-magenta);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Video Player Element & Overlay */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      aspect-ratio: 16 / 9;
+    }
+    .main-video-player {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .video-play-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6, 9, 14, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      z-index: 4;
+    }
+    .video-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .play-circle-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(13, 17, 23, 0.85);
+      border: 2px solid var(--valixis-cyan);
+      box-shadow: 0 0 30px var(--valixis-cyan-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--valixis-cyan);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .play-circle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px var(--valixis-cyan-glow);
+    }
+    .play-hud-text {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: #FFF;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    /* Video HUD Controls Bar */
+    .video-hud-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      background: rgba(13, 17, 23, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+    }
+    .hud-controls-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hud-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+    .hud-btn:hover {
+      background: rgba(0, 217, 255, 0.12);
+      border-color: var(--valixis-cyan);
+      color: var(--valixis-cyan);
+    }
+    .time-readout {
+      color: var(--text-dim);
+    }
+    .time-readout strong {
+      color: var(--valixis-cyan);
+    }
+
+    /* Video Notice & Transcript Accordion */
+    .video-meta-box {
+      margin-top: 20px;
+      background: rgba(13, 17, 23, 0.7);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px 22px;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+    .transcript-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--valixis-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+    .transcript-drawer {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .transcript-drawer.open {
+      display: block;
+    }
+    .ts-entry {
+      margin-bottom: 12px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border-glow);
+    }
+    .ts-time {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--valixis-cyan);
+      margin-bottom: 2px;
+    }
+    .ts-text {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    /* SECTION 2: PRODUCTS SHOWCASE GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 34px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      border-color: rgba(0, 217, 255, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 217, 255, 0.1);
+    }
+    .product-card.flagship {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.95) 0%, rgba(13, 17, 23, 0.95) 100%);
+      border-color: rgba(0, 217, 255, 0.3);
+    }
+
+    /* Status Badges */
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .status-launched {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--valixis-emerald);
+    }
+    .status-active {
+      background: rgba(0, 217, 255, 0.12);
+      border: 1px solid rgba(0, 217, 255, 0.35);
+      color: var(--valixis-cyan);
+    }
+    .status-prototype {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--valixis-amber);
+    }
+    .status-planned {
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      color: #A78BFA;
+    }
+
+    .prod-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .prod-purpose {
+      font-size: 0.96rem;
+      color: var(--text-main);
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .prod-spec-block {
+      background: rgba(13, 17, 23, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--valixis-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .spec-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Capabilities List */
+    .caps-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .caps-list li {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 20px;
+      line-height: 1.5;
+    }
+    .caps-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--valixis-cyan);
+      font-size: 0.95rem;
+    }
+
+    /* Tech Chips Row */
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .tech-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .tech-chip.highlight {
+      border-color: rgba(0, 217, 255, 0.35);
+      color: var(--valixis-cyan);
+    }
+
+    /* Terminal HUD Box */
+    .terminal-box {
+      background: #05080E;
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: #94A3B8;
+      box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.05);
+      margin-bottom: 22px;
+    }
+    .term-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--valixis-cyan);
+      font-weight: 600;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .term-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    /* Action Buttons in Card */
+    .card-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .btn-card-act {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    .btn-primary-act {
+      background: var(--brand-gradient);
+      color: #FFF;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+    }
+    .btn-primary-act:hover {
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
+      transform: translateY(-2px);
+    }
+    .btn-secondary-act {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .btn-secondary-act:hover {
+      border-color: var(--valixis-cyan);
+      color: var(--valixis-cyan);
+    }
+
+    /* Bottom Lifecycle Section */
+    .bottom-roadmap-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .roadmap-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #FFF;
+      margin-bottom: 12px;
+    }
+    .roadmap-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin: 0 auto 26px auto;
+      line-height: 1.65;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 2;
+    }
+    .footer a { color: var(--valixis-cyan); text-decoration: none; }
+
+    @media (max-width: 868px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .video-theater-card { padding: 24px 16px; }
+      .product-card { padding: 26px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../assets/valixis-horizontal-lockup.png?v=3" alt="VALIXIS" class="brand-lockup-img">
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../about/" class="nav-link">About</a></li>
+          <li><a href="../services/" class="nav-link">Services</a></li>
+          <li><a href="../work/" class="nav-link">Work</a></li>
+          <li><a href="../estimate/" class="nav-link">Estimate</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
+          <li><a href="../ecosystem/" class="nav-link active">Ecosystem</a></li>
+          <li><a href="../projects/" class="nav-link">Projects</a></li>
+          <li><a href="../contact/" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="../contact/#booking" class="btn-cta">
+        <span>Book Session</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span>/</span>
+      <strong style="color: var(--text-main);">Ecosystem &amp; Technology Showcase</strong>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="badge">Proprietary Platforms &bull; Live Demonstrations &bull; Architecture</div>
+      <h1 class="page-title">
+        VALIXIS <span class="gradient-text">Product Showcase</span>
+      </h1>
+      <p class="page-subtitle">
+        From production operational kernels and autonomous daemon meshes to edge computing and computer vision fitness &mdash; inspect the verified technology platforms engineered by VALIXIS.
+      </p>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar" role="tablist" aria-label="Product Lifecycle Filters">
+        <button class="filter-btn active" onclick="filterProducts('all')" role="tab" aria-selected="true">
+          <span>All Products</span>
+          <span class="filter-count">7</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('launched')" role="tab" aria-selected="false">
+          <span>Live / Launched</span>
+          <span class="filter-count">1</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('active')" role="tab" aria-selected="false">
+          <span>Active Development</span>
+          <span class="filter-count">2</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('prototype')" role="tab" aria-selected="false">
+          <span>Prototypes</span>
+          <span class="filter-count">2</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('planned')" role="tab" aria-selected="false">
+          <span>Planned Architecture</span>
+          <span class="filter-count">2</span>
+        </button>
+        <a href="#video-demo" class="filter-btn" style="border-color: rgba(255, 46, 214, 0.4); color: var(--valixis-magenta);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span>Watch 90s Demo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 1: 60-90 SECOND VIDEO DEMONSTRATION THEATER                   -->
+    <!-- ===================================================================== -->
+    <section class="video-theater-card" id="video-demo" aria-labelledby="video-theater-heading">
+      <div class="theater-header">
+        <div>
+          <div class="theater-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            <span>Audio &bull; Video Technical Walkthrough</span>
+          </div>
+          <h2 class="theater-title" id="video-theater-heading">
+            Ecosystem Overview &amp; Autonomous Systems In Action
+          </h2>
+          <p class="theater-desc">
+            Verified engineering walkthrough of the VALIXIS software suite &mdash; demonstrating Portal operational governance, FLOW autonomous background daemons, and PULSE live fleet telemetry.
+          </p>
+        </div>
+
+        <div class="theater-duration-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Target Runtime: 60–90 Sec</span>
+        </div>
+      </div>
+
+      <!-- Video Player Viewport -->
+      <div class="video-wrapper">
+        <video 
+          id="valixisPlayer" 
+          class="main-video-player" 
+          poster="../assets/videos/valixis-video-poster.png"
+          preload="none"
+          playsinline
+          aria-label="VALIXIS Ecosystem 60 to 90 Second Technical Product Walkthrough">
+          <source src="../assets/videos/valixis-product-preview.mp4" type="video/mp4">
+          <track 
+            kind="captions" 
+            label="English" 
+            srclang="en" 
+            src="../assets/videos/valixis-demo-captions.vtt" 
+            default>
+          Your browser does not support the HTML5 video element.
+        </video>
+
+        <!-- Big Play Button Overlay -->
+        <div class="video-play-overlay" id="videoOverlay" onclick="togglePlayVideo()">
+          <button class="play-circle-btn" aria-label="Play Demonstration Video">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+          </button>
+          <span class="play-hud-text">Initiate Technical Walkthrough (60–90s)</span>
+        </div>
+      </div>
+
+      <!-- HUD Controls Bar -->
+      <div class="video-hud-bar">
+        <div class="hud-controls-left">
+          <button class="hud-btn" id="playBtn" onclick="togglePlayVideo()" aria-label="Play or Pause Video">
+            <svg id="playIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span id="playText">Play</span>
+          </button>
+          <button class="hud-btn" id="muteBtn" onclick="toggleMuteVideo()" aria-label="Mute or Unmute Audio">
+            <svg id="muteIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            <span id="muteText">Mute</span>
+          </button>
+          <span class="time-readout">
+            <span id="currentTimeDisplay">00:00</span> / <strong id="durationDisplay">01:30</strong>
+          </span>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="hud-btn" onclick="toggleTranscript()" aria-expanded="false" id="transcriptBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            <span>Full Transcript</span>
+          </button>
+          <button class="hud-btn" onclick="toggleFullscreen()" aria-label="Toggle Fullscreen View">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            <span>Fullscreen</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Ingestion Notice & Transcript Accordion -->
+      <div class="video-meta-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <strong>Demonstration Status Notice:</strong> Active 18s verified production reel is loaded in the player above. The complete 60–90 second 4K master walkthrough narrative is transcribed below and scheduled for continuous deployment.
+          </div>
+          <a href="../assets/videos/README.md" target="_blank" style="color: var(--valixis-cyan); font-family: var(--font-mono); font-size: 0.78rem; text-decoration: underline;">
+            Developer Ingestion Specs &rarr;
+          </a>
+        </div>
+
+        <button class="transcript-toggle-btn" onclick="toggleTranscript()">
+          <span id="drawerToggleLabel">&darr; View Complete 90-Second Walkthrough Transcript</span>
+        </button>
+
+        <div class="transcript-drawer" id="transcriptDrawer">
+          <div class="ts-entry">
+            <div class="ts-time">00:00 &mdash; 00:15 &bull; ARCHITECTURE FOUNDATIONS &amp; VALIXIS PORTAL</div>
+            <p class="ts-text">"Welcome to VALIXIS. We design and deploy high-performance software, autonomous agent meshes, and sovereign cloud infrastructure. In this briefing, we inspect our operational core: the VALIXIS Portal &mdash; our internal governance engine built on Flutter Web and Supabase PostgreSQL with strict Row Level Security (RLS) enforcing least-privilege access."</p>
+          </div>
+          <div class="ts-entry">
+            <div class="ts-time">00:15 &mdash; 00:35 &bull; VALIXIS FLOW: AUTONOMOUS DAEMON ORCHESTRATION</div>
+            <p class="ts-text">"Next, we examine VALIXIS FLOW: our distributed 24/7 background agent mesh. FLOW executes autonomous task queues, cold email pacing (80–120s humanized intervals via Resend API), real-time Telegram bot alerts, and multi-threaded lead qualification without manual operational overhead."</p>
+          </div>
+          <div class="ts-entry">
+            <div class="ts-time">00:35 &mdash; 00:55 &bull; VALIXIS PULSE: REAL-TIME FLEET TELEMETRY</div>
+            <p class="ts-text">"Observability across our distributed systems is governed by VALIXIS PULSE. Live heartbeat daemons stream node health, worker memory consumption, API response rates, and client website availability to a unified telemetry cockpit running over WebSockets."</p>
+          </div>
+          <div class="ts-entry">
+            <div class="ts-time">00:55 &mdash; 01:15 &bull; PRODUCTION CLIENT PLATFORMS &amp; 3D EXPERIENCES</div>
+            <p class="ts-text">"Beyond internal platforms, our commercial division engineers production web platforms and interactive 3D applications &mdash; from Rose Cafe's mobile dining interface to Novel Hotel's reservation portal and Hiyya Dino Mandi's interactive WebGL model explorer."</p>
+          </div>
+          <div class="ts-entry">
+            <div class="ts-time">01:15 &mdash; 01:30 &bull; FRONTIER RESEARCH &amp; ARCHITECTURE CONSULTATION</div>
+            <p class="ts-text">"Frontier research pipelines in active testing include Fitora &mdash; on-device computer vision biomechanical fitness tracking &mdash; and VALIXIS CLOUD decentralized encrypted storage. To deploy these technologies or build your proprietary platform, schedule a 15-minute architecture session with our founders at valixis.tech."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 2: 7 PRODUCTS SPECIFICATION SHOWCASE                          -->
+    <!-- ===================================================================== -->
+    <div class="products-grid" id="productsGrid">
+      
+      <!-- 1. VALIXIS PORTAL (Flagship - Live / Launched) -->
+      <article class="product-card flagship" data-status="launched" id="portal">
+        <div>
+          <span class="status-tag status-launched">Flagship Platform &bull; Live / Launched</span>
+          <h2 class="prod-title" style="font-size: 1.85rem;">1. VALIXIS Portal</h2>
+          <p class="prod-purpose">
+            The core operational governance and developer orchestration backbone for VALIXIS Technologies.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates disconnected project management silos by binding developer task assignments directly to GitHub pull request workflows, PostgreSQL Row Level Security (RLS), and automated CI/CD staging environments.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Role-Based Access Control (RBAC) with cryptographic JWT token exchange.</li>
+            <li>PostgreSQL Row Level Security (RLS) enforcing strict data separation.</li>
+            <li>Real-time GitHub Actions CI/CD synchronization and deployment status tracking.</li>
+            <li>Centralized operational triage and client delivery milestone dashboard.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Flutter Web</span>
+            <span class="tech-chip highlight">Supabase / PostgreSQL 15+</span>
+            <span class="tech-chip highlight">Row Level Security (RLS)</span>
+            <span class="tech-chip">GitHub Actions CI/CD</span>
+            <span class="tech-chip">JWT Authentication</span>
+          </div>
+        </div>
+
+        <div>
+          <!-- Terminal Console Preview -->
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>PORTAL_KERNEL_V2.6 // STATUS: ONLINE</span>
+            </div>
+            <div>01 AUTH: JWT_SECURE_EXCHANGE [ACTIVE]</div>
+            <div>02 RLS: POLICIES_ACTIVE [SECURITY_DEFINER]</div>
+            <div>03 PIPELINE: GITHUB_ACTIONS_BUILT (0 COMPILATION ERRORS)</div>
+            <div>04 SYNC: CLIENT_STAGING_DEPLOYMENTS [SYNCHRONIZED]</div>
+            <div style="color: #10B981;">05 STATUS: LIVE / LAUNCHED (INTERNAL CORE)</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=portal#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Platform Briefing</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>View Enterprise Stack</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. VALIXIS FLOW (Active Development) -->
+      <article class="product-card" data-status="active" id="flow">
+        <div>
+          <span class="status-tag status-active">Active Development &bull; Daemon Mesh Active</span>
+          <h2 class="prod-title">2. VALIXIS FLOW</h2>
+          <p class="prod-purpose">
+            Autonomous agent workflow orchestration and distributed 24/7 background task execution engine.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Removes human operational bottlenecks by managing continuous task queues, cold email pacing (80–120s humanized intervals via Resend API), real-time Telegram bot alerts, and multi-channel lead discovery.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>24/7 background daemon supervisor running multi-threaded worker pools.</li>
+            <li>Paced transactional email engine utilizing Resend REST API.</li>
+            <li>ACID-compliant SQLite/PostgreSQL transactional queue locking.</li>
+            <li>Real-time event notification webhooks and instant Telegram bot dispatch.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python 3.13 / Asyncio</span>
+            <span class="tech-chip highlight">Resend API</span>
+            <span class="tech-chip">SQLite / PostgreSQL</span>
+            <span class="tech-chip">Telegram Bot API</span>
+            <span class="tech-chip">WebSockets</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>VALIXIS_FLOW_DAEMON // MESH_247</span>
+            </div>
+            <div>[DAEMON_01] Master Orchestrator (Cockpit Port 8000)</div>
+            <div>[DAEMON_02] Cold Email Engine (Resend API • Paced)</div>
+            <div>[DAEMON_03] Telegram Dispatcher (@valixis_metspy_bot)</div>
+            <div style="color: var(--valixis-cyan);">STATUS: ACTIVE DEVELOPMENT &bull; INTERNAL MESH OPERATIONAL</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../services/ai-automation/" class="btn-card-act btn-primary-act">
+              <span>Explore AI Automation Services</span>
+            </a>
+            <a href="../contact/?product=flow#inquiry-form" class="btn-card-act btn-secondary-act">
+              <span>Inquire About Workflow Pods</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. VALIXIS CLOUD (Planned) -->
+      <article class="product-card" data-status="planned" id="cloud">
+        <div>
+          <span class="status-tag status-planned">Planned &bull; Frontier Architecture</span>
+          <h2 class="prod-title">3. VALIXIS CLOUD</h2>
+          <p class="prod-purpose">
+            Sovereign encrypted cloud storage and distributed edge node mesh designed for cryptographic data ownership.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Protects proprietary enterprise assets from vendor lock-in, unencrypted third-party scanning, and cloud surveillance through client-side envelope encryption and distributed node consensus.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Client-side cryptographic envelope encryption (AES-256-GCM).</li>
+            <li>Zero-knowledge access proofs and private master key derivation.</li>
+            <li>Peer-to-peer node synchronization protocol for high-redundancy backup.</li>
+            <li>Self-hosted private cloud gateway for enterprise intranet deployments.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Rust / Go (Target)</span>
+            <span class="tech-chip highlight">AES-256-GCM</span>
+            <span class="tech-chip">WASM Edge</span>
+            <span class="tech-chip">libp2p Protocols</span>
+            <span class="tech-chip">Encrypted Mesh</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #A78BFA; box-shadow: 0 0 8px #A78BFA;"></span>
+              <span>VALIXIS_CLOUD_SPEC // RESEARCH</span>
+            </div>
+            <div>[LAYER_1] Cryptographic Envelope Key Exchange</div>
+            <div>[LAYER_2] Zero-Knowledge Storage Sharding</div>
+            <div>[LAYER_3] Private Gateway Node Mesh Consensus</div>
+            <div style="color: #A78BFA;">STATUS: ARCHITECTURAL BLUEPRINT &bull; PLANNED PIPELINE</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=cloud#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Inquire on Enterprise Security</span>
+            </a>
+            <a href="../projects/" class="btn-card-act btn-secondary-act">
+              <span>View Roadmap</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. VALIXIS DESK_AI (Prototype) -->
+      <article class="product-card" data-status="prototype" id="desk-ai">
+        <div>
+          <span class="status-tag status-prototype">Prototype &bull; Internal Desktop Builds</span>
+          <h2 class="prod-title">4. VALIXIS DESK_AI</h2>
+          <p class="prod-purpose">
+            Native desktop cognitive workspace integrating localized neural context and engineering utilities.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates context-switching fatigue and public cloud latency by providing offline-first neural code intelligence, local indexing, and automated system health monitoring without data leakage.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Localized neural inference (GGUF / ONNX runtimes) with zero cloud telemetry.</li>
+            <li>System daemon monitoring CPU, RAM, and background build health.</li>
+            <li>Context-aware codebase indexing and local CLI automation shortcuts.</li>
+            <li>Cross-platform desktop container with minimal RAM footprint.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python System Daemons</span>
+            <span class="tech-chip highlight">Tauri / Electron Shell</span>
+            <span class="tech-chip">Local ONNX / GGUF</span>
+            <span class="tech-chip">IPC Sockets</span>
+            <span class="tech-chip">Cross-Platform</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+              <span>DESK_AI_WORKSPACE // PROTOTYPE_BUILD</span>
+            </div>
+            <div>[INFERENCE] Local Quantized Engine [Offline Ready]</div>
+            <div>[DAEMON] System Resource Monitor [Active]</div>
+            <div>[PRIVACY] Zero Outbound Telemetry [Enforced]</div>
+            <div style="color: #F59E0B;">STATUS: PROTOTYPE &bull; INTERNAL ALPHA TESTING</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=desk_ai#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Join Desktop Alpha Queue</span>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>Custom Software Pods</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. VALIXIS PULSE (Active Development) -->
+      <article class="product-card" data-status="active" id="pulse">
+        <div>
+          <span class="status-tag status-active">Active Development &bull; Telemetry Engine Active</span>
+          <h2 class="prod-title">5. VALIXIS PULSE</h2>
+          <p class="prod-purpose">
+            Real-time observability, fleet health telemetry, and service uptime monitoring dashboard.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Provides unified real-time visibility across multi-node server health, worker queue latency, API dispatch hit-ratios, and live client website availability from a single central cockpit.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Live heartbeat pings and worker daemon uptime monitoring (Port 8000 Cockpit).</li>
+            <li>Real-time dispatch hit-ratio analytics and rate-limit tracking.</li>
+            <li>Automated failover alerts dispatched via webhook and instant messaging bots.</li>
+            <li>Centralized status overview of all hosted client platforms and internal services.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python HTTP/WebSocket</span>
+            <span class="tech-chip highlight">Live Telemetry API</span>
+            <span class="tech-chip">SQLite Time-Series</span>
+            <span class="tech-chip">Chart.js Reactivity</span>
+            <span class="tech-chip">Heartbeat Daemons</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>VALIXIS_PULSE // TELEMETRY_SERVER</span>
+            </div>
+            <div>[METRICS] Fleet Health: 99.98% Across Nodes</div>
+            <div>[LATENCY] Average API Response: 42ms</div>
+            <div>[HEARTBEAT] 7 Worker Daemons Active &bull; 0 Failures</div>
+            <div style="color: var(--valixis-cyan);">STATUS: ACTIVE DEVELOPMENT &bull; TELEMETRY RUNNING</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=pulse#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>View Telemetry Architecture</span>
+            </a>
+            <a href="../services/web-platforms/" class="btn-card-act btn-secondary-act">
+              <span>Cloud Web Infrastructure</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Fitora (Prototype) -->
+      <article class="product-card" data-status="prototype" id="fitora">
+        <div>
+          <span class="status-tag status-prototype">Prototype &bull; Alpha Mobile Pipeline</span>
+          <h2 class="prod-title">6. Fitora</h2>
+          <p class="prod-purpose">
+            Next-generation consumer AI mobile fitness platform with computer vision form correction.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Replaces static fitness routines with private, on-device real-time computer vision pose estimation, dynamic repetition verification, and fatigue-adaptive workout routines.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Real-time 33-point skeletal pose estimation via camera without server video upload.</li>
+            <li>Biomechanical form analysis with instantaneous audio/visual coaching cues.</li>
+            <li>Adaptive workout volume calibrated to biometric recovery indicators.</li>
+            <li>Privacy-first local on-device machine learning inference.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Flutter Mobile (iOS/Android)</span>
+            <span class="tech-chip highlight">MediaPipe / TensorFlow Lite</span>
+            <span class="tech-chip">Dart 3.x</span>
+            <span class="tech-chip">On-Device Vision</span>
+            <span class="tech-chip">Adaptive Biometrics</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+              <span>FITORA_MOBILE_PIPELINE // ALPHA</span>
+            </div>
+            <div>[VISION] 33 Keypoint Pose Mesh Tracking [Active]</div>
+            <div>[INFERENCE] TensorFlow Lite Mobile Subsystem</div>
+            <div>[TARGET] Cross-Platform iOS &amp; Android Deployments</div>
+            <div style="color: #F59E0B;">STATUS: PROTOTYPE &bull; INTERNAL TESTING STAGE</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=fitora#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Prototype Briefing</span>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>Mobile App Architecture</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. VALIXIS Gaming Studio (Planned) -->
+      <article class="product-card" data-status="planned" id="gaming-studio">
+        <div>
+          <span class="status-tag status-planned">Planned &bull; Interactive 3D Exploration</span>
+          <h2 class="prod-title">7. VALIXIS Gaming Studio</h2>
+          <p class="prod-purpose">
+            Interactive 3D simulation mechanics, procedural world dynamics, and spatial web experiences.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Explores real-time spatial computing, GPU-accelerated interactive web graphics, and procedural world mechanics for high-immersion commercial simulation and next-gen storytelling.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Browser-based real-time 3D simulation powered by Three.js and WebGL2.</li>
+            <li>Custom GLSL fragment shaders for atmospheric and procedural physics.</li>
+            <li>Low-latency asset streaming and responsive spatial navigation.</li>
+            <li>Cross-platform WebGL &amp; game engine pipeline exploration.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Three.js / WebGL2</span>
+            <span class="tech-chip highlight">GLSL Custom Shaders</span>
+            <span class="tech-chip">Blender 3D Pipeline</span>
+            <span class="tech-chip">Interactive Physics</span>
+            <span class="tech-chip">Spatial Computing</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #A78BFA; box-shadow: 0 0 8px #A78BFA;"></span>
+              <span>VALIXIS_GAMING_3D // RESEARCH</span>
+            </div>
+            <div>[RENDERER] WebGL2 / GLSL Shader Pipeline [Three.js]</div>
+            <div>[PHYSICS] Spatial Rigid-Body Particle Mechanics</div>
+            <div>[PROTOTYPES] Interactive 3D Hero &amp; Model Viewers Live</div>
+            <div style="color: #A78BFA;">STATUS: RESEARCH &amp; FRONTIER 3D EXPLORATION</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../services/3d-gaming-interactive/" class="btn-card-act btn-primary-act">
+              <span>Explore 3D Services</span>
+            </a>
+            <a href="../work/hiyya-dino-mandi/" class="btn-card-act btn-secondary-act">
+              <span>View 3D Dino Mandi Showcase</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom Hub Link & Consultation Section -->
+    <section class="bottom-roadmap-box">
+      <h3 class="roadmap-title">Ready to Deploy Custom Platforms or Integrate Our Ecosystem?</h3>
+      <p class="roadmap-desc">
+        Discuss your technical scope, dedicated engineering pod, or custom platform integration directly with VALIXIS leadership.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="../contact/#booking" class="btn-cta">
+          <span>Book 15-Minute Architecture Session &rarr;</span>
+        </a>
+        <a href="../estimate/" class="btn-cta" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main); box-shadow: none;">
+          <span>Interactive Scope Estimator</span>
+        </a>
+        <a href="../projects/" class="btn-cta" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main); box-shadow: none;">
+          <span>Track Lifecycle Milestones</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+    </div>
+  </footer>
+
+  <!-- Operational Scripts: Video Player Controls & Product Filter Engine -->
+  <script>
+    // 1. Filter Engine
+    function filterProducts(category) {
+      // Update filter button active states
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+
+      const activeBtn = Array.from(buttons).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(category));
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('aria-selected', 'true');
+      }
+
+      // Filter product cards
+      const cards = document.querySelectorAll('#productsGrid .product-card');
+      cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        if (category === 'all' || cardStatus === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    }
+
+    // 2. Custom Video Player Controls
+    const video = document.getElementById('valixisPlayer');
+    const overlay = document.getElementById('videoOverlay');
+    const playBtn = document.getElementById('playBtn');
+    const playText = document.getElementById('playText');
+    const playIcon = document.getElementById('playIcon');
+    const muteBtn = document.getElementById('muteBtn');
+    const muteText = document.getElementById('muteText');
+    const currentTimeDisplay = document.getElementById('currentTimeDisplay');
+    const durationDisplay = document.getElementById('durationDisplay');
+
+    function togglePlayVideo() {
+      if (video.paused || video.ended) {
+        video.play().then(() => {
+          overlay.classList.add('hidden');
+          playText.textContent = 'Pause';
+          playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+        }).catch(err => {
+          console.warn('Playback initiation error:', err);
+        });
+      } else {
+        video.pause();
+        overlay.classList.remove('hidden');
+        playText.textContent = 'Play';
+        playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+      }
+    }
+
+    function toggleMuteVideo() {
+      video.muted = !video.muted;
+      if (video.muted) {
+        muteText.textContent = 'Unmute';
+      } else {
+        muteText.textContent = 'Mute';
+      }
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        const wrapper = document.querySelector('.video-wrapper');
+        if (wrapper.requestFullscreen) {
+          wrapper.requestFullscreen();
+        } else if (wrapper.webkitRequestFullscreen) {
+          wrapper.webkitRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function toggleTranscript() {
+      const drawer = document.getElementById('transcriptDrawer');
+      const btn = document.getElementById('transcriptBtn');
+      const label = document.getElementById('drawerToggleLabel');
+      
+      const isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        if (label) label.textContent = '↓ View Complete 90-Second Walkthrough Transcript';
+      } else {
+        drawer.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        if (label) label.textContent = '↑ Hide Walkthrough Transcript';
+      }
+    }
+
+    // Video Time Updates
+    if (video) {
+      video.addEventListener('timeupdate', () => {
+        const cur = formatTime(video.currentTime);
+        currentTimeDisplay.textContent = cur;
+      });
+
+      video.addEventListener('loadedmetadata', () => {
+        if (video.duration && !isNaN(video.duration)) {
+          durationDisplay.textContent = formatTime(video.duration);
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        overlay.classList.remove('hidden');
+        playText.textContent = 'Play';
+        playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+      });
+
+      // Keyboard Controls (Space to play/pause when in focus)
+      video.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' || e.key === 'k') {
+          e.preventDefault();
+          togglePlayVideo();
+        }
+      });
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+  </script>
+
+</body>
+</html>
+"""
+
+def main():
+    paths = ['ecosystem/index.html', 'VALIXIS WEBSITE/ecosystem/index.html']
+    for p in paths:
+        with open(p, 'w', encoding='utf-8') as f:
+            f.write(ECOSYSTEM_HTML)
+        print(f"Updated {p} ({len(ECOSYSTEM_HTML)} bytes)")
+
+if __name__ == '__main__':
+    main()

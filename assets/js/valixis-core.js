@@ -140,7 +140,7 @@
 
   // 3. SPOTLIGHT CARDS MOUSE TRACKING & 3D BENTO TILT
   function initSpotlights() {
-    const cards = document.querySelectorAll('.spotlight-card, .opt-card');
+    const cards = document.querySelectorAll('.spotlight-card, .opt-card, .mv-card, .leader-card, .val-card, .exec-card, .bp-card, .service-card, .product-card');
     cards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -153,15 +153,15 @@
         if (isFinePointer && !prefersReducedMotion) {
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -4.5;
-          const rotateY = ((x - centerX) / centerX) * 4.5;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-3px)`;
+          const rotateX = ((y - centerY) / centerY) * -5.0;
+          const rotateY = ((x - centerX) / centerX) * 5.0;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
         }
       });
 
       card.addEventListener('mouseleave', () => {
         if (isFinePointer && !prefersReducedMotion) {
-          card.style.transform = '';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         }
       });
     });
@@ -169,18 +169,59 @@
 
   // 4. MOBILE NAVIGATION DRAWER
   function initMobileNav() {
-    const toggle = document.querySelector('.mobile-nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const isOpen = links.classList.toggle('active');
+    const toggle = document.getElementById('mobileMenuToggle') || document.querySelector('.mobile-menu-toggle, .mobile-nav-toggle');
+    const drawer = document.getElementById('mobileNavDrawer') || document.querySelector('.mobile-nav-drawer');
+    const legacyLinks = document.querySelector('.nav-links');
+
+    if (!toggle) return;
+
+    function toggleMenu(e) {
+      if (e) e.stopPropagation();
+      if (drawer) {
+        const isOpen = drawer.classList.toggle('open');
+        toggle.classList.toggle('active', isOpen);
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      } else if (legacyLinks) {
+        const isOpen = legacyLinks.classList.toggle('active');
+        toggle.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+    }
+
+    toggle.addEventListener('click', toggleMenu);
+
+    if (drawer) {
+      drawer.querySelectorAll('.mobile-nav-link, .mobile-drawer-btn, a').forEach(link => {
+        link.addEventListener('click', () => {
+          drawer.classList.remove('open');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        });
       });
 
-      // Close on clicking outside or on link
       document.addEventListener('click', (e) => {
-        if (!toggle.contains(e.target) && !links.contains(e.target) && links.classList.contains('active')) {
-          links.classList.remove('active');
+        if (!drawer.contains(e.target) && !toggle.contains(e.target) && drawer.classList.contains('open')) {
+          drawer.classList.remove('open');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        }
+      });
+    } else if (legacyLinks) {
+      legacyLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          legacyLinks.classList.remove('active');
+          toggle.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !legacyLinks.contains(e.target) && legacyLinks.classList.contains('active')) {
+          legacyLinks.classList.remove('active');
+          toggle.classList.remove('active');
           toggle.setAttribute('aria-expanded', 'false');
         }
       });

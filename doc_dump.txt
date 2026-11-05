@@ -1,0 +1,432 @@
+P: 22424580
+[IMAGE x1]
+P: VASIREDDY VENKATADRI INTERNATIONAL TECHNOLOGICAL UNIVERSITY
+P: DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING-ARTIFICIAL INTELLIGENCE&MACHINE LEARNING
+P: ACADEMIC YEAR: 2026–2027
+P: Community Service Project Report
+P: Title of the project               :  Aqua Safe – Smart Water Quality Monitoring
+P: System
+P: Name of the Student           :   Madem Jyothsna Sri
+P: Roll Number                      :   24BQ1A42I1
+P: Branch                               :    CSM
+P: Section                               :    C
+P: Supervisor Name &           :    Mr.T. Kameswara Rao(Professor)
+P: Designation
+--- [PAGE BREAK -> PAGE 2] ---
+[IMAGE x1]
+P: COMMUNITY SERVICE PROJECT
+P: STUDENT DECLARATION
+P: I hereby declare that the Community Service Project (CSP) report entitled ________ _______ _________________________ ____________________________________________ is an authentic record of the original work carried out by me under the guidance Dr/Mr./Mrs. ____________________, Assistant/Associate/Professor, CSE-AI&ML Department.
+P: I further declare that the information presented in this report is true, accurate, and complete to the best of my knowledge and belief. This project report has not been submitted, either in whole or in part, to any other institution or university for the award of any degree, diploma, or other academic qualification.
+P: I take full responsibility for the originality and authenticity of the work presented in this       report.
+P: Student Details
+P: Student Name:
+P: Roll Number:
+P: Branch & Section:
+P: Date:
+P: Place: VVITU,  Nambur
+P: Signature of the Student:
+P: VVIT UNIVERSITY
+P: Academic Year: 2026–2027
+--- [PAGE BREAK -> PAGE 3] ---
+[IMAGE x1]
+P: COMMUNITY SERVICE PROJECT
+P: COMMUNITY / ORGANIZATION CERTIFICATE
+P: This is to certify that Mr./Ms. ______________________________ (Roll No. __________________), of ______________________________ (Branch & Section), has conducted a Community Survey for Problem Identification in our village/NGO/organization as part of the Community Service Project (CSP) under the Office of NSS & Community Service, VVIT University.
+P: The student carried out the survey during the period from _____________________ to ____________________to identify the existing problems, needs, and challenges faced by the local community.
+P: The survey was conducted with the cooperation and support of the local community. The information collected and the activities carried out by the student are genuine and authentic to the best of our knowledge.
+P: We appreciate the student's efforts and contribution towards identifying community problems for the successful implementation of the Community Service Project.
+P: Name of the Village/NGO/Organization: ______________________________
+P: Village / Organization Head Name: ______________________________
+P: Designation: ______________________________
+P: Date: ______________________________
+P: Place: ______________________________
+P: Signature of the Village / Organization Authority: ______________________________
+P: Official Seal
+--- [PAGE BREAK -> PAGE 4] ---
+[IMAGE x1]
+[IMAGE x2]
+[IMAGE x1]
+[IMAGE x1]
+P: Office of NSS & Community Service - Community Service Project (CSP)
+P: CERTIFICATE OF COMPLETION
+P: COMMUNITY SERVICE PROJECT (CSP)
+P: Department of CSE-AI&ML
+P: ACADEMIC YEAR: 2026–2027
+P: This is to certify that Mr./Ms. __________________________________, bearing Roll No. ________________________, of ________________________________ (Branch & Section), has successfully completed the Community Service Project (CSP) titled
+P: “________________________________________” during the academic year 2026–2027, as part of the prescribed academic requirements of the University.
+P: The project has been carried out under the guidance and supervision of the Faculty Supervisor. The work presented by the student is found to be satisfactory and fulfills the requirements prescribed for the Community Service Project.
+P: Signature of Faculty Supervisor                                             Signature of Head of the Department
+P: Name: __________________                                                Name: __________________
+P: Designation: ______________                                              Designation: ______________
+P: Department of _________________________________
+--- [PAGE BREAK -> PAGE 5] ---
+P: Acknowledgements
+P: We take this opportunity to express my deepest gratitude and appreciation to all those people who made this project work easier with words of encouragement, motivation, discipline, and faith by offering different places to look to expand my ideas and helped me towards the successful completion of this project work.
+P: First and foremost, we express my deep gratitude to Mr. Vasireddy Vidya Sagar, Chancellor, Vasireddy Venkatadri International Technological University for providing necessary facilities throughout the B. Tech program.
+P: We express my sincere thanks to Dr. Y. Mallikarjuna Reddy, Registrar, Vasireddy Venkatadri International Technological University for his constant support and cooperation throughout the B. Tech program.
+P: We express my sincere gratitude to Dr. G. Sanjay Gandhi, Professor & HOD, Computer Science & Engineering (AI&ML), Vasireddy Venkatadri International Technological University for his constant encouragement, motivation and faith by offering different places to look to expand my ideas.
+P: We would like to express my sincere gratefulness to our Guide T. Kameswara Rao, Professor, CSE(AI&ML) for his insightful advice, motivating suggestions, invaluable guidance, help and support in successful completion of this project.
+P: We would like to express our sincere heartfelt thanks to our Project Coordinator    P.Kishore Babu, Associate Professor, CSE(AI&ML) for his valuable advices, motivating suggestions, moral support, help and coordination among us in successful completion of this project.
+P: We would like to take this opportunity to express my thanks to the Teaching and Non-Teaching Staff in the Department of Computer Science & Engineering, VVITU for their invaluable help and support.
+P: ABSTRACT
+P: Water is an essential resource for human survival, and maintaining its quality is crucial for public health and safety. However, contaminated water containing excessive dissolved solids can affect its taste, usability, and overall quality. Traditional water testing methods often require manual procedures and may not provide continuous monitoring, making it difficult to identify changes in water quality at an early stage. To address these challenges, this project introduces an automated, low-cost IoT solution: the Aqua Safe – Smart Water Quality Monitoring System.
+P: The system is powered by an ESP32 microcontroller integrated with a TDS (Total Dissolved Solids) sensor. It continuously monitors the amount of dissolved solids present in water by measuring TDS values and transmitting the collected readings to the ESP32 for processing. Based on the measured values, the system identifies changes in water quality and provides information about the condition of the tested water. The ESP32 acts as the central processing unit, ensuring efficient sensor data collection and monitoring. This approach helps users observe water quality conditions without depending entirely on traditional manual testing methods.
+P: To evaluate the practical  functionality of the system, different water samples can be tested to observe variations in dissolved solids levels. The obtained readings help demonstrate the system's ability to monitor changes in water quality and provide useful information to users. Ultimately, this initiative provides an affordable and efficient smart monitoring solution that promotes water quality awareness and supports better water management in households and other applications.
+P: .
+P: .
+P: TABLE OF CONTENTS
+[IMAGE x1]
+P: CHAPTER 1
+P: INTRODUCTION AND OBJECTIVES
+P: BACKGROUND OF THE SELECTED COMMUNITY AND SOCIAL ISSUE
+P: Kakani palem is a village located in Addanki Mandal, Prakasam District, Andhra Pradesh. Water is an essential resource for the daily activities and health of every community. The residents of Kakani palem depend mainly on municipal water supply and water tank supply for their water requirements.
+P: Based on the community survey conducted for this project, it was observed that regular drinking water quality testing is not carried out in the community. Some residents also reported problems related to unpleasant taste or smell in the supplied water. These observations indicate the importance of creating awareness about water quality and encouraging regular monitoring.
+P: Water quality can be assessed by observing different parameters such as pH, turbidity and temperature. Monitoring these parameters helps identify changes in water characteristics. However, without accessible monitoring methods, residents may find it difficult to understand the condition of their supplied water.
+P: Therefore, an affordable and simple IoT-based water quality monitoring approach can help create awareness and provide information about important water parameters.
+P: RATIONALE FOR SELECTION OF THE PROJECT
+P: The project Aqua Safe – Smart Water Quality Monitoring System was selected to address the need for better awareness and monitoring of water quality in the selected community.
+P: During the community survey, the lack of regular drinking water testing and complaints about unpleasant taste or smell highlighted the importance of water quality awareness. This motivated the development of an IoT-based prototype that can monitor important water parameters and display the readings in an understandable format.
+P: The project uses an ESP32 microcontroller connected to pH, turbidity, temperature and water level sensors. The collected readings are processed by the controller and displayed on an LCD screen. This provides a simple way to observe water-related parameters without requiring a web application or user interface.
+P: The main reasons for choosing this project are:
+P: To address the community's need for awareness of drinking water quality.
+P: To demonstrate the use of IoT technology for water monitoring.
+P: To provide a simple hardware-based monitoring solution.
+P: To help residents understand important water quality parameters.
+P: To encourage the importance of regular water testing and responsible water management.
+P: The prototype is intended for preliminary monitoring and awareness. It does not replace laboratory testing or certify water as safe for drinking.
+P: OBJECTIVES OF THE PROJECT
+P: The main objective of Aqua Safe is to design and develop an IoT-based smart water quality monitoring prototype that observes important water parameters and displays the readings through an LCD.
+P: The specific objectives are:
+P: To develop one working IoT-based water quality monitoring prototype using an ESP32 microcontroller.
+P: To integrate four sensors: pH, turbidity, temperature and water level sensors.
+P: To monitor and display pH values, turbidity levels, temperature and water level.
+P: To process the sensor readings using the ESP32 microcontroller.
+P: To display the collected sensor readings on an LCD screen.
+P: To provide a basic indication of monitored water conditions based on predefined reference limits.
+P: To demonstrate the working of the prototype and explain its functions to community members.
+P: To create awareness among residents of Kakani palem about water quality parameters and the importance of regular water testing.
+P: To encourage the use of simple IoT technology for better water monitoring and management.
+--- [PAGE BREAK -> PAGE 6] ---
+P: CHAPTER 2
+P: COMMUNITY SURVEY AND PROBLEM IDENTIFICATION
+P: METHODOLOGY USED FOR THE COMMUNITY SURVEY
+P: The community survey was conducted to collect information about the availability of water, sources of water supply and problems experienced by residents.
+P: The following activities were considered as part of the survey methodology:
+P: 1. Community Interaction:
+P: Information was gathered through interaction with community members to understand their water requirements and the problems they experience with the supplied water.
+P: 2. Survey and Information Collection:
+P: Basic information about water sources, regular water testing practices and water quality-related complaints was collected.
+P: 3. Identification of Water Sources:
+P: The major water sources identified in the community were municipal water supply and water tank supply.
+P: 4. Observation of Water-Related Issues:
+P: The information collected was reviewed to identify concerns such as unpleasant taste or smell and the absence of regular drinking water quality testing.
+P: 5. Problem Analysis:
+P: The collected information was used to understand the need for an accessible water quality monitoring approach and to plan the Aqua Safe IoT prototype.
+P: DEMOGRAPHIC OVERVIEW OF THE TARGET AREA
+P: Kakani palem is located in Addanki Mandal, Prakasam District, Andhra Pradesh. The selected community was considered for this project because understanding local water supply practices is important for identifying water quality monitoring needs.
+P: The community mainly depends on the following water sources:
+P: Municipal water supply.
+P: Water tank supply.
+P: The survey focused on understanding residents' experiences with these water sources, their awareness of water quality and the availability of regular drinking water testing.
+P: The demographic information such as total population, number of households, age distribution, educational background and occupational details was not available in the collected survey information. These details can be added after obtaining verified information from village records or a detailed household survey.
+P: KEY ISSUES IDENTIFIED DURING THE BASELINE SURVEY
+P: Based on the information collected during the community survey, the following key issues were identified:
+P: 1. Lack of Regular Water Quality Testing:
+P: The survey indicated that regular drinking water quality testing is not carried out in the selected community. This creates a need to encourage awareness about periodic water testing.
+P: 2. Unpleasant Taste or Smell:
+P: Some residents reported problems related to unpleasant taste or smell in the supplied water. These complaints indicate the importance of examining water quality rather than relying only on appearance.
+P: 3. Limited Awareness of Water Quality Parameters:
+P: There is a need to improve awareness about important water quality parameters such as pH, turbidity and temperature and their role in water monitoring.
+P: 4. Need for an Accessible Monitoring System:
+P: The survey highlighted the importance of a simple monitoring approach that can provide information about water quality parameters in an understandable way.
+P: 5. Importance of Regular Monitoring:
+P: Regular observation and appropriate testing of water quality are important for identifying changes in water characteristics and encouraging responsible water management.
+--- [PAGE BREAK -> PAGE 7] ---
+P: Survey Questionnaire:
+P: Aqua Safe – Smart Water Quality Monitoring System
+P: Survey Questionnaire
+P: Form No: ______________      Date: ____ / ____ / ____
+P: Personal Details :
+P: 1. Name of the Respondent: _______________________________    2. Age: __________
+P: 3. Gender:  ■ Male    ■ Female    ■ Other     4. Occupation: _________________________
+P: 5. Village/Area Name: _______________________________________________
+P: Questionnaire
+P: Section A – Water Usage & Current Quality Awareness
+P: What is the primary source of water for your household?
+P: Municipal piped water supply    b) Borewell / Groundwater    c) Community well/tank    d) Water tanker supply
+P: How would you rate the current clarity (turbidity) of the water you receive?
+P: Always clear    b) Mostly clear, occasionally muddy    c) Frequently muddy/discolored    d) Never checked
+P: Have you or your family experienced health issues you believe were linked to poor water quality?
+P: Yes, frequently    b) Yes, occasionally    c) No, never    d) Unsure of the cause
+P: How do you currently check whether your water is safe to drink? (Select top 2)
+P: [ ] Visual appearance    [ ] Smell or taste    [ ] Filter/purifier indicator    [ ] Lab testing    [ ] Do not check
+P: How satisfied are you with the current method of monitoring water quality in your home/community?
+P: Very Satisfied    b) Satisfied    c) Neutral    d) Dissatisfied    e) Very Dissatisfied
+P: How often is your household's water tank/container cleaned or inspected?
+P: Weekly    b) Monthly    c) Once in a few months    d) Rarely/never    e) Not sure
+P: Which water quality parameters are you most concerned about? (Select all that apply)
+P: [ ] pH    [ ] Turbidity    [ ] Temperature    [ ] Water level in tank    [ ] Microbial contamination
+P: Section B – Current Water Quality Management Problems
+P: Have you ever had to stop using water from a source due to suspected contamination?
+P: Yes, frequently    b) Yes, occasionally    c) No, never    d) Unsure
+P: How do you feel about the process for reporting water quality issues to authorities?
+P: Reported, no action taken    b) Reported, issue resolved    c) Process too difficult/slow
+P: d) Never felt the need
+P: What is the single biggest factor behind poor water quality in your area?
+P: Aging/damaged pipelines    b) Contaminated source    c) Lack of regular testing
+P: d) Poor tank maintenance    e)Lack of awareness
+P: Who is primarily responsible for ensuring safe water quality in your locality?
+P: Local municipal/water authority    b) Residents/community    c) Private water suppliers
+P: d) Lack of cooperation among all
+P: Section C – Technology Awareness
+P: How familiar are you with smart technologies like IoT or sensor-based systems?
+P: Very familiar, I use such tech    b) Heard of them, not familiar    c) Not familiar with these terms
+P: If a smart water quality monitoring system were introduced, what would be your main expectation?
+P: Early warning before unsafe water is consumed    b) Timely water quality updates    c) Improved trust in watersafety    d) Easy way to report issues
+P: How do you access digital information or services in daily life?
+P: Smartphone with regular internet    b) Smartphone, limited internet    c) Rely on family/community center    d) Nodigital device access
+P: How likely would you be to use a mobile app to check water quality status?
+P: Very likely    b) Somewhat likely, if easy to use    c) Unlikely, prefer traditional methods    d) Not applicable
+P: Which smart feature would provide the most value to your household/community?
+P: Real-time alerts for unsafe water    b) Live pH/turbidity/temperature dashboard    c) Low tank-level notification   d) One-click issue reporting
+P: Through which channel would you prefer to receive water quality alerts?
+P: Mobile app notification    b) WhatsApp message    c) SMS text message    d) Buzzer/LED indicator at source
+P: How willing would the community be to help maintain a smart water monitoring system?
+P: Highly willing    b) Somewhat willing, with awareness    c) Unlikely to prioritize    d) Unsure/Neutral
+P: Section D – Community Responses
+P: Which water quality parameter should be prioritized for continuous monitoring?
+P: pH level    b) Turbidity    c) Temperature    d) All equally    e) As per sensor safe/unsafe status
+P: Who is best suited to handle daily operation and maintenance of a smart water monitoring system?
+P: Local Municipal/Panchayat authorities    b) Resident Welfare Associations    c) Private water managementagency    d) Community volunteers
+P: Would you support installation of a smart water quality monitoring system (sensors, dashboard, alerts) in yourlocality?
+P: Strongly Support    b) Support    c) Neutral    d) Oppose    e) Strongly Oppose
+P: Suggestions
+P: Do you have any suggestions for improving water safety or monitoring services in your area?
+P: ______________________________________________________________________________________________
+P: ________________
+P: ______________________________________________________________________________________________
+P: ________________
+P: Survey Conducted By
+P: Student Name: _______________________    Department: _______________________
+P: College Name: _______________________
+--- [PAGE BREAK -> PAGE 8] ---
+P: CHAPTER 3
+P: ACTION PLAN AND IMPLEMENTATION
+P: STEP-BY-STEP ACTIVITIES CONDUCTED
+P: The following activities describe the development and implementation process of the Aqua Safe project.
+P: Step 1: Community Survey and Problem Identification
+P: A community survey was conducted in Kakanipalem village to understand the water supply sources and water quality-related concerns. The survey indicated that the main water sources were municipal water supply and water tank supply. The absence of regular drinking water testing and complaints about unpleasant taste or smell highlighted the need for water quality awareness
+P: .
+P: Step 2: Project Planning and Selection
+P: Based on the survey observations, the Aqua Safe project was selected. The project was planned as an IoT-based hardware monitoring system without a web application or user interface. The ESP32 microcontroller was selected to process the sensor readings.
+P: Step 3: Identification and Collection of Components
+P: The hardware components required for the project were identified and arranged. These included:
+P: ESP32 microcontroller
+P: pH sensor
+P: Turbidity sensor
+P: Temperature sensor
+P: Water level sensor
+P: LCD display
+P: Connecting wires and other supporting components
+P: Step 4: Hardware Design and Circuit Connections
+P: The sensors and LCD display were connected to the ESP32 microcontroller using suitable circuit connections. Each sensor was assigned the task of monitoring a specific water-related parameter.
+P: Step 5: Programming the ESP32
+P: The ESP32 was programmed to receive readings from the connected sensors, process the collected data and display the corresponding values on the LCD screen.
+P: Step 6: Assembly of the Prototype
+P: All the hardware components were arranged and assembled to develop the Aqua Safe prototype. Proper connections were checked to ensure that the sensors, controller and LCD display functioned together.
+P: Step 7: Testing and Observation
+P: The prototype was tested by observing the readings obtained from the sensors. The LCD display was checked to verify whether the monitored values were displayed correctly. The sensor responses and system operation were observed during testing.
+P: Step 8: Prototype Demonstration and Awareness
+P: The working model was demonstrated to explain the purpose of the system, the functions of individual sensors and the importance of monitoring water quality parameters. The activity was intended to create awareness about regular water testing and responsible water management.
+P: HARDWARE COMPONENTS AND RESOURCE ALLOCATION
+P: The following table describes the resources required for implementing the project.
+--- TABLE (11 rows) ---
+S. No. | Component / Resource | Purpose
+1 | ESP32 Microcontroller | Processes sensor readings and controls the system
+2 | pH Sensor | Measures the pH level of water
+3 | Turbidity Sensor | Measures the turbidity of water
+4 | Temperature Sensor | Measures water temperature
+5 | Water Level Sensor | Monitors the water level
+6 | LCD Display | Displays the sensor readings
+7 | Connecting Wires | Establishes electrical connections
+8 | Power Supply | Provides power to the circuit
+9 | Computer / Laptop | Used for programming the ESP32
+10 | Arduino IDE or compatible programming environment | Used to write and upload the program
+--- END TABLE ---
+P: PROJECT TIMELINE / WEEKLY PROGRESS LOG
+P: The project activities were divided into weekly stages to ensure systematic development and implementation.
+--- TABLE (9 rows) ---
+WEEKS | ACTIONS PLANNED
+WEEK 1 | Selection of community and project topic
+WEEK 2 | Community survey and problem identification
+WEEK 3 | Project planning and identification of hardware components
+WEEK 4 | Collection of components and study of sensor functions
+WEEK 5 | Circuit design and connection of sensors with ESP32
+WEEK 6 | Programming the ESP32 and integrating the LCD display
+WEEK 7 | Hardware assembly and prototype testing
+WEEK 8 | Prototype demonstration, documentation and report preparation
+--- END TABLE ---
+P: TEAM MEMBER ROLES AND RESPONSIBILITIES
+P: The project activities can be divided among team members to ensure proper coordination and successful implementation.
+--- TABLE (6 rows) ---
+Team Member | Role and Responsibility
+Member 1 | Conducts community survey and collects information
+Member 2 | Identifies and arranges the required hardware components
+Member 3 | Works on ESP32 programming and sensor integration
+Member 4 | Handles hardware assembly, testing and LCD display verification
+All Members | Participate in prototype demonstration, community awareness and report preparation
+--- END TABLE ---
+P: IMPLEMENTATION OF AQUA SAFE PROTOTYPE
+P: The Aqua Safe prototype works through the integration of four sensors with an ESP32 microcontroller.
+P: The pH sensor measures the acidity or alkalinity of water, while the turbidity sensor monitors the cloudiness of water. The temperature sensor measures the water temperature, and the water level sensor monitors the available water level.
+P: The ESP32 receives and processes the sensor readings. The monitored values are then displayed on the LCD screen so that users can observe the water-related parameters. A basic status indication can also be provided using predefined reference limits.
+P: The complete system is designed as a hardware-based IoT prototype. It does not require a website or mobile application for displaying the readings.
+P: RESOURCE UTILIZATION
+P: The available resources were utilized for different stages of project development:
+P: Technical Resources: ESP32, sensors, LCD display and connecting components were used to develop the monitoring prototype.
+P: Software Resources: A computer and Arduino IDE or compatible programming environment were used for programming and uploading the code.
+P: Community Resources: Information collected through community interaction and the survey helped identify the problem and understand local requirements.
+P: Human Resources: Team members contributed to survey activities, hardware connections, programming, testing and documentation.
+P: Documentation Resources: Survey information, project photographs, observations and implementation details were used for preparing the CSP report.
+--- [PAGE BREAK -> PAGE 9] ---
+[IMAGE x1]
+P: CHAPTER 4
+P: RESULTS, IMPACT AND DELIVERABLES
+P: QUANTITATIVE OUTCOMES
+P: The quantitative outcomes represent the activities completed, resources utilized and results obtained during project implementation.
+P: The following table can be used to record the project outcomes:
+--- TABLE (11 rows) ---
+S. No. | Activity / Parameter | Outcome
+1 | Selected community | Kakanipalem village
+2 | Community survey conducted | Yes
+3 | Main water sources identified | 2
+4 | Water quality-related concerns identified | Unpleasant taste or smell; lack of regular testing
+5 | Microcontroller used | 1 ESP32
+6 | Sensors integrated | 4
+7 | LCD display integrated | 1
+8 | Working prototype developed | To be updated after final testing
+9 | Community members reached through demonstration | To be updated
+10 | Households surveyed | To be updated from actual survey records
+--- END TABLE ---
+P: The four sensors used in the project are:
+P: pH Sensor – Measures the pH level of water.
+P: Turbidity Sensor – Measures the cloudiness of water.
+P: Temperature Sensor – Measures water temperature.
+P: Water Level Sensor – Monitors the water level.
+P: These components help demonstrate the monitoring of different water-related parameters through a single IoT-based system.
+P: PROTOTYPE RESULTS AND OBSERVATIONS
+P: The Aqua Safe prototype is designed to collect water-related readings through the connected sensors. The ESP32 microcontroller receives and processes the sensor data and displays the readings on the LCD screen.
+P: The following observations can be recorded during prototype testing:
+P: 1. pH Monitoring:
+P: The pH sensor is used to measure the acidity or alkalinity of the water sample. The readings help users observe changes in the pH level.
+P: 2. Turbidity Monitoring:
+P: The turbidity sensor measures the cloudiness of the water sample and provides information about changes in its clarity.
+P: 3. Temperature Monitoring:
+P: The temperature sensor measures the temperature of the water and displays the corresponding reading.
+P: 4. Water Level Monitoring:
+P: The water level sensor helps identify the level of water available in the monitored container or tank.
+P: 5. LCD Display:
+P: The LCD displays the readings received from the sensors, allowing users to observe the monitored parameters without requiring a website or mobile application.
+P: Actual sensor readings, testing dates and observations should be added after testing the completed prototype.
+P: QUALITATIVE FINDINGS
+P: The community survey and project activities provided useful information about local water-related concerns and the importance of water quality awareness.
+P: The following qualitative findings were identified:
+P: 1. Awareness of Water Quality:
+P: The project highlights the importance of understanding water quality parameters such as pH, turbidity and temperature.
+P: 2. Understanding Community Needs:
+P: The survey helped identify that residents mainly depend on municipal water supply and water tank supply. It also indicated the absence of regular drinking water testing.
+P: 3. Importance of Water Monitoring:
+P: The project demonstrates how sensor-based technology can help observe changes in water characteristics.
+P: 4. Practical Use of IoT Technology:
+P: The prototype provides a practical demonstration of how sensors and a microcontroller can be integrated to monitor water-related parameters.
+P: 5. Encouragement of Regular Water Testing:
+P: The project emphasizes the importance of periodic water quality testing and responsible water management practices.
+P: SOCIAL IMPACT
+P: Aqua Safe aims to create awareness about water quality monitoring and the importance of drinking water safety in the selected community.
+P: The major expected social benefits include:
+P: Improved understanding of basic water quality parameters.
+P: Awareness about the importance of regular drinking water testing.
+P: Demonstration of an affordable hardware-based monitoring approach.
+P: Encouragement of responsible water management.
+P: Introduction to the practical applications of IoT technology in community-related problems.
+P: The project provides an educational and awareness-oriented solution. It does not independently certify water as safe for drinking. Laboratory testing is necessary to establish drinking water safety.
+P: PROJECT DELIVERABLES
+P: The major deliverables of the Aqua Safe project are:
+--- TABLE (8 rows) ---
+S. No. | Deliverable | Description
+1 | Community Survey | Information about local water sources and water-related concerns
+2 | IoT Hardware Prototype | Aqua Safe water monitoring system
+3 | ESP32 Integration | Microcontroller-based processing of sensor readings
+4 | Sensor Integration | pH, turbidity, temperature and water level sensors
+5 | LCD Display | Displays monitored sensor values
+6 | Working Demonstration | Demonstration of the hardware prototype
+7 | Project Documentation | Complete CSP report with implementation details and photographs
+--- END TABLE ---
+--- [PAGE BREAK -> PAGE 10] ---
+[IMAGE x1]
+P: FINAL IOT DEVICE
+--- [PAGE BREAK -> PAGE 11] ---
+[IMAGE x1]
+--- [PAGE BREAK -> PAGE 12] ---
+P: DEVICE SHOWING READING WHILE DEMONSTRATING USING DIFFERENT KIND OF WATER
+P: .CHAPTER 5
+P: CONCLUSION AND FUTURE SCOPE
+P: The Community Service Project, titled Aqua Safe – Smart Water Quality Monitoring System, was undertaken to create awareness about water quality monitoring and demonstrate the application of IoT technology in addressing community-related water concerns.
+P: The project focuses on Kakani palem village, Addanki Mandal, Prakasam District, where the community mainly depends on municipal water supply and water tank supply. The community survey highlighted the absence of regular drinking water testing and complaints related to unpleasant taste or smell.
+P: To address this need, an IoT-based hardware prototype was designed using an ESP32 microcontroller, pH sensor, turbidity sensor, temperature sensor, water level sensor and LCD display. The system monitors important water-related parameters and displays the readings on the LCD screen.
+P: Through this project, the importance of water quality awareness, regular testing and responsible water management was understood. Aqua Safe demonstrates how simple IoT technology can support preliminary water monitoring and community awareness.
+P: The project is an educational and preliminary monitoring solution. Laboratory testing remains essential to confirm whether water is suitable for drinking.
+P: KEY LEARNINGS AND PERSONAL REFLECTION
+P: The Aqua Safe project provided valuable learning experiences in technical development, teamwork and community interaction.
+P: The major learnings from this project include:
+P: 1. Technical Knowledge:
+P: Gained practical knowledge of the ESP32 microcontroller and the working principles of pH, turbidity, temperature and water level sensors.
+P: 2. IoT Implementation:
+P: Understood how different sensors can be connected to a microcontroller to collect and process data and display the readings on an LCD screen.
+P: 3. Problem Identification:
+P: Learned how community surveys help identify real-world problems and provide a foundation for selecting suitable technical solutions.
+P: 4. Practical Experience:
+P: Gained experience in hardware connections, sensor integration, programming, prototype assembly and testing.
+P: 5. Teamwork and Coordination:
+P: Understood the importance of cooperation, responsibility, communication and proper planning while completing a project.
+P: 6. Social Responsibility:
+P: Recognized the importance of applying technical knowledge to community needs and creating awareness about essential resources such as drinking water.
+P: Overall, this project helped connect classroom learning with practical implementation and provided an opportunity to understand how technology can be used to address everyday community challenges.
+P: CHALLENGES FACED AND SOLUTIONS IMPLEMENTED
+P: During the planning and development of the Aqua Safe project, several technical and implementation challenges were considered.
+--- TABLE (8 rows) ---
+S. No. | Challenges | Solutions / Measures
+1 | Understanding the functions of different sensors | Studied the operating principles and specifications of each sensor
+2 | Connecting multiple sensors with ESP32 | Planned suitable pin connections and checked the wiring
+3 | Obtaining consistent sensor readings | Checked sensor connections and followed suitable calibration procedures
+4 | Integrating all components into one system | Connected the sensors and LCD display through the ESP32
+5 | Displaying sensor readings properly | Developed and checked the program for LCD output
+6 | Understanding community water-related concerns | Used community survey information to identify the project requirement
+7 | Limited awareness of water quality parameters | Planned a prototype demonstration to explain the monitored parameters
+--- END TABLE ---
+P: FUTURE SCOPE
+P: The Aqua Safe project has opportunities for further development to improve its monitoring capabilities and practical usefulness.
+P: The following improvements can be considered in the future:
+P: Improved Sensor Accuracy: Use properly calibrated and more reliable sensors to obtain consistent readings.
+P: Additional Water Quality Parameters: Integrate sensors to monitor other important parameters such as total dissolved solids (TDS) and electrical conductivity (EC).
+P: Alert System: Add a buzzer or indicator light to provide alerts when monitored readings cross predefined limits.
+P: Data Storage: Introduce a data logging facility to maintain records of sensor readings for future analysis.
+P: Solar Power Supply: Explore solar energy as an alternative power source for continuous monitoring.
+P: Improved Hardware Design: Develop a compact, durable and waterproof enclosure to protect the electronic components.
+P: Community-Level Deployment: After proper calibration and validation, explore the use of the system at suitable community water storage or monitoring points.
+P: RECOMMENDATIONS FOR SUSTAINABLE CONTINUATION
+P: For the long-term usefulness of the Aqua Safe project, the following recommendations are suggested:
+P: Conduct regular maintenance and calibration of the sensors.
+P: Check the hardware connections and power supply periodically.
+P: Encourage residents to understand the importance of regular drinking water quality testing.
+P: Coordinate with appropriate local authorities or water testing laboratories for periodic water sample analysis.
+P: Maintain records of sensor readings and maintenance activities.
+P: Provide basic guidance to interested community members on the purpose and limitations of the monitoring system.
+P: Arrange periodic inspection of the prototype to ensure that it continues to function properly.
+P: Avoid depending only on sensor readings to decide whether water is safe for drinking; confirm drinking water quality through appropriate laboratory testing.
+P: FINAL REFLECTION
+P: Aqua Safe provided an opportunity to understand the relationship between technology and social responsibility. The project demonstrated how an IoT-based hardware prototype can be developed to observe important water quality parameters and support awareness within a community.
+P: The experience gained through community survey activities, component selection, sensor integration and prototype development helped improve practical technical knowledge and problem-solving skills. The project also highlighted the importance of understanding community needs before developing a technical solution.
+P: In conclusion, Aqua Safe represents an effort to use engineering knowledge for a meaningful community purpose and encourages further development of affordable and accessible water monitoring solutions.
+--- [PAGE BREAK -> PAGE 13] ---

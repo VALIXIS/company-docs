@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/valixis-theme.css">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css?v=20261105">
 
   <script type="application/ld+json">
 {
@@ -227,34 +227,56 @@
 
   <div class="aurora-bg"></div>
 
-  <!-- Universal Navbar -->
+    <!-- Universal Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
       <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
         <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
       </a>
 
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-
+      <!-- Desktop Navigation Links -->
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="../about/" class="nav-link">About</a></li>
           <li><a href="../services/" class="nav-link active">Services</a></li>
-          <li><a href="../work/" class="nav-link">Work</a></li>
+          <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
           <li><a href="../estimate/" class="nav-link">Estimate</a></li>
           <li><a href="../leadership/" class="nav-link">Leadership</a></li>
-          <li><a href="../ecosystem/" class="nav-link">Ecosystem</a></li>
-          <li><a href="../projects/" class="nav-link">Projects</a></li>
           <li><a href="../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="../contact/" class="nav-cta-btn">
-        <span>Get in Touch</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
+      <div class="nav-right-group">
+        <a href="../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../services/" class="mobile-nav-link active">Services</a></li>
+        <li><a href="../ecosystem/" class="mobile-nav-link">Ecosystem</a></li>
+        <li><a href="../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../leadership/" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -284,14 +306,6 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="../">Home</a> <span>/</span> <span style="color:#FFF;">Services</span>
       </nav>
-
-      <section class="hub-hero">
-        <div class="hub-badge">Commercial Engineering Solutions</div>
-        <h1 class="hub-title">Specialized Technology Services for Modern Ventures</h1>
-        <p class="hub-desc">
-          We engineer high-performance software systems, intelligent automation pipelines, mobile-first applications, and interactive 3D platforms built on first-principles systems design.
-        </p>
-      </section>
 
       <!-- Services Grid -->
       <section class="services-grid">
@@ -391,8 +405,8 @@
             <p class="fw-desc">Continuous monthly full-stack engineering pods deploying new features, API updates, and Git CI/CD pipelines.</p>
           </div>
           <div class="spotlight-card fw-card">
-            <h4 class="fw-title">Commission-Free Systems</h4>
-            <p class="fw-desc">Direct ordering and booking platforms eliminating heavy 22%-28% marketplace aggregator commissions.</p>
+            <h4 class="fw-title">Sovereign Architecture</h4>
+            <p class="fw-desc">Full intellectual property ownership, zero vendor lock-in, and self-hosted sovereign system architectures.</p>
           </div>
           <div class="spotlight-card fw-card">
             <h4 class="fw-title">Managed Cloud Care &amp; SLA</h4>
@@ -423,7 +437,7 @@
     </div>
   </main>
 
-  <!-- Universal Footer -->
+    <!-- Universal Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -459,7 +473,7 @@
         <div class="footer-col">
           <h4>Governance</h4>
           <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
-            Founded in 2026 as an independent, currently unregistered technology venture operating on first principles.
+            Founded in 2026 as an independent technology venture operating on first principles.
           </p>
           <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
         </div>

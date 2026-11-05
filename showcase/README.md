@@ -1,1 +1,0 @@
-VALIXIS Client Portfolio & Demos

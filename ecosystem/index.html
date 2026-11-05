@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/valixis-theme.css">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css?v=20261105">
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -287,34 +287,56 @@
 
   <div class="aurora-bg"></div>
 
-  <!-- Universal Navbar -->
+    <!-- Universal Navbar -->
   <header class="navbar">
     <div class="container nav-wrapper">
       <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
         <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
       </a>
 
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
-
+      <!-- Desktop Navigation Links -->
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="../about/" class="nav-link">About</a></li>
           <li><a href="../services/" class="nav-link">Services</a></li>
-          <li><a href="../work/" class="nav-link">Work</a></li>
+          <li><a href="../ecosystem/" class="nav-link active">Ecosystem</a></li>
           <li><a href="../estimate/" class="nav-link">Estimate</a></li>
           <li><a href="../leadership/" class="nav-link">Leadership</a></li>
-          <li><a href="../ecosystem/" class="nav-link active">Ecosystem</a></li>
-          <li><a href="../projects/" class="nav-link">Projects</a></li>
           <li><a href="../contact/" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <a href="../contact/" class="nav-cta-btn">
-        <span>Get in Touch</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </a>
+      <div class="nav-right-group">
+        <a href="../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../services/" class="mobile-nav-link">Services</a></li>
+        <li><a href="../ecosystem/" class="mobile-nav-link active">Ecosystem</a></li>
+        <li><a href="../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../leadership/" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -423,7 +445,7 @@
           <div class="prod-spec-block">
             <div class="spec-label">Problem Solved</div>
             <p class="spec-text">
-              Removes human operational bottlenecks by managing continuous task queues, cold email pacing (80–120s humanized intervals via Resend API), real-time Telegram bot alerts, and multi-channel lead discovery.
+              Eliminates operational bottlenecks by orchestrating continuous task queues, automated transactional dispatch pipelines, real-time alert routing, and multi-system event telemetry.
             </p>
           </div>
 
@@ -450,9 +472,9 @@
               <span class="term-dot"></span>
               <span>VALIXIS_FLOW_DAEMON // MESH_247</span>
             </div>
-            <div>[DAEMON_01] Master Orchestrator (Cockpit Port 8000)</div>
-            <div>[DAEMON_02] Cold Email Engine (Resend API • Paced)</div>
-            <div>[DAEMON_03] Telegram Dispatcher (@valixis_metspy_bot)</div>
+            <div>[DAEMON_01] Master Workflow Orchestrator [ACTIVE]</div>
+            <div>[DAEMON_02] Transactional Event Pipeline [ACTIVE]</div>
+            <div>[DAEMON_03] Multi-Channel Notification Pod [ACTIVE]</div>
             <div style="color: var(--valixis-cyan);">STATUS: ACTIVE DEVELOPMENT &bull; INTERNAL MESH OPERATIONAL</div>
           </div>
 
@@ -597,7 +619,7 @@
 
           <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
           <ul class="caps-list">
-            <li>Live heartbeat pings and worker daemon uptime monitoring (Port 8000 Cockpit).</li>
+            <li>Live heartbeat pings and worker daemon uptime monitoring .</li>
             <li>Real-time dispatch hit-ratio analytics and rate-limit tracking.</li>
             <li>Automated failover alerts dispatched via webhook and instant messaging bots.</li>
             <li>Centralized status overview of all hosted client platforms and internal services.</li>
@@ -740,7 +762,7 @@
             <a href="../services/3d-gaming-interactive/" class="btn-card-act btn-primary-act">
               <span>Explore 3D Services</span>
             </a>
-            <a href="../work/#webgl-engine" class="btn-card-act btn-secondary-act">
+            <a href="../work/" class="btn-card-act btn-secondary-act">
               <span>View WebGL Architecture</span>
             </a>
           </div>
@@ -768,28 +790,9 @@
       </div>
     </section>
 
-  
-
-    <!-- Closing CTA Banner -->
-    <div class="cta-banner">
-      <div class="section-eyebrow" style="justify-content: center;">Custom Enterprise Architecture</div>
-      <h3 style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin-bottom: 16px;">Ready to Engineer or Integrate with Our Ecosystem?</h3>
-      <p style="color: var(--text-muted); max-width: 720px; margin: 0 auto 30px; font-size: 1.05rem; line-height: 1.7;">
-        VALIXIS delivers custom enterprise deployments, autonomous intelligence pipelines, and high-performance software systems. Book a scoping session directly with our technical leadership.
-      </p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-        <a href="../contact/" class="btn-primary-gradient">
-          <span>Book Architecture Session &rarr;</span>
-        </a>
-        <a href="../estimate/" class="btn-outline-glass">
-          <span>Launch Project Estimator</span>
-        </a>
-      </div>
-    </div>
-
   </main>
 
-  <!-- Universal Footer -->
+    <!-- Universal Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -825,7 +828,7 @@
         <div class="footer-col">
           <h4>Governance</h4>
           <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
-            Founded in 2026 as an independent, currently unregistered technology venture operating on first principles.
+            Founded in 2026 as an independent technology venture operating on first principles.
           </p>
           <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
         </div>
