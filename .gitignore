@@ -26,3 +26,5 @@ scratch/
 tasks/
 
 ai_agents/
+
+auto_kill_remote_daemon.py
