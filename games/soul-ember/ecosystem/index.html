@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>VALIXIS Technology Showcase — Ecosystem Products &amp; System Architecture</title>
+  <meta name="description" content="Inspect VALIXIS Technologies' sovereign product ecosystem: VALIXIS Portal, FLOW, CLOUD, DESK_AI, PULSE, Fitora, and Gaming Studio platforms.">
+  <link rel="canonical" href="https://valixis.tech/ecosystem/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="VALIXIS">
+  <meta property="og:title" content="VALIXIS Technology Showcase — Ecosystem Products">
+  <meta property="og:description" content="Explore VALIXIS sovereign software platforms across autonomous AI orchestration, fleet telemetry, cloud storage, and interactive computing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://valixis.tech/ecosystem/">
+  <meta property="og:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VALIXIS Technology Showcase — Ecosystem Products">
+  <meta name="twitter:description" content="Explore VALIXIS sovereign software platforms across autonomous AI orchestration, fleet telemetry, cloud storage, and interactive computing.">
+  <meta name="twitter:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+
+  <!-- Favicon Suite -->
+  <link rel="shortcut icon" href="https://valixis.tech/favicon.ico?v=20261104">
+  <link rel="icon" type="image/x-icon" href="https://valixis.tech/favicon.ico?v=20261104">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://valixis.tech/assets/favicon-48x48.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://valixis.tech/assets/favicon-96x96.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://valixis.tech/assets/favicon-32x32.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://valixis.tech/assets/favicon-16x16.png?v=20261104">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://valixis.tech/assets/apple-touch-icon.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://valixis.tech/assets/android-chrome-192x192.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://valixis.tech/assets/android-chrome-512x512.png?v=20261104">
+
+  <!-- Fonts & Shared Core Theme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css?v=20261105">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://valixis.tech/ecosystem/#webpage",
+      "url": "https://valixis.tech/ecosystem/",
+      "name": "VALIXIS Technology Showcase — Ecosystem Products",
+      "description": "Inspect VALIXIS Technologies' sovereign product ecosystem: VALIXIS Portal, FLOW, CLOUD, DESK_AI, PULSE, Fitora, and Gaming Studio platforms.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://valixis.tech/#website",
+        "url": "https://valixis.tech",
+        "name": "VALIXIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://valixis.tech/#organization",
+        "name": "VALIXIS",
+        "url": "https://valixis.tech"
+      },
+      "breadcrumb": {
+        "@id": "https://valixis.tech/ecosystem/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://valixis.tech/ecosystem/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://valixis.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ecosystem",
+          "item": "https://valixis.tech/ecosystem/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.80rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(20, 26, 36, 0.75);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      color: #FFF;
+      border-color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .product-card.flagship {
+      grid-column: 1 / -1;
+      border-color: rgba(0, 217, 255, 0.4);
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.95), rgba(13, 17, 23, 0.98));
+    }
+    .status-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .status-launched {
+      color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+    .status-pipeline {
+      color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+    }
+    .status-prototype {
+      color: #F59E0B;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .prod-title {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: #FFF;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .prod-purpose {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .prod-spec-block {
+      background: rgba(6, 9, 14, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .spec-text {
+      font-size: 0.88rem;
+      color: #E2E8F0;
+      line-height: 1.55;
+    }
+    .tech-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 18px;
+    }
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .card-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-card-act {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+    .btn-primary-act {
+      background: rgba(0, 217, 255, 0.12);
+      border: 1px solid rgba(0, 217, 255, 0.35);
+      color: var(--valixis-cyan);
+    }
+    .btn-primary-act:hover {
+      background: var(--valixis-cyan);
+      color: #06090E;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+    }
+    .btn-secondary-act {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .btn-secondary-act:hover {
+      color: #FFF;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Closing CTA Box */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.95), rgba(13, 17, 23, 0.98));
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--brand-gradient);
+    }
+
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .cta-banner { padding: 36px 20px; }
+    }
+  
+    /* WCAG 2.1 AA Accessibility & Keyboard Navigation */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid #00D9FF !important;
+      outline-offset: 3px !important;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg"></div>
+
+    <!-- Universal Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../about/" class="nav-link">About</a></li>
+          <li><a href="../services/" class="nav-link">Services</a></li>
+          <li><a href="../ecosystem/" class="nav-link active">Ecosystem</a></li>
+          <li><a href="../estimate/" class="nav-link">Estimate</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
+          <li><a href="../contact/" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-group">
+        <a href="../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../services/" class="mobile-nav-link">Services</a></li>
+        <li><a href="../ecosystem/" class="mobile-nav-link active">Ecosystem</a></li>
+        <li><a href="../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../leadership/" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span>/</span>
+      <span style="color: var(--text-main);">Ecosystem</span>
+    </nav>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-eyebrow">Sovereign Software &bull; Product Suite</div>
+      <h1 class="page-hero-title">VALIXIS <span class="gradient-text">Ecosystem Platforms</span></h1>
+      <p class="page-hero-subtitle">
+        Architectural specifications and engineering teardowns for our 9 sovereign software platforms &mdash; bridging autonomous AI agent daemons, distributed telemetry, cloud systems, and real-time interactive engines.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-bottom: 80px;">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">All Platforms (9)</button>
+      <button class="filter-btn" onclick="filterProducts('launched', this)">Launched</button>
+      <button class="filter-btn" onclick="filterProducts('pipeline', this)">Active Pipeline</button>
+      <button class="filter-btn" onclick="filterProducts('prototype', this)">Staging Builds</button>
+    </div>
+
+    <!-- 7 Products Grid -->
+<div class="products-grid" id="productsGrid">
+      
+      <!-- 1. VALIXIS PORTAL (Flagship - Live / Launched) -->
+      <article class="spotlight-card product-card flagship" data-status="launched" id="portal">
+        <div>
+          <span class="status-tag status-launched">Flagship Platform &bull; Live / Launched</span>
+          <h2 class="prod-title" style="font-size: 1.85rem;">1. VALIXIS Portal</h2>
+          <p class="prod-purpose">
+            The core operational governance and developer orchestration backbone for VALIXIS Technologies.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates disconnected project management silos by binding developer task assignments directly to GitHub pull request workflows, PostgreSQL Row Level Security (RLS), and automated CI/CD staging environments.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Role-Based Access Control (RBAC) with cryptographic JWT token exchange.</li>
+            <li>PostgreSQL Row Level Security (RLS) enforcing strict data separation.</li>
+            <li>Real-time GitHub Actions CI/CD synchronization and deployment status tracking.</li>
+            <li>Centralized operational triage and client delivery milestone dashboard.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Flutter Web</span>
+            <span class="tech-chip highlight">Supabase / PostgreSQL 15+</span>
+            <span class="tech-chip highlight">Row Level Security (RLS)</span>
+            <span class="tech-chip">GitHub Actions CI/CD</span>
+            <span class="tech-chip">JWT Authentication</span>
+          </div>
+        </div>
+
+        <div>
+          <!-- Terminal Console Preview -->
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>PORTAL_KERNEL_V2.6 // STATUS: ONLINE</span>
+            </div>
+            <div>01 AUTH: JWT_SECURE_EXCHANGE [ACTIVE]</div>
+            <div>02 RLS: POLICIES_ACTIVE [SECURITY_DEFINER]</div>
+            <div>03 PIPELINE: GITHUB_ACTIONS_BUILT (0 COMPILATION ERRORS)</div>
+            <div>04 SYNC: CLIENT_STAGING_DEPLOYMENTS [SYNCHRONIZED]</div>
+            <div style="color: #10B981;">05 STATUS: LIVE / LAUNCHED (INTERNAL CORE)</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=portal#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Platform Briefing</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>View Enterprise Stack</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. VALIXIS FLOW (Active Development) -->
+      <article class="spotlight-card product-card" data-status="active" id="flow">
+        <div>
+          <span class="status-tag status-active">Active Development &bull; Daemon Mesh Active</span>
+          <h2 class="prod-title">2. VALIXIS FLOW</h2>
+          <p class="prod-purpose">
+            Autonomous agent workflow orchestration and distributed 24/7 background task execution engine.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates operational bottlenecks by orchestrating continuous task queues, automated transactional dispatch pipelines, real-time alert routing, and multi-system event telemetry.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>24/7 background daemon supervisor running multi-threaded worker pools.</li>
+            <li>Paced transactional email engine utilizing Resend REST API.</li>
+            <li>ACID-compliant SQLite/PostgreSQL transactional queue locking.</li>
+            <li>Real-time event notification webhooks and instant Telegram bot dispatch.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python 3.13 / Asyncio</span>
+            <span class="tech-chip highlight">Resend API</span>
+            <span class="tech-chip">SQLite / PostgreSQL</span>
+            <span class="tech-chip">Telegram Bot API</span>
+            <span class="tech-chip">WebSockets</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>VALIXIS_FLOW_DAEMON // MESH_247</span>
+            </div>
+            <div>[DAEMON_01] Master Workflow Orchestrator [ACTIVE]</div>
+            <div>[DAEMON_02] Transactional Event Pipeline [ACTIVE]</div>
+            <div>[DAEMON_03] Multi-Channel Notification Pod [ACTIVE]</div>
+            <div style="color: var(--valixis-cyan);">STATUS: ACTIVE DEVELOPMENT &bull; INTERNAL MESH OPERATIONAL</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../services/ai-automation/" class="btn-card-act btn-primary-act">
+              <span>Explore AI Automation Services</span>
+            </a>
+            <a href="../contact/?product=flow#inquiry-form" class="btn-card-act btn-secondary-act">
+              <span>Inquire About Workflow Pods</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. VALIXIS CLOUD (Planned) -->
+      <article class="spotlight-card product-card" data-status="planned" id="cloud">
+        <div>
+          <span class="status-tag status-planned">Planned &bull; Frontier Architecture</span>
+          <h2 class="prod-title">3. VALIXIS CLOUD</h2>
+          <p class="prod-purpose">
+            Sovereign encrypted cloud storage and distributed edge node mesh designed for cryptographic data ownership.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Protects proprietary enterprise assets from vendor lock-in, unencrypted third-party scanning, and cloud surveillance through client-side envelope encryption and distributed node consensus.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Client-side cryptographic envelope encryption (AES-256-GCM).</li>
+            <li>Zero-knowledge access proofs and private master key derivation.</li>
+            <li>Peer-to-peer node synchronization protocol for high-redundancy backup.</li>
+            <li>Self-hosted private cloud gateway for enterprise intranet deployments.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Rust / Go (Target)</span>
+            <span class="tech-chip highlight">AES-256-GCM</span>
+            <span class="tech-chip">WASM Edge</span>
+            <span class="tech-chip">libp2p Protocols</span>
+            <span class="tech-chip">Encrypted Mesh</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #A78BFA; box-shadow: 0 0 8px #A78BFA;"></span>
+              <span>VALIXIS_CLOUD_SPEC // RESEARCH</span>
+            </div>
+            <div>[LAYER_1] Cryptographic Envelope Key Exchange</div>
+            <div>[LAYER_2] Zero-Knowledge Storage Sharding</div>
+            <div>[LAYER_3] Private Gateway Node Mesh Consensus</div>
+            <div style="color: #A78BFA;">STATUS: ARCHITECTURAL BLUEPRINT &bull; PLANNED PIPELINE</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=cloud#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Inquire on Enterprise Security</span>
+            </a>
+            <a href="../projects/" class="btn-card-act btn-secondary-act">
+              <span>View Roadmap</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. VALIXIS DESK_AI (Prototype) -->
+      <article class="spotlight-card product-card" data-status="prototype" id="desk-ai">
+        <div>
+          <span class="status-tag status-prototype">Prototype &bull; Internal Desktop Builds</span>
+          <h2 class="prod-title">4. VALIXIS DESK_AI</h2>
+          <p class="prod-purpose">
+            Native desktop cognitive workspace integrating localized neural context and engineering utilities.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates context-switching fatigue and public cloud latency by providing offline-first neural code intelligence, local indexing, and automated system health monitoring without data leakage.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Localized neural inference (GGUF / ONNX runtimes) with zero cloud telemetry.</li>
+            <li>System daemon monitoring CPU, RAM, and background build health.</li>
+            <li>Context-aware codebase indexing and local CLI automation shortcuts.</li>
+            <li>Cross-platform desktop container with minimal RAM footprint.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python System Daemons</span>
+            <span class="tech-chip highlight">Tauri / Electron Shell</span>
+            <span class="tech-chip">Local ONNX / GGUF</span>
+            <span class="tech-chip">IPC Sockets</span>
+            <span class="tech-chip">Cross-Platform</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+              <span>DESK_AI_WORKSPACE // PROTOTYPE_BUILD</span>
+            </div>
+            <div>[INFERENCE] Local Quantized Engine [Offline Ready]</div>
+            <div>[DAEMON] System Resource Monitor [Active]</div>
+            <div>[PRIVACY] Zero Outbound Telemetry [Enforced]</div>
+            <div style="color: #F59E0B;">STATUS: PROTOTYPE &bull; INTERNAL ALPHA TESTING</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=desk_ai#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Join Desktop Alpha Queue</span>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>Custom Software Pods</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. VALIXIS PULSE (Active Development) -->
+      <article class="spotlight-card product-card" data-status="active" id="pulse">
+        <div>
+          <span class="status-tag status-active">Active Development &bull; Telemetry Engine Active</span>
+          <h2 class="prod-title">5. VALIXIS PULSE</h2>
+          <p class="prod-purpose">
+            Real-time observability, fleet health telemetry, and service uptime monitoring dashboard.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Provides unified real-time visibility across multi-node server health, worker queue latency, API dispatch hit-ratios, and live client website availability from a single central cockpit.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Live heartbeat pings and worker daemon uptime monitoring .</li>
+            <li>Real-time dispatch hit-ratio analytics and rate-limit tracking.</li>
+            <li>Automated failover alerts dispatched via webhook and instant messaging bots.</li>
+            <li>Centralized status overview of all hosted client platforms and internal services.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python HTTP/WebSocket</span>
+            <span class="tech-chip highlight">Live Telemetry API</span>
+            <span class="tech-chip">SQLite Time-Series</span>
+            <span class="tech-chip">Chart.js Reactivity</span>
+            <span class="tech-chip">Heartbeat Daemons</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot"></span>
+              <span>VALIXIS_PULSE // TELEMETRY_SERVER</span>
+            </div>
+            <div>[METRICS] Fleet Health: 99.98% Across Nodes</div>
+            <div>[LATENCY] Average API Response: 42ms</div>
+            <div>[HEARTBEAT] 7 Worker Daemons Active &bull; 0 Failures</div>
+            <div style="color: var(--valixis-cyan);">STATUS: ACTIVE DEVELOPMENT &bull; TELEMETRY RUNNING</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=pulse#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>View Telemetry Architecture</span>
+            </a>
+            <a href="../services/web-platforms/" class="btn-card-act btn-secondary-act">
+              <span>Cloud Web Infrastructure</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. Fitora (Prototype) -->
+      <article class="spotlight-card product-card" data-status="prototype" id="fitora">
+        <div>
+          <span class="status-tag status-prototype">Prototype &bull; Alpha Mobile Pipeline</span>
+          <h2 class="prod-title">6. Fitora</h2>
+          <p class="prod-purpose">
+            Next-generation consumer AI mobile fitness platform with computer vision form correction.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Replaces static fitness routines with private, on-device real-time computer vision pose estimation, dynamic repetition verification, and fatigue-adaptive workout routines.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Real-time 33-point skeletal pose estimation via camera without server video upload.</li>
+            <li>Biomechanical form analysis with instantaneous audio/visual coaching cues.</li>
+            <li>Adaptive workout volume calibrated to biometric recovery indicators.</li>
+            <li>Privacy-first local on-device machine learning inference.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Flutter Mobile (iOS/Android)</span>
+            <span class="tech-chip highlight">MediaPipe / TensorFlow Lite</span>
+            <span class="tech-chip">Dart 3.x</span>
+            <span class="tech-chip">On-Device Vision</span>
+            <span class="tech-chip">Adaptive Biometrics</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #F59E0B; box-shadow: 0 0 8px #F59E0B;"></span>
+              <span>FITORA_MOBILE_PIPELINE // ALPHA</span>
+            </div>
+            <div>[VISION] 33 Keypoint Pose Mesh Tracking [Active]</div>
+            <div>[INFERENCE] TensorFlow Lite Mobile Subsystem</div>
+            <div>[TARGET] Cross-Platform iOS &amp; Android Deployments</div>
+            <div style="color: #F59E0B;">STATUS: PROTOTYPE &bull; INTERNAL TESTING STAGE</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=fitora#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Prototype Briefing</span>
+            </a>
+            <a href="../services/software-mobile/" class="btn-card-act btn-secondary-act">
+              <span>Mobile App Architecture</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. VALIXIS Gaming Studio (Planned) -->
+      <article class="spotlight-card product-card" data-status="planned" id="gaming-studio">
+        <div>
+          <span class="status-tag status-planned">Planned &bull; Interactive 3D Exploration</span>
+          <h2 class="prod-title">7. VALIXIS Gaming Studio</h2>
+          <p class="prod-purpose">
+            Interactive 3D simulation mechanics, procedural world dynamics, and spatial web experiences.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Explores real-time spatial computing, GPU-accelerated interactive web graphics, and procedural world mechanics for high-immersion commercial simulation and next-gen storytelling.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Browser-based real-time 3D simulation powered by Three.js and WebGL2.</li>
+            <li>Custom GLSL fragment shaders for atmospheric and procedural physics.</li>
+            <li>Low-latency asset streaming and responsive spatial navigation.</li>
+            <li>Cross-platform WebGL &amp; game engine pipeline exploration.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Three.js / WebGL2</span>
+            <span class="tech-chip highlight">GLSL Custom Shaders</span>
+            <span class="tech-chip">Blender 3D Pipeline</span>
+            <span class="tech-chip">Interactive Physics</span>
+            <span class="tech-chip">Spatial Computing</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: #A78BFA; box-shadow: 0 0 8px #A78BFA;"></span>
+              <span>VALIXIS_GAMING_3D // RESEARCH</span>
+            </div>
+            <div>[RENDERER] WebGL2 / GLSL Shader Pipeline [Three.js]</div>
+            <div>[PHYSICS] Spatial Rigid-Body Particle Mechanics</div>
+            <div>[PROTOTYPES] Interactive 3D Hero &amp; Model Viewers Live</div>
+            <div style="color: #A78BFA;">STATUS: RESEARCH &amp; FRONTIER 3D EXPLORATION</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../services/3d-gaming-interactive/" class="btn-card-act btn-primary-act">
+              <span>Explore 3D Services</span>
+            </a>
+            <a href="../work/" class="btn-card-act btn-secondary-act">
+              <span>View WebGL Architecture</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8. ResumeBrain (Active Pipeline) -->
+      <article class="spotlight-card product-card" data-status="pipeline" id="resumebrain">
+        <div>
+          <span class="status-tag status-pipeline">Active Pipeline &bull; Career Intelligence</span>
+          <h2 class="prod-title">8. ResumeBrain</h2>
+          <p class="prod-purpose">
+            Autonomous AI resume optimization, semantic vector matching, and career intelligence engine.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Overcomes rigid Applicant Tracking System (ATS) rejection heuristics by performing deep neural parsing, ATS vector re-alignment, and quantitative accomplishment refinement to achieve 98%+ candidate-to-role relevance.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Multi-format parser extracting structured entities from PDFs, DOCX, and text dossiers.</li>
+            <li>Semantic vector alignment against target job descriptions using dense text embeddings.</li>
+            <li>Autonomous LLM agent delivering quantifiable, bullet-level accomplishment rewrites.</li>
+            <li>Real-time ATS compliance scoring with instant structural vulnerability diagnostics.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Python 3.13 / FastAPI</span>
+            <span class="tech-chip highlight">LangChain / LlamaIndex</span>
+            <span class="tech-chip">PostgreSQL / pgvector</span>
+            <span class="tech-chip">Vector Embeddings</span>
+            <span class="tech-chip">React 19 / Vite</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: var(--valixis-cyan); box-shadow: 0 0 8px var(--valixis-cyan);"></span>
+              <span>RESUMEBRAIN_CORE // INTELLIGENCE_DAEMON</span>
+            </div>
+            <div>[PARSER] Neural PDF Ingestion Engine [READY]</div>
+            <div>[EMBED] Vector Similarity Scoring Engine [ACTIVE]</div>
+            <div>[AGENT] Semantic Optimization Pipeline [ACTIVE]</div>
+            <div style="color: var(--valixis-cyan);">STATUS: ACTIVE PIPELINE &bull; ATS VECTOR ENGINE v1.4</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=resumebrain#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Technical Preview Access</span>
+            </a>
+            <a href="../services/ai-automation/" class="btn-card-act btn-secondary-act">
+              <span>Explore AI Automation</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. AI PDF Maker (Active Pipeline) -->
+      <article class="spotlight-card product-card" data-status="pipeline" id="ai-pdf-maker">
+        <div>
+          <span class="status-tag status-pipeline">Active Pipeline &bull; Cognitive Document Engine</span>
+          <h2 class="prod-title">9. AI PDF Maker</h2>
+          <p class="prod-purpose">
+            High-performance multi-modal document extraction, generative layout synthesis, and vector PDF compilation engine.
+          </p>
+
+          <div class="prod-spec-block">
+            <div class="spec-label">Problem Solved</div>
+            <p class="spec-text">
+              Eliminates brittle document synthesis workflows by combining multi-modal OCR, intelligent layout analysis, and an ultra-fast compilation pipeline to transform raw data and markdown into publication-grade vector documents.
+            </p>
+          </div>
+
+          <div class="spec-label" style="margin-bottom: 8px;">Main Capabilities</div>
+          <ul class="caps-list">
+            <li>Multi-modal OCR and unstructured document table/text extraction.</li>
+            <li>Neural layout planner calculating dynamic typography, margins, and page breaks.</li>
+            <li>Rust-accelerated vector compilation delivering sub-50ms render times.</li>
+            <li>In-browser WebAssembly (WASM) previewer providing real-time 120 FPS document inspection.</li>
+          </ul>
+
+          <div class="chips-row">
+            <span class="tech-chip highlight">Rust Core Engine</span>
+            <span class="tech-chip highlight">PyMuPDF / OCR Mesh</span>
+            <span class="tech-chip">Mistral / Gemini Vision</span>
+            <span class="tech-chip">WebAssembly (WASM)</span>
+            <span class="tech-chip">TypeScript / React</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="terminal-box">
+            <div class="term-header">
+              <span class="term-dot" style="background: var(--valixis-magenta); box-shadow: 0 0 8px var(--valixis-magenta);"></span>
+              <span>DOCUGEN_CORE // VECTOR_PDF_PIPELINE</span>
+            </div>
+            <div>[EXTRACT] Multi-Modal OCR &amp; Document Parser [ACTIVE]</div>
+            <div>[LAYOUT] Neural Grid &amp; Typography Generator [ACTIVE]</div>
+            <div>[COMPILE] Rust WASM Vector PDF Renderer [ONLINE]</div>
+            <div style="color: var(--valixis-magenta);">STATUS: ACTIVE PIPELINE &bull; VECTOR COMPILER v2.0</div>
+          </div>
+
+          <div class="card-actions">
+            <a href="../contact/?product=ai-pdf-maker#inquiry-form" class="btn-card-act btn-primary-act">
+              <span>Request Technical Preview Access</span>
+            </a>
+            <a href="../services/web-platforms/" class="btn-card-act btn-secondary-act">
+              <span>Explore Web Platforms</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom Deployment & Integration Bento Spotlight Box -->
+    <section class="spotlight-card ecosystem-cta-widget reveal-on-scroll">
+      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+        <span class="card-badge" style="color: var(--valixis-cyan); border-color: rgba(0, 217, 255, 0.3);">
+          <span class="pulse-dot"></span> Sovereign Platforms &bull; Architecture Scoping
+        </span>
+      </div>
+      <h3 class="cta-widget-title">Ready to Deploy Custom Platforms or <span class="gradient-text">Integrate Our Ecosystem?</span></h3>
+      <p class="cta-widget-desc">
+        Discuss your technical scope, dedicated engineering pod, or custom platform integration directly with VALIXIS leadership.
+      </p>
+      <div class="cta-widget-perks">
+        <div class="perk-item"><span style="color: var(--valixis-cyan);">&bull;</span> Dedicated Full-Stack Engineering Pods</div>
+        <div class="perk-item"><span style="color: var(--valixis-cyan);">&bull;</span> Full IP Ownership &bull; Zero Vendor Lock-in</div>
+        <div class="perk-item"><span style="color: var(--valixis-cyan);">&bull;</span> Interactive Scope Estimator &bull; Live Telemetry</div>
+      </div>
+      <div class="cta-widget-actions">
+        <a href="../contact/#booking" class="btn-primary-gradient">
+          <span>Book 15-Minute Architecture Session</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="../estimate/" class="btn-outline-glass">
+          <span>Interactive Scope Estimator &rarr;</span>
+        </a>
+        <a href="../projects/" class="btn-outline-glass">
+          <span>Track Lifecycle Milestones &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- Universal Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../" class="brand-header" style="margin-bottom: 16px;">
+            <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
+            Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Venture</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About VALIXIS</a></li>
+            <li><a href="../leadership/">Leadership</a></li>
+            <li><a href="../ecosystem/">Ecosystem Platforms</a></li>
+            <li><a href="../projects/">Development Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="../services/">Commercial Services</a></li>
+            <li><a href="../work/">Technical Work</a></li>
+            <li><a href="../estimate/">Scope Estimator</a></li>
+            <li><a href="../contact/">Architecture Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
+            Founded in 2026 as an independent technology venture operating on first principles.
+          </p>
+          <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Filter Script & Shared Core Engine -->
+  <script>
+    function filterProducts(status, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (status === 'all') {
+          card.style.display = '';
+        } else {
+          const cardStatus = card.getAttribute('data-status');
+          if (status === 'pipeline') {
+            card.style.display = (cardStatus === 'pipeline' || cardStatus === 'active') ? '' : 'none';
+          } else {
+            card.style.display = (cardStatus === status) ? '' : 'none';
+          }
+        }
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../assets/js/valixis-core.js"></script>
+</body>
+</html>

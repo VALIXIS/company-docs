@@ -1,0 +1,2977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>CRAB · Coffee Roasters & Bakers · Concept 1: Artisanal Terroir · LIC Colony, Vijayawada</title>
+  <meta name="description" content="CRAB: Specialty Coffee Roastery and Craft Bakehouse. Sourcing single-origin high-elevation Arabica from Araku Valley, roasted fresh at Water Tank Road, LIC Colony, Vijayawada. Pan-India Whole Bean Shipping & In-House Table QR Ordering.">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Google Fonts: Editorial Display & Monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0A0806;
+      --bg-surface: #14100D;
+      --bg-card: #1C1713;
+      --bg-card-hover: #261F1A;
+      --color-cream: #F8F5EE;
+      --color-parchment: #E7DECE;
+      --color-muted: #9E9384;
+      --color-araku-terracotta: #C85A32;
+      --color-araku-warm: #E26F44;
+      --color-araku-glow: rgba(200, 90, 50, 0.32);
+      --color-gold: #F1B947;
+      --color-gold-muted: #D6A868;
+      --color-emerald: #2E5339;
+      --color-border: #2D251F;
+      --color-border-focus: #C85A32;
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 4px 14px rgba(0,0,0,0.4);
+      --shadow-md: 0 16px 36px rgba(0,0,0,0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--color-cream);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    /* Tactile Film Grain Overlay */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.038;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Ambient Terroir Mesh Glow */
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+      background: 
+        radial-gradient(circle at 12% 18%, rgba(200, 90, 50, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 88% 32%, rgba(46, 83, 57, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(241, 185, 71, 0.12) 0%, transparent 55%);
+      filter: blur(65px);
+    }
+
+    /* Ambient Roast Embers Canvas */
+    #roastEmbersCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      opacity: 0.55;
+    }
+
+    /* Scroll progress indicator */
+    #scrollProgressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-araku-terracotta), var(--color-gold), #fff);
+      width: 0%;
+      z-index: 2000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Master Concept Switcher Bar (V1 vs V2) */
+    .concept-switcher-bar {
+      background: #110D0A;
+      border-bottom: 1px solid var(--color-border);
+      padding: 8px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 150;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 8px);
+    }
+
+    .concept-switcher-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 600px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .concept-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .concept-pill.active {
+      background: var(--color-gold);
+      color: #0A0806;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(241, 185, 71, 0.35);
+    }
+
+    .concept-pill.switch-btn {
+      background: var(--bg-surface);
+      color: var(--color-parchment);
+      border: 1px solid var(--color-border);
+    }
+
+    .concept-pill.switch-btn:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: var(--bg-card);
+    }
+
+    /* Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, #18110D, #2B160F, #18110D);
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-parchment);
+      padding: 8px 14px;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      position: relative;
+      z-index: 90;
+    }
+
+    .badge-pulse {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--color-gold);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Sticky Navigation */
+    .site-nav {
+      position: sticky;
+      top: 41px;
+      z-index: 100;
+      background: rgba(10, 8, 6, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .site-nav {
+        padding: 14px 28px;
+        top: 41px;
+      }
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(241, 185, 71, 0.3));
+    }
+
+    .brand-meta {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .brand-meta { display: block; }
+    }
+
+    .brand-sub {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Mode Switcher */
+    .mode-switcher-container {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      padding: 3px;
+      border-radius: var(--radius-full);
+      gap: 3px;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-muted);
+      padding: 7px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .mode-btn.active {
+      background: var(--color-araku-terracotta);
+      color: var(--color-cream);
+      box-shadow: 0 2px 10px rgba(200, 90, 50, 0.45);
+    }
+
+    .cart-trigger-btn {
+      background: linear-gradient(135deg, #261E18, #16120E);
+      border: 1px solid var(--color-border);
+      color: var(--color-cream);
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .cart-trigger-btn:hover {
+      border-color: var(--color-gold);
+    }
+
+    .cart-badge-count {
+      background: var(--color-gold);
+      color: #0A0806;
+      font-size: 0.72rem;
+      font-weight: 800;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 40px 18px 30px;
+      max-width: 1260px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      z-index: 10;
+    }
+
+    @media (min-width: 992px) {
+      .hero-section {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        padding: 70px 28px 60px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(241, 185, 71, 0.1);
+      border: 1px solid rgba(241, 185, 71, 0.35);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--color-gold);
+      margin-bottom: 16px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 7vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+      color: var(--color-cream);
+    }
+
+    .hero-headline span.gradient-text {
+      background: linear-gradient(135deg, var(--color-cream) 30%, var(--color-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-headline span.terracotta-text {
+      color: var(--color-araku-warm);
+    }
+
+    .hero-description {
+      font-size: 0.98rem;
+      color: var(--color-parchment);
+      max-width: 580px;
+      margin-bottom: 24px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* Interactive Matchmaker Callout */
+    .matchmaker-callout {
+      background: linear-gradient(90deg, rgba(241, 185, 71, 0.12), rgba(200, 90, 50, 0.08));
+      border: 1px dashed rgba(241, 185, 71, 0.45);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      max-width: 560px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .matchmaker-callout:hover {
+      border-color: var(--color-gold);
+      transform: translateX(3px);
+      background: rgba(241, 185, 71, 0.16);
+    }
+
+    .matchmaker-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+    }
+
+    .matchmaker-text strong {
+      color: var(--color-gold);
+    }
+
+    .matchmaker-arrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--color-gold);
+      white-space: nowrap;
+    }
+
+    .hero-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    @media (min-width: 600px) {
+      .hero-highlights-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .hero-stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-gold);
+    }
+
+    .stat-lbl {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-araku-terracotta), #9B3918);
+      color: var(--color-cream);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 13px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(200, 90, 50, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--color-parchment);
+      border: 1px solid var(--color-border);
+      padding: 13px 22px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    /* Hero Visual Card with Real Cafe Interior Image */
+    .hero-visual-card {
+      background: linear-gradient(160deg, #1C1612, #100C09);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-visual-banner {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background: #14100D;
+    }
+
+    .hero-visual-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+      transition: transform 0.5s ease;
+    }
+
+    .banner-overlay-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(10, 8, 6, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .banner-overlay-origin {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(10, 8, 6, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--color-cream);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .hero-visual-body {
+      padding: 20px;
+    }
+
+    .roast-spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .roast-spec-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      padding-bottom: 6px;
+    }
+
+    .roast-spec-item .label {
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+    }
+
+    .roast-spec-item .value {
+      font-weight: 600;
+      color: var(--color-cream);
+      font-family: var(--font-mono);
+    }
+
+    .flavor-profile-wheel-mini {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .flavor-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      color: var(--color-parchment);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Section Wrappers */
+    .section-wrap {
+      max-width: 1260px;
+      margin: 45px auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .section-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+    }
+
+    .section-pretitle {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--color-araku-warm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .filter-tabs::-webkit-scrollbar { display: none; }
+
+    .filter-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-muted);
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .filter-pill.active {
+      background: var(--color-cream);
+      color: var(--bg-dark);
+      border-color: var(--color-cream);
+      font-weight: 700;
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .product-card-image {
+      height: 170px;
+      position: relative;
+      overflow: hidden;
+      background: #14100D;
+    }
+
+    .product-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-card-image img {
+      transform: scale(1.06);
+    }
+
+    .product-card-inner {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-header-badges {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .badge-process {
+      background: rgba(46, 83, 57, 0.25);
+      border: 1px solid rgba(46, 83, 57, 0.5);
+      color: #72C08A;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    .badge-elevation {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--color-gold);
+    }
+
+    .product-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      color: var(--color-cream);
+    }
+
+    .product-subtitle {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .tasting-notes-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+
+    .tasting-pill {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      color: var(--color-parchment);
+      padding: 3px 7px;
+      border-radius: var(--radius-sm);
+    }
+
+    .roast-meter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      padding: 7px 10px;
+      margin-bottom: 14px;
+    }
+
+    .roast-meter-label {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+      min-width: 72px;
+    }
+
+    .roast-dots {
+      display: flex;
+      gap: 4px;
+    }
+
+    .roast-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .roast-dot.filled {
+      background: var(--color-araku-warm);
+    }
+
+    .btn-cupping-inspect {
+      background: transparent;
+      border: 1px dashed var(--color-border);
+      color: var(--color-gold);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-cupping-inspect:hover {
+      border-color: var(--color-gold);
+      background: rgba(241, 185, 71, 0.08);
+    }
+
+    /* Customizer Controls inside Card */
+    .card-customizer {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .customizer-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .customizer-row label {
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+
+    .weight-toggle-group {
+      display: flex;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .weight-opt {
+      flex: 1;
+      text-align: center;
+      padding: 5px 0;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .weight-opt.selected {
+      background: var(--color-araku-terracotta);
+      color: var(--color-cream);
+      font-weight: 700;
+    }
+
+    .grind-select {
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      color: var(--color-cream);
+      padding: 7px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 0.76rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      outline: none;
+      width: 100%;
+    }
+
+    .card-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-cream);
+    }
+
+    .price-shipping-note {
+      font-size: 0.66rem;
+      color: var(--color-muted);
+      font-family: var(--font-mono);
+    }
+
+    .btn-add-cart {
+      background: var(--color-araku-terracotta);
+      color: var(--color-cream);
+      border: none;
+      padding: 9px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--color-araku-warm);
+    }
+
+    /* Mode 2: In-House Table QR Section */
+    #dineInView {
+      display: none;
+    }
+
+    .dine-in-header-banner {
+      background: linear-gradient(135deg, rgba(46, 83, 57, 0.35), rgba(20, 16, 13, 0.9));
+      border: 1px solid var(--color-emerald);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .dine-in-header-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .table-indicator {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .table-badge {
+      width: 48px;
+      height: 48px;
+      background: var(--color-emerald);
+      color: #fff;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.7rem;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+
+    .table-badge span {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .table-meta h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+    }
+
+    .table-meta p {
+      font-size: 0.78rem;
+      color: var(--color-parchment);
+    }
+
+    .table-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .table-selector-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-parchment);
+      padding: 7px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn-call-waitstaff {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--color-cream);
+      padding: 7px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    .menu-item-row {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--color-cream);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .menu-tag-veg {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid #4CAF50;
+      border-radius: 2px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .menu-tag-veg::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #4CAF50;
+      border-radius: 50%;
+    }
+
+    .menu-item-desc {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-top: 3px;
+    }
+
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      white-space: nowrap;
+    }
+
+    /* Brew Ratio Calculator & Extraction Timer */
+    .brew-calculator-card {
+      background: linear-gradient(145deg, #1C1510, #130E0B);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-top: 40px;
+    }
+
+    .brew-calc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 900px) {
+      .brew-calc-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+    }
+
+    .calc-method-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .calc-method-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      color: var(--color-parchment);
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    .calc-method-btn.selected {
+      background: var(--color-gold);
+      color: var(--bg-dark);
+      font-weight: 700;
+      border-color: var(--color-gold);
+    }
+
+    .dose-slider-container {
+      margin-bottom: 20px;
+    }
+
+    .dose-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-bottom: 6px;
+    }
+
+    .dose-slider {
+      width: 100%;
+      accent-color: var(--color-gold);
+      cursor: pointer;
+    }
+
+    .timer-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timer-digits {
+      font-family: var(--font-mono);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--color-gold);
+    }
+
+    .timer-step-indicator {
+      font-size: 0.76rem;
+      color: var(--color-parchment);
+      font-family: var(--font-mono);
+    }
+
+    .btn-timer {
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      color: var(--color-cream);
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      cursor: pointer;
+    }
+
+    .btn-timer.primary {
+      background: var(--color-araku-terracotta);
+      border-color: var(--color-araku-terracotta);
+      font-weight: 700;
+    }
+
+    .calc-results-box {
+      background: var(--bg-surface);
+      border: 1px solid rgba(241, 185, 71, 0.3);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .calc-metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      padding-bottom: 8px;
+    }
+
+    .calc-val-large {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-gold);
+    }
+
+    /* Terroir Story Cards */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 680px) {
+      .story-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .story-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .story-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .story-step-num {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: rgba(241, 185, 71, 0.4);
+      margin-bottom: 8px;
+    }
+
+    .story-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .story-card p {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    /* Social Proof Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .review-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+
+    .review-stars {
+      color: var(--color-gold);
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 0.82rem;
+      color: var(--color-parchment);
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .review-author {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--color-muted);
+    }
+
+    /* Slide-Out Cart Drawer */
+    .cart-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      background: #15110E;
+      border-left: 1px solid var(--color-border);
+      z-index: 1001;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.85);
+      padding-top: calc(env(safe-area-inset-top, 0px) + 20px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+    }
+
+    .cart-drawer-backdrop.open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cart-items-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cart-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .cart-item-title {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--color-cream);
+    }
+
+    .cart-item-specs {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--color-gold);
+    }
+
+    .cart-item-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+    }
+
+    .qty-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-cream);
+      padding: 3px 9px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .qty-val {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0 4px;
+    }
+
+    .promo-box {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .promo-input {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-cream);
+      padding: 7px 10px;
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      outline: none;
+      text-transform: uppercase;
+    }
+
+    .btn-apply-promo {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    .cart-footer {
+      padding-top: 12px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .cart-subtotal-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-cream);
+    }
+
+    .btn-checkout-wa {
+      background: #25D366;
+      color: #0B2512;
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-checkout-upi {
+      background: linear-gradient(135deg, var(--color-araku-terracotta), #8A2D10);
+      color: var(--color-cream);
+      border: none;
+      padding: 12px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      background: #1A1512;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      max-width: 460px;
+      width: 100%;
+      padding: 24px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .btn-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: var(--color-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+
+    .quiz-option-btn {
+      width: 100%;
+      text-align: left;
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      color: var(--color-cream);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .qr-container {
+      background: #fff;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      width: 180px;
+      height: 180px;
+      margin: 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Agency Technical Blueprint Footer */
+    .agency-footer {
+      background: #070504;
+      border-top: 1px solid var(--color-border);
+      padding: 50px 18px 25px;
+      margin-top: 70px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 800px) {
+      .footer-inner {
+        grid-template-columns: 1.4fr 0.8fr 0.8fr;
+      }
+    }
+
+    .valixis-watermark-strip {
+      max-width: 1260px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--color-muted);
+    }
+
+    @media (min-width: 768px) {
+      .valixis-watermark-strip {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--color-gold);
+      color: #0A0806;
+      padding: 11px 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      z-index: 3000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Film Grain, Ambient Mesh & Subtle Roaster Embers -->
+  <div class="film-grain"></div>
+  <div class="ambient-mesh"></div>
+  <canvas id="roastEmbersCanvas"></canvas>
+  <div id="scrollProgressBar"></div>
+
+  <!-- Master Concept Switcher Bar (V1 ⇄ V2) -->
+  <nav class="concept-switcher-bar" aria-label="Creative direction concept toggle">
+    <div class="concept-switcher-inner">
+      <span class="concept-pill active">✦ Concept 1: Artisanal Terroir</span>
+      <a href="v2.html" class="concept-pill switch-btn">Switch to Concept 2: Modern Atelier →</a>
+    </div>
+  </nav>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span class="badge-pulse"></span>
+    <span><strong>FRESH HARVEST 2026:</strong> Araku Valley Micro-Lots Now Roasting at LIC Colony, Vijayawada · Pan-India Dispatch within 24h</span>
+  </div>
+
+  <!-- Sticky Navigation with REAL CRAB Brand Logo -->
+  <header class="site-nav">
+    <a href="#" class="nav-brand">
+      <img src="assets/logo.png" alt="CRAB Coffee Roasters & Bakers" class="brand-logo-img">
+      <div class="brand-meta">
+        <div class="brand-sub">LIC Colony, Vijayawada</div>
+      </div>
+    </a>
+
+    <!-- Interactive Mode Toggle Pill -->
+    <div class="mode-switcher-container">
+      <button class="mode-btn active" id="btnModeBeans" onclick="switchExperienceMode('beans')">
+        <span>📦</span> Bean Store
+      </button>
+      <button class="mode-btn" id="btnModeDineIn" onclick="switchExperienceMode('dinein')">
+        <span>☕</span> Table QR
+      </button>
+    </div>
+
+    <!-- Nav Cart Action (Audio Removed) -->
+    <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)">
+      <span>🛍️</span>
+      <span class="cart-badge-count" id="cartCountBadge">0</span>
+      <span id="navCartTotal">₹0</span>
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div>
+      <div class="hero-eyebrow">
+        <span>📍</span> Water Tank Road, LIC Colony · Single-Estate Araku Arabica
+      </div>
+      <h1 class="hero-headline">
+        Freshly Roasted in Vijayawada.<br/>
+        <span class="gradient-text">Direct from the Mist</span> of <span class="terracotta-text">Araku.</span>
+      </h1>
+      <p class="hero-description">
+        Artisanal micro-lots cultivated by indigenous tribal farmers at 1,050m elevation in the Eastern Ghats. Small-batch drum roasted at our LIC Colony roastery, shipped whole bean or custom-ground to your doorstep across India.
+      </p>
+
+      <!-- Matchmaker Callout -->
+      <div class="matchmaker-callout" onclick="openMatchmakerModal()">
+        <div class="matchmaker-text">
+          <span style="font-size: 1.25rem;">⚡</span>
+          <div>
+            <strong>Can't decide on a roast?</strong>
+            <div style="font-size: 0.72rem; color: var(--color-muted);">Take our 15-second Araku Flavor Finder quiz →</div>
+          </div>
+        </div>
+        <span class="matchmaker-arrow">START QUIZ</span>
+      </div>
+
+      <!-- Highlights Grid -->
+      <div class="hero-highlights-grid">
+        <div class="hero-stat-card">
+          <span class="stat-val">1,050m</span>
+          <span class="stat-lbl">Elevation MSL</span>
+        </div>
+        <div class="hero-stat-card">
+          <span class="stat-val">24h</span>
+          <span class="stat-lbl">Roast to Ship</span>
+        </div>
+        <div class="hero-stat-card">
+          <span class="stat-val">100%</span>
+          <span class="stat-lbl">Shade-Grown</span>
+        </div>
+        <div class="hero-stat-card">
+          <span class="stat-val">0%</span>
+          <span class="stat-lbl">Aggregator Fee</span>
+        </div>
+      </div>
+
+      <!-- Hero CTA Group -->
+      <div class="hero-cta-group">
+        <a href="#storeSection" class="btn-primary" onclick="switchExperienceMode('beans')">
+          <span>📦</span> Explore Araku Beans
+        </a>
+        <button class="btn-secondary" onclick="switchExperienceMode('dinein')">
+          <span>📱</span> Test Table QR Dine-In
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Visual Card with Real Cafe Interior Ambience -->
+    <div class="hero-visual-card">
+      <div class="hero-visual-banner">
+        <img src="assets/amb-2.jpg" alt="CRAB Cafe and Roastery at LIC Colony, Vijayawada">
+        <div class="banner-overlay-badge">FLAGSHIP ROASTERY</div>
+        <div class="banner-overlay-origin">📍 WATER TANK RD, LIC COLONY</div>
+      </div>
+
+      <div class="hero-visual-body">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem;">Araku Reserve Lot #4</h3>
+          <span class="badge-process">ANAEROBIC HONEY</span>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--color-muted); margin-bottom: 16px;">
+          Selective brix 24° hand-harvested red cherries fermented for 72 hours in sealed steel barrels.
+        </p>
+
+        <div class="roast-spec-list">
+          <div class="roast-spec-item">
+            <span class="label">Roastery Location</span>
+            <span class="value">Water Tank Rd, LIC Colony</span>
+          </div>
+          <div class="roast-spec-item">
+            <span class="label">Varietal Sourcing</span>
+            <span class="value">Selection 9 & SLN 79.5</span>
+          </div>
+          <div class="roast-spec-item">
+            <span class="label">Roast Profile</span>
+            <span class="value">Medium-Light (City+)</span>
+          </div>
+        </div>
+
+        <button class="btn-cupping-inspect" style="width: 100%;" onclick="openCuppingModal('araku-reserve-4')">
+          <span>📊</span> Inspect Sensory Cupping Sheet & Terroir Data
+        </button>
+
+        <div class="flavor-profile-wheel-mini">
+          <span class="flavor-chip">🍫 Dark Cocoa</span>
+          <span class="flavor-chip">🍯 Wild Honey</span>
+          <span class="flavor-chip">🍊 Candied Orange</span>
+          <span class="flavor-chip">🍇 Black Plum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE VIEW (MODE 1: PAN-INDIA BEAN STORE) -->
+  <main id="beansView" class="section-wrap">
+    <div id="storeSection" class="section-header">
+      <div>
+        <div class="section-pretitle">Pan-India Coffee Roastery Store</div>
+        <h2 class="section-title">Single-Origin Araku Micro-Lots</h2>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-pill active" onclick="filterProducts('all', this)">All Roasts</button>
+        <button class="filter-pill" onclick="filterProducts('filter', this)">Pour Over & Filter</button>
+        <button class="filter-pill" onclick="filterProducts('espresso', this)">Espresso Roasts</button>
+        <button class="filter-pill" onclick="filterProducts('reserve', this)">Anaerobic Reserve</button>
+        <button class="filter-pill" onclick="filterProducts('coldbrew', this)">Cold Brew Blends</button>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="beansProductGrid">
+      <!-- Generated via JS -->
+    </div>
+  </main>
+
+  <!-- DINE-IN VIEW (MODE 2: IN-HOUSE TABLE QR LIC COLONY) -->
+  <main id="dineInView" class="section-wrap">
+    <div class="dine-in-header-banner">
+      <div class="table-indicator">
+        <div class="table-badge">
+          TBL<span id="activeTableNumber">4</span>
+        </div>
+        <div class="table-meta">
+          <h4>Seated at Table #<span id="activeTableTitle">4</span> · Water Tank Road Cafe</h4>
+          <p>Scan & Order directly from your seat · Zero wait staff delay · Instant Barista Dispatch</p>
+        </div>
+      </div>
+
+      <div class="table-controls">
+        <select class="table-selector-pill" id="tableSelectDropdown" onchange="changeDineInTable(this.value)">
+          <option value="4">Table #4 (Main Cafe)</option>
+          <option value="1">Table #1 (Window Corner)</option>
+          <option value="7">Table #7 (Bakery Counter)</option>
+          <option value="12">Table #12 (Garden Patio)</option>
+        </select>
+        <button class="btn-call-waitstaff" onclick="callWaitstaff()">
+          <span>🛎️</span> Call Waiter / Refill Water
+        </button>
+        <button class="btn-primary" style="padding: 9px 16px; font-size: 0.82rem;" onclick="toggleCartDrawer(true)">
+          <span>⚡</span> View Live Table Ticket
+        </button>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <div class="section-pretitle">CRAB Cafe & Craft Bakehouse</div>
+        <h2 class="section-title">In-House Dining & Brew Bar</h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-pill active" onclick="filterDineIn('all', this)">Full Cafe Menu</button>
+        <button class="filter-pill" onclick="filterDineIn('espresso', this)">Brews & Espresso</button>
+        <button class="filter-pill" onclick="filterDineIn('bakes', this)">Craft Bakery</button>
+        <button class="filter-pill" onclick="filterDineIn('mains', this)">Savory Kitchen</button>
+      </div>
+    </div>
+
+    <!-- Dine In Menu List with Real CRAB Food & Bakes -->
+    <div id="dineInMenuList">
+      <!-- Injected via JS -->
+    </div>
+  </main>
+
+  <!-- INTERACTIVE BREW RATIO CALCULATOR & EXTRACTION TIMER -->
+  <section id="brewCalculator" class="section-wrap">
+    <div class="brew-calculator-card">
+      <div class="section-pretitle">Barista Precision Engine</div>
+      <h2 style="font-family: var(--font-display); font-size: 1.7rem; margin-top: 4px;">
+        Interactive Coffee Brew Ratio Calculator & Extraction Timer
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--color-muted); max-width: 620px;">
+        Dial in extraction parameters for your Araku Valley beans at home. Adjust your dose to see water mass, target time, and optimal grind setting.
+      </p>
+
+      <div class="brew-calc-grid">
+        <div>
+          <div style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-muted); margin-bottom: 8px;">
+            1. SELECT BREWING EQUIPMENT:
+          </div>
+          <div class="calc-method-pills">
+            <button class="calc-method-btn selected" onclick="selectBrewMethod('v60', this)">Pour Over (V60)</button>
+            <button class="calc-method-btn" onclick="selectBrewMethod('aeropress', this)">AeroPress</button>
+            <button class="calc-method-btn" onclick="selectBrewMethod('frenchpress', this)">French Press</button>
+            <button class="calc-method-btn" onclick="selectBrewMethod('filter', this)">South Indian Filter</button>
+            <button class="calc-method-btn" onclick="selectBrewMethod('coldbrew', this)">Cold Brew</button>
+          </div>
+
+          <div class="dose-slider-container">
+            <div class="dose-label-row">
+              <span>COFFEE DOSE</span>
+              <span id="doseValDisplay" style="color: var(--color-gold); font-weight: 700;">18g</span>
+            </div>
+            <input type="range" class="dose-slider" id="doseSlider" min="10" max="60" value="18" oninput="calculateBrew()">
+          </div>
+
+          <!-- Live Pour-Over Timer -->
+          <div class="timer-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">EXTRACTION STOPWATCH</div>
+                <div class="timer-digits" id="timerClock">00:00</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="timer-step-indicator" id="timerStepInstruction">Ready to Bloom</div>
+                <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-gold);" id="timerTargetNotice">Target: 03:00</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-timer primary" id="btnTimerStart" onclick="toggleTimer()">▶ Start Brew</button>
+              <button class="btn-timer" onclick="resetTimer()">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Output Box -->
+        <div class="calc-results-box">
+          <div class="calc-metric-row">
+            <div>
+              <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">WATER REQUIRED</div>
+              <div class="calc-val-large" id="calcWaterVal">270 ml</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">BREW RATIO</div>
+              <div style="font-family: var(--font-mono); font-weight: 700; color: var(--color-parchment);" id="calcRatioVal">1 : 15</div>
+            </div>
+          </div>
+
+          <div class="calc-metric-row">
+            <div>
+              <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">TARGET TIME</div>
+              <div style="font-family: var(--font-mono); font-weight: 700; color: var(--color-cream);" id="calcTimeVal">2m 45s - 3m 15s</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">WATER TEMP</div>
+              <div style="font-family: var(--font-mono); font-weight: 700; color: var(--color-araku-warm);" id="calcTempVal">92°C - 94°C</div>
+            </div>
+          </div>
+
+          <div class="calc-metric-row">
+            <div>
+              <div style="font-size: 0.7rem; font-family: var(--font-mono); color: var(--color-muted);">OPTIMAL GRIND SPEC</div>
+              <div style="font-family: var(--font-mono); font-weight: 700; color: var(--color-gold);" id="calcGrindVal">Medium-Fine (Sea Salt)</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06); font-size: 0.76rem; color: var(--color-parchment);">
+            💡 <strong>Barista Pro-Tip:</strong> High-altitude Araku beans are exceptionally dense. Maintain a slow, continuous center pour to highlight floral honey and tropical fruit notes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FARM-TO-CUP STORY JOURNEY -->
+  <section class="section-wrap">
+    <div class="section-header">
+      <div>
+        <div class="section-pretitle">The Terroir Journey</div>
+        <h2 class="section-title">From Araku Valleys to LIC Colony</h2>
+      </div>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-step-num">01</div>
+        <h4>High-Elevation Terroir</h4>
+        <p>Grown under thick indigenous canopy in the Eastern Ghats of AP at 900–1,150m MSL, developing rich sugars and complex stone-fruit acidity.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-step-num">02</div>
+        <h4>Tribal Cooperative Sourcing</h4>
+        <p>Hand-harvested strictly at peak ripeness by indigenous adivasi farmers. 100% fair-trade compensation direct to tribal growers.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-step-num">03</div>
+        <h4>Precision Drum Roasting</h4>
+        <p>Roasted in small micro-batches at our Water Tank Road facility in LIC Colony, Vijayawada, profiled for maximum sweetness and aromatic clarity.</p>
+      </div>
+
+      <div class="story-card">
+        <div class="story-step-num">04</div>
+        <h4>24h Dispatch & Fresh Brew</h4>
+        <p>Nitrogen-flushed valve packaging shipped within 24 hours of roasting nationwide, or pulled fresh as espresso at our LIC Colony cafe.</p>
+      </div>
+    </div>
+
+    <!-- Social Proof Reviews -->
+    <div style="margin-top: 50px;">
+      <div class="section-header">
+        <div>
+          <div class="section-pretitle">Community Cupping Notes</div>
+          <h2 class="section-title" style="font-size: 1.6rem;">What Coffee Lovers Say in Vijayawada</h2>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The Anaerobic Lot #4 is easily the best specialty roast in AP. Sourced whole beans for my home V60 and the aroma filled my kitchen."</p>
+          <div class="review-author">— Rajesh V. (Home Brewer, Benz Circle)</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Finally a true third-wave cafe in Vijayawada! Love coming to the LIC Colony space for the Cortado and fresh sourdough croissants on weekends."</p>
+          <div class="review-author">— Sneha Reddy (Moghalrajpuram)</div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordering whole beans online was super smooth. Dispatched within 24 hours of roasting, packaged with roast date stamp. Outstanding quality."</p>
+          <div class="review-author">— Karthik M. (Hyderabad subscriber)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE OUT CART DRAWER -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="toggleCartDrawer(false)">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <div>
+          <h3 style="font-family: var(--font-display); font-size: 1.2rem;">Your Fresh Roast Order</h3>
+          <span style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-muted);">CRAB Roastery & Bakery</span>
+        </div>
+        <button style="background:transparent;border:none;color:var(--color-muted);font-size:1.4rem;cursor:pointer;" onclick="toggleCartDrawer(false)">&times;</button>
+      </div>
+
+      <div class="cart-items-scroll" id="cartItemsContainer">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div class="cart-footer">
+        <div style="background:rgba(46,83,57,0.2);border:1px solid rgba(46,83,57,0.4);color:#72C08A;font-size:0.7rem;font-family:var(--font-mono);padding:5px 8px;border-radius:var(--radius-sm);text-align:center;" id="shippingBanner">
+          ⚡ Free Express Shipping on orders over ₹999
+        </div>
+
+        <!-- Promo Code Input -->
+        <div class="promo-box">
+          <input type="text" class="promo-input" id="promoCodeInput" placeholder="PROMO CODE (e.g. ARAKU10)">
+          <button class="btn-apply-promo" onclick="applyPromoCode()">Apply</button>
+        </div>
+        <div id="promoNotice" style="font-size: 0.7rem; font-family: var(--font-mono); color: #72C08A; display: none;"></div>
+
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotalText">₹0</span>
+        </div>
+        <div class="cart-subtotal-row" id="discountRow" style="display: none; color: #72C08A;">
+          <span>Discount (ARAKU10)</span>
+          <span id="cartDiscountText">-₹0</span>
+        </div>
+        <div class="cart-subtotal-row" id="shippingRow">
+          <span>Estimated Shipping</span>
+          <span id="cartShippingText">₹80</span>
+        </div>
+        <div class="cart-total-row">
+          <span>Total Payable</span>
+          <span id="cartTotalText">₹0</span>
+        </div>
+
+        <button class="btn-checkout-wa" onclick="checkoutViaWhatsApp()">
+          <span>📲</span> Dispatch Order via WhatsApp
+        </button>
+        <button class="btn-checkout-upi" onclick="openUpiModal()">
+          <span>⚡</span> Pay Direct via 1-Click UPI (0% Fee)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENSORY CUPPING SHEET & RADAR MODAL -->
+  <div class="modal-backdrop" id="cuppingModal">
+    <div class="modal-box">
+      <button class="btn-modal-close" onclick="closeCuppingModal()">&times;</button>
+      <div class="section-pretitle">SCA Specialty Score: 87.5 / 100</div>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-top: 4px;" id="cuppingModalTitle">
+        Araku Reserve Lot #4
+      </h3>
+      <p style="font-size: 0.78rem; color: var(--color-muted); margin-bottom: 14px;">
+        Evaluated under Specialty Coffee Association (SCA) cupping protocol.
+      </p>
+
+      <!-- SVG Radar / Spider Sensory Wheel -->
+      <div style="display: flex; justify-content: center; margin: 12px 0;">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="40" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="100" cy="100" r="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(255,255,255,0.12)"/>
+          <line x1="20" y1="100" x2="180" y2="100" stroke="rgba(255,255,255,0.12)"/>
+          <line x1="43" y1="43" x2="157" y2="157" stroke="rgba(255,255,255,0.12)"/>
+          <polygon points="100,28 165,65 155,145 70,160 38,85" fill="rgba(200, 90, 50, 0.45)" stroke="#E26F44" stroke-width="2"/>
+          <circle cx="100" cy="28" r="4" fill="#F1B947"/>
+          <circle cx="165" cy="65" r="4" fill="#F1B947"/>
+          <circle cx="155" cy="145" r="4" fill="#F1B947"/>
+          <circle cx="70" cy="160" r="4" fill="#F1B947"/>
+          <circle cx="38" cy="85" r="4" fill="#F1B947"/>
+          <text x="100" y="16" font-size="9" fill="#F1B947" text-anchor="middle" font-family="monospace">AROMA (9.2)</text>
+          <text x="180" y="65" font-size="9" fill="#F1B947" text-anchor="start" font-family="monospace">ACIDITY (8.8)</text>
+          <text x="160" y="155" font-size="9" fill="#F1B947" text-anchor="start" font-family="monospace">BODY (8.5)</text>
+          <text x="60" y="175" font-size="9" fill="#F1B947" text-anchor="end" font-family="monospace">SWEETNESS (9.4)</text>
+          <text x="25" y="85" font-size="9" fill="#F1B947" text-anchor="end" font-family="monospace">AFTERTASTE (8.9)</text>
+        </svg>
+      </div>
+
+      <div class="roast-spec-list" style="margin-top: 12px;">
+        <div class="roast-spec-item">
+          <span class="label">Brix Level at Harvest</span>
+          <span class="value">24° Brix (Peak Ripeness)</span>
+        </div>
+        <div class="roast-spec-item">
+          <span class="label">Drying Bed Technique</span>
+          <span class="value">18 Days Raised African Mesh</span>
+        </div>
+        <div class="roast-spec-item">
+          <span class="label">Moisture Content</span>
+          <span class="value">10.8% (Target Stored)</span>
+        </div>
+        <div class="roast-spec-item">
+          <span class="label">Roast Drop Temp</span>
+          <span class="value">208°C (First Crack + 1m 45s)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATCHMAKER QUIZ MODAL -->
+  <div class="modal-backdrop" id="matchmakerModal">
+    <div class="modal-box">
+      <button class="btn-modal-close" onclick="closeMatchmakerModal()">&times;</button>
+      
+      <!-- Step 1 -->
+      <div class="quiz-step active" id="quizStep1">
+        <div class="section-pretitle">Question 1 of 3</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin: 6px 0 14px;">
+          How do you usually enjoy your coffee?
+        </h3>
+        <button class="quiz-option-btn" onclick="nextQuizStep('filter')">
+          <span>☕ Black & Clean (Pour Over / French Press)</span>
+          <span>→</span>
+        </button>
+        <button class="quiz-option-btn" onclick="nextQuizStep('espresso')">
+          <span>🥛 With Milk (Cortado, Latte, Flat White)</span>
+          <span>→</span>
+        </button>
+        <button class="quiz-option-btn" onclick="nextQuizStep('coldbrew')">
+          <span>🧊 Iced & Chilled (Cold Brew / Tonic)</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" id="quizStep2">
+        <div class="section-pretitle">Question 2 of 3</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin: 6px 0 14px;">
+          Which flavor note excites your palate?
+        </h3>
+        <button class="quiz-option-btn" onclick="nextQuizStep('fruity')">
+          <span>🍓 Fruity, Floral & Winey Plum</span>
+          <span>→</span>
+        </button>
+        <button class="quiz-option-btn" onclick="nextQuizStep('chocolate')">
+          <span>🍫 Dark Chocolate, Roasted Nuts & Caramel</span>
+          <span>→</span>
+        </button>
+        <button class="quiz-option-btn" onclick="nextQuizStep('spicy')">
+          <span>🍯 Wild Honey, Jaggery & Sweet Spices</span>
+          <span>→</span>
+        </button>
+      </div>
+
+      <!-- Step 3: Result -->
+      <div class="quiz-step" id="quizStep3" style="text-align: center;">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">✨</div>
+        <div class="section-pretitle">Your Perfect Terroir Match</div>
+        <h3 style="font-family: var(--font-display); font-size: 1.35rem; margin: 6px 0;" id="quizMatchedTitle">
+          Araku Reserve Lot #4
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--color-parchment); margin-bottom: 18px;" id="quizMatchedDesc">
+          A vibrant anaerobic natural with notes of wild honey and dark chocolate, perfectly calibrated for your palate.
+        </p>
+        <button class="btn-primary" style="width: 100%; justify-content: center;" id="quizAddToCartBtn" onclick="addMatchedToCart()">
+          <span>🛍️</span> Add Matched Micro-Lot to Bag
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPI DIRECT PAYMENT MODAL -->
+  <div class="modal-backdrop" id="upiModal">
+    <div class="modal-box" style="text-align: center;">
+      <button class="btn-modal-close" onclick="closeUpiModal()">&times;</button>
+      <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 4px;">Direct Merchant UPI</h3>
+      <p style="font-size: 0.76rem; color: var(--color-muted); font-family: var(--font-mono);">
+        CRAB Coffee Roasters & Bakers · LIC Colony
+      </p>
+
+      <div class="qr-container">
+        <svg viewBox="0 0 100 100" width="150" height="150">
+          <rect width="100" height="100" fill="white"/>
+          <path d="M10 10 h25 v25 h-25 z M15 15 h15 v15 h-15 z M65 10 h25 v25 h-25 z M70 15 h15 v15 h-15 z M10 65 h25 v25 h-25 z M15 70 h15 v15 h-15 z M45 10 h10 v10 h-10 z M45 30 h10 v10 h-10 z M10 45 h10 v10 h-10 z M30 45 h10 v10 h-10 z M45 45 h10 v10 h-10 z M60 45 h10 v10 h-10 z M80 45 h10 v10 h-10 z M45 65 h10 v10 h-10 z M45 80 h10 v10 h-10 z M65 65 h10 v10 h-10 z M80 65 h10 v10 h-10 z M65 80 h25 v10 h-25 z" fill="#1C1713"/>
+          <circle cx="50" cy="50" r="10" fill="#F1B947"/>
+          <text x="50" y="54" font-size="10" font-weight="900" fill="#0A0806" text-anchor="middle" font-family="sans-serif">C</text>
+        </svg>
+      </div>
+
+      <div style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 800; color: var(--color-gold); margin-bottom: 4px;" id="modalAmountDisplay">
+        ₹0
+      </div>
+      <div style="font-size: 0.72rem; font-family: var(--font-mono); color: var(--color-parchment); margin-bottom: 16px;">
+        VPA: <strong style="color: var(--color-cream);">crabresto@upi</strong> · Zero Commission
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 8px; font-size: 0.68rem; font-family: var(--font-mono); color: var(--color-muted);">
+        <span>GPay</span> • <span>PhonePe</span> • <span>Paytm</span> • <span>BHIM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-msg" id="toastMsg">Added to Bag</div>
+
+  <!-- AGENCY TECHNICAL FOOTER -->
+  <footer class="agency-footer">
+    <div class="footer-inner">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+          <img src="assets/mark.png" alt="CRAB Monogram" style="height: 38px; width: auto;">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem;">CRAB</h3>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--color-muted); line-height: 1.6;">
+          Coffee Roasters And Bakers. Specialty coffee roastery and craft bakehouse. Single-origin Araku Valley micro-lots roasted fresh at Water Tank Road, LIC Colony, Vijayawada, Andhra Pradesh.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-gold); text-transform: uppercase; margin-bottom: 12px;">Roastery & Cafe</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: var(--color-parchment);">
+          <li>📍 Water Tank Road, LIC Colony, Vijayawada</li>
+          <li>📞 Call: +91 94536 96969</li>
+          <li>💬 WhatsApp: +91 94536 96969</li>
+          <li>📷 Instagram: @crab.vij</li>
+          <li>🌐 Live Domain: crabresto.com</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-gold); text-transform: uppercase; margin-bottom: 12px;">Architecture</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: var(--color-parchment);">
+          <li>⚡ Sub-Second Mobile-First Engine</li>
+          <li>📦 Pan-India Custom Grind Dispatch</li>
+          <li>📱 In-House Dine-In Table QR Engine</li>
+          <li>💳 0% Direct Merchant UPI Gateway</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="valixis-watermark-strip">
+      <div>
+        Concept 1 Architecture by <a href="https://valixis.tech" style="color: var(--color-gold); text-decoration: none; font-weight: 600;">VALIXIS Technologies</a> · Hospitality & E-Commerce Engineering Pod
+      </div>
+      <div>
+        <a href="https://valixis.tech/work/" style="color: var(--color-parchment); text-decoration: none;">Inspect Agency Blueprints →</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT ENGINE (AUDIO COMPLETELY REMOVED) -->
+  <script>
+    // Scroll Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgressBar').style.width = scrolled + '%';
+    });
+
+    // Product Catalog (Pan-India Roastery)
+    const PRODUCTS = [
+      {
+        id: 'araku-reserve-4',
+        name: 'Araku Valley Reserve Micro-Lot #4',
+        subtitle: 'Natural Anaerobic Fermentation (72 Hours)',
+        category: 'reserve',
+        elevation: '1,050m MSL',
+        process: 'Anaerobic Natural',
+        roastLevel: 2,
+        notes: ['Dark Plum', 'Wild Honey', 'Cacao Nibs', 'Black Currant'],
+        basePrice: 580,
+        img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'peaberry-high-elevation',
+        name: 'Eastern Ghats High-Elevation Peaberry',
+        subtitle: 'Single Estate Washed Lot · Ananthagiri',
+        category: 'filter',
+        elevation: '1,120m MSL',
+        process: 'Fully Washed',
+        roastLevel: 2,
+        notes: ['Orange Blossom', 'Brown Sugar', 'Toasted Hazelnut', 'Bergamot'],
+        basePrice: 540,
+        img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'water-tank-espresso',
+        name: 'Water Tank Road Signature Roastery Blend',
+        subtitle: 'Medium-Dark City Roast for Espresso & Milk Brews',
+        category: 'espresso',
+        elevation: '950 - 1,050m',
+        process: 'Washed & Honey Blend',
+        roastLevel: 4,
+        notes: ['Dark Chocolate Truffle', 'Roasted Almond', 'Molasses', 'Jaggery'],
+        basePrice: 490,
+        img: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'monsoon-honey-lot',
+        name: 'Araku Monsoon Honey Process',
+        subtitle: 'Pulped Natural Sun-Dried on Raised African Beds',
+        category: 'reserve',
+        elevation: '980m MSL',
+        process: 'Yellow Honey',
+        roastLevel: 3,
+        notes: ['Sun-dried Fig', 'Caramel Toffee', 'Citrus Zest', 'Cardamom'],
+        basePrice: 560,
+        img: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'cold-brew-pouches',
+        name: 'LIC Colony Cold Brew Steep Pouches',
+        subtitle: 'Coarse Ground Biodegradable Steep Bags (Pack of 5)',
+        category: 'coldbrew',
+        elevation: '1,000m MSL',
+        process: 'Signature Steep Blend',
+        roastLevel: 3,
+        notes: ['Rich Chocolate Fudge', 'Smooth Vanilla Bean', 'Zero Acidity'],
+        basePrice: 450,
+        img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80'
+      },
+      {
+        id: 'tribal-estate-filter',
+        name: 'Araku Valley Traditional South Indian Roast',
+        subtitle: '85% Arabica + 15% Chicory · Artisanal Morning Cup',
+        category: 'filter',
+        elevation: '900m MSL',
+        process: 'Artisanal Blend',
+        roastLevel: 4,
+        notes: ['Caramelized Jaggery', 'Thick Crema', 'Roasted Chicory Wood'],
+        basePrice: 420,
+        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80'
+      }
+    ];
+
+    // Dine In Menu Items (With Real CRAB Signature Bakes)
+    const DINE_IN_ITEMS = [
+      { id: 'di-1', category: 'espresso', name: 'Signature Cortado', desc: 'Double shot of Araku Reserve espresso balanced with 2oz silky textured milk', price: 190, isVeg: true },
+      { id: 'di-2', category: 'espresso', name: 'Araku V60 Hand-Drip Pour Over', desc: 'Single-estate Anaerobic micro-lot hand-brewed table-side with tasting notes card', price: 240, isVeg: true },
+      { id: 'di-3', category: 'espresso', name: 'Iced Espresso Tonic & Kaffir Lime', desc: 'Fever-Tree Indian tonic topped with double shot of Araku washed peaberry', price: 260, isVeg: true },
+      { id: 'di-4', category: 'espresso', name: 'Spanish Condensed Milk Iced Latte', desc: 'Slow dripped espresso over condensed milk and crushed ice', price: 250, isVeg: true },
+      { id: 'di-5', category: 'bakes', name: 'Sourdough Butter Almond Croissant', desc: 'CRAB craft bakehouse signature laminated croissant loaded with almond frangipane', price: 210, isVeg: true },
+      { id: 'di-6', category: 'bakes', name: 'Pain au Chocolat (Dark Valrhona)', desc: 'Flaky French pastry baked with twin batons of pure dark chocolate', price: 230, isVeg: true },
+      { id: 'di-7', category: 'bakes', name: 'Basque Burnt Cheesecake with Araku Glaze', desc: 'Creamy caramelised crust with warm espresso drizzle', price: 280, isVeg: true },
+      { id: 'di-8', category: 'mains', name: 'Truffle Mushroom Brioche Melt', desc: 'Wild roasted mushrooms, thyme, emmental cheese on toasted sourdough brioche', price: 320, isVeg: true }
+    ];
+
+    let cart = [];
+    let appliedDiscountPercent = 0;
+    let selectedTableNumber = '4';
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('beansProductGrid');
+      grid.innerHTML = '';
+
+      const filtered = filter === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === filter);
+
+      filtered.forEach(p => {
+        const dotsHtml = Array.from({length: 5}, (_, i) => 
+          `<span class="roast-dot ${i < p.roastLevel ? 'filled' : ''}"></span>`
+        ).join('');
+
+        const notesHtml = p.notes.map(n => `<span class="tasting-pill">${n}</span>`).join('');
+
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-card-image">
+            <img src="${p.img}" alt="${p.name}">
+          </div>
+
+          <div class="product-card-inner">
+            <div class="product-header-badges">
+              <span class="badge-process">${p.process}</span>
+              <span class="badge-elevation">⛰️ ${p.elevation}</span>
+            </div>
+            <h3 class="product-title">${p.name}</h3>
+            <p class="product-subtitle">${p.subtitle}</p>
+
+            <div class="tasting-notes-wrap">
+              ${notesHtml}
+            </div>
+
+            <div class="roast-meter">
+              <span class="roast-meter-label">Roast Profile:</span>
+              <div class="roast-dots">${dotsHtml}</div>
+            </div>
+
+            <button class="btn-cupping-inspect" onclick="openCuppingModal('${p.id}')">
+              <span>📊</span> Sensory Cupping Sheet
+            </button>
+
+            <div class="card-customizer">
+              <div class="customizer-row">
+                <label>Bag Weight</label>
+                <div class="weight-toggle-group" id="weightGroup_${p.id}">
+                  <button class="weight-opt selected" onclick="setProductWeight('${p.id}', 250, 1.0, this)">250g</button>
+                  <button class="weight-opt" onclick="setProductWeight('${p.id}', 500, 1.85, this)">500g</button>
+                  <button class="weight-opt" onclick="setProductWeight('${p.id}', 1000, 3.5, this)">1 kg</button>
+                </div>
+              </div>
+
+              <div class="customizer-row">
+                <label>Grind Calibration</label>
+                <select class="grind-select" id="grindSelect_${p.id}">
+                  <option value="Whole Beans">Whole Beans (Freshness Max)</option>
+                  <option value="Pour Over (V60)">Pour Over (V60 / Kalita)</option>
+                  <option value="AeroPress">AeroPress (Fine-Medium)</option>
+                  <option value="South Indian Filter">South Indian Filter (Fine)</option>
+                  <option value="French Press">French Press (Coarse)</option>
+                  <option value="Espresso Machine">Espresso Machine (Ultra Fine)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card-action-bar">
+              <div>
+                <span class="price-amount" id="priceDisplay_${p.id}">₹${p.basePrice}</span>
+                <div class="price-shipping-note">Inclusive of GST</div>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('${p.id}')">
+                <span>+</span> Add to Bag
+              </button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    const productSelectedState = {};
+
+    function setProductWeight(productId, weight, multiplier, btnElement) {
+      const group = document.getElementById(`weightGroup_${productId}`);
+      group.querySelectorAll('.weight-opt').forEach(b => b.classList.remove('selected'));
+      btnElement.classList.add('selected');
+
+      const product = PRODUCTS.find(p => p.id === productId);
+      const calculatedPrice = Math.round(product.basePrice * multiplier);
+
+      document.getElementById(`priceDisplay_${productId}`).innerText = `₹${calculatedPrice}`;
+      productSelectedState[productId] = {
+        weight: weight,
+        price: calculatedPrice
+      };
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      const state = productSelectedState[productId] || { weight: 250, price: product.basePrice };
+      const grindSelect = document.getElementById(`grindSelect_${productId}`);
+      const grind = grindSelect ? grindSelect.value : 'Whole Beans';
+
+      const cartItemKey = `${productId}_${state.weight}_${grind}`;
+      const existing = cart.find(item => item.key === cartItemKey);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: cartItemKey,
+          id: product.id,
+          name: product.name,
+          weight: state.weight,
+          grind: grind,
+          price: state.price,
+          qty: 1
+        });
+      }
+
+      updateCartUI();
+      showToast(`Added ${product.name} (${state.weight}g) to Bag!`);
+      toggleCartDrawer(true);
+    }
+
+    function addDineInToCart(itemId) {
+      const item = DINE_IN_ITEMS.find(i => i.id === itemId);
+      const cartItemKey = `dinein_${itemId}_tbl${selectedTableNumber}`;
+      const existing = cart.find(c => c.key === cartItemKey);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: cartItemKey,
+          id: item.id,
+          name: `[Table #${selectedTableNumber}] ${item.name}`,
+          weight: 'Dine-In',
+          grind: 'Fresh Bar Prep',
+          price: item.price,
+          qty: 1
+        });
+      }
+
+      updateCartUI();
+      showToast(`Table #${selectedTableNumber}: Added ${item.name}!`);
+    }
+
+    function updateCartUI() {
+      const container = document.getElementById('cartItemsContainer');
+      const countBadge = document.getElementById('cartCountBadge');
+      const navTotal = document.getElementById('navCartTotal');
+      const subtotalTxt = document.getElementById('cartSubtotalText');
+      const shippingRow = document.getElementById('shippingRow');
+      const shippingTxt = document.getElementById('cartShippingText');
+      const totalTxt = document.getElementById('cartTotalText');
+      const shippingBanner = document.getElementById('shippingBanner');
+      const discountRow = document.getElementById('discountRow');
+      const discountTxt = document.getElementById('cartDiscountText');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      countBadge.innerText = totalItems;
+      subtotalTxt.innerText = `₹${subtotal}`;
+
+      let discountAmount = 0;
+      if (appliedDiscountPercent > 0) {
+        discountAmount = Math.round(subtotal * (appliedDiscountPercent / 100));
+        discountRow.style.display = 'flex';
+        discountTxt.innerText = `-₹${discountAmount}`;
+      } else {
+        discountRow.style.display = 'none';
+      }
+
+      const hasDineInOnly = cart.length > 0 && cart.every(i => i.weight === 'Dine-In');
+      let shipping = 0;
+
+      if (!hasDineInOnly && cart.length > 0) {
+        shipping = subtotal >= 999 ? 0 : 80;
+        shippingRow.style.display = 'flex';
+        shippingTxt.innerText = shipping === 0 ? 'FREE' : `₹${shipping}`;
+        shippingBanner.innerText = subtotal >= 999 
+          ? '🎉 Congratulations! You have unlocked Free Express Shipping' 
+          : `⚡ Add ₹${999 - subtotal} more for Free Express Shipping`;
+      } else {
+        shippingRow.style.display = 'none';
+        shippingBanner.innerText = `☕ Dine-In Table #${selectedTableNumber}: Zero Delivery Charges`;
+      }
+
+      const total = Math.max(0, subtotal - discountAmount + shipping);
+      navTotal.innerText = `₹${total}`;
+      totalTxt.innerText = `₹${total}`;
+      document.getElementById('modalAmountDisplay').innerText = `₹${total}`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 10px; color: var(--color-muted);">
+            <div style="font-size: 2.2rem; margin-bottom: 10px;">☕</div>
+            <p style="font-family: var(--font-display); font-size: 1.1rem; color: var(--color-cream); margin-bottom: 6px;">Your Bag is Empty</p>
+            <p style="font-size: 0.8rem;">Explore fresh roasted Araku micro-lots or select your dine-in cafe order.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-top">
+            <div>
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-specs">${item.weight !== 'Dine-In' ? `${item.weight}g · ${item.grind}` : 'Table Service'}</div>
+            </div>
+            <button onclick="removeCartItem('${item.key}')" style="background: transparent; border: none; color: var(--color-muted); cursor: pointer; font-size: 1.1rem;">&times;</button>
+          </div>
+          <div class="cart-item-bottom">
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty('${item.key}', -1)">-</button>
+              <span class="qty-val">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${item.key}', 1)">+</button>
+            </div>
+            <div style="font-family: var(--font-display); font-weight: 700; color: var(--color-cream);">₹${item.price * item.qty}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function changeQty(key, delta) {
+      const item = cart.find(i => i.key === key);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(i => i.key !== key);
+      }
+      updateCartUI();
+    }
+
+    function removeCartItem(key) {
+      cart = cart.filter(i => i.key !== key);
+      updateCartUI();
+    }
+
+    function applyPromoCode() {
+      const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      const notice = document.getElementById('promoNotice');
+      if (code === 'ARAKU10') {
+        appliedDiscountPercent = 10;
+        notice.innerText = '✓ Promo ARAKU10 applied: 10% Off your order!';
+        notice.style.display = 'block';
+        updateCartUI();
+      } else {
+        notice.innerText = '✕ Invalid promo code. Try ARAKU10';
+        notice.style.color = '#E26F44';
+        notice.style.display = 'block';
+      }
+    }
+
+    function toggleCartDrawer(open) {
+      const backdrop = document.getElementById('cartBackdrop');
+      if (open) {
+        backdrop.classList.add('open');
+      } else {
+        backdrop.classList.remove('open');
+      }
+    }
+
+    function switchExperienceMode(mode) {
+      const beansBtn = document.getElementById('btnModeBeans');
+      const dineInBtn = document.getElementById('btnModeDineIn');
+      const beansView = document.getElementById('beansView');
+      const dineInView = document.getElementById('dineInView');
+
+      if (mode === 'beans') {
+        beansBtn.classList.add('active');
+        dineInBtn.classList.remove('active');
+        beansView.style.display = 'block';
+        dineInView.style.display = 'none';
+        showToast('Switched to Pan-India Bean Roastery Store');
+      } else {
+        dineInBtn.classList.add('active');
+        beansBtn.classList.remove('active');
+        beansView.style.display = 'none';
+        dineInView.style.display = 'block';
+        showToast(`Switched to Table #${selectedTableNumber} Dine-In Menu (LIC Colony)`);
+      }
+    }
+
+    function changeDineInTable(tblVal) {
+      selectedTableNumber = tblVal;
+      document.getElementById('activeTableNumber').innerText = tblVal;
+      document.getElementById('activeTableTitle').innerText = tblVal;
+      showToast(`Active table updated to Table #${tblVal}`);
+      updateCartUI();
+    }
+
+    function callWaitstaff() {
+      showToast(`🔔 Waitstaff alerted for Table #${selectedTableNumber}! Arriving in 60s.`);
+    }
+
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('#beansView .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts(cat);
+    }
+
+    function renderDineIn(filter = 'all') {
+      const container = document.getElementById('dineInMenuList');
+      container.innerHTML = '';
+
+      const items = filter === 'all' 
+        ? DINE_IN_ITEMS 
+        : DINE_IN_ITEMS.filter(i => i.category === filter);
+
+      items.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'menu-item-row';
+        row.innerHTML = `
+          <div>
+            <div class="menu-item-title">
+              <span class="menu-tag-veg"></span>
+              ${item.name}
+            </div>
+            <div class="menu-item-desc">${item.desc}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="menu-item-price">₹${item.price}</div>
+            <button class="btn-add-cart" style="padding: 7px 12px; font-size: 0.78rem;" onclick="addDineInToCart('${item.id}')">
+              <span>+</span> Order
+            </button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function filterDineIn(cat, btn) {
+      document.querySelectorAll('#dineInView .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderDineIn(cat);
+    }
+
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        showToast('Please add items to your order first!');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const isDineIn = cart.some(i => i.weight === 'Dine-In');
+      const discount = appliedDiscountPercent > 0 ? Math.round(subtotal * (appliedDiscountPercent / 100)) : 0;
+      const shipping = isDineIn || (subtotal - discount) >= 999 ? 0 : 80;
+      const finalAmount = Math.max(0, subtotal - discount + shipping);
+
+      let msg = `*CRAB Coffee Roasters & Bakers — New Order Dispatch*%0A`;
+      msg += `📍 *Order Origin:* ${isDineIn ? `Table #${selectedTableNumber} (LIC Colony Cafe)` : 'Pan-India Online Bean Store'}%0A`;
+      msg += `--------------------------------%0A`;
+
+      cart.forEach((item, idx) => {
+        msg += `${idx + 1}. *${item.name}* x ${item.qty}%0A`;
+        if (item.weight !== 'Dine-In') {
+          msg += `   • Size: ${item.weight}g%0A`;
+          msg += `   • Grind: ${item.grind}%0A`;
+        }
+        msg += `   • Subtotal: ₹${item.price * item.qty}%0A`;
+      });
+
+      msg += `--------------------------------%0A`;
+      if (discount > 0) {
+        msg += `🎁 Discount (ARAKU10): -₹${discount}%0A`;
+      }
+      if (!isDineIn) {
+        msg += `📦 Shipping: ${shipping === 0 ? 'FREE' : `₹${shipping}`}%0A`;
+      }
+      msg += `💰 *Total Payable:* ₹${finalAmount}%0A%0A`;
+      msg += `Please confirm availability and dispatch!`;
+
+      const phone = '919453696969';
+      window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+    }
+
+    function openUpiModal() {
+      if (cart.length === 0) {
+        showToast('Please add items to your bag first!');
+        return;
+      }
+      document.getElementById('upiModal').classList.add('open');
+    }
+
+    function closeUpiModal() {
+      document.getElementById('upiModal').classList.remove('open');
+    }
+
+    function openCuppingModal(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (product) {
+        document.getElementById('cuppingModalTitle').innerText = product.name;
+      }
+      document.getElementById('cuppingModal').classList.add('open');
+    }
+
+    function closeCuppingModal() {
+      document.getElementById('cuppingModal').classList.remove('open');
+    }
+
+    function openMatchmakerModal() {
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('quizStep1').classList.add('active');
+      document.getElementById('matchmakerModal').classList.add('open');
+    }
+
+    function closeMatchmakerModal() {
+      document.getElementById('matchmakerModal').classList.remove('open');
+    }
+
+    let quizAnswers = {};
+
+    function nextQuizStep(val) {
+      if (!quizAnswers.step1) {
+        quizAnswers.step1 = val;
+        document.getElementById('quizStep1').classList.remove('active');
+        document.getElementById('quizStep2').classList.add('active');
+      } else {
+        quizAnswers.step2 = val;
+        document.getElementById('quizStep2').classList.remove('active');
+        document.getElementById('quizStep3').classList.add('active');
+
+        if (quizAnswers.step1 === 'espresso') {
+          document.getElementById('quizMatchedTitle').innerText = 'Water Tank Road Signature Roastery Blend';
+          document.getElementById('quizMatchedDesc').innerText = 'Medium-dark roast with notes of dark chocolate truffle and roasted almonds, perfect for milk drinks.';
+          window.matchedLotId = 'water-tank-espresso';
+        } else if (quizAnswers.step1 === 'coldbrew') {
+          document.getElementById('quizMatchedTitle').innerText = 'LIC Colony Cold Brew Steep Pouches';
+          document.getElementById('quizMatchedDesc').innerText = 'Biodegradable steep pouches with chocolate fudge and zero acidity, ideal for warm afternoons.';
+          window.matchedLotId = 'cold-brew-pouches';
+        } else {
+          document.getElementById('quizMatchedTitle').innerText = 'Araku Valley Reserve Micro-Lot #4';
+          document.getElementById('quizMatchedDesc').innerText = 'Our flagship 72h anaerobic honey natural with floral plum and wild honey notes for high-clarity brewing.';
+          window.matchedLotId = 'araku-reserve-4';
+        }
+      }
+    }
+
+    function addMatchedToCart() {
+      closeMatchmakerModal();
+      addToCart(window.matchedLotId || 'araku-reserve-4');
+    }
+
+    const BREW_CONFIGS = {
+      v60: { ratio: 15, time: '2m 45s - 3m 15s', targetSec: 180, temp: '92°C - 94°C', grind: 'Medium-Fine (Sea Salt)' },
+      aeropress: { ratio: 12, time: '1m 30s - 2m 00s', targetSec: 105, temp: '88°C - 90°C', grind: 'Fine (Table Salt)' },
+      frenchpress: { ratio: 14, time: '4m 00s', targetSec: 240, temp: '94°C - 96°C', grind: 'Coarse (Kosher Salt)' },
+      filter: { ratio: 8, time: '15m 00s (Decoction)', targetSec: 900, temp: '96°C', grind: 'Fine Traditional' },
+      coldbrew: { ratio: 6, time: '16h - 18h (Steep)', targetSec: 0, temp: 'Cold / Room Temp', grind: 'Extra Coarse' }
+    };
+
+    let currentBrewMethod = 'v60';
+    let timerInterval = null;
+    let timerSeconds = 0;
+    let isTimerRunning = false;
+
+    function selectBrewMethod(method, btn) {
+      document.querySelectorAll('.calc-method-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentBrewMethod = method;
+      calculateBrew();
+      resetTimer();
+    }
+
+    function calculateBrew() {
+      const dose = parseInt(document.getElementById('doseSlider').value, 10);
+      document.getElementById('doseValDisplay').innerText = `${dose}g`;
+
+      const cfg = BREW_CONFIGS[currentBrewMethod];
+      const water = Math.round(dose * cfg.ratio);
+
+      document.getElementById('calcWaterVal').innerText = `${water} ml`;
+      document.getElementById('calcRatioVal').innerText = `1 : ${cfg.ratio}`;
+      document.getElementById('calcTimeVal').innerText = cfg.time;
+      document.getElementById('calcTempVal').innerText = cfg.temp;
+      document.getElementById('calcGrindVal').innerText = cfg.grind;
+
+      const min = Math.floor(cfg.targetSec / 60);
+      const sec = cfg.targetSec % 60;
+      document.getElementById('timerTargetNotice').innerText = `Target: ${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('btnTimerStart');
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        btn.innerText = '▶ Resume';
+      } else {
+        isTimerRunning = true;
+        btn.innerText = '⏸ Pause';
+        timerInterval = setInterval(() => {
+          timerSeconds++;
+          const min = Math.floor(timerSeconds / 60);
+          const sec = timerSeconds % 60;
+          document.getElementById('timerClock').innerText = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+
+          const instruction = document.getElementById('timerStepInstruction');
+          if (timerSeconds < 45) {
+            instruction.innerText = 'Step 1: Bloom (Pour 50ml, swirl)';
+          } else if (timerSeconds < 105) {
+            instruction.innerText = 'Step 2: Center Spiral Pour to 160ml';
+          } else if (timerSeconds < 170) {
+            instruction.innerText = 'Step 3: Final Pour & Drawdown';
+          } else {
+            instruction.innerText = 'Step 4: Drawdown Complete · Swirl & Enjoy!';
+          }
+
+          const cfg = BREW_CONFIGS[currentBrewMethod];
+          if (cfg.targetSec > 0 && timerSeconds === cfg.targetSec) {
+            showToast('☕ Extraction Complete! Enjoy your Araku brew.');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerSeconds = 0;
+      document.getElementById('timerClock').innerText = '00:00';
+      document.getElementById('timerStepInstruction').innerText = 'Ready to Bloom';
+      document.getElementById('btnTimerStart').innerText = '▶ Start Brew';
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toastMsg');
+      toast.innerText = text;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function initRoastEmbers() {
+      const canvas = document.getElementById('roastEmbersCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const embers = [];
+      for (let i = 0; i < 24; i++) {
+        embers.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 2.0 + 0.8,
+          speedY: Math.random() * 0.4 + 0.15,
+          speedX: (Math.random() - 0.5) * 0.2,
+          opacity: Math.random() * 0.55 + 0.2,
+          color: Math.random() > 0.5 ? '200, 90, 50' : '241, 185, 71'
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        embers.forEach(e => {
+          e.y -= e.speedY;
+          e.x += e.speedX;
+          if (e.y < -10) {
+            e.y = height + 10;
+            e.x = Math.random() * width;
+          }
+          ctx.beginPath();
+          ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${e.color}, ${e.opacity})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProducts('all');
+      renderDineIn('all');
+      calculateBrew();
+      updateCartUI();
+      initRoastEmbers();
+    });
+  </script>
+</body>
+</html>

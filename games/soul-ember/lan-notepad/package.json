@@ -1,0 +1,12 @@
+{
+  "name": "lan-notepad",
+  "version": "1.0.0",
+  "description": "Real-time LAN notepad, command transmitter & file drop across laptops",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["lan", "notepad", "realtime", "clipboard", "commands"],
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS</title>
+  <meta name="description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
+  <link rel="canonical" href="https://valixis.tech/work/">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VALIXIS">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS">
+  <meta property="og:description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
+  <meta property="og:url" content="https://valixis.tech/work/">
+  <meta property="og:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="VALIXIS Official Emblem">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Technical Architecture Blueprints &amp; Systems Engineering | VALIXIS">
+  <meta name="twitter:description" content="Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.">
+  <meta name="twitter:image" content="https://valixis.tech/assets/valixis-logo-full.jpg">
+
+  <!-- Favicon Suite & Search Engine Identity Icons -->
+  <link rel="shortcut icon" href="https://valixis.tech/favicon.ico?v=20261104">
+  <link rel="icon" type="image/x-icon" href="https://valixis.tech/favicon.ico?v=20261104">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://valixis.tech/assets/favicon-48x48.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://valixis.tech/assets/favicon-96x96.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://valixis.tech/assets/favicon-32x32.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://valixis.tech/assets/favicon-16x16.png?v=20261104">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://valixis.tech/assets/apple-touch-icon.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://valixis.tech/assets/android-chrome-192x192.png?v=20261104">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://valixis.tech/assets/android-chrome-512x512.png?v=20261104">
+
+  <!-- Fonts & Shared Core Theme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/valixis-theme.css?v=20261105">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://valixis.tech/work/#webpage",
+      "url": "https://valixis.tech/work/",
+      "name": "Technical Architecture Blueprints & Systems Engineering | VALIXIS",
+      "description": "Explore deep architectural blueprints, internal platform teardowns, and engineering achievements across autonomous cognitive daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://valixis.tech/#website",
+        "url": "https://valixis.tech",
+        "name": "VALIXIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://valixis.tech/#organization",
+        "name": "VALIXIS",
+        "url": "https://valixis.tech"
+      },
+      "breadcrumb": {
+        "@id": "https://valixis.tech/work/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://valixis.tech/work/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://valixis.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Work",
+          "item": "https://valixis.tech/work/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .bp-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .bp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+    .bp-domain {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--valixis-cyan);
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .bp-metric {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-emerald);
+      font-weight: 600;
+    }
+    .bp-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      color: #FFF;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .bp-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+    .bp-spec-box {
+      background: rgba(6, 9, 14, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 22px;
+    }
+    .bp-spec-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .bp-spec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.86rem;
+      color: #E2E8F0;
+    }
+    .bp-spec-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bp-spec-list li::before {
+      content: '▹';
+      color: var(--valixis-cyan);
+      font-size: 0.75rem;
+    }
+    .bp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .bp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* Philosophy Banner */
+    .creed-banner {
+      margin-top: 70px;
+      background: linear-gradient(135deg, rgba(20, 26, 36, 0.9), rgba(13, 17, 23, 0.95));
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .creed-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--brand-gradient);
+    }
+
+    @media (max-width: 900px) {
+      .blueprint-grid { grid-template-columns: 1fr; }
+      .creed-banner { padding: 36px 24px; }
+    }
+  
+    /* WCAG 2.1 AA Accessibility & Keyboard Navigation */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid #00D9FF !important;
+      outline-offset: 3px !important;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg"></div>
+
+    <!-- Universal Navbar -->
+  <header class="navbar">
+    <div class="container nav-wrapper">
+      <a href="../" class="brand-header" title="VALIXIS — Return to Homepage">
+        <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="../about/" class="nav-link">About</a></li>
+          <li><a href="../services/" class="nav-link">Services</a></li>
+          <li><a href="../ecosystem/" class="nav-link active">Ecosystem</a></li>
+          <li><a href="../estimate/" class="nav-link">Estimate</a></li>
+          <li><a href="../leadership/" class="nav-link">Leadership</a></li>
+          <li><a href="../contact/" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-group">
+        <a href="../contact/" class="nav-cta-btn">
+          <span>Get in Touch</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line line-1"></span>
+          <span class="hamburger-line line-2"></span>
+          <span class="hamburger-line line-3"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Glassmorphic Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <ul class="mobile-nav-links">
+        <li><a href="../about/" class="mobile-nav-link">About</a></li>
+        <li><a href="../services/" class="mobile-nav-link">Services</a></li>
+        <li><a href="../ecosystem/" class="mobile-nav-link active">Ecosystem</a></li>
+        <li><a href="../estimate/" class="mobile-nav-link">Estimate</a></li>
+        <li><a href="../leadership/" class="mobile-nav-link">Leadership</a></li>
+        <li><a href="../contact/" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="mobile-drawer-cta">
+        <a href="../contact/" class="btn-primary-gradient mobile-drawer-btn">
+          <span>Get in Touch</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs -->
+  <div class="container">
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span>/</span>
+      <span style="color: var(--text-main);">Technical Work</span>
+    </nav>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-eyebrow">Engineering Blueprints &bull; Systems Architecture</div>
+      <h1 class="page-hero-title">Technical <span class="gradient-text">Work &amp; Blueprints</span></h1>
+      <p class="page-hero-subtitle">
+        Architectural breakdowns, engineering achievements, and technical blueprints engineered across autonomous AI agent daemons, real-time WebGL engines, and high-concurrency systems by VALIXIS.
+      </p>
+    </div>
+  </section>
+
+  <!-- Blueprints Grid -->
+  <main class="container" style="padding-bottom: 80px;">
+    <div class="blueprint-grid">
+
+      <!-- 1. 3D WebGL Engine -->
+      <article class="spotlight-card bp-card blueprint-card" id="webgl-engine">
+        <div class="bp-header">
+          <span class="bp-domain">Interactive Computing</span>
+          <span class="bp-metric">60 FPS Locked &bull; Zero Alpha Bleed</span>
+        </div>
+        <h2 class="bp-title">VALIXIS 3D Gyroscopic WebGL Engine</h2>
+        <p class="bp-desc">
+          High-performance interactive WebGL hero engine orchestrating multi-axis gimbal ring physics, particle field vortexes, and dynamic quaternion rotations without ambient box artifacts or GPU thermal throttling.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Additive luminous blending eliminating background rectangle artifacts.</li>
+            <li>Euler-to-Quaternion rotation interpolation for gimbal-lock prevention.</li>
+            <li>Automated requestAnimationFrame freezing on browser tab visibility loss.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Three.js r128</span>
+          <span class="bp-tag">GLSL Shaders</span>
+          <span class="bp-tag">Canvas WebGL</span>
+          <span class="bp-tag">RAF Throttling</span>
+        </div>
+      </article>
+
+      <!-- 2. VALIXIS FLOW -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">Autonomous Intelligence</span>
+          <span class="bp-metric">Sub-Second Queue Dispatch</span>
+        </div>
+        <h2 class="bp-title">VALIXIS FLOW: Autonomous Task Daemons</h2>
+        <p class="bp-desc">
+          Event-driven background orchestration engine powering sovereign AI daemons. Decomposes high-level engineering directives into structured tool-calling DAGs with isolated sandboxing and deterministic state rollback.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Reactive asynchronous event loops with priority-based concurrency controls.</li>
+            <li>Strict JSON Schema tool definition and validated output extraction.</li>
+            <li>Cryptographically protected session contexts with zero credential leaks.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Python AsyncIO</span>
+          <span class="bp-tag">Structured Function Calling</span>
+          <span class="bp-tag">Agent Daemons</span>
+          <span class="bp-tag">Task DAGs</span>
+        </div>
+      </article>
+
+      <!-- 3. VALIXIS PULSE -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">System Observability</span>
+          <span class="bp-metric">&lt; 50ms Real-Time Heartbeat</span>
+        </div>
+        <h2 class="bp-title">VALIXIS PULSE: Distributed Telemetry</h2>
+        <p class="bp-desc">
+          High-throughput distributed observability pipeline streaming live health heartbeats, memory allocations, and worker execution telemetry across multi-region services via duplex WebSocket streams.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Duplex persistent WebSocket streams with automated exponential backoff.</li>
+            <li>Row-Level Security (RLS) data isolation enforced at the PostgreSQL layer.</li>
+            <li>Time-series compression reducing wire overhead by over 70%.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">WebSockets</span>
+          <span class="bp-tag">PostgreSQL RLS</span>
+          <span class="bp-tag">Time-Series Telemetry</span>
+          <span class="bp-tag">Fleet Monitoring</span>
+        </div>
+      </article>
+
+      <!-- 4. Fitora Mobile Core -->
+      <article class="spotlight-card bp-card blueprint-card">
+        <div class="bp-header">
+          <span class="bp-domain">Mobile Systems</span>
+          <span class="bp-metric">120 FPS Native Display Smoothness</span>
+        </div>
+        <h2 class="bp-title">Fitora Mobile Engine: Biometric Telemetry</h2>
+        <p class="bp-desc">
+          Offline-first cross-platform mobile client engine designed for high-frequency sensor ingestion, biometric velocity tracking, and zero-latency cryptographic token caching.
+        </p>
+        <div class="bp-spec-box">
+          <div class="bp-spec-title">Key Architectural Highlights</div>
+          <ul class="bp-spec-list">
+            <li>Strict layered architecture separating UI, Business Logic, and Data Layer.</li>
+            <li>Offline-first local SQLite caching with conflict-free cloud replication.</li>
+            <li>Native Bluetooth Low Energy (BLE) sensor ingestion pipelines.</li>
+          </ul>
+        </div>
+        <div class="bp-tags">
+          <span class="bp-tag">Flutter / Dart</span>
+          <span class="bp-tag">Offline-First SQLite</span>
+          <span class="bp-tag">Bluetooth LE</span>
+          <span class="bp-tag">Zero Bloat</span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Creed Banner -->
+    <div class="creed-banner">
+      <div class="section-eyebrow" style="justify-content: center;">First Principles Engineering</div>
+      <h3 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px;">Sovereign Architecture Over Speculative Wrappers</h3>
+      <p style="color: var(--text-muted); max-width: 760px; margin: 0 auto 30px; font-size: 1.02rem; line-height: 1.7;">
+        VALIXIS constructs cohesive digital platforms from mathematical fundamentals. We reject fragile SaaS middleware, generic template scaffolding, and artificial complexity &mdash; engineering sovereign software designed for long-term operational resilience.
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="../estimate/" class="btn-primary-gradient">
+          <span>Scope an Architecture Build &rarr;</span>
+        </a>
+        <a href="../ecosystem/" class="btn-outline-glass">
+          <span>Explore Ecosystem Platforms</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+    <!-- Universal Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="../" class="brand-header" style="margin-bottom: 16px;">
+            <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+          </a>
+          <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
+            Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Venture</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About VALIXIS</a></li>
+            <li><a href="../leadership/">Leadership</a></li>
+            <li><a href="../ecosystem/">Ecosystem Platforms</a></li>
+            <li><a href="../projects/">Development Pipeline</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="../services/">Commercial Services</a></li>
+            <li><a href="../work/">Technical Work</a></li>
+            <li><a href="../estimate/">Scope Estimator</a></li>
+            <li><a href="../contact/">Architecture Booking</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance</h4>
+          <p style="color: var(--text-dim); font-size: 0.84rem; line-height: 1.5; margin-bottom: 10px;">
+            Founded in 2026 as an independent technology venture operating on first principles.
+          </p>
+          <a href="../contact/" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--valixis-cyan); text-decoration: none;">Direct Founder Channel &rarr;</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 VALIXIS. All rights reserved. &bull; <a href="../">valixis.tech</a> &bull; Independent Technology Venture</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lenis & Core Interaction Engine -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="../assets/js/valixis-core.js"></script>
+</body>
+</html>
