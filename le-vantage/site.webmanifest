@@ -1,0 +1,16 @@
+{
+  "name": "Lé Vantage Café Bar",
+  "short_name": "Lé Vantage",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1C1612",
+  "theme_color": "#C29B38",
+  "description": "European Vintage Café Bar & Pet-Friendly Terrace on Road 13, Jubilee Hills, Hyderabad.",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
