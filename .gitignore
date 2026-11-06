@@ -1,9 +1,24 @@
 # Environment & Secret files
 .env
-.env.local
-.env.*.local
+.env.*
 *.env
 ai_agents/.env
+
+# Uploads, Zips & Archives
+lan-notepad/uploads/
+uploads/
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Databases and backups
+*.db
+*.sqlite
+*.sqlite3
+*.bak*
+*.bak_before_cleanup
 
 # Logs and runtime caches
 *.log
@@ -24,7 +39,5 @@ desktop.ini
 scratch/
 .system_generated/
 tasks/
-
 ai_agents/
-
 auto_kill_remote_daemon.py
