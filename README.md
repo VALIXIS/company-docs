@@ -11,7 +11,7 @@ VALIXIS runs on a decoupled sovereign web architecture:
 | Subdomain | Description | Engine / Host | Source |
 | :--- | :--- | :--- | :--- |
 | **`valixis.tech`** | Flagship Corporate Portal & Services | GitHub Pages (Custom CNAME) | `VALIXIS/company-docs` |
-| **`portal.valixis.tech`** | Developer & Internal Operations Portal | Vercel (`valixis-portal.vercel.app`) | `VALIXIS/VALIXIS_PORTAL` |
+| **`portal.valixis.tech`** | Internal Operations Portal (Authenticated / Internal Only) | Vercel (`valixis-portal.vercel.app`) | `VALIXIS/VALIXIS_PORTAL` |
 | **`games.valixis.tech`** | Interactive 3D & Roguelite Gaming Arcade | Vercel / GitHub Pages | `VALIXIS/games` (`/games`) |
 
 ---
