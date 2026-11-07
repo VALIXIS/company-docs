@@ -1,8 +1,0 @@
-# robots.txt for https://valixis.tech
-# Independent Technology Venture - Founded 2026
-
-User-agent: *
-Allow: /
-
-# Canonical XML Sitemap
-Sitemap: https://valixis.tech/sitemap.xml

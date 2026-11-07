@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://valixis.tech/client-sites/le-vantage-cafe-bar/sitemap.xml
