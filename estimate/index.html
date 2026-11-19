@@ -111,7 +111,7 @@
     .est-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 5px 14px; border-radius: 999px;
-      background: rgba(0, 217, 255, 0.08); border: 1px solid rgba(0, 217, 255, 0.4);
+      background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.4);
       color: var(--valixis-cyan); font-family: var(--font-mono); font-size: 0.78rem;
       font-weight: 600; text-transform: uppercase; margin-bottom: 16px;
     }
@@ -132,7 +132,7 @@
     }
     .stepper-track-fill {
       position: absolute; top: 18px; left: 10%; height: 2px;
-      background: linear-gradient(90deg, #00D9FF, #3B82F6); z-index: 2; width: 0%;
+      background: linear-gradient(90deg, #00E5FF, #2563FF); z-index: 2; width: 0%;
       transition: width 0.4s ease;
     }
     .step-node {
@@ -141,16 +141,16 @@
     }
     .node-circle {
       width: 38px; height: 38px; border-radius: 50%;
-      background: #0D1117; border: 2px solid rgba(255, 255, 255, 0.2);
+      background: #0A0F1A; border: 2px solid rgba(255, 255, 255, 0.2);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-muted);
       transition: all 0.3s ease;
     }
     .step-node.active .node-circle {
-      border-color: #00D9FF; color: #00D9FF; box-shadow: 0 0 16px rgba(0, 217, 255, 0.45);
+      border-color: #00E5FF; color: #00E5FF; box-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
     }
     .step-node.completed .node-circle {
-      background: #00D9FF; border-color: #00D9FF; color: #000;
+      background: #00E5FF; border-color: #00E5FF; color: #000;
     }
     .node-label { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-muted); text-transform: uppercase; }
     .step-node.active .node-label { color: #FFF; font-weight: 600; }
@@ -188,8 +188,8 @@
     
     /* Selected State */
     .opt-card.selected {
-      background: rgba(0, 217, 255, 0.08); border-color: var(--valixis-cyan);
-      box-shadow: 0 4px 18px rgba(0, 217, 255, 0.25);
+      background: rgba(0, 229, 255, 0.08); border-color: var(--valixis-cyan);
+      box-shadow: 0 4px 18px rgba(0, 229, 255, 0.25);
     }
     .opt-card.selected::after {
       content: '✓'; position: absolute; top: 12px; right: 14px;
@@ -212,9 +212,9 @@
     .btn-step-prev:hover { color: #FFF; border-color: rgba(255,255,255,0.3); }
 
     .btn-step-next {
-      background: linear-gradient(135deg, #00D9FF 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, #00E5FF 0%, #2563FF 100%);
       border: none; color: #000; font-weight: 700; padding: 11px 26px; border-radius: 8px;
-      font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(0, 217, 255, 0.3);
+      font-size: 0.88rem; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(0, 229, 255, 0.3);
     }
     .btn-step-next:hover { filter: brightness(1.15); transform: translateY(-1px); }
     .btn-step-next:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(1); transform: none; }
@@ -233,7 +233,7 @@
     .res-val { font-family: var(--font-display); font-size: 1rem; color: #FFF; }
     
     .badges-flex { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 60%; }
-    .res-badge { background: rgba(0, 217, 255, 0.08); border: 1px solid rgba(0, 217, 255, 0.25); color: #00D9FF; font-family: var(--font-mono); font-size: 0.72rem; padding: 3px 8px; border-radius: 4px; }
+    .res-badge { background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.25); color: #00E5FF; font-family: var(--font-mono); font-size: 0.72rem; padding: 3px 8px; border-radius: 4px; }
 
     .approach-box {
       background: rgba(124, 58, 237, 0.06); border: 1px solid rgba(124, 58, 237, 0.25);
@@ -245,7 +245,7 @@
     /* Pricing Charter Note */
     .pricing-note {
       font-size: 0.82rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid #00D9FF; padding: 12px 16px; margin-bottom: 28px; line-height: 1.5;
+      border-left: 3px solid #00E5FF; padding: 12px 16px; margin-bottom: 28px; line-height: 1.5;
     }
 
     /* Action Buttons Row */
@@ -263,11 +263,11 @@
     .btn-copy { background: rgba(255, 255, 255, 0.06); color: #FFF; border-color: var(--border-color); }
     .btn-copy:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255,255,255,0.3); }
 
-    .btn-email { background: rgba(59, 130, 246, 0.12); color: #60A5FA; border-color: rgba(59, 130, 246, 0.35); }
-    .btn-email:hover { background: rgba(59, 130, 246, 0.22); }
+    .btn-email { background: rgba(37, 99, 255, 0.12); color: #60A5FA; border-color: rgba(37, 99, 255, 0.35); }
+    .btn-email:hover { background: rgba(37, 99, 255, 0.22); }
 
-    .btn-consult { background: rgba(0, 217, 255, 0.12); color: #00D9FF; border-color: rgba(0, 217, 255, 0.35); }
-    .btn-consult:hover { background: rgba(0, 217, 255, 0.22); }
+    .btn-consult { background: rgba(0, 229, 255, 0.12); color: #00E5FF; border-color: rgba(0, 229, 255, 0.35); }
+    .btn-consult:hover { background: rgba(0, 229, 255, 0.22); }
 
     .copy-toast {
       display: none; text-align: center; font-family: var(--font-mono);
@@ -290,7 +290,7 @@
   
     /* WCAG 2.1 AA Accessibility & Keyboard Navigation */
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-      outline: 2px solid #00D9FF !important;
+      outline: 2px solid #00E5FF !important;
       outline-offset: 3px !important;
     }
   </style>
@@ -320,10 +320,6 @@
       </nav>
 
       <div class="nav-right-group">
-        <a href="../contact/" class="nav-cta-btn">
-          <span>Get in Touch</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
 
         <!-- Mobile Menu Toggle Button (Hamburger) -->
         <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
@@ -572,7 +568,7 @@
             </div>
             <div class="result-row">
               <span class="res-label">Indicative Complexity:</span>
-              <span class="res-val" id="resComplexity" style="color:#00D9FF;">Moderate Complexity</span>
+              <span class="res-val" id="resComplexity" style="color:#00E5FF;">Moderate Complexity</span>
             </div>
             <div class="result-row">
               <span class="res-label">Target Delivery Timeline:</span>
@@ -587,7 +583,7 @@
             </p>
           </div>
 
-          <div class="pricing-note" style="border-left: 3px solid var(--valixis-cyan); background: rgba(0, 217, 255, 0.05); padding: 18px 20px; border-radius: 8px; margin: 24px 0; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
+          <div class="pricing-note" style="border-left: 3px solid var(--valixis-cyan); background: rgba(0, 229, 255, 0.05); padding: 18px 20px; border-radius: 8px; margin: 24px 0; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
             <strong style="color: var(--valixis-cyan); display: block; margin-bottom: 6px; font-family: var(--font-mono); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.08em;">Official Non-Binding Scoping Notice</strong>
             All estimates, complexity indexes, sprint schedules, and architectural recommendations generated by this calculator are illustrative scoping models intended for preliminary technical discovery. They do not constitute a binding legal contract, formal quotation, or fixed-price commitment. Final architecture specifications, milestone deliverables, and commercials are formalized exclusively upon technical requirements review and bilateral agreement.
           </div>
@@ -632,7 +628,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <a href="../" class="brand-header" style="margin-bottom: 16px;">
-            <img src="../assets/valixis-horizontal-lockup.png?v=6" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+            <img src="../assets/brand_archive/valixis_horizontal_lockup_hd.png?v=brand" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
           </a>
           <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; max-width: 320px;">
             Independent technology venture engineering at the frontier of Artificial Intelligence, resilient software infrastructure, and interactive computing.

@@ -18,7 +18,7 @@
   });
 
   // 1. INJECT & INITIALIZE DUAL CYBER CURSOR
-  if (isFinePointer && !prefersReducedMotion) {
+  if (isFinePointer && !prefersReducedMotion && document.body.dataset.customCursor === 'true') {
     let cursorDot = document.getElementById('cursorDot');
     let cursorRing = document.getElementById('cursorRing');
 
@@ -230,6 +230,7 @@
 
   // 5. SCROLL DEPTH & REVEAL ANIMATIONS (LIGHT & HARDWARE-ACCELERATED)
   function initScrollReveals() {
+    document.querySelectorAll('#divisions .section-header, #products .section-header, #mission .section-header, #leadership .section-header').forEach(el => el.classList.add('reveal-on-scroll'));
     const revealEls = document.querySelectorAll('.reveal-on-scroll');
     if (!revealEls.length) return;
 
@@ -254,16 +255,56 @@
     revealEls.forEach(el => observer.observe(el));
   }
 
+  function initContactDock() {
+    if (document.querySelector('.contact-dock')) return;
+    const dock = document.createElement('nav');
+    dock.className = 'contact-dock';
+    dock.setAttribute('aria-label', 'Contact VALIXIS');
+    dock.innerHTML = '<a href="tel:+919603416707" data-contact-action="call" data-contact-location="dock" aria-label="Call VALIXIS at +91 96034 16707"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 2l-1.3 1.3a16 16 0 0 0 6.5 6.5l1.3-1.3a2 2 0 0 1 2-.6l2.8.5a2 2 0 0 1 1.7 2Z"/></svg>Call us</a><a href="https://wa.me/919603416707?text=Hello%20VALIXIS%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project." target="_blank" rel="noopener noreferrer" data-contact-action="whatsapp" data-contact-location="dock" aria-label="Message VALIXIS on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 9c.3 2.7 2.1 4.5 5 5"/></svg>WhatsApp</a>';
+    document.body.appendChild(dock);
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('[data-contact-action]');
+      if (!link || typeof window.gtag !== 'function') return;
+      window.gtag('event', link.dataset.contactAction === 'call' ? 'click_to_call' : 'whatsapp_start', {
+        event_category: 'lead',
+        event_label: link.dataset.contactLocation || window.location.pathname
+      });
+    });
+  }
+
+  function initServiceWorld() {
+    if (!document.querySelector('.service-hero, .services-grid')) return;
+    if (document.querySelector('.services-grid')) document.body.classList.add('services-overview');
+    const coreScript = document.querySelector('script[src*="valixis-core.js"]');
+    if (!coreScript) return;
+    const sceneUrl = new URL('valixis-scenes.js', coreScript.src).href;
+    const loadScene = () => {
+      const script = document.createElement('script');
+      script.src = sceneUrl;
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+    if (window.THREE) { loadScene(); return; }
+    const three = document.createElement('script');
+    three.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    three.onload = loadScene;
+    document.head.appendChild(three);
+  }
+
   // Run on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initSpotlights();
       initMobileNav();
       initScrollReveals();
+      initContactDock();
+      initServiceWorld();
     });
   } else {
     initSpotlights();
     initMobileNav();
     initScrollReveals();
+    initContactDock();
+    initServiceWorld();
   }
 })();
