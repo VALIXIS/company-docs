@@ -13,6 +13,16 @@
   const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let isPageActive = !document.hidden;
 
+  function trackLeadEvent(name, params = {}) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', name, {
+      event_category: 'lead',
+      page_path: window.location.pathname,
+      ...params
+    });
+  }
+  window.VALIXIS_TRACK_EVENT = trackLeadEvent;
+
   document.addEventListener('visibilitychange', () => {
     isPageActive = !document.hidden;
   });
@@ -265,11 +275,35 @@
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-contact-action]');
       if (!link || typeof window.gtag !== 'function') return;
-      window.gtag('event', link.dataset.contactAction === 'call' ? 'click_to_call' : 'whatsapp_start', {
-        event_category: 'lead',
+      trackLeadEvent(link.dataset.contactAction === 'call' ? 'click_to_call' : 'whatsapp_start', {
         event_label: link.dataset.contactLocation || window.location.pathname
       });
     });
+  }
+
+  function initLeadTelemetry() {
+    document.addEventListener('click', (event) => {
+      const leadAction = event.target.closest && event.target.closest('[data-lead-action]');
+      if (leadAction) {
+        trackLeadEvent(leadAction.dataset.leadAction, { event_label: leadAction.getAttribute('href') || window.location.pathname });
+        return;
+      }
+      const link = event.target.closest && event.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      if (href.includes('estimate')) trackLeadEvent('estimator_open', { event_label: href });
+      else if (href.includes('contact') || href.includes('#booking') || href.includes('#inquiry-form')) trackLeadEvent('contact_path_open', { event_label: href });
+    }, { passive: true });
+
+    const form = document.querySelector('#projectInquiryForm');
+    if (form) {
+      let started = false;
+      form.addEventListener('focusin', () => {
+        if (started) return;
+        started = true;
+        trackLeadEvent('contact_form_start');
+      });
+    }
   }
 
   function initServiceWorld() {
@@ -298,6 +332,7 @@
       initMobileNav();
       initScrollReveals();
       initContactDock();
+      initLeadTelemetry();
       initServiceWorld();
     });
   } else {
@@ -305,6 +340,7 @@
     initMobileNav();
     initScrollReveals();
     initContactDock();
+    initLeadTelemetry();
     initServiceWorld();
   }
 })();

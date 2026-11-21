@@ -255,7 +255,7 @@
 
       <a href="#hero" class="brand-header" title="VALIXIS Technologies">
 
-        <img src="assets/valixis-horizontal-lockup.png?v=5" alt="VALIXIS" class="brand-lockup-img" width="836" height="120">
+        <img src="assets/valixis-horizontal-lockup.png?v=5" alt="VALIXIS" class="brand-lockup-img" width="836" height="120" fetchpriority="high">
 
       </a>
 
@@ -1093,6 +1093,34 @@
 
   <!-- Global Contact & Inquiries -->
 
+  <section class="section engagement-path" id="how-we-work" aria-labelledby="engagement-title">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">A clear next step</span>
+        <h2 class="section-title" id="engagement-title">From first brief to useful momentum.</h2>
+        <p class="section-desc">A focused path for turning an ambitious idea into a digital system your team can actually use.</p>
+      </div>
+      <div class="engagement-grid">
+        <article class="engagement-step reveal-on-scroll">
+          <span class="engagement-index">01</span>
+          <h3>Share the challenge</h3>
+          <p>Tell us what is not working, what you want to launch, or where your next opportunity sits.</p>
+        </article>
+        <article class="engagement-step reveal-on-scroll">
+          <span class="engagement-index">02</span>
+          <h3>Shape the direction</h3>
+          <p>We clarify scope, audience, technical constraints, and the smallest useful first release.</p>
+        </article>
+        <article class="engagement-step reveal-on-scroll">
+          <span class="engagement-index">03</span>
+          <h3>Build with intent</h3>
+          <p>You get a practical delivery path with the design, engineering, and polish needed to move forward.</p>
+        </article>
+      </div>
+      <a class="engagement-cta btn-primary-gradient" href="contact/#inquiry-form" data-lead-action="engagement_cta">Start a project conversation <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
   <section class="section" id="contact">
 
     <div class="container">
@@ -1208,9 +1236,20 @@
 
        ========================================================================== -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script>
+    // Let the document paint first; hydrate the 3D stage once its optional dependency arrives.
+    (function waitForValixis3D(attempt = 0) {
+      if (window.THREE) {
+        document.dispatchEvent(new Event('valixis:deps-ready'));
+        return;
+      }
+      if (attempt > 200) return;
+      window.setTimeout(() => waitForValixis3D(attempt + 1), 40);
+    })();
+  </script>
   <script>
 
     // 1. CUSTOM CURSOR PHYSICS (EXCLUSIVE CUSTOM CYBER CURSOR)
@@ -1296,7 +1335,7 @@
     var targetGlobalScrollY = 0;
     var update3DStageForDivision = null;
 
-    (function initValixis3DLogo() {
+    function initValixis3DLogo() {
       const container = document.querySelector('.hero-3d-viewport');
       const canvas = document.getElementById('hero-canvas');
       if (!canvas || !container || typeof THREE === 'undefined') return;
@@ -1621,7 +1660,9 @@
       animate();
 
       window.addEventListener('resize', updateViewport);
-    })();
+    }
+    if (window.THREE) initValixis3DLogo();
+    else document.addEventListener('valixis:deps-ready', initValixis3DLogo, { once: true });
 
     // Synchronize Division Tab Switching with 3D Stage
     function switchTab(tabId, btn) {

@@ -121,7 +121,7 @@ async function run() {
   const pages = [
     { name: 'Homepage', path: '/' },
     { name: 'Interactive Estimator', path: '/estimate/' },
-    { name: 'Featured Work Portfolio', path: '/work/' },
+    { name: 'Client Showcase', path: '/client-sites/' },
     { name: 'Consultation & Contact', path: '/contact/' },
     { name: 'Ecosystem & Video', path: '/ecosystem/' }
   ];
