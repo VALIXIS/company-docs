@@ -1010,7 +1010,7 @@ LEADERSHIP
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.leader-avatar-box.jyothsna {
+.leader-avatar-box.exec-alt {
   background: linear-gradient(135deg, var(--valixis-purple) 0%, var(--valixis-magenta) 100%);
   box-shadow: 0 0 25px rgba(217, 70, 239, 0.35);
 }
@@ -1020,7 +1020,7 @@ LEADERSHIP
   box-shadow: 0 0 35px rgba(0, 229, 255, 0.6);
 }
 
-.leader-card:hover .leader-avatar-box.jyothsna {
+.leader-card:hover .leader-avatar-box.exec-alt {
   box-shadow: 0 0 35px rgba(217, 70, 239, 0.6);
 }
 

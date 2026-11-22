@@ -21,8 +21,7 @@ Featuring **Soul Ember: Survivors** — an action roguelite dungeon crawler with
 
 ---
 
-## 🏢 Founders & Leadership
-- **Subhash Annam** — Founder & Chief Technology Architect
-- **Jyothsna Sri** — Co-Founder & Executive Director
+## 🏢 Independent Technology Venture
+Operating on sovereign first-principles architecture, AI engineering, and next-generation interactive systems.
 
 &copy; 2026 VALIXIS Technologies. All rights reserved.

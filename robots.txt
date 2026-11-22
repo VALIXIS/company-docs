@@ -2,6 +2,7 @@
 # Independent Technology Venture - Founded 2026
 
 User-agent: *
+Disallow: /leadership/
 Allow: /
 
 # Canonical XML Sitemap

@@ -1,7 +1,7 @@
 # Client Showcase Auto-Sync Rule
 
 ## Context & Requirement
-The private client showcase directory at `http://valixis.tech/showcase/` (hosted in the `VALIXIS/company-docs` repository under `/showcase`) is the private sales and client demonstration portal used by the founder (Subhash Annam) and co-founder.
+The private client showcase directory at `http://valixis.tech/showcase/` (hosted in the `VALIXIS/company-docs` repository under `/showcase`) is the private sales and client demonstration portal used by the team.
 
 Whenever ANY client demo website is created, edited, updated, or enhanced (such as Roastery Coffee House, Subko Coffee, Blue Tokai, Novel Hotel, or any new restaurant, cafe, or business client demo):
 

@@ -270,12 +270,12 @@
     const dock = document.createElement('nav');
     dock.className = 'contact-dock';
     dock.setAttribute('aria-label', 'Contact VALIXIS');
-    dock.innerHTML = '<a href="tel:+919603416707" data-contact-action="call" data-contact-location="dock" aria-label="Call VALIXIS at +91 96034 16707"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 2l-1.3 1.3a16 16 0 0 0 6.5 6.5l1.3-1.3a2 2 0 0 1 2-.6l2.8.5a2 2 0 0 1 1.7 2Z"/></svg>Call us</a><a href="https://wa.me/919603416707?text=Hello%20VALIXIS%2C%20I%27d%20like%20to%20discuss%20a%20digital%20project." target="_blank" rel="noopener noreferrer" data-contact-action="whatsapp" data-contact-location="dock" aria-label="Message VALIXIS on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 9c.3 2.7 2.1 4.5 5 5"/></svg>WhatsApp</a>';
+    dock.innerHTML = '<a href="/contact/" data-contact-action="contact" data-contact-location="dock" aria-label="Contact VALIXIS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>Contact</a><a href="/estimate/" data-contact-action="estimate" data-contact-location="dock" aria-label="Estimate Project Scope"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Estimate</a>';
     document.body.appendChild(dock);
     document.addEventListener('click', (event) => {
       const link = event.target.closest('[data-contact-action]');
       if (!link || typeof window.gtag !== 'function') return;
-      trackLeadEvent(link.dataset.contactAction === 'call' ? 'click_to_call' : 'whatsapp_start', {
+      trackLeadEvent(link.dataset.contactAction, {
         event_label: link.dataset.contactLocation || window.location.pathname
       });
     });

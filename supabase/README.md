@@ -69,4 +69,4 @@ Replace `<YOUR_PROJECT_ID>` with your live Supabase project ID.
 ## 3. Security Highlights
 - **Zero Exposed Secrets:** Service role keys and email dispatch API keys reside exclusively in Supabase environment secrets.
 - **Bot Mitigation:** Uses a dual defense strategy — a hidden CSS honeypot trap (`valixis_hp_security`) plus a minimum submission time velocity threshold (>1.5s).
-- **Graceful Client Fallback:** If the visitor is offline or Supabase backend is undergoing maintenance, the form automatically pre-packages the inquiry for 1-click WhatsApp (`+91 9603416707`) and Email (`official.valixis@gmail.com`) dispatch. No customer inquiry is ever dropped.
+- **Graceful Client Fallback:** If the visitor is offline or Supabase backend is undergoing maintenance, the form automatically pre-packages the inquiry for 1-click Email (`official.valixis@gmail.com`) dispatch. No customer inquiry is ever dropped.
