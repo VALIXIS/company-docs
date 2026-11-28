@@ -1559,7 +1559,8 @@ html, body {
 }
 
 .mobile-nav-drawer {
-  display: none;
+  display: flex;
+  visibility: hidden;
   position: absolute;
   top: 100%;
   left: 0;
@@ -1575,13 +1576,20 @@ html, body {
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
 }
 
 .mobile-nav-drawer.open {
+  visibility: visible;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+@media (min-width: 1025px) {
+  .mobile-nav-drawer {
+    display: none !important;
+  }
 }
 
 .mobile-nav-links {

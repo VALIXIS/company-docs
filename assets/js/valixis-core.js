@@ -138,11 +138,13 @@
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
         if (targetId && targetId !== '#') {
-          const targetEl = document.querySelector(targetId);
-          if (targetEl) {
-            e.preventDefault();
-            lenis.scrollTo(targetEl, { offset: -80 });
-          }
+          try {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              lenis.scrollTo(targetEl, { offset: -80 });
+            }
+          } catch (_) {}
         }
       });
     });

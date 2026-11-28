@@ -6,11 +6,13 @@ import xml.etree.ElementTree as ET
 PAGES = [
     'index.html',
     'about/index.html',
-    'leadership/index.html',
-    'leadership/subhash-annam/index.html',
-    'leadership/jyothsna-sri/index.html',
+    'services/index.html',
+    'services/ai-automation/index.html',
+    'services/software-mobile/index.html',
+    'services/web-platforms/index.html',
+    'services/3d-gaming-interactive/index.html',
     'ecosystem/index.html',
-    'projects/index.html',
+    'estimate/index.html',
     'contact/index.html'
 ]
 

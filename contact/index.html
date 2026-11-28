@@ -703,19 +703,19 @@
 
         <!-- Privacy Notice -->
         <div class="privacy-notice">
-          <strong>Before you send:</strong> Review your message and leave out confidential details. Your information opens in WhatsApp or your email app only after you choose a contact option below.
+          <strong>Before you send:</strong> Review your message and leave out confidential details. Your inquiry will open formatted in your email client ready to send.
         </div>
 
         <!-- Form Actions -->
         <div class="form-actions">
           <button type="submit" id="submitBtn" class="btn-submit">
             <span class="submit-spinner"></span>
-<span id="submitBtnText">Prepare WhatsApp or Email Message</span>
+            <span id="submitBtnText">Prepare Project Inquiry</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
 
           <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim);">
-            You will review and send the message in your chosen app.
+            You will review and send the message in your email client.
           </div>
         </div>
 
@@ -982,10 +982,10 @@
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.classList.remove('loading');
-        submitBtnText.textContent = 'Prepare WhatsApp or Email Message';
+        submitBtnText.textContent = 'Prepare Project Inquiry';
         showStandbyFallback(
           payload,
-          'Your message is ready. Choose WhatsApp or email below, then send it from that app:'
+          'Your project message is formatted and ready. Click below to launch your email client to dispatch to our engineering desk:'
         );
       }, 400);
     }

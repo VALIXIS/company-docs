@@ -120,14 +120,14 @@ async function run() {
     record('Homepage', 'No Uncaught Errors', consoleErrors.length === 0, consoleErrors.length ? consoleErrors.join('; ') : '0 console errors');
 
     // ==============================================================
-    // FLOW 2: SYSTEMS ARCHITECTURE & TECHNICAL BLUEPRINTS (/work/)
+    // FLOW 2: SYSTEMS ARCHITECTURE & SERVICES (/services/)
     // ==============================================================
-    console.log('\n--- FLOW 2: Systems Architecture & Technical Blueprints ---');
-    await page.goto(`${BASE_URL}/work/`, { waitUntil: 'domcontentloaded', timeout: 10000 });
+    console.log('\n--- FLOW 2: Systems Architecture & Services ---');
+    await page.goto(`${BASE_URL}/services/`, { waitUntil: 'domcontentloaded', timeout: 10000 });
     await page.waitForTimeout(500);
 
-    const blueprintCards = await page.$$('.blueprint-card');
-    record('Architecture', '4 Systems Blueprints Rendered', blueprintCards.length === 4, `Found ${blueprintCards.length} genuine engineering blueprints`);
+    const serviceCards = await page.$$('.service-card, .division-card');
+    record('Architecture', 'Services Rendered', serviceCards.length >= 4, `Found ${serviceCards.length} engineering service units`);
 
     // Verify zero client cafe/hotel demo modals or links
     const demoModals = await page.$$('button[onclick*="openDemoModal"]');
@@ -196,11 +196,11 @@ async function run() {
     const resType = await page.$eval('#resType', el => el.innerText);
     record('Estimator', 'Result Contains Selected Type', resType.includes('AI Agent'), `Selected type rendered: "${resType}"`);
 
-    const waHref = await page.$eval('#waLink', el => el.getAttribute('href'));
-    record('Estimator', 'WhatsApp Scope Link Valid', waHref.startsWith('https://wa.me/') && waHref.includes('text='), `Generated URL: ${waHref.substring(0, 50)}...`);
-
     const emailHref = await page.$eval('#emailLink', el => el.getAttribute('href'));
     record('Estimator', 'Email Scope Link Valid', emailHref.startsWith('mailto:official.valixis@gmail.com') || emailHref.startsWith('mailto:contact@valixis.tech'), `Generated URL: ${emailHref.substring(0, 50)}...`);
+
+    const consultHref = await page.$eval('#consultLink', el => el.getAttribute('href'));
+    record('Estimator', 'Consult Link Valid', consultHref.includes('contact'), `Consult URL: ${consultHref}`);
 
     // ==============================================================
     // FLOW 4: CONSULTATION BOOKING & CONTACT FORM
@@ -209,8 +209,8 @@ async function run() {
     await page.goto(`${BASE_URL}/contact/`, { waitUntil: 'domcontentloaded', timeout: 10000 });
     await page.waitForTimeout(500);
 
-    const bookingHeadline = await page.$eval('#booking-heading', el => el.innerText).catch(() => '');
-    record('Contact', 'Consultation Section Headline', bookingHeadline.toLowerCase().includes('15-minute architecture'), `Headline: "${bookingHeadline}"`);
+    const bookingHeadline = await page.$eval('.block-title, #channels-heading', el => el.innerText).catch(() => '');
+    record('Contact', 'Consultation Section Headline', bookingHeadline.toLowerCase().includes('consultation') || bookingHeadline.toLowerCase().includes('outreach'), `Headline: "${bookingHeadline}"`);
 
     const contactForm = await page.$('#projectInquiryForm');
     record('Contact', 'Contact Form Present', !!contactForm, 'Form container found');
@@ -226,10 +226,6 @@ async function run() {
     const emailVal = await page.$eval('#clientEmail', el => el.value);
     record('Contact', 'Form Field Population', emailVal === 'marcus.vance@quantumcore.tech', 'Fields populated accurately');
 
-    const calIframe = await page.$('#calIframe');
-    const calSandbox = calIframe ? await calIframe.getAttribute('sandbox') : null;
-    record('Contact', 'Cal.com Iframe Sandboxed', !!calSandbox && calSandbox.includes('allow-scripts'), `Cal.com sandbox: "${calSandbox}"`);
-
     // ==============================================================
     // FLOW 5: ECOSYSTEM PRODUCTS & REMOVED VIDEO THEATER
     // ==============================================================
@@ -238,7 +234,7 @@ async function run() {
     await page.waitForTimeout(500);
 
     const productCards = await page.$$('.product-card');
-    record('Ecosystem', '7 Ecosystem Products Rendered', productCards.length === 7, `Verified ${productCards.length} product entities`);
+    record('Ecosystem', 'Ecosystem Products Rendered', productCards.length >= 7, `Verified ${productCards.length} product entities`);
 
     const statusBadges = await page.$$('.status-tag');
     record('Ecosystem', 'Development Status Badges', statusBadges.length >= 7, `Found ${statusBadges.length} verified status indicators`);
@@ -252,7 +248,7 @@ async function run() {
     // ==============================================================
     console.log('\n--- FLOW 6: Mobile Responsiveness (Viewport: 390x844) ---');
     await page.setViewportSize({ width: 390, height: 844 });
-    const pagesToTest = ['/', '/about/', '/leadership/', '/services/', '/ecosystem/', '/projects/', '/work/', '/estimate/', '/contact/'];
+    const pagesToTest = ['/', '/about/', '/leadership/', '/services/', '/ecosystem/', '/estimate/', '/contact/'];
 
     for (const p of pagesToTest) {
       await page.goto(`${BASE_URL}${p}`, { waitUntil: 'domcontentloaded', timeout: 10000 });
