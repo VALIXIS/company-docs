@@ -242,7 +242,27 @@
 
   // 5. SCROLL DEPTH & REVEAL ANIMATIONS (LIGHT & HARDWARE-ACCELERATED)
   function initScrollReveals() {
-    document.querySelectorAll('#divisions .section-header, #products .section-header, #mission .section-header, #leadership .section-header').forEach(el => el.classList.add('reveal-on-scroll'));
+    const revealSelectors = [
+      '.section-header',
+      '.spotlight-card',
+      '.new-offer-card',
+      '.new-offer-heading',
+      '.service-card',
+      '.product-card',
+      '.mv-card',
+      '.engagement-step',
+      '.opt-card',
+      '.bp-card',
+      '.val-card',
+      '.bento-card',
+      '.faq-item'
+    ];
+    document.querySelectorAll(revealSelectors.join(', ')).forEach(el => {
+      if (!el.classList.contains('reveal-on-scroll')) {
+        el.classList.add('reveal-on-scroll');
+      }
+    });
+
     const revealEls = document.querySelectorAll('.reveal-on-scroll');
     if (!revealEls.length) return;
 
@@ -260,8 +280,8 @@
       });
     }, {
       root: null,
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealEls.forEach(el => observer.observe(el));
@@ -322,8 +342,15 @@
     };
     if (window.THREE) { loadScene(); return; }
     const three = document.createElement('script');
-    three.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    three.src = new URL('vendor/three.min.js', coreScript.src).href;
     three.onload = loadScene;
+    three.onerror = () => {
+      // Fallback to CDN if local asset cannot be retrieved
+      const fallbackThree = document.createElement('script');
+      fallbackThree.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      fallbackThree.onload = loadScene;
+      document.head.appendChild(fallbackThree);
+    };
     document.head.appendChild(three);
   }
 

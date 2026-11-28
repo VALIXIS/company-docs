@@ -187,11 +187,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Three.js for 3D Valixis Logo Core -->
-
-  <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-  <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-  <link rel="preload" as="script" href="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js">
+  <!-- Core 3D & Smooth Motion Engines (Local First) -->
+  <link rel="preload" as="script" href="assets/js/vendor/three.min.js">
+  <link rel="preload" as="script" href="assets/js/vendor/gsap.min.js">
+  <link rel="preload" as="script" href="assets/js/vendor/lenis.min.js">
 
   <link rel="stylesheet" href="assets/css/valixis-theme.css?v=20261105">
 
@@ -1118,11 +1117,11 @@
 
        ========================================================================== -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="assets/js/vendor/three.min.js" defer></script>
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/lenis.min.js" defer></script>
   <script>
-    // Let the document paint first; hydrate the 3D stage once its optional dependency arrives.
+    // Let the document paint first; hydrate the 3D stage once its dependencies arrive.
     (function waitForValixis3D(attempt = 0) {
       if (window.THREE) {
         document.dispatchEvent(new Event('valixis:deps-ready'));
@@ -1266,7 +1265,6 @@
       // Razor-Sharp High-Res V Monolith Texture
       const textureLoader = new THREE.TextureLoader();
       textureLoader.load('assets/valixis-logo-transparent.png?v=7', (texture) => {
-        container.classList.add('texture-ready');
         texture.generateMipmaps = true;
         texture.minFilter = THREE.LinearMipmapLinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -1298,8 +1296,14 @@
         vMeshBack.rotation.y = Math.PI;
         vMeshBack.position.z = -0.04;
         vGroup.add(vMeshBack);
+
+        // Immediate paint to ensure WebGL canvas displays the emblem before fading the fallback
+        renderer.render(scene, camera);
+        requestAnimationFrame(() => {
+          container.classList.add('texture-ready');
+        });
       }, undefined, () => {
-        // Keep the rotating CSS fallback visible when opened directly from disk.
+        // Keep the rotating CSS fallback visible if offline or disk access
         container.classList.add('texture-fallback');
       });
 
@@ -1464,16 +1468,58 @@
         }
       };
 
-      // F. Viewport Intersection Observer (0% GPU drain when off-screen)
+      // F. Viewport Intersection Observer & Self-Healing Loop Controls
       let isHeroVisible = true;
+      let isLoopRunning = false;
+      let rafId = null;
+
+      function startAnimate() {
+        if (isLoopRunning) return;
+        isLoopRunning = true;
+        rafId = requestAnimationFrame(animate);
+      }
+
+      function stopAnimate() {
+        isLoopRunning = false;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             isHeroVisible = entry.isIntersecting;
+            if (isHeroVisible && isPageActive) {
+              startAnimate();
+            } else {
+              stopAnimate();
+            }
           });
         }, { threshold: 0.05 });
         observer.observe(container);
       }
+
+      document.addEventListener('visibilitychange', () => {
+        isPageActive = !document.hidden;
+        if (isPageActive && isHeroVisible) {
+          startAnimate();
+        } else {
+          stopAnimate();
+        }
+      });
+
+      // Bind scroll updates to 3D Scrollytelling
+      targetGlobalScrollY = window.scrollY || 0;
+      globalScrollY = targetGlobalScrollY;
+
+      window.addEventListener('scroll', () => {
+        targetGlobalScrollY = window.scrollY || 0;
+        if (!isLoopRunning && isHeroVisible && isPageActive) {
+          startAnimate();
+        }
+      }, { passive: true });
 
       // G. Render Loop
       const clock = new THREE.Clock();
@@ -1481,10 +1527,14 @@
 
       function animate() {
         if (!isPageActive || !isHeroVisible) {
-          setTimeout(() => { if (isPageActive && isHeroVisible) requestAnimationFrame(animate); }, 250);
+          isLoopRunning = false;
           return;
         }
-        if (!prefersReducedMotion) requestAnimationFrame(animate);
+        if (!prefersReducedMotion) {
+          rafId = requestAnimationFrame(animate);
+        } else {
+          isLoopRunning = false;
+        }
 
         const elapsedTime = clock.getElapsedTime();
 
@@ -1539,12 +1589,23 @@
 
         renderer.render(scene, camera);
       }
-      animate();
+      startAnimate();
 
       window.addEventListener('resize', updateViewport);
     }
-    if (window.THREE) initValixis3DLogo();
-    else document.addEventListener('valixis:deps-ready', initValixis3DLogo, { once: true });
+
+    function tryInitValixisLogo() {
+      if (window.THREE && typeof initValixis3DLogo === 'function') {
+        initValixis3DLogo();
+        return true;
+      }
+      return false;
+    }
+    if (!tryInitValixisLogo()) {
+      document.addEventListener('valixis:deps-ready', tryInitValixisLogo, { once: true });
+      window.addEventListener('DOMContentLoaded', tryInitValixisLogo, { once: true });
+      window.addEventListener('load', tryInitValixisLogo, { once: true });
+    }
 
     // Synchronize Division Tab Switching with 3D Stage
     function switchTab(tabId, btn) {

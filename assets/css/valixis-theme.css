@@ -492,9 +492,10 @@ HERO SECTION WITH BRAND DISPLAY
   filter: drop-shadow(0 0 28px rgba(0, 229, 255, .3));
   animation: fallback-v-orbit 7s ease-in-out infinite;
   pointer-events: none;
-  transition: opacity .45s ease;
+  transition: opacity .5s ease;
 }
-.hero-3d-viewport.texture-ready .hero-v-fallback { opacity: 0; }
+.hero-3d-viewport.texture-ready .hero-v-fallback { opacity: 0; pointer-events: none; }
+.hero-3d-viewport.texture-fallback .hero-v-fallback { opacity: .82 !important; }
 @keyframes fallback-v-orbit {
   0%, 100% { transform: perspective(700px) rotateY(-10deg) rotateZ(-2deg) translateY(0); }
   50% { transform: perspective(700px) rotateY(14deg) rotateZ(2deg) translateY(-10px); }
@@ -1899,16 +1900,43 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   margin: 0;
 }
 
-/* Light Scroll Reveal (Hardware-Accelerated) */
+/* Light Scroll Reveal (Hardware-Accelerated) & Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Cascading stagger delays for grid children */
+.spotlight-grid > .reveal-on-scroll:nth-child(2),
+.new-offer-grid > .reveal-on-scroll:nth-child(2),
+.services-grid > .reveal-on-scroll:nth-child(2),
+.products-grid > .reveal-on-scroll:nth-child(2),
+.engagement-grid > .reveal-on-scroll:nth-child(2) {
+  transition-delay: 0.08s;
+}
+.spotlight-grid > .reveal-on-scroll:nth-child(3),
+.new-offer-grid > .reveal-on-scroll:nth-child(3),
+.services-grid > .reveal-on-scroll:nth-child(3),
+.products-grid > .reveal-on-scroll:nth-child(3),
+.engagement-grid > .reveal-on-scroll:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.spotlight-grid > .reveal-on-scroll:nth-child(4),
+.new-offer-grid > .reveal-on-scroll:nth-child(4),
+.services-grid > .reveal-on-scroll:nth-child(4),
+.products-grid > .reveal-on-scroll:nth-child(4),
+.engagement-grid > .reveal-on-scroll:nth-child(4) {
+  transition-delay: 0.24s;
 }
 
 /* ==========================================================================
