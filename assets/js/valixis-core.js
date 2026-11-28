@@ -112,42 +112,47 @@
     });
   }
 
-  // 2. LENIS SMOOTH SCROLLING
+  // 2. LENIS SMOOTH SCROLLING (Desktop smooth momentum, native touch on mobile)
   if (typeof window.Lenis !== 'undefined' && !prefersReducedMotion) {
-    const lenis = new window.Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1.0,
-      smoothTouch: false, // native momentum on touch screens
-      touchMultiplier: 2.0,
-      infinite: false
-    });
+    try {
+      const lenis = new window.Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+        infinite: false
+      });
+      window.lenis = lenis;
 
-    function lenisRaf(time) {
-      if (isPageActive) {
-        lenis.raf(time);
+      function lenisRaf(time) {
+        if (isPageActive) {
+          lenis.raf(time);
+        }
+        requestAnimationFrame(lenisRaf);
       }
       requestAnimationFrame(lenisRaf);
-    }
-    requestAnimationFrame(lenisRaf);
 
-    // Anchor smooth jump
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId && targetId !== '#') {
-          try {
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-              e.preventDefault();
-              lenis.scrollTo(targetEl, { offset: -80 });
-            }
-          } catch (_) {}
-        }
+      // Anchor smooth jump
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            try {
+              const targetEl = document.querySelector(targetId);
+              if (targetEl) {
+                e.preventDefault();
+                lenis.scrollTo(targetEl, { offset: -80 });
+              }
+            } catch (_) {}
+          }
+        });
       });
-    });
+    } catch (e) {
+      console.warn('Lenis smooth scroll fallback to native:', e);
+    }
   }
 
   // 3. SPOTLIGHT CARDS MOUSE TRACKING & 3D BENTO TILT
@@ -266,6 +271,14 @@
     const revealEls = document.querySelectorAll('.reveal-on-scroll');
     if (!revealEls.length) return;
 
+    // Immediately reveal anything already on-screen or within initial view
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 150) {
+        el.classList.add('is-revealed');
+      }
+    });
+
     if (prefersReducedMotion || !('IntersectionObserver' in window)) {
       revealEls.forEach(el => el.classList.add('is-revealed'));
       return;
@@ -280,11 +293,20 @@
       });
     }, {
       root: null,
-      threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.01,
+      rootMargin: '0px 0px 150px 0px'
     });
 
-    revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(el => {
+      if (!el.classList.contains('is-revealed')) {
+        observer.observe(el);
+      }
+    });
+
+    // Safety fallback: ensure nothing stays stuck invisible after load
+    setTimeout(() => {
+      revealEls.forEach(el => el.classList.add('is-revealed'));
+    }, 1500);
   }
 
   function initContactDock() {

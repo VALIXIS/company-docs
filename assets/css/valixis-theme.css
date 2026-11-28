@@ -1656,8 +1656,9 @@ CONSOLIDATED FLAWLESS RESPONSIVE ARCHITECTURE
   justify-content: center;
 }
 .hero-3d-viewport {
-  height: 440px !important;
-  min-height: 380px !important;
+  order: -1 !important;
+  height: 340px !important;
+  min-height: 280px !important;
   width: 100% !important;
 }
 .product-flagship {
@@ -1718,9 +1719,11 @@ CONSOLIDATED FLAWLESS RESPONSIVE ARCHITECTURE
   min-height: 42px !important;
 }
 .hero-3d-viewport {
-  height: 320px !important;
-  min-height: 280px !important;
-  margin: 8px 0 !important;
+  order: -1 !important;
+  height: 280px !important;
+  min-height: 240px !important;
+  margin: 0 auto 12px auto !important;
+  width: 100% !important;
 }
 }
 
