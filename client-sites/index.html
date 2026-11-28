@@ -101,6 +101,8 @@
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 90px;
+      overflow-x: hidden;
+      max-width: 100vw;
     }
 
     body {
@@ -111,6 +113,8 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
       position: relative;
     }
 
@@ -141,6 +145,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      max-width: 100vw;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
     .studio-brand {
@@ -189,6 +197,13 @@
       border-radius: 35px;
       border: 1px solid var(--border-dark);
       gap: 6px;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .site-nav-tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-tab-btn {
@@ -203,6 +218,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
+      white-space: nowrap;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -357,8 +374,42 @@
       width: 100%;
       margin: 44px auto 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
       gap: 26px;
+    }
+
+    @media (max-width: 640px) {
+      .preview-canvas-wrap {
+        padding: 16px 14px 40px;
+      }
+      .showcase-cards-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 24px;
+      }
+      .cafe-meta-card {
+        padding: 20px 16px;
+      }
+      .parallax-guide-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+      }
+      .guide-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .guide-tour-btn,
+      .guide-launch-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .roi-controls {
+        padding: 18px 16px;
+      }
     }
 
     .cafe-meta-card {
@@ -496,6 +547,31 @@
 
     .guide-text strong {
       color: #FFF;
+    }
+
+    .guide-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .guide-tour-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-dark);
+      color: #FFF;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .guide-tour-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--valixis-accent);
     }
 
     .guide-launch-btn {
@@ -961,6 +1037,33 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .device-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+      }
+      .site-nav-tabs {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .roi-simulator-wrap {
+        padding: 24px 16px;
+        margin: 30px auto 20px;
+        border-radius: 14px;
+      }
+      .roi-controls {
+        padding: 20px 14px;
+      }
+      .pct-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+      .roi-pct-buttons {
+        flex-wrap: wrap;
+      }
     }
   
     /* WCAG 2.1 AA Accessibility */
@@ -1066,7 +1169,7 @@
           <strong>Parallax depth</strong> happens as you scroll down: watch the giant background watermarks, 3D tilted photo cards, and floating stamps glide across the screen at multiple distinct physical speeds!
         </span>
       </div>
-      <div class="guide-actions" style="display:flex; gap:10px; align-items:center;">
+      <div class="guide-actions">
         <button class="guide-tour-btn" onclick="tourParallax()">✨ Auto-Tour Parallax</button>
         <a id="guideOpenTabBtn" href="roastery-coffee-house/index.html" target="_blank" class="guide-launch-btn">
           🚀 Open Standalone in New Tab ↗

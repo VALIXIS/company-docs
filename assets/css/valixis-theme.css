@@ -376,6 +376,10 @@ HERO SECTION WITH BRAND DISPLAY
   text-transform: uppercase;
   letter-spacing: 0.1em;
   backdrop-filter: blur(12px);
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .pulse-dot {
@@ -476,12 +480,15 @@ HERO SECTION WITH BRAND DISPLAY
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
+  max-width: 100%;
 }
 
+.hero-3d-viewport canvas,
 #hero-canvas {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   display: block;
   outline: none;
 }
@@ -805,7 +812,7 @@ PRODUCTS & ECOSYSTEM GRID
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 28px;
 }
 
@@ -983,7 +990,7 @@ LEADERSHIP
 
 .leadership-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 34px;
   max-width: 860px;
   margin: 0 auto;
@@ -1342,6 +1349,24 @@ FOOTER
   margin-bottom: 48px;
 }
 
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .products-grid,
+  .leadership-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 .footer-col h4 {
   font-family: var(--font-mono);
   font-size: 0.82rem;
@@ -1696,6 +1721,11 @@ CONSOLIDATED FLAWLESS RESPONSIVE ARCHITECTURE
   font-size: 0.72rem !important;
   padding: 6px 14px !important;
   margin-bottom: 16px !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  line-height: 1.35 !important;
+  text-align: center;
+  justify-content: center;
 }
 .hero-title {
   font-size: clamp(1.85rem, 7.5vw, 2.45rem) !important;
@@ -2045,6 +2075,15 @@ html {
   background: var(--valixis-cyan);
   box-shadow: 0 0 8px var(--valixis-cyan);
   animation: pulseDot 2s infinite;
+}
+
+@media (max-width: 768px) {
+  .nav-status-pill {
+    display: none !important;
+  }
+  .nav-right-group .btn-primary-compact {
+    display: none !important;
+  }
 }
 
 .direct-booking-card {
